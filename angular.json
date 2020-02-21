@@ -28,8 +28,19 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              {
+                "input": "src/styles.scss"
+              },
+              {
+                "inject": false,
+                "input": "src/assets/themes/_lightgreen-amber.scss",
+                "bundleName": "lightgreen-amber"
+              },
+              {
+                "inject": false,
+                "input": "src/assets/themes/_indigo-pink.scss",
+                "bundleName": "indigo-pink"
+              }
             ],
             "scripts": []
           },

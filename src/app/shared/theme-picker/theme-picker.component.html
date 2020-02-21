@@ -1,0 +1,10 @@
+<button mat-icon-button [mat-menu-trigger-for]="themeMenu" 
+  matTooltip="Select a theme for the documentation">
+  <mat-icon>format_color_fill</mat-icon>
+</button>
+
+<mat-menu #themeMenu xPosition="before">
+  <button mat-menu-item *ngFor="let theme of themes" (click)="selectTheme(theme.name)">
+    <span>{{theme.displayName}}</span>
+  </button>
+</mat-menu>

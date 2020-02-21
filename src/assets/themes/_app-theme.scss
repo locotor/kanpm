@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+@import '../../app/shared/layout/nav-header/nav-header-theme';
+
+@mixin app-theme {
+  @include nav-header-theme($theme);
+}
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
