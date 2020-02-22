@@ -33,12 +33,12 @@
               },
               {
                 "inject": false,
-                "input": "src/assets/themes/_lightgreen-amber.scss",
+                "input": "src/assets/themes/lightgreen-amber.css",
                 "bundleName": "lightgreen-amber"
               },
               {
                 "inject": false,
-                "input": "src/assets/themes/_indigo-pink.scss",
+                "input": "src/assets/themes/indigo-pink.css",
                 "bundleName": "indigo-pink"
               }
             ],
