@@ -1360,5 +1360,5 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 kanpm-nav-header {
   color: white; }
-  kanpm-nav-header .docs-navbar, kanpm-nav-header .docs-navbar-header {
+  kanpm-nav-header .navbar-header {
     background: #3f51b5; }

@@ -1248,5 +1248,5 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 kanpm-nav-header {
   color: rgba(0, 0, 0, 0.87); }
-  kanpm-nav-header .docs-navbar, kanpm-nav-header .docs-navbar-header {
+  kanpm-nav-header .navbar-header {
     background: #8bc34a; }
