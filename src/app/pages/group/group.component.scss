@@ -3,6 +3,42 @@
   height: 100%;
 }
 
-.side-container{
-    height: 100%;
+.side-container {
+  height: 100%;
+}
+
+.side-nav-wrapper {
+
+  padding: 0 60px 40px;
+}
+
+.side-nav-section {
+  padding-top: 40px;
+  width: 176px;
+
+  li {
+    display: block;
+    width: 100%;
+  }
+
+  header {
+    padding-left: 16px;
+  }
+
+
+  .nav-item-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 4px;
+
+    .name {
+      flex: 1;
+      margin-left: 12px;
+    }
+  }
+
 }
