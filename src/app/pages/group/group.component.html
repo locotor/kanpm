@@ -19,7 +19,7 @@
         <ul>
           <li *ngFor="let project of projects">
             <div class="nav-item-wrapper">
-              <mat-icon>folder</mat-icon>
+              <mat-icon>folder_open</mat-icon>
               <span class="name mat-body-strong">{{project.name}}</span>
             </div>
           </li>
@@ -40,5 +40,7 @@
       </nav>
     </section>
   </mat-sidenav>
-  <mat-sidenav-content>Main content</mat-sidenav-content>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

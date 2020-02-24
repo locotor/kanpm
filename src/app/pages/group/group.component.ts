@@ -8,9 +8,9 @@ export class GroupComponent implements OnInit {
 
   relevantNavs = [
     { name: '首页', icon: 'home' },
-    { name: '我执行的', icon: 'check_box' },
-    { name: '我参与的', icon: 'check_box' },
-    { name: '我创建的', icon: 'check_box' },
+    { name: '我执行的', icon: 'how_to_reg' },
+    { name: '我参与的', icon: 'person_add' },
+    { name: '我创建的', icon: 'post_add' },
   ];
 
   projects = [

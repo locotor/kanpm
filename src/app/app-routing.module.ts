@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GroupComponent } from './pages/group/group.component';
 
 
 const routes: Routes = [
-  { path: 'group', component: GroupComponent }
+  {
+    path: '',
+    redirectTo: 'group/1',
+    pathMatch: 'full'
+  }
+  // Todo add login page
+  // Todo add 404 page
 ];
 
 @NgModule({

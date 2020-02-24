@@ -5,21 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { GroupComponent } from './pages/group/group.component';
+import { GroupModule } from './pages/group/group.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GroupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    GroupModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  exports: [GroupComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
