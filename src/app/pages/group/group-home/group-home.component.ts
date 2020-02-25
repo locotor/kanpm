@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupHomeComponent implements OnInit {
 
-  approachingDeadlineTaskList = new Array(5);
+  approachingDeadlineTasks = new Array(5);
+  starredProjects = new Array(2);
 
   constructor() { }
 

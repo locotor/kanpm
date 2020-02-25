@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NavHeaderComponent } from './layout/nav-header/nav-header.component';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
+import { ProjectListItemComponent } from './project-list-item/project-list-item.component';
 
 const MaterialModules = [
     MatSidenavModule,
@@ -29,6 +30,7 @@ const Components = [NavHeaderComponent, ThemePickerComponent];
     declarations: [
         ...Components,
         TaskListItemComponent,
+        ProjectListItemComponent,
     ],
     imports: [
         CommonModule,
@@ -38,6 +40,7 @@ const Components = [NavHeaderComponent, ThemePickerComponent];
         ...MaterialModules,
         ...Components,
         TaskListItemComponent,
+        ProjectListItemComponent,
     ]
 })
 export class SharedModule { }

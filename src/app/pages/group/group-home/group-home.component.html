@@ -4,7 +4,7 @@
       <ng-template mat-tab-label>
         <span class="mat-h3">临近截止</span>
       </ng-template>
-      <kanpm-task-list-item *ngFor="let task of approachingDeadlineTaskList"></kanpm-task-list-item>
+      <kanpm-task-list-item *ngFor="let task of approachingDeadlineTasks"></kanpm-task-list-item>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
@@ -13,4 +13,8 @@
       Content 2
     </mat-tab>
   </mat-tab-group>
+</section>
+<section class="starred-projects">
+  <h3 class="mat-h3">星标项目</h3>
+  <kanpm-project-list-item *ngFor="let task of starredProjects"></kanpm-project-list-item>
 </section>
