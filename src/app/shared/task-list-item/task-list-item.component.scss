@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.root-wrapper {
+  display: flex;
+  cursor: pointer;
+  padding: 15px 20px;
+}
+
+.task-info-wrapper {
+  margin: 0 12px;
+  flex: 1 1 auto;
+
+  .task-infos {
+    display: flex;
+
+    .task-status-label {
+      margin-top: 12px;
+      margin-right: 16px;
+      padding: 0 6px;
+      font-size: 12px;
+      background: rgba(27, 154, 238, 0.1);
+      color: #0171c2;
+    }
+
+    .info-with-icon {
+      margin-top: 12px;
+      margin-right: 16px;
+
+      .icon {
+        font-size: 12px;
+        width: 12px;
+        height: 12px;
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+.task-time-label {
+  display: inline-block;
+  padding: 0 8px;
+  line-height: 20px;
+  font-size: 12px;
+  vertical-align: middle;
+}

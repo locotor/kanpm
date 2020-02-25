@@ -3,12 +3,11 @@
   height: 100%;
 }
 
-.side-container {
+.group-side-container {
   height: 100%;
 }
 
 .side-nav-wrapper {
-
   padding: 0 60px 40px;
 }
 
@@ -41,4 +40,9 @@
     }
   }
 
+}
+
+.group-content-container {
+  box-sizing: border-box;
+  padding: 40px 40px 0;
 }
