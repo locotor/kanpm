@@ -9,6 +9,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { NavHeaderComponent } from './layout/nav-header/nav-header.component';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
@@ -22,7 +24,8 @@ const MaterialModules = [
     MatCheckboxModule,
     MatTabsModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatToolbarModule
 ];
 const Components = [NavHeaderComponent, ThemePickerComponent];
 

@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+
+  .tabs {
+    flex: 1 1 auto;
+
+    .tab {
+      float: left;
+      box-sizing: border-box;
+      padding: 10px 15px;
+    }
+
+    .active {
+      border-bottom: 2px solid #1b9aee;
+    }
+  }
+
+  .settings {
+    a {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 5px;
+
+      .icon {
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+        margin-right: 5px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
