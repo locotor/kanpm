@@ -1,0 +1,44 @@
+<div class="task-list-wrapper">
+  <div class="list-header">
+    <span class="mat-h3">
+      {{taskList.name}}
+      <em>0</em>
+      /4
+    </span>
+    <mat-icon>more_horiz</mat-icon>
+  </div>
+  <ul cdkDropList class="list-content" (cdkDropListDropped)="dropTaskCard($event)">
+    <li cdkDrag *ngFor="let task of taskList.tasks; index as i">
+      <mat-card class="kanban-card">
+        <div class="card-content-wrapper">
+          <mat-checkbox class="task-checkbox"></mat-checkbox>
+          <div class="task-info">
+            <div class="task-title">
+              <span class="mat-h4">{{task.name}}</span>
+              <mat-icon>person</mat-icon>
+            </div>
+            <div class="task-content">
+              这里是任务信息列表，展示……
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </li>
+  </ul>
+  <div class="list-footer">
+    <mat-form-field style="width: 100%;">
+      <textarea matInput></textarea>
+    </mat-form-field>
+    <div class="task-additional-info">
+      <div>
+        <mat-icon class="icon">calendar_today</mat-icon>
+        <mat-icon class="icon">person_add</mat-icon>
+      </div>
+      <div>
+        <mat-checkbox></mat-checkbox> 只对参与者可见
+      </div>
+    </div>
+    <button mat-raised-button color="primary">创建任务</button>
+    <button mat-button>取消</button>
+  </div>
+</div>

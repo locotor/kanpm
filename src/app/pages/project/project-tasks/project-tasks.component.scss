@@ -1,0 +1,26 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.project-tasks-wrapper {
+  height: 100%;
+}
+
+.kanban-wrapper {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.cdk-drag-preview {
+  @include mat-elevation(8);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

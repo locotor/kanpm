@@ -10,11 +10,15 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatInputModule } from '@angular/material/input'
 
 import { NavHeaderComponent } from './layout/nav-header/nav-header.component';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { ProjectListItemComponent } from './project-list-item/project-list-item.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 const MaterialModules = [
     MatSidenavModule,
@@ -25,7 +29,10 @@ const MaterialModules = [
     MatTabsModule,
     MatDividerModule,
     MatChipsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    DragDropModule,
+    MatInputModule
 ];
 const Components = [NavHeaderComponent, ThemePickerComponent];
 
@@ -34,6 +41,7 @@ const Components = [NavHeaderComponent, ThemePickerComponent];
         ...Components,
         TaskListItemComponent,
         ProjectListItemComponent,
+        TaskListComponent,
     ],
     imports: [
         CommonModule,
@@ -44,6 +52,7 @@ const Components = [NavHeaderComponent, ThemePickerComponent];
         ...Components,
         TaskListItemComponent,
         ProjectListItemComponent,
+        TaskListComponent,
     ]
 })
 export class SharedModule { }

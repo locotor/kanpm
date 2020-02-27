@@ -1,0 +1,10 @@
+<mat-drawer-container class="project-tasks-wrapper">
+  <mat-drawer mode="cover" position="end">Drawer content</mat-drawer>
+  <mat-drawer-content style="height: 100%;">
+    <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="dropTaskList($event)">
+      <kanpm-task-list cdkDrag *ngFor="let list of taskLists" [taskList]=list>
+      </kanpm-task-list>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

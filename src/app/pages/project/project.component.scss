@@ -1,5 +1,16 @@
 :host {
   display: block;
+  height: 100%;
+}
+
+.project-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-content {
+  flex: 1 1 auto;
 }
 
 .project-header {
@@ -12,6 +23,7 @@
 
     .tab {
       float: left;
+      cursor: pointer;
       box-sizing: border-box;
       padding: 10px 15px;
     }

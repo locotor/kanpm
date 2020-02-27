@@ -1,0 +1,82 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  flex-shrink: 0;
+  width: 296px;
+  max-height: 100%;
+  margin: 0 8px;
+}
+
+.task-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: pink;
+  position: relative;
+  padding: 0 10px;
+  max-height: 100%;
+  border-radius: 3px;
+}
+
+.list-header {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    margin: 0;
+  }
+}
+
+.list-content {
+  flex: 1 1 auto;
+}
+
+.list-footer {
+  padding: 0 10px 10px;
+
+  .task-additional-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+
+    .icon {
+      font-size: 18px;
+    }
+  }
+}
+
+.kanban-card {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  .task-checkbox {
+    display: block;
+    margin: 0 8px;
+  }
+
+  .task-info {
+    flex: 1 1 auto;
+  }
+
+  .task-title {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.cdk-drag-preview {
+  @include mat-elevation(8);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
