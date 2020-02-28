@@ -1,6 +1,21 @@
 <mat-drawer-container class="project-tasks-wrapper">
   <mat-drawer mode="cover" position="end">Drawer content</mat-drawer>
-  <mat-drawer-content style="height: 100%;">
+  <mat-drawer-content>
+    <div class="kanban-header">
+      <section class="kanban-switch-button-group">
+        <mat-icon>menu</mat-icon>
+        <span>任务</span>
+      </section>
+      <section>
+        <button mat-button [matMenuTriggerFor]="menu">筛选</button>
+        <button mat-button [matMenuTriggerFor]="menu">排序</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </section>
+    </div>
+    <!-- task list drag zone -->
     <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="dropTaskList($event)">
       <div cdkDrag *ngFor="let list of taskLists" class="task-list-wrapper">
@@ -11,6 +26,7 @@
             </span>
             <mat-icon>more_horiz</mat-icon>
           </div>
+          <!-- task card drag zone -->
           <ul cdkDropList class="list-content" id="{{list.id}}" [cdkDropListData]="list"
             [cdkDropListConnectedTo]="list.connected" (cdkDropListDropped)="dropTaskCard($event)">
             <li cdkDrag *ngFor="let task of list.tasks; index as i">

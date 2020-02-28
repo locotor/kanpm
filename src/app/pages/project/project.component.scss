@@ -9,17 +9,13 @@
   height: 100%;
 }
 
-.project-content {
-  flex: 1 1 auto;
-}
-
 .project-header {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e5e5e5;
 
   .tabs {
-    flex: 1 1 auto;
+    flex: 1;
 
     .tab {
       float: left;
@@ -51,4 +47,9 @@
       }
     }
   }
+}
+
+.project-content {
+  flex: 1;
+  overflow: hidden;
 }
