@@ -3,8 +3,37 @@
   <mat-drawer-content style="height: 100%;">
     <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="dropTaskList($event)">
-      <kanpm-task-list cdkDrag *ngFor="let list of taskLists" [taskList]=list>
-      </kanpm-task-list>
+      <div cdkDrag *ngFor="let list of taskLists" class="task-list-wrapper">
+        <div class="task-list">
+          <div cdkDragHandle class="list-header">
+            <span class="mat-h3">
+              {{list.name}}<em>0</em>/4
+            </span>
+            <mat-icon>more_horiz</mat-icon>
+          </div>
+          <ul cdkDropList class="list-content" (cdkDropListDropped)="dropTaskCard($event,list.tasks)">
+            <li cdkDrag *ngFor="let task of list.tasks; index as i">
+              <kanpm-task-card [task]=task></kanpm-task-card>
+            </li>
+          </ul>
+          <div class="list-footer">
+            <mat-form-field style="width: 100%;">
+              <textarea matInput></textarea>
+            </mat-form-field>
+            <div class="task-additional-info">
+              <div>
+                <mat-icon class="icon">calendar_today</mat-icon>
+                <mat-icon class="icon">person_add</mat-icon>
+              </div>
+              <div>
+                <mat-checkbox></mat-checkbox> 只对参与者可见
+              </div>
+            </div>
+            <button mat-raised-button color="primary">创建任务</button>
+            <button mat-button>取消</button>
+          </div>
+        </div>
+      </div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -18,7 +18,7 @@ import { NavHeaderComponent } from './layout/nav-header/nav-header.component';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { ProjectListItemComponent } from './project-list-item/project-list-item.component';
-import { TaskListComponent } from './task-list/task-list.component';
+import { TaskCardComponent } from './task-card/task-card.component';
 
 const MaterialModules = [
     MatSidenavModule,
@@ -41,7 +41,7 @@ const Components = [NavHeaderComponent, ThemePickerComponent];
         ...Components,
         TaskListItemComponent,
         ProjectListItemComponent,
-        TaskListComponent,
+        TaskCardComponent,
     ],
     imports: [
         CommonModule,
@@ -52,7 +52,7 @@ const Components = [NavHeaderComponent, ThemePickerComponent];
         ...Components,
         TaskListItemComponent,
         ProjectListItemComponent,
-        TaskListComponent,
+        TaskCardComponent,
     ]
 })
 export class SharedModule { }

@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.task-card-wrapper {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  .task-checkbox {
+    display: block;
+    margin: 0 8px;
+  }
+
+  .task-info {
+    flex: 1 1 auto;
+  }
+
+  .task-title {
+    display: flex;
+    justify-content: space-between;
+  }
+}

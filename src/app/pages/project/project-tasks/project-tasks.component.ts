@@ -31,4 +31,8 @@ export class ProjectTasksComponent implements OnInit {
     moveItemInArray(this.taskLists, event.previousIndex, event.currentIndex);
   }
 
+  dropTaskCard(event, tasks) {
+    moveItemInArray(tasks, event.previousIndex, event.currentIndex);
+  }
+
 }
