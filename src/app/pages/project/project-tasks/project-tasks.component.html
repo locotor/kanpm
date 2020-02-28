@@ -11,7 +11,8 @@
             </span>
             <mat-icon>more_horiz</mat-icon>
           </div>
-          <ul cdkDropList class="list-content" (cdkDropListDropped)="dropTaskCard($event,list.tasks)">
+          <ul cdkDropList class="list-content" id="{{list.id}}" [cdkDropListData]="list"
+            [cdkDropListConnectedTo]="list.connected" (cdkDropListDropped)="dropTaskCard($event)">
             <li cdkDrag *ngFor="let task of list.tasks; index as i">
               <kanpm-task-card [task]=task></kanpm-task-card>
             </li>

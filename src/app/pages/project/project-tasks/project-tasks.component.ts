@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   templateUrl: './project-tasks.component.html',
@@ -9,12 +9,34 @@ export class ProjectTasksComponent implements OnInit {
 
   taskLists = [];
 
-  constructor() { }
+  taskListID1 = 'test1';
+  taskListID2 = 'test2';
+  testTasks1 = [];
+  testTasks2 = [];
+
+  constructor() {
+
+    let random = Math.floor(Math.random() * 5 + 1);
+    for (let taskID = 0; taskID < random; taskID++) {
+      this.testTasks1.push({
+        name: '任务' + taskID
+      });
+    }
+
+    random = Math.floor(Math.random() * 5 + 1);
+    for (let taskID = 0; taskID < random; taskID++) {
+      this.testTasks2.push({
+        name: '任务' + taskID
+      });
+    }
+  }
 
   ngOnInit(): void {
     for (let index = 0; index < 3; index++) {
       const taskList = {
+        id: `${index}`,
         name: '测试任务列表0' + index,
+        connected: index !== 2 ? `${index + 1}` : '0',
         tasks: []
       };
       const random = Math.floor(Math.random() * 5 + 1);
@@ -31,8 +53,15 @@ export class ProjectTasksComponent implements OnInit {
     moveItemInArray(this.taskLists, event.previousIndex, event.currentIndex);
   }
 
-  dropTaskCard(event, tasks) {
-    moveItemInArray(tasks, event.previousIndex, event.currentIndex);
+  dropTaskCard(event) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data.tasks, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data.tasks,
+        event.container.data.tasks,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
 }
