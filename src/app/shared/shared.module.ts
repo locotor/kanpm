@@ -14,7 +14,6 @@ import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input'
 
-import { NavHeaderComponent } from './layout/nav-header/nav-header.component';
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { ProjectListItemComponent } from './project-list-item/project-list-item.component';
@@ -34,7 +33,7 @@ const MaterialModules = [
     DragDropModule,
     MatInputModule
 ];
-const Components = [NavHeaderComponent, ThemePickerComponent];
+const Components = [ThemePickerComponent];
 
 @NgModule({
     declarations: [

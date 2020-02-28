@@ -1,5 +1,3 @@
-@import '../app/shared/layout/nav-header/nav-header-theme';
-
 @mixin app-theme {
-  @include nav-header-theme($theme);
+  // @include nav-header-theme($theme);
 }

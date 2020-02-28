@@ -1,5 +1,12 @@
 <div class="root-container">
-  <kanpm-nav-header></kanpm-nav-header>
+  <!-- <kanpm-nav-header></kanpm-nav-header> -->
+  <mat-toolbar color="primary" class="main-header-nav ">
+    <section class="mat-h1">Kanpm</section>
+    <section class="flex-spacer"></section>
+    <section>
+      <kanpm-theme-picker></kanpm-theme-picker>
+    </section>
+  </mat-toolbar>
   <div class="main-content-container">
     <router-outlet></router-outlet>
   </div>

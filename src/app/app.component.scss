@@ -9,7 +9,17 @@
   height: 100%;
 }
 
+.main-header-nav {
+  .mat-h1 {
+    margin: 0;
+  }
+
+  .flex-spacer {
+    flex-grow: 1;
+  }
+}
+
+
 .main-content-container {
   flex: 1 1 auto;
-  margin: 0 40px;
 }
