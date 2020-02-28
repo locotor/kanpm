@@ -8,28 +8,7 @@ import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 export class ProjectTasksComponent implements OnInit {
 
   taskLists = [];
-
-  taskListID1 = 'test1';
-  taskListID2 = 'test2';
-  testTasks1 = [];
-  testTasks2 = [];
-
-  constructor() {
-
-    let random = Math.floor(Math.random() * 5 + 1);
-    for (let taskID = 0; taskID < random; taskID++) {
-      this.testTasks1.push({
-        name: '任务' + taskID
-      });
-    }
-
-    random = Math.floor(Math.random() * 5 + 1);
-    for (let taskID = 0; taskID < random; taskID++) {
-      this.testTasks2.push({
-        name: '任务' + taskID
-      });
-    }
-  }
+  isShowCreatePane = false
 
   ngOnInit(): void {
     for (let index = 0; index < 3; index++) {
@@ -63,5 +42,4 @@ export class ProjectTasksComponent implements OnInit {
         event.currentIndex);
     }
   }
-
 }

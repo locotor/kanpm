@@ -18,20 +18,29 @@
             </li>
           </ul>
           <div class="list-footer">
-            <mat-form-field style="width: 100%;">
-              <textarea matInput></textarea>
-            </mat-form-field>
-            <div class="task-additional-info">
-              <div>
-                <mat-icon class="icon">calendar_today</mat-icon>
-                <mat-icon class="icon">person_add</mat-icon>
+            <div class="task-quick-create-pane" *ngIf="isShowCreatePane;else create_button">
+              <mat-form-field style="width: 100%;">
+                <mat-label>任务描述</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+              <div class="task-additional-info">
+                <div>
+                  <mat-icon class="icon">calendar_today</mat-icon>
+                  <mat-icon class="icon">person_add</mat-icon>
+                </div>
+                <div>
+                  <mat-checkbox></mat-checkbox> 只对参与者可见
+                </div>
               </div>
-              <div>
-                <mat-checkbox></mat-checkbox> 只对参与者可见
-              </div>
+              <button mat-raised-button color="primary">创建任务</button>
+              <button mat-button (click)="isShowCreatePane=false">取消</button>
             </div>
-            <button mat-raised-button color="primary">创建任务</button>
-            <button mat-button>取消</button>
+            <ng-template #create_button>
+              <div class="task-quick-create-button" (click)="isShowCreatePane=true">
+                <mat-icon>add</mat-icon>
+                <span>新建任务</span>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
