@@ -1245,8 +1245,3 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 .mat-simple-snackbar-action {
   color: inherit; }
-
-kanpm-nav-header {
-  color: rgba(0, 0, 0, 0.87); }
-  kanpm-nav-header .navbar-header {
-    background: #8bc34a; }
