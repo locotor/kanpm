@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -7,8 +7,9 @@ import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 })
 export class ProjectTasksComponent implements OnInit {
 
+  @ViewChild('taskDetailDrawer') taskDetailDrawer;
   taskLists = [];
-  isShowCreatePane = false
+  isShowCreatePane = false;
 
   ngOnInit(): void {
     for (let index = 0; index < 3; index++) {
@@ -42,4 +43,9 @@ export class ProjectTasksComponent implements OnInit {
         event.currentIndex);
     }
   }
+
+  test() {
+    this.taskDetailDrawer.open();
+  }
+
 }

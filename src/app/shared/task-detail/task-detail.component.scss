@@ -22,10 +22,6 @@
     padding: 10px;
     overflow-y: auto;
   }
-
-  .task-footer {
-    // height: 80px;
-  }
 }
 
 .task-directory {
@@ -80,12 +76,14 @@
   }
 }
 
+
 .comment-emitter {
   width: 100%;
-  padding: 12px 40px;
+  padding: 12px 30px;
 
   .comment-editor {
     width: 100%;
+    margin-bottom: 10px;
   }
 
   .emitter-footer {

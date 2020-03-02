@@ -1,5 +1,5 @@
 <mat-drawer-container class="root-container">
-  <mat-drawer class="task-detail-container" mode="cover" position="end" opened>
+  <mat-drawer #taskDetailDrawer class="task-detail-container" mode="cover" position="end" opened>
     <kanpm-task-detail></kanpm-task-detail>
   </mat-drawer>
   <mat-drawer-content class="task-list-group-container">
@@ -32,7 +32,7 @@
           <ul cdkDropList class="list-content" id="{{list.id}}" [cdkDropListData]="list"
             [cdkDropListConnectedTo]="list.connected" (cdkDropListDropped)="dropTaskCard($event)">
             <li cdkDrag *ngFor="let task of list.tasks; index as i">
-              <kanpm-task-card [task]=task></kanpm-task-card>
+              <kanpm-task-card [task]=task (click)="test()"></kanpm-task-card>
             </li>
           </ul>
           <div class="list-footer">
