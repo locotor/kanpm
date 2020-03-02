@@ -1,6 +1,8 @@
 <mat-drawer-container class="root-container">
-  <mat-drawer mode="cover" position="end">Drawer content</mat-drawer>
-  <mat-drawer-content class="project-tasks-wrapper">
+  <mat-drawer class="task-detail-container" mode="cover" position="end" opened>
+    <kanpm-task-detail></kanpm-task-detail>
+  </mat-drawer>
+  <mat-drawer-content class="task-list-group-container">
     <div class="kanban-header">
       <section class="kanban-switch-button-group">
         <mat-icon>menu</mat-icon>

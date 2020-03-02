@@ -23,3 +23,14 @@ li {
   margin: 0;
   list-style: none
 }
+
+.mat-basic-chip {
+  padding: 4px 6px;
+  margin: 0 5px 5px 0;
+  border-radius: 4px;
+}
+
+.task-detail-root .task-checkbox .mat-checkbox-inner-container {
+  width: 32px;
+  height: 32px;
+}

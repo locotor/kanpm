@@ -9,7 +9,13 @@
   height: 100%;
 }
 
-.project-tasks-wrapper {
+.task-detail-container {
+  width: 50%;
+  min-width: 660px;
+  max-width: 879px;
+}
+
+.task-list-group-container {
   display: flex;
   flex-direction: column;
   height: 100%;

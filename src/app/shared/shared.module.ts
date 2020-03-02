@@ -12,12 +12,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
 
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
 import { ProjectListItemComponent } from './project-list-item/project-list-item.component';
 import { TaskCardComponent } from './task-card/task-card.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 const MaterialModules = [
     MatSidenavModule,
@@ -41,6 +42,7 @@ const Components = [ThemePickerComponent];
         TaskListItemComponent,
         ProjectListItemComponent,
         TaskCardComponent,
+        TaskDetailComponent,
     ],
     imports: [
         CommonModule,
@@ -52,6 +54,7 @@ const Components = [ThemePickerComponent];
         TaskListItemComponent,
         ProjectListItemComponent,
         TaskCardComponent,
+        TaskDetailComponent,
     ]
 })
 export class SharedModule { }
