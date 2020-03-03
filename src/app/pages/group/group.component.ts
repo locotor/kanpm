@@ -1,10 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Project } from 'types/project';
+import { ProjectService } from './project.service';
 
 @Component({
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.scss']
 })
 export class GroupComponent implements OnInit {
+
+  constructor(
+    private _projectService: ProjectService
+  ) { }
 
   relevantNavs = [
     { name: '首页', icon: 'home' },
@@ -13,13 +20,7 @@ export class GroupComponent implements OnInit {
     { name: '我创建的', icon: 'post_add' },
   ];
 
-  projects = [
-    { name: '项目1' },
-    { name: '项目2' },
-    { name: '项目3' },
-    { name: '项目4' },
-    { name: '项目5' }
-  ];
+  projects: Project[];
 
   collaborators = [
     { name: '张三' },
@@ -27,9 +28,16 @@ export class GroupComponent implements OnInit {
     { name: '王麻子' },
   ];
 
-  constructor() { }
-
   ngOnInit(): void {
+    this._projectService.getProjects().subscribe(
+      (response) => {
+        console.log('test:', response);
+        this.projects = response.data;
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
   }
 
 }

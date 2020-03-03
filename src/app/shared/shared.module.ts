@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DelonMockModule } from '@delon/mock';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +20,9 @@ import { TaskListItemComponent } from './task-list-item/task-list-item.component
 import { ProjectListItemComponent } from './project-list-item/project-list-item.component';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+
+// import { environment } from '@env/environment';
+// const MOCKMODULE = !environment.production ? [DelonMockModule.forChild()] : [];
 
 const MaterialModules = [
     MatSidenavModule,
@@ -46,7 +50,8 @@ const Components = [ThemePickerComponent];
     ],
     imports: [
         CommonModule,
-        ...MaterialModules
+        ...MaterialModules,
+        // ...MOCKMODULE
     ],
     exports: [
         ...MaterialModules,

@@ -19,7 +19,7 @@
           <li *ngFor="let project of projects">
             <div class="nav-item-wrapper">
               <mat-icon>folder_open</mat-icon>
-              <span class="name mat-body-strong">{{project.name}}</span>
+              <span class="name mat-body-strong">{{project?.projectName}}</span>
             </div>
           </li>
         </ul>
