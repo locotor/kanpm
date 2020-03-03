@@ -7,7 +7,7 @@ export const MOCKDATA = {
     'GET api/projects': (req: MockRequest) => new HttpResponse({
         body: Mock.mock({
             'data|3': [{
-                projectName: '@ctitle'
+                projectName: /测试项目-\w\d{2}/
             }]
         })
     }),
