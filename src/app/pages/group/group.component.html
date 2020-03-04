@@ -17,7 +17,7 @@
       <nav>
         <ul>
           <li *ngFor="let project of projects">
-            <div class="nav-item-wrapper">
+            <div class="nav-item-wrapper" routerLink="/project/{{project.id}}">
               <mat-icon>folder_open</mat-icon>
               <span class="name mat-body-strong">{{project?.projectName}}</span>
             </div>

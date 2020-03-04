@@ -1,7 +1,7 @@
 export interface Project {
+    id: string;
     projectName: string;
     description?: string;
-    projectSponsor: string;
     projectManager: string;
     organizationalUnit: string;
     expectedStartDate?: number;
@@ -9,4 +9,5 @@ export interface Project {
     createTime: number;
     projectTeam: string[];
     isArchived: boolean;
+    archiveTime: number;
 }

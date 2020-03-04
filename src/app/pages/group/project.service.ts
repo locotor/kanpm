@@ -12,8 +12,12 @@ export class ProjectService {
     private http: HttpClient
   ) { }
 
-  getProjects() {
-    return this.http.get<Response<Project[]>>('api/projects');
+  getGroupProjects() {
+    return this.http.get<Response<Project[]>>('api/group-projects');
+  }
+
+  getCollaborators() {
+    return this.http.get<Response<any[]>>('api/group-collaborators');
   }
 
 }

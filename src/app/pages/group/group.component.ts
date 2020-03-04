@@ -22,17 +22,30 @@ export class GroupComponent implements OnInit {
 
   projects: Project[];
 
-  collaborators = [
-    { name: '张三' },
-    { name: '李四' },
-    { name: '王麻子' },
-  ];
+  collaborators = [];
 
   ngOnInit(): void {
-    this._projectService.getProjects().subscribe(
+    this.getGroupProjects();
+    this.getCollaborators();
+  }
+
+  getGroupProjects() {
+    this._projectService.getGroupProjects().subscribe(
       (response) => {
         console.log('test:', response);
         this.projects = response.data;
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getCollaborators() {
+    this._projectService.getCollaborators().subscribe(
+      (response) => {
+        console.log('test:', response);
+        this.collaborators = response.data;
       },
       (error: HttpErrorResponse) => {
         console.error(error);
