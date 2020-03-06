@@ -1,0 +1,34 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 200px 400px;
+}
+
+.ad-section {
+  width: 360px;
+  height: 650px;
+  background: blue;
+  border-radius: 12px;
+  @include mat-elevation(12);
+}
+
+.auth-section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  background-color: grey;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+  @include mat-elevation(6);
+}

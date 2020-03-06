@@ -1,0 +1,25 @@
+<div class="register-root">
+  <form class="register-form" [formGroup]="registerForm">
+    <mat-form-field appearance="outline">
+      <mat-label>User Name</mat-label>
+      <input matInput formControlName="userName">
+      <mat-hint>User Name is required!</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mobile Number</mat-label>
+      <input matInput formControlName="mobileNumber">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Set Password</mat-label>
+      <input matInput formControlName="mobileNumber" [type]="isPasswordHide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="isPasswordHide">
+        <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">注册</button>
+  </form>
+  <p>
+    Form Status: {{ registerForm.status }}
+  </p>
+</div>

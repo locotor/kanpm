@@ -10,13 +10,14 @@ import { GroupModule } from './pages/group/group.module';
 
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
+import { AuthenticationModule } from './pages/authentication/authentication.module';
 const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
 console.log(MOCKDATA);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ console.log(MOCKDATA);
     SharedModule,
     BrowserAnimationsModule,
     GroupModule,
-    ...MOCKMODULE
+    ...MOCKMODULE,
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

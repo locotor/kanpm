@@ -1,6 +1,6 @@
 {
   "name": "kanpm",
-  "version": "0.0.1-Snapshot",
+  "version": "0.1.0-Snapshot",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

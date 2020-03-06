@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationComponent } from './pages/authentication/authentication.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'group/1',
+    redirectTo: 'authentication',
     pathMatch: 'full'
   },
   { path: 'project/:id', loadChildren: () => import('./pages/project/project.module').then(m => m.ProjectModule) }
