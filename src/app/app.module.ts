@@ -13,8 +13,6 @@ import * as MOCKDATA from '../../_mock';
 import { AuthenticationModule } from './pages/authentication/authentication.module';
 const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
-console.log(MOCKDATA);
-
 @NgModule({
   declarations: [
     AppComponent

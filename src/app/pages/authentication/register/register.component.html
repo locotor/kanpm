@@ -2,24 +2,40 @@
   <form class="register-form" [formGroup]="registerForm">
     <mat-form-field appearance="outline">
       <mat-label>User Name</mat-label>
-      <input matInput formControlName="userName">
-      <mat-hint>User Name is required!</mat-hint>
+      <input matInput formControlName="userName" required>
+      <mat-icon matPrefix>person</mat-icon>
+      <mat-error *ngIf="userName.errors?.required">user name is required</mat-error>
+      <mat-error *ngIf="userName.errors?.valueFormat">user name can't be bob</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Mobile Number</mat-label>
       <input matInput formControlName="mobileNumber">
+      <mat-icon matPrefix>phone</mat-icon>
+      <mat-error *ngIf="mobileNumber.errors?.required">mobile number is required</mat-error>
+      <mat-error *ngIf="mobileNumber.errors?.valueFormat">should be a valid phone number</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Set Password</mat-label>
-      <input matInput formControlName="mobileNumber" [type]="isPasswordHide ? 'password' : 'text'">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" required [type]="isPasswordHide ? 'password' : 'text'">
+      <mat-icon matPrefix>lock</mat-icon>
       <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="isPasswordHide">
         <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-hint *ngIf="password.value">password intension level : medium</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password Confirm</mat-label>
+      <input matInput formControlName="passwordConfirm" required [type]="isPasswordHide ? 'password' : 'text'">
+      <mat-icon matPrefix>lock</mat-icon>
+      <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="isPasswordHide">
+        <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="registerForm.errors?.passwordConfirm">two inconsistent passwords entered
+      </mat-error>
     </mat-form-field>
     <button mat-raised-button type="submit" color="primary">注册</button>
+    <button mat-button>取消</button>
   </form>
-  <p>
-    Form Status: {{ registerForm.status }}
-  </p>
 </div>
