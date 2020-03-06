@@ -21,11 +21,11 @@ export class RegisterComponent extends FormBase implements OnInit {
     ]],
     password: ['', [
       Validators.required,
+      Validators.minLength(6),
       Validators.maxLength(64)
     ]],
     passwordConfirm: ['', [
-      Validators.required,
-      Validators.maxLength(64)
+      Validators.required
     ]]
   }, {
     validators: this.passwordConfirmValidator,
@@ -40,6 +40,10 @@ export class RegisterComponent extends FormBase implements OnInit {
     private fb: FormBuilder
   ) {
     super();
+  }
+
+  test() {
+    console.log(this.registerForm.errors);
   }
 
   ngOnInit(): void {

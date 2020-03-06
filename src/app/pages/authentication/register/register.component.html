@@ -26,13 +26,13 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password Confirm</mat-label>
-      <input matInput formControlName="passwordConfirm" required [type]="isPasswordHide ? 'password' : 'text'">
+      <input matInput formControlName="passwordConfirm" required (blur)="test()" [type]="isPasswordHide ? 'password' : 'text'">
       <mat-icon matPrefix>lock</mat-icon>
       <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="isPasswordHide">
         <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="registerForm.errors?.passwordConfirm">two inconsistent passwords entered
+      <mat-error>two inconsistent passwords entered
       </mat-error>
     </mat-form-field>
     <button mat-raised-button type="submit" color="primary">注册</button>

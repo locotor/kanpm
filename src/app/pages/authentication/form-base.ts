@@ -12,11 +12,13 @@ export abstract class FormBase {
     protected passwordConfirmValidator(group: FormGroup): ValidationErrors | null {
         const password = group.get('password');
         const passwordConfirm = group.get('passwordConfirm');
-
-        return password
-            && passwordConfirm
-            && password.value === passwordConfirm.value
-            ? null : { passwordConfirm: { value: passwordConfirm.value } };
+        const consistent = password && passwordConfirm && password.value === passwordConfirm.value;
+        if (consistent) {
+            return null;
+        } else {
+            passwordConfirm.setErrors({ passwordConfirm: true });
+            return { passwordConfirm: true };
+        }
     }
 
 }
