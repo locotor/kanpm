@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Response } from 'types/response';
 
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from 'shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'kanpm-register',

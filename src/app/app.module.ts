@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DelonMockModule } from '@delon/mock';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AppRoutingModule } from './pages/app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { GroupModule } from './pages/group/group.module';
 
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
-import { AuthenticationModule } from './pages/authentication/authentication.module';
 const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
 @NgModule({
@@ -19,12 +18,10 @@ const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MO
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule,
-    GroupModule,
-    ...MOCKMODULE,
-    AuthenticationModule
+    ...MOCKMODULE
   ],
   providers: [],
   bootstrap: [AppComponent]

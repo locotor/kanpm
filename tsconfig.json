@@ -20,6 +20,7 @@
     ],
     "paths": {
       "types/*": ["src/app/types/*"],
+      "shared/*": ["src/app/shared/*"],
       "@env/*": ["src/environments/*"]
     }
   },
