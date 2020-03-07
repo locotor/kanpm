@@ -1,0 +1,10 @@
+@import "../../../../../node_modules/@angular/material/theming";
+
+@mixin authentication-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .authentication-root .ad-section {
+    background: mat-color($primary);
+  }
+}

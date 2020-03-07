@@ -1,6 +1,9 @@
 /* Theme for the ripple elements.*/
 /* stylelint-disable material/no-prefixes */
 /* stylelint-enable */
+/* Theme for the ripple elements.*/
+/* stylelint-disable material/no-prefixes */
+/* stylelint-enable */
 .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.1); }
 
@@ -1245,3 +1248,6 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 .mat-simple-snackbar-action {
   color: inherit; }
+
+.authentication-root .ad-section {
+  background: #8bc34a; }
