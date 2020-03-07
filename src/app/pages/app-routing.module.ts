@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GroupModule } from './group/group.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthGuardService } from 'shared/services/guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -9,8 +10,11 @@ const routes: Routes = [
     redirectTo: 'authentication',
     pathMatch: 'full'
   },
-  { path: 'project/:id', loadChildren: () => import('./project/project.module').then(m => m.ProjectModule) }
-  // Todo add login page
+  {
+    path: 'project/:id',
+    loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
+    canLoad: [AuthGuardService],
+  }
   // Todo add 404 page
 ];
 

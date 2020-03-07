@@ -8,6 +8,10 @@ import { ValidationErrors } from '@angular/forms';
 })
 export class AuthenticationService {
 
+  isLoggedIn = false;
+
+  redirectUrl: string;
+
   constructor(
     private http: HttpClient
   ) { }
