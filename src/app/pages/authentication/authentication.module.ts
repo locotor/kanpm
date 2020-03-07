@@ -5,14 +5,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 
-import { AuthenticationComponent } from './authentication.component';
+import { AuthenticationRootComponent } from './authentication-root/authentication-root.component';
 import { RegisterComponent } from './register/register.component';
 
 
 
 @NgModule({
   declarations: [
-    AuthenticationComponent,
+    AuthenticationRootComponent,
     RegisterComponent
   ],
   imports: [
@@ -22,7 +22,7 @@ import { RegisterComponent } from './register/register.component';
     AuthenticationRoutingModule
   ],
   exports: [
-    AuthenticationComponent,
+    AuthenticationRootComponent,
     RegisterComponent
   ]
 })

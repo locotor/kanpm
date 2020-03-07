@@ -8,7 +8,7 @@ export const MOCKDATA = {
         body: Mock.mock({
             'data|3': [{
                 'id|14': /[a-z][A-Z][0-9]/,
-                'projectName': /测试项目-\w\d{2}/
+                projectName: /测试项目-\w\d{2}/
             }]
         })
     }),
