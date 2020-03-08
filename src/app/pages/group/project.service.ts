@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project } from 'types/project';
-import { Response } from 'types/response';
+import { ServerResponse } from 'types/response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,11 @@ export class ProjectService {
   ) { }
 
   getGroupProjects() {
-    return this.http.get<Response<Project[]>>('api/group-projects');
+    return this.http.get<ServerResponse<Project[]>>('api/group-projects');
   }
 
   getCollaborators() {
-    return this.http.get<Response<any[]>>('api/group-collaborators');
+    return this.http.get<ServerResponse<any[]>>('api/group-collaborators');
   }
 
 }

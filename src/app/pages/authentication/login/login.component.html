@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="login-root">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <div class="form-field-row">
+      <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input matInput formControlName="userName" required>
+        <mat-error *ngIf="userName.errors?.required">user name is required.</mat-error>
+        <mat-error *ngIf="userName.errors?.maxlength">
+          user name letters should less than {{userName.errors?.maxlength.requiredLength}}.
+        </mat-error>
+      </mat-form-field>
+      <div class="field-feedback">
+        <mat-icon class="checked-icon" *ngIf="userName.dirty&&userName.valid">check_circle_outline</mat-icon>
+        <mat-icon color="warn" *ngIf="userName.dirty&&userName.invalid">highlight_off</mat-icon>
+        <mat-icon color="accent" *ngIf="userName.pending">hourglass_empty</mat-icon>
+      </div>
+    </div>
+    <div class="form-field-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" required [type]="isPasswordHide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="isPasswordHide">
+          <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="field-feedback">
+        <mat-icon class="checked-icon" *ngIf="password.dirty&&password.valid">check_circle_outline</mat-icon>
+        <mat-icon color="warn" *ngIf="password.dirty&&password.invalid">highlight_off</mat-icon>
+      </div>
+    </div>
+    <div class="form-field-row">
+      <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid">login</button>
+      <button mat-button>cancel</button>
+    </div>
+  </form>
+</div>

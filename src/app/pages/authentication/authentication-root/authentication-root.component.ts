@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationRootComponent implements OnInit {
 
+  isLoginTab = true;
+
   constructor() { }
 
   ngOnInit(): void {

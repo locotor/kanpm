@@ -1,5 +1,5 @@
 @import "../app/pages/authentication/authentication-root/theme";
 
-@mixin app-theme {
+@mixin app-theme($theme) {
   @include authentication-theme($theme);
 }

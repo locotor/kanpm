@@ -5,7 +5,9 @@
         <mat-label>User Name</mat-label>
         <input matInput formControlName="userName" required>
         <mat-error *ngIf="userName.errors?.required">user name is required</mat-error>
-        <mat-error *ngIf="userName.errors?.valueFormat">user name can't be bob</mat-error>
+        <mat-error *ngIf="userName.errors?.maxlength">
+          user name letters should less than {{userName.errors?.maxlength.requiredLength}}.
+        </mat-error>
         <mat-error *ngIf="userName.errors?.verifyUserName">user name has been registed</mat-error>
       </mat-form-field>
       <div class="field-feedback">

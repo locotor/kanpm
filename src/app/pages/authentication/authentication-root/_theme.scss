@@ -3,8 +3,29 @@
 @mixin authentication-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+  $is-dark: map-get($theme, is-dark);
+  $foreground: map-get($theme, foreground);
 
-  .authentication-root .ad-section {
-    background: mat-color($primary);
+  .authentication-root {
+
+    .tabs {
+      .active {
+        border-bottom: 2px solid mat-color($accent);
+      }
+    }
+
+    .ad-section {
+      background: mat-color($primary);
+
+      @if $is-dark {
+        color: #fff;
+      }
+    }
+
+    .auth-section {
+      @if $is-dark {
+        background: #555;
+      }
+    }
   }
 }

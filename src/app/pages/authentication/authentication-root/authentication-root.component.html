@@ -1,9 +1,20 @@
 <div class="authentication-root">
   <img class="auth-illustration" src="/assets/images/auth-illustration.png" />
   <section class="ad-section">
-    test
+    <img class="auth-banner-img" src="/assets/images/auth-banner.png">
+    <p class="mat-h3">Lorem ipsum dolor sit amet</p>
+    <p>Consectetur adipiscing elit</p>
+    <p>Phasellus orci dolor</p>
+    <p>dapibus suscipit quam</p>
   </section>
   <section class="auth-section">
-    <kanpm-register></kanpm-register>
+    <div class="tabs">
+      <ul class="mat-h2">
+        <li class="tab" [class.active]="isLoginTab" (click)="isLoginTab=true">Login</li>
+        <li class="tab" [class.active]="!isLoginTab" (click)="isLoginTab=false">Register</li>
+      </ul>
+    </div>
+    <kanpm-login *ngIf="isLoginTab"></kanpm-login>
+    <kanpm-register *ngIf="!isLoginTab"></kanpm-register>
   </section>
 </div>

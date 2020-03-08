@@ -1,3 +1,4 @@
-export interface Response<T> {
+export interface ServerResponse<T> {
+    code: string;
     data: T;
 }
