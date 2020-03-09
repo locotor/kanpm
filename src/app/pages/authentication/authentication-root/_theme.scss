@@ -1,31 +1,36 @@
 @import "../../../../../node_modules/@angular/material/theming";
+@import "../login/theme";
 
 @mixin authentication-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $is-dark: map-get($theme, is-dark);
+  // this a Sass map
+  // https://github.com/angular/components/blob/master/src/material/core/theming/_palette.scss
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  @include login-theme($theme);
 
   .authentication-root {
 
     .tabs {
+      .tab {
+        color: map-get($foreground, text);
+      }
+
       .active {
         border-bottom: 2px solid mat-color($accent);
       }
     }
 
     .ad-section {
-      background: mat-color($primary);
-
-      @if $is-dark {
-        color: #fff;
-      }
+      background: mat-color($primary, 300);
+      color: map-get($foreground, text);
     }
 
     .auth-section {
-      @if $is-dark {
-        background: #555;
-      }
+      background: map-get($background, background);
     }
   }
 }

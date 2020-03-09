@@ -4,6 +4,9 @@
 /* Theme for the ripple elements.*/
 /* stylelint-disable material/no-prefixes */
 /* stylelint-enable */
+/* Theme for the ripple elements.*/
+/* stylelint-disable material/no-prefixes */
+/* stylelint-enable */
 .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.1); }
 
@@ -1365,12 +1368,21 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .mat-simple-snackbar-action {
   color: inherit; }
 
+.form-field-row .mat-icon-button {
+  color: white; }
+
+.form-field-row .mat-button {
+  color: white; }
+
+.authentication-root .tabs .tab {
+  color: white; }
+
 .authentication-root .tabs .active {
   border-bottom: 2px solid #ffc107; }
 
 .authentication-root .ad-section {
-  background: #8bc34a;
-  color: #fff; }
+  background: #aed581;
+  color: white; }
 
 .authentication-root .auth-section {
-  background: #555; }
+  background: #303030; }
