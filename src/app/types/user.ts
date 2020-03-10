@@ -9,3 +9,11 @@ export interface User {
     createdTime: number;
     groups?: string[];
 }
+
+export interface UserInStorage {
+    id: string;
+    email: string;
+    alias: string;
+    avator?: string;
+    token: string;
+}

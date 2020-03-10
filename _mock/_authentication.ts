@@ -7,7 +7,7 @@ export const AuthenticationMockData = {
         body: {
             code: '20000',
             data: {
-                // Mock.mock(),
+                jwt: Mock.Random.id(),
                 user: Mock.mock({
                     'id|14': /[a-z][A-Z][0-9]/,
                     userName: /测试项目-\w\d{2}/,

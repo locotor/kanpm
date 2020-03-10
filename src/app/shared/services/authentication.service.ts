@@ -10,10 +10,6 @@ import { ServerResponse } from 'types/response';
 })
 export class AuthenticationService {
 
-  isLoggedIn = false;
-
-  redirectUrl: string;
-
   constructor(
     private http: HttpClient
   ) { }
@@ -23,7 +19,7 @@ export class AuthenticationService {
   }
 
   login(loginData: { userName: string, password: string }): Observable<ServerResponse<User | null>> {
-    return this.http.post<ServerResponse<User|null>>('api/login', loginData);
+    return this.http.post<ServerResponse<User | null>>('api/login', loginData);
   }
 
 }

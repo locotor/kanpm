@@ -32,7 +32,6 @@ export class GroupComponent implements OnInit {
   getGroupProjects() {
     this._projectService.getGroupProjects().subscribe(
       (response) => {
-        console.log('test:', response);
         this.projects = response.data;
       },
       (error: HttpErrorResponse) => {
@@ -44,7 +43,6 @@ export class GroupComponent implements OnInit {
   getCollaborators() {
     this._projectService.getCollaborators().subscribe(
       (response) => {
-        console.log('test:', response);
         this.collaborators = response.data;
       },
       (error: HttpErrorResponse) => {

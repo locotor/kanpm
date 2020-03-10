@@ -1,9 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from 'shared/services/authentication/authentication.service';
+import { AuthenticationService } from 'shared/services/authentication.service';
 import { User } from 'types/user';
 import { ServerResponse } from 'types/response';
 import { Router } from '@angular/router';
+import { GlobalService } from 'shared/services/global.service';
 
 @Component({
   selector: 'kanpm-login',
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authServer: AuthenticationService,
+    private globalService: GlobalService,
     private router: Router
   ) { }
 
@@ -41,15 +43,14 @@ export class LoginComponent implements OnInit {
 
   submitLoginForm() {
     this.authServer.login(this.loginForm.value).subscribe(
-      (response: ServerResponse<User>) => {
-        this.authServer.isLoggedIn = !!response.data;
-        if (this.authServer.redirectUrl) {
-          this.router.navigate([this.authServer.redirectUrl]);
+      (response: ServerResponse<any>) => {
+        this.globalService.storeJWT(response.data.jwt);
+        this.globalService.storeUserInfo(JSON.stringify(response.data.user));
+        if (this.globalService.redirectUrl) {
+          this.router.navigate([this.globalService.redirectUrl]);
         } else {
           this.router.navigate([`/group/${response.data.id}`]);
         }
       });
   }
-
-
 }

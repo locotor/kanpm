@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router, CanLoad, Route, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { GlobalService } from 'shared/services/global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate, CanLoad {
   constructor(
-    private authService: AuthenticationService,
+    private globalService: GlobalService,
     private router: Router
   ) { }
 
@@ -26,10 +26,10 @@ export class AuthGuardService implements CanActivate, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+    if (this.globalService.isLoggedIn()) { return true; }
 
     // Store the attempted URL for redirecting
-    this.authService.redirectUrl = url;
+    this.globalService.redirectUrl = url;
 
     // Navigate to the login page with extras
     this.router.navigate(['/authentication']);
