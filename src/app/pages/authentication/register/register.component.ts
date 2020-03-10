@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, finalize } from 'rxjs/operators';
 import { ServerResponse } from 'types/response';
 
-import { AuthenticationService } from 'shared/services/authentication/authentication.service';
+import { AuthenticationService } from 'shared/services/authentication.service';
 
 @Component({
   selector: 'kanpm-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit {
 
@@ -38,7 +39,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authServer: AuthenticationService
+    private authServer: AuthenticationService,
+    private CDRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -69,15 +71,11 @@ export class RegisterComponent implements OnInit {
       map((response: ServerResponse<any>) => {
         return response.data.isUnique ? { verifyUserName: true } : null;
       }),
+      finalize(() => {
+        this.CDRef.markForCheck();
+      }),
       catchError(() => of(null))
     );
-
-    // Todo change component ChangeDetectionStrategy to onpush
-    // verifyResult.subscribe({
-    //   complete: () => {
-    //     this.CDRef.markForCheck();
-    //   }
-    // });
   }
 
 }
