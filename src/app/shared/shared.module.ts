@@ -20,6 +20,7 @@ import { TaskListItemComponent } from './components/task-list-item/task-list-ite
 import { ProjectListItemComponent } from './components/project-list-item/project-list-item.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 // import { environment } from '@env/environment';
 // const MOCKMODULE = !environment.production ? [DelonMockModule.forChild()] : [];
@@ -38,28 +39,28 @@ const MaterialModules = [
     DragDropModule,
     MatInputModule
 ];
-const Components = [ThemePickerComponent];
 
 @NgModule({
     declarations: [
-        ...Components,
+        ThemePickerComponent,
         TaskListItemComponent,
         ProjectListItemComponent,
         TaskCardComponent,
         TaskDetailComponent,
+        AvatarComponent,
     ],
     imports: [
         CommonModule,
         ...MaterialModules,
-        // ...MOCKMODULE
     ],
     exports: [
         ...MaterialModules,
-        ...Components,
+        ThemePickerComponent,
         TaskListItemComponent,
         ProjectListItemComponent,
         TaskCardComponent,
         TaskDetailComponent,
+        AvatarComponent,
     ]
 })
 export class SharedModule { }
