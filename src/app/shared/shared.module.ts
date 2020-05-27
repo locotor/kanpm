@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './components/task-list-item/task-list-item.component';
@@ -37,7 +38,8 @@ const MaterialModules = [
     MatToolbarModule,
     MatCardModule,
     DragDropModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
 ];
 
 @NgModule({
