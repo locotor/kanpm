@@ -16,6 +16,28 @@
 
   .flex-spacer {
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    .group-search {
+      width: 350px;
+      font-size: 16px;
+    }
+  }
+
+  .header-divider {
+    margin: 0 5px;
+  }
+
+  .header-chat-container {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    .header-chat-button {
+      cursor: pointer;
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+    }
   }
 }
 

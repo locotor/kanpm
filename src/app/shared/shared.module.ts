@@ -22,6 +22,7 @@ import { ProjectListItemComponent } from './components/project-list-item/project
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { GroupSelectorComponent } from './components/group-selector/group-selector.component';
 
 // import { environment } from '@env/environment';
 // const MOCKMODULE = !environment.production ? [DelonMockModule.forChild()] : [];
@@ -50,6 +51,7 @@ const MaterialModules = [
         TaskCardComponent,
         TaskDetailComponent,
         AvatarComponent,
+        GroupSelectorComponent,
     ],
     imports: [
         CommonModule,
@@ -63,6 +65,7 @@ const MaterialModules = [
         TaskCardComponent,
         TaskDetailComponent,
         AvatarComponent,
+        GroupSelectorComponent,
     ]
 })
 export class SharedModule { }

@@ -2,15 +2,14 @@
   display: block;
 }
 
-.theme-picker-container {
+.group-selector-container {
   display: flex;
   align-items: center;
-  margin: 0 5px;
 }
 
-.theme-picker-button {
+.group-switch-button {
   cursor: pointer;
   height: 18px;
-  width: 18px;
   font-size: 18px;
+  margin-left: 5px;
 }

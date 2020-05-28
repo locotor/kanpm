@@ -2,10 +2,25 @@
   <!-- <kanpm-nav-header></kanpm-nav-header> -->
   <mat-toolbar color="primary" class="main-header-nav ">
     <section class="mat-h1">Kanpm</section>
-    <section class="flex-spacer"></section>
+    <section class="flex-spacer">
+      <mat-form-field class="group-search">
+        <input matInput type="text">
+        <button mat-button matSuffix mat-icon-button aria-label="search">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </section>
+    <section>
+      <kanpm-group-selector></kanpm-group-selector>
+    </section>
+    <span class="header-divider">|</span>
     <section>
       <kanpm-theme-picker></kanpm-theme-picker>
     </section>
+    <section class="header-chat-container">
+      <mat-icon class="header-chat-button">sms</mat-icon>
+    </section>
+    <span class="header-divider">|</span>
     <section>
       <kanpm-avatar [avatar]="defaultAvatar"></kanpm-avatar>
     </section>
