@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { DelonMockModule } from '@delon/mock';
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MO
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule,
     ...MOCKMODULE

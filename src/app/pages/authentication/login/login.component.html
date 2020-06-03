@@ -2,17 +2,17 @@
   <form class="login-form" [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
     <div class="form-field-row">
       <mat-form-field appearance="outline">
-        <mat-label>User Name</mat-label>
-        <input matInput formControlName="userName" required>
-        <mat-error *ngIf="userName.errors?.required">user name is required.</mat-error>
-        <mat-error *ngIf="userName.errors?.maxlength">
-          user name letters should less than {{userName.errors?.maxlength.requiredLength}}.
+        <mat-label>User Name or Email</mat-label>
+        <input matInput formControlName="usernameOrEmail" required>
+        <mat-error *ngIf="usernameOrEmail.errors?.required">user name or email is required.</mat-error>
+        <mat-error *ngIf="usernameOrEmail.errors?.maxlength">
+          user name letters should less than {{usernameOrEmail.errors?.maxlength.requiredLength}}.
         </mat-error>
       </mat-form-field>
       <div class="field-feedback">
-        <mat-icon class="checked-icon" *ngIf="userName.dirty&&userName.valid">check_circle_outline</mat-icon>
-        <mat-icon color="warn" *ngIf="userName.dirty&&userName.invalid">highlight_off</mat-icon>
-        <mat-icon color="accent" *ngIf="userName.pending">hourglass_empty</mat-icon>
+        <mat-icon class="checked-icon" *ngIf="usernameOrEmail.dirty&&usernameOrEmail.valid">check_circle_outline</mat-icon>
+        <mat-icon color="warn" *ngIf="usernameOrEmail.dirty&&usernameOrEmail.invalid">highlight_off</mat-icon>
+        <mat-icon color="accent" *ngIf="usernameOrEmail.pending">hourglass_empty</mat-icon>
       </div>
     </div>
     <div class="form-field-row">

@@ -1,19 +1,12 @@
 export interface User {
     id: string;
     userName: string;
+    isVerified: boolean;
+    createdTime: number;
     alias?: string;
     avator?: string;
     mobileNumber?: string;
     email?: string;
-    isVerified: boolean;
-    createdTime: number;
+    lastGroupId?: string;
     groups?: string[];
-}
-
-export interface UserInStorage {
-    id: string;
-    email: string;
-    alias: string;
-    avator?: string;
-    token: string;
 }

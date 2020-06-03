@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   isPasswordHide = true;
   loginForm = this.fb.group({
-    userName: ['', [
+    usernameOrEmail: ['', [
       Validators.required,
       Validators.maxLength(64)
     ]],
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }, {
     updateOn: 'blur'
   });
-  get userName() { return this.loginForm.get('userName'); }
+  get usernameOrEmail() { return this.loginForm.get('usernameOrEmail'); }
   get password() { return this.loginForm.get('password'); }
 
   constructor(
@@ -43,13 +43,13 @@ export class LoginComponent implements OnInit {
 
   submitLoginForm() {
     this.authServer.login(this.loginForm.value).subscribe(
-      (response: ServerResponse<any>) => {
-        this.globalService.storeJWT(response.data.jwt);
-        this.globalService.storeUserInfo(JSON.stringify(response.data.user));
+      (response: any) => {
+        this.globalService.storeJWT(response.accessToken);
+        this.globalService.currentUser = response.principal;
         if (this.globalService.redirectUrl) {
           this.router.navigate([this.globalService.redirectUrl]);
         } else {
-          this.router.navigate([`/group/${response.data.id}`]);
+          this.router.navigate([`/group/${response.id}`]);
         }
       });
   }
