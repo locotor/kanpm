@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DelonMockModule } from '@delon/mock';
 
+//#region material modules
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,6 +16,11 @@ import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+//#endregion
+
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './components/task-list-item/task-list-item.component';
@@ -43,6 +49,12 @@ const MaterialModules = [
     MatDialogModule
 ];
 
+const AntModules = [
+    NzAvatarModule,
+    NzIconModule,
+    NzDividerModule
+]
+
 @NgModule({
     declarations: [
         ThemePickerComponent,
@@ -56,9 +68,11 @@ const MaterialModules = [
     imports: [
         CommonModule,
         ...MaterialModules,
+        ...AntModules
     ],
     exports: [
         ...MaterialModules,
+        ...AntModules,
         ThemePickerComponent,
         TaskListItemComponent,
         ProjectListItemComponent,
