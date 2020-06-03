@@ -1,5 +1,16 @@
+@import '~@angular/material/theming';
 @import "../app/pages/authentication/authentication-root/theme";
+
+
 
 @mixin app-theme($theme) {
   @include authentication-theme($theme);
+  $foreground: map-get($theme, foreground);
+
+  // to disable chrome user agent stylesheet
+  input:-internal-autofill-previewed,
+  input:-internal-autofill-selected {
+    -webkit-text-fill-color: map-get($foreground, text);
+    transition: background-color 5000s ease-in-out 0s;
+  }
 }
