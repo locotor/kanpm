@@ -24,13 +24,6 @@ li {
   list-style: none
 }
 
-// to disable chrome user agent stylesheet
-input:-internal-autofill-previewed,
-input:-internal-autofill-selected {
-  -webkit-text-fill-color: #FFFFFF !important;
-  transition: background-color 5000s ease-in-out 0s !important;
-}
-
 .mat-basic-chip {
   padding: 4px 6px;
   margin: 0 5px 5px 0;
