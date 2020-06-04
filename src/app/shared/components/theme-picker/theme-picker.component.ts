@@ -1,9 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DocsSiteTheme, ThemeStorageService } from './theme-storage/theme-storage.service';
 import { StyleManagerService } from './style-manager/style-manager.service';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
@@ -12,16 +9,14 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ThemePickerComponent implements OnInit, OnDestroy {
-
-  private _queryParamSubscription = Subscription.EMPTY;
+export class ThemePickerComponent implements OnInit {
 
   currentTheme: DocsSiteTheme;
   themes: DocsSiteTheme[] = [
     {
       primary: '#3F51B5',
       accent: '#E91E63',
-      displayName: 'Indigo & Pink',
+      displayName: 'Indigo & Pink - light',
       name: 'indigo-pink',
       isDark: false,
       isDefault: true,
@@ -29,7 +24,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
     {
       primary: '#8BC34A',
       accent: '#FFC107',
-      displayName: 'Light-green & Amber',
+      displayName: 'Light-green & Amber - dark',
       name: 'lightgreen-amber',
       isDark: true,
     }
@@ -38,7 +33,6 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
   constructor(
     public styleManager: StyleManagerService,
     private _themeStorage: ThemeStorageService,
-    private _activatedRoute: ActivatedRoute,
     private liveAnnouncer: LiveAnnouncer,
   ) { }
 
@@ -47,17 +41,6 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
     if (currentThemeName) {
       this.selectTheme(currentThemeName);
     }
-    this._queryParamSubscription = this._activatedRoute.queryParamMap
-      .pipe(map((params: ParamMap) => params.get('theme')))
-      .subscribe((themeName: string | null) => {
-        if (themeName) {
-          // todo
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    this._queryParamSubscription.unsubscribe();
   }
 
   selectTheme(themeName: string) {

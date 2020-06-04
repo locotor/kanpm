@@ -13,7 +13,6 @@
   @include login-theme($theme);
 
   .authentication-root {
-
     .tabs {
       .tab {
         color: map-get($foreground, text);
