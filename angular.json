@@ -38,14 +38,16 @@
                 "input": "src/styles.scss"
               },
               {
+                "lazy": true,
                 "inject": false,
-                "input": "src/assets/themes/lightgreen-amber.css",
-                "bundleName": "lightgreen-amber"
+                "input": "./src/themes/_lightgreen-amber.scss",
+                "bundleName": "assets/themes/lightgreen-amber"
               },
               {
+                "lazy": true,
                 "inject": false,
-                "input": "src/assets/themes/indigo-pink.css",
-                "bundleName": "indigo-pink"
+                "input": "./src/themes/_indigo-pink-default.scss",
+                "bundleName": "assets/themes/indigo-pink"
               }
             ],
             "scripts": []

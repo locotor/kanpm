@@ -24,6 +24,7 @@ export class StyleManagerService {
 function createLinkElementWithKey(key: string) {
   const linkEl = document.createElement('link');
   linkEl.setAttribute('rel', 'stylesheet');
+  linkEl.setAttribute('type', 'text/css');
   linkEl.classList.add(`style-manager-${key}`);
   document.head.appendChild(linkEl);
   return linkEl;
