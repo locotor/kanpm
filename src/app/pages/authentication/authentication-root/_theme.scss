@@ -15,17 +15,18 @@
   .authentication-root {
     .tabs {
       .tab {
-        color: map-get($foreground, text);
+        color: map-get($foreground, slider-off);
       }
 
       .active {
         border-bottom: 2px solid mat-color($primary);
+        color: map-get($foreground, slider-off-active);
       }
     }
 
     .ad-section {
-      background: mat-color($primary, 300);
-      color: map-get($foreground, text);
+      background: mat-color($primary);
+      color: map-get($foreground, icon);
     }
 
     .auth-section {
