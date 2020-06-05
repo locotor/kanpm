@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: 'group/:groupId',
     component: GroupComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     children: [
       {
         path: '',

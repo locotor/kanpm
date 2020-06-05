@@ -1,19 +1,17 @@
 @import "~@angular/material/theming";
 
-@mixin login-theme($theme) {
+@mixin group-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $is-dark: map-get($theme, is-dark);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .form-field-row {
-
-    .mat-icon-button,
-    .mat-button,
-    input {
-      color: map-get($map: $foreground, $key: text);
+  .group-side-container {
+    .starred-projects {
+      .mat-h3 {
+        color: map-get($map: $foreground, $key: text);
+      }
     }
   }
-
 }

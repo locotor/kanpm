@@ -45,11 +45,11 @@ export class LoginComponent implements OnInit {
     this.authServer.login(this.loginForm.value).subscribe(
       (response: any) => {
         this.globalService.storeJWT(response.accessToken);
-        this.globalService.currentUser = response.principal;
+        this.globalService.currentUser = response.user;
         if (this.globalService.redirectUrl) {
           this.router.navigate([this.globalService.redirectUrl]);
         } else {
-          this.router.navigate([`/group/${response.id}`]);
+          this.router.navigate([`/group/${response.recentGroupId}`]);
         }
       });
   }

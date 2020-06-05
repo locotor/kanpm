@@ -3,7 +3,7 @@
   height: 100%;
 }
 
-.project-root {
+.project-root-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -12,7 +12,6 @@
 .project-header {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e5e5e5;
 
   .tabs {
     flex: 1;
@@ -22,10 +21,6 @@
       cursor: pointer;
       box-sizing: border-box;
       padding: 10px 15px;
-    }
-
-    .active {
-      border-bottom: 2px solid #1b9aee;
     }
   }
 

@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'project/:id',
     loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
-    canLoad: [AuthGuardService],
+    // canLoad: [AuthGuardService],
   }
   // Todo add 404 page
 ];

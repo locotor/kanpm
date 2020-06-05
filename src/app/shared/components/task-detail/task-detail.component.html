@@ -19,8 +19,10 @@
         <h2>任务0</h2>
         <div>
           <!-- <span>研发调研</span> -->
-          <mat-basic-chip style="background: red;">研发调研</mat-basic-chip>
-          <mat-basic-chip style="background: blue;">测试开发</mat-basic-chip>
+          <!-- <mat-basic-chip style="background: red;">研发调研</mat-basic-chip> -->
+          <nz-tag [nzColor]="'magenta'">研发调研</nz-tag>
+          <!-- <mat-basic-chip style="background: blue;">测试开发</mat-basic-chip> -->
+          <nz-tag [nzColor]="'red'">测试开发</nz-tag>
           <button mat-icon-button>
             <mat-icon>add</mat-icon>
           </button>
@@ -34,7 +36,7 @@
         <div>
           <div style="display: flex; align-items: center;">
             <span>参与人 ：</span>
-            <mat-icon>person</mat-icon>
+            <nz-avatar nzIcon="user"></nz-avatar>
             <button mat-icon-button>
               <mat-icon>add</mat-icon>
             </button>
@@ -50,23 +52,25 @@
     <section>
       <mat-tab-group>
         <mat-tab label="评论">
-          <!-- 评论列表 -->
-          <div class="task-comment-wrapper">
-            <mat-icon class="comment-avator">person</mat-icon>
-            <section class="comment-items">
-              <div class="comment-header">
-                <span class="user">Anderson</span>
-                <span class="create-time">2020/03/02</span>
-              </div>
+          <nz-comment nzAuthor="Han Solo">
+            <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
+            <nz-comment-content>
               <p>
-                测试评论内容……
+                We supply a series of design principles, practical patterns and high quality design resources (Sketch
+                and Axure), to help people
+                create their product prototypes beautifully and efficiently.
               </p>
-            </section>
-            <div>
-              <mat-icon>delete</mat-icon>
-            </div>
-          </div>
-          <mat-divider></mat-divider>
+            </nz-comment-content>
+            <nz-comment-action>
+              <i nz-tooltip nzTitle="Like" nz-icon nzType="like"></i>
+              <span class="count like">1</span>
+            </nz-comment-action>
+            <nz-comment-action>
+              <i nz-tooltip nzTitle="Dislike" nz-icon nzType="dislike"></i>
+              <span class="count dislike">22</span>
+            </nz-comment-action>
+            <nz-comment-action>Reply to</nz-comment-action>
+          </nz-comment>
         </mat-tab>
         <mat-tab label="动态">暂无动态</mat-tab>
       </mat-tab-group>

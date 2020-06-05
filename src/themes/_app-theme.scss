@@ -1,10 +1,15 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
+@import "../app/theme";
 @import "../app/pages/authentication/authentication-root/theme";
-
-
+@import "../app/pages/group/theme";
+@import "../app/pages/project/theme";
 
 @mixin app-theme($theme) {
   @include authentication-theme($theme);
+  @include group-theme($theme);
+  @include project_theme($theme);
+  @include app-root-theme($theme);
+
   $foreground: map-get($theme, foreground);
 
   // to disable chrome user agent stylesheet
