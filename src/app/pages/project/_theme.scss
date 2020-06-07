@@ -7,31 +7,29 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  .project-root-container {
-    .project-header {
-      background: map-get($background, app-bar);
-      color: map-get($foreground, text);
-      border-bottom: 1px solid map-get($foreground, divider);
+  .project-header {
+    background: map-get($background, app-bar);
+    color: map-get($foreground, text);
+    border-bottom: 1px solid map-get($foreground, divider);
 
-      .tabs {
-        li.active {
-          border-bottom: 2px solid map-get($accent, 400);
-          color: map-get($accent, 400);
-        }
-      }
-
-      .settings {
-        a {
-          color: map-get($foreground, icon);
-        }
+    .tabs {
+      li.active {
+        border-bottom: 2px solid map-get($accent, 400);
+        color: map-get($accent, 400);
       }
     }
-    .task-list {
-      background: map-get($primary, 100);
-      color: rgba(0, 0, 0, 0.87);
+
+    .settings {
+      a {
+        color: map-get($foreground, icon);
+      }
     }
-    .list-footer {
-      border: 1px solid rgba(0, 0, 0, 0.87);
-    }
+  }
+  .task-list-wrapper {
+    background: map-get($map: $background, $key: hover);
+    color: map-get($map: $foreground, $key: text);
+  }
+  .list-footer {
+    border: 1px solid map-get($map: $foreground, $key: text);
   }
 }

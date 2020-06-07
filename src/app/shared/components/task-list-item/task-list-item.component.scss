@@ -5,7 +5,7 @@
 .root-wrapper {
   display: flex;
   cursor: pointer;
-  padding: 15px 20px 15px 0;
+  padding: 12px 12px 6px;
 }
 
 .task-info-wrapper {
@@ -14,18 +14,19 @@
 
   .task-infos {
     display: flex;
-
-    .task-status-label {
-      margin-top: 12px;
-      margin-right: 16px;
-      padding: 0 6px;
-      font-size: 12px;
-      background: rgba(27, 154, 238, 0.1);
-      color: #0171c2;
-    }
-
+    align-items: center;
+    height: 30px;
+    margin-top: 6px;
+    
     .info-with-icon {
-      margin-top: 12px;
+      .icon{
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+        margin-right: 4px;
+      }
+      display: flex;
+      align-items: center;
       margin-right: 16px;
     }
   }

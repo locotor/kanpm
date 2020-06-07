@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 
 :host {
   display: block;
@@ -40,12 +40,12 @@
   }
 }
 
-
 .task-list-wrapper {
   flex-shrink: 0;
   width: 296px;
   height: 100%;
   margin-right: 16px;
+  border-radius: 5px;
 }
 
 .task-list {
@@ -108,6 +108,7 @@
 }
 
 .cdk-drag-preview {
+  opacity: 100;
   @include mat-elevation(8);
 }
 
