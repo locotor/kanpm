@@ -109,7 +109,7 @@
 
 .cdk-drag-preview {
   opacity: 100;
-  @include mat-elevation(8);
+  @include mat-elevation(24);
 }
 
 .cdk-drag-placeholder {

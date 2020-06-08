@@ -20,7 +20,7 @@
     <!-- task list drag zone -->
     <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="dropTaskList($event)">
-      <div cdkDrag *ngFor="let list of taskLists" class="task-list-wrapper">
+      <div cdkDrag *ngFor="let list of taskLists" class="task-list-wrapper mat-elevation-z8">
         <div class="task-list">
           <div cdkDragHandle class="list-header">
             <span class="mat-h3">

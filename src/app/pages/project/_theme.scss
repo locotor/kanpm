@@ -26,10 +26,11 @@
     }
   }
   .task-list-wrapper {
-    background: map-get($map: $background, $key: hover);
+    background: map-get($map: $background, $key: background);
     color: map-get($map: $foreground, $key: text);
+    border: 1px solid map-get($map: $foreground, $key: divider);
   }
   .list-footer {
-    border: 1px solid map-get($map: $foreground, $key: text);
+    border: 1px solid map-get($map: $foreground, $key: divider);
   }
 }
