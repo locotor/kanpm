@@ -31,6 +31,7 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { GroupSelectorComponent } from './components/group-selector/group-selector.component';
+import { TeamCreatorComponent } from './components/team-creator/team-creator.component';
 
 // import { environment } from '@env/environment';
 // const MOCKMODULE = !environment.production ? [DelonMockModule.forChild()] : [];
@@ -68,6 +69,7 @@ const AntModules = [
         TaskDetailComponent,
         AvatarComponent,
         GroupSelectorComponent,
+        TeamCreatorComponent
     ],
     imports: [
         CommonModule,
@@ -84,6 +86,9 @@ const AntModules = [
         TaskDetailComponent,
         AvatarComponent,
         GroupSelectorComponent,
+    ],
+    entryComponents: [
+        TeamCreatorComponent
     ]
 })
 export class SharedModule { }

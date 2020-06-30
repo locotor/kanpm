@@ -22,8 +22,8 @@ export interface Task {
     taskName: string;
     principalUserId: string;
     startTime: number;
+    endTime: number;
     completedTime: number;
-    dealine: number;
     tags: string[];
     description: string;
     createdTime: number;

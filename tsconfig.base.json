@@ -19,7 +19,7 @@
       "dom"
     ],
     "paths": {
-      "types/*": ["src/app/types/*"],
+      "types/*": ["src/app/shared/types/*"],
       "shared/*": ["src/app/shared/*"],
       "@env/*": ["src/environments/*"]
     }

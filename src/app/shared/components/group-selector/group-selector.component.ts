@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TeamCreatorComponent } from 'shared/components/team-creator/team-creator.component';
 
 @Component({
   selector: 'kanpm-group-selector',
@@ -8,9 +10,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class GroupSelectorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
+
+  openTeamCreatorDialog() {
+    this.dialog.open(TeamCreatorComponent);
+  }
+
 
 }
