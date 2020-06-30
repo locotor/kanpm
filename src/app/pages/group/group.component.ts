@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Project } from 'types/project';
-import { ProjectService } from './project.service';
+import { ProjectService } from 'shared/services/project.service';
 
 @Component({
   templateUrl: './group.component.html',
