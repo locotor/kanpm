@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GroupComponent } from './group.component';
-import { GroupHomeComponent } from './group-home/group-home.component';
+import { TeamComponent } from './team.component';
+import { TeamHomeComponent } from './team-home/team-home.component';
 import { AuthGuardService } from 'shared/guards/auth-guard.service';
+import { TeamSelectComponent } from './team-select/team-select.component';
 
 
 const routes: Routes = [
   {
     path: 'group/:groupId',
-    component: GroupComponent,
+    component: TeamComponent,
     // canActivate: [AuthGuardService],
     children: [
       {
@@ -18,7 +19,11 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        component: GroupHomeComponent
+        component: TeamHomeComponent
+      },
+      {
+        path: 'teamSelect',
+        component: TeamSelectComponent
       },
       // {
       //   path: 'as-performer'

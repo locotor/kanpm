@@ -41,6 +41,17 @@
       font-size: 18px;
     }
   }
+
+  .team-selector-container {
+    display: flex;
+    align-items: center;
+    .team-switch-button {
+      cursor: pointer;
+      height: 18px;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  }
 }
 
 .main-content-container {

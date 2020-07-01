@@ -3,12 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { TeamCreatorComponent } from 'shared/components/team-creator/team-creator.component';
 
 @Component({
-  selector: 'kanpm-team-selector',
-  templateUrl: './team-selector.component.html',
-  styleUrls: ['./team-selector.component.scss'],
+  templateUrl: './team-select.component.html',
+  styleUrls: ['./team-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TeamSelectorComponent implements OnInit {
+export class TeamSelectComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
