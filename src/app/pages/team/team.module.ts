@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GroupRoutingModule } from './group-routing.module';
-import { GroupComponent } from './group.component';
+import { GroupRoutingModule } from './team-routing.module';
+import { TeamComponent } from './team.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { GroupHomeComponent } from './group-home/group-home.component';
+import { TeamHomeComponent } from './team-home/team-home.component';
 
 @NgModule({
   declarations: [
-    GroupComponent,
-    GroupHomeComponent
+    TeamComponent,
+    TeamHomeComponent
   ],
   imports: [
     GroupRoutingModule,
@@ -17,4 +17,4 @@ import { GroupHomeComponent } from './group-home/group-home.component';
     SharedModule
   ]
 })
-export class GroupModule { }
+export class TeamModule { }

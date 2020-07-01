@@ -4,10 +4,10 @@ import { Project } from 'types/project';
 import { ProjectService } from 'shared/services/project.service';
 
 @Component({
-  templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss']
+  templateUrl: './team.component.html',
+  styleUrls: ['./team.component.scss']
 })
-export class GroupComponent implements OnInit {
+export class TeamComponent implements OnInit {
 
   constructor(
     private _projectService: ProjectService
