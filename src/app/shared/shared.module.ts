@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DelonMockModule } from '@delon/mock';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //#region material modules
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -75,12 +75,14 @@ const AntModules = [
     ],
     imports: [
         CommonModule,
+        ReactiveFormsModule,
         ...MaterialModules,
         ...AntModules
     ],
     exports: [
         ...MaterialModules,
         ...AntModules,
+        ReactiveFormsModule,
         ThemePickerComponent,
         TaskListItemComponent,
         ProjectListItemComponent,

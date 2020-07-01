@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
-import { ServerResponse } from 'types/response';
 
 import { AuthenticationService } from 'shared/services/authentication.service';
 
@@ -68,7 +67,7 @@ export class RegisterComponent implements OnInit {
   private userNameUniqueValidator(control: AbstractControl): Observable<ValidationErrors | null> {
 
     return this.authServer.verifyUserNameUnique(control.value).pipe(
-      map((response: ServerResponse<any>) => {
+      map(response => {
         return response.data.isUnique ? { verifyUserName: true } : null;
       }),
       finalize(() => {

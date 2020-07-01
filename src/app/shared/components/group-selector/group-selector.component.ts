@@ -16,7 +16,10 @@ export class GroupSelectorComponent implements OnInit {
   }
 
   openTeamCreatorDialog() {
-    this.dialog.open(TeamCreatorComponent);
+    this.dialog.open(TeamCreatorComponent, {
+      autoFocus: false,
+      width: '650px'
+    });
   }
 
 

@@ -1,8 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'shared/services/authentication.service';
-import { User } from 'types/user';
-import { ServerResponse } from 'types/response';
 import { Router } from '@angular/router';
 import { GlobalService } from 'shared/services/global.service';
 

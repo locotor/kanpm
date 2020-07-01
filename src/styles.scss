@@ -21,7 +21,33 @@ ul,
 li {
   padding: 0;
   margin: 0;
-  list-style: none
+  list-style: none;
+}
+
+.form-field-row {
+  display: flex;
+
+  mat-form-field {
+    flex-grow: 1;
+  }
+
+  // keep same space with mat-form-field
+  .field-feedback {
+    display: flex;
+    align-items: center;
+    width: 48px;
+    padding-left: 8px;
+    margin: 0.25em 0;
+    padding-bottom: 1.34375em;
+
+    .checked-icon {
+      color: #8bc34a;
+    }
+
+    .faild-icon {
+      color: #f44336;
+    }
+  }
 }
 
 .mat-basic-chip {

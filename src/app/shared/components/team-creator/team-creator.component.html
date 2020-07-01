@@ -1,24 +1,38 @@
-<h2 mat-dialog-title>进入团队</h2>
+<h2 mat-dialog-title>Create your Team</h2>
 <mat-dialog-content>
-    <mat-action-list>
-        <mat-list-item>
-            <nz-avatar matListAvatar [nzShape]="'square'" [nzIcon]="'project'"></nz-avatar>
-            <h3 matLine>小组XXXX</h3>
-            <p>
-                描述XXXXX
-            </p>
-        </mat-list-item>
-        <mat-list-item>
-            <nz-avatar matListAvatar [nzShape]="'square'" [nzIcon]="'project'"></nz-avatar>
-            <h3 matLine>小组XXXX</h3>
-            <p>
-                描述XXXXX
-            </p>
-        </mat-list-item>
-    </mat-action-list>
+    <form [formGroup]="createTeamForm">
+        <div class="form-field-row">
+            <mat-form-field appearance="outline">
+                <mat-label>team name</mat-label>
+                <input matInput formControlName="teamName" required>
+                <mat-error *ngIf="teamName.errors?.required">team name is required</mat-error>
+                <mat-error *ngIf="teamName.errors?.maxlength">
+                    team name letters should less than {{teamName.errors?.maxlength.requiredLength}}.
+                </mat-error>
+            </mat-form-field>
+            <div class="field-feedback">
+                <mat-icon class="checked-icon" *ngIf="teamName.dirty&&teamName.valid">check_circle_outline</mat-icon>
+                <mat-icon color="warn" *ngIf="teamName.dirty&&teamName.invalid">highlight_off</mat-icon>
+                <mat-icon color="accent" *ngIf="teamName.pending">hourglass_empty</mat-icon>
+            </div>
+        </div>
+        <div class="form-field-row">
+            <mat-form-field appearance="outline">
+                <mat-label>description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+                <mat-error *ngIf="description.errors?.maxlength">
+                    team description letters should less than {{description.errors?.maxlength.requiredLength}}.
+                </mat-error>
+            </mat-form-field>
+            <div class="field-feedback">
+                <mat-icon class="checked-icon" *ngIf="description.dirty&&description.valid">check_circle_outline
+                </mat-icon>
+                <mat-icon color="warn" *ngIf="description.dirty&&description.invalid">highlight_off</mat-icon>
+            </div>
+        </div>
+    </form>
 </mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-button mat-dialog-close>No</button>
-    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-    <button mat-button [mat-dialog-close]="true">Yes</button>
-</mat-dialog-actions>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-flat-button mat-dialog-close>cancel</button>
+    <button mat-flat-button color="primary" [disabled]="!createTeamForm.valid" (click)="createTeam()">create</button>
+</div>
