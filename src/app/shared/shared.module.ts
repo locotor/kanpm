@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
 //#endregion
 
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -49,7 +50,8 @@ const MaterialModules = [
     MatCardModule,
     DragDropModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
 ];
 
 const AntModules = [
