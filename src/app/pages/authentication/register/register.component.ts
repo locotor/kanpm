@@ -65,7 +65,6 @@ export class RegisterComponent implements OnInit {
   }
 
   private userNameUniqueValidator(control: AbstractControl): Observable<ValidationErrors | null> {
-
     return this.authServer.verifyUserNameUnique(control.value).pipe(
       map(response => {
         return response.data.isUnique ? { verifyUserName: true } : null;
@@ -75,6 +74,12 @@ export class RegisterComponent implements OnInit {
       }),
       catchError(() => of(null))
     );
+  }
+
+  submitRegisterForm() {
+    this.authServer.signup(this.registerForm.value).subscribe(resp => {
+      console.log(resp);
+    });
   }
 
 }

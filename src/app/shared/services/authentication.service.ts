@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ServerResponse } from 'types/response';
 import { User } from 'types/user';
+import { SignUpRequest } from 'types/signUpRequest';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -27,6 +28,10 @@ export class AuthenticationService {
 
   login(loginData: { usernameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
     return this.http.post<ServerResponse<User | null>>('api/auth/signin', loginData, httpOptions);
+  }
+
+  signup(signupData: SignUpRequest) {
+    return this.http.post('api/auth/signup', signupData);
   }
 
 }
