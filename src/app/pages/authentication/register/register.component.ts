@@ -65,9 +65,9 @@ export class RegisterComponent implements OnInit {
   }
 
   private userNameUniqueValidator(control: AbstractControl): Observable<ValidationErrors | null> {
-    return this.authServer.verifyUserNameUnique(control.value).pipe(
+    return this.authServer.verifyUserNameOrEmail(control.value).pipe(
       map(response => {
-        return response.data.isUnique ? { verifyUserName: true } : null;
+        return response ? null : { verifyUserName: true };
       }),
       finalize(() => {
         this.CDRef.markForCheck();

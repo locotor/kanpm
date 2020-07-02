@@ -1,5 +1,5 @@
 <div class="register-root">
-  <form class="register-form" [formGroup]="registerForm">
+  <form class="register-form" [formGroup]="registerForm" (submit)="submitRegisterForm()">
     <div class="form-field-row">
       <mat-form-field appearance="outline">
         <mat-label>User Name</mat-label>

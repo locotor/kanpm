@@ -8,7 +8,7 @@ import { TeamSelectComponent } from './team-select/team-select.component';
 
 const routes: Routes = [
   {
-    path: 'group/:groupId',
+    path: 'team/:teamId',
     component: TeamComponent,
     // canActivate: [AuthGuardService],
     children: [
@@ -20,10 +20,6 @@ const routes: Routes = [
       {
         path: 'home',
         component: TeamHomeComponent
-      },
-      {
-        path: 'teamSelect',
-        component: TeamSelectComponent
       },
       // {
       //   path: 'as-performer'
@@ -38,6 +34,10 @@ const routes: Routes = [
       //   path: 'user/:userId'
       // }
     ]
+  },
+  {
+    path: 'teamSelect',
+    component: TeamSelectComponent
   },
 ];
 

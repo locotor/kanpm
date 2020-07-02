@@ -22,11 +22,11 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  verifyUserNameUnique(userName: string): Observable<ValidationErrors | null> {
-    return this.http.post('api/verify-username', { userName });
+  verifyUserNameOrEmail(userNameOrEmail: string): Observable<ValidationErrors | null> {
+    return this.http.get('api/auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
   }
 
-  login(loginData: { usernameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
+  login(loginData: { userNameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
     return this.http.post<ServerResponse<User | null>>('api/auth/signin', loginData, httpOptions);
   }
 
