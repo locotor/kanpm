@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submitRegisterForm() {
-    this.authServer.signup(this.registerForm.value).subscribe(resp => {
+    this.authServer.signUp(this.registerForm.value).subscribe(resp => {
       console.log(resp);
     });
   }

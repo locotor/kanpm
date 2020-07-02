@@ -26,11 +26,11 @@ export class AuthenticationService {
     return this.http.get('api/auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
   }
 
-  login(loginData: { userNameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
+  signIn(loginData: { userNameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
     return this.http.post<ServerResponse<User | null>>('api/auth/signin', loginData, httpOptions);
   }
 
-  signup(signupData: SignUpRequest) {
+  signUp(signupData: SignUpRequest) {
     return this.http.post('api/auth/signup', signupData);
   }
 

@@ -40,14 +40,19 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm() {
-    this.authServer.login(this.loginForm.value).subscribe(
+    this.authServer.signIn(this.loginForm.value).subscribe(
       (response: any) => {
         this.globalService.storeJWT(response.accessToken);
         this.globalService.currentUser = response.user;
         if (this.globalService.redirectUrl) {
           this.router.navigate([this.globalService.redirectUrl]);
         } else {
-          this.router.navigate([`/group/${response.recentGroupId}`]);
+          // ToDo add recentTeamId, if null, then go to the team select page
+          if (response.user.recentGroupId) {
+            this.router.navigate([`/team/${response.recentGroupId}`]);
+          } else {
+            this.router.navigate(['teamSelect']);
+          }
         }
       });
   }

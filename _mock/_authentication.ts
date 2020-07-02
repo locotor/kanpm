@@ -3,7 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import * as Mock from 'mockjs';
 
 export const AuthenticationMockData = {
-    'POST api/auth/signin': (req: MockRequest) => new HttpResponse({
+    'POST api/auth/login': (req: MockRequest) => new HttpResponse({
         body: {
             accessToken: Mock.Random.id(),
             user: Mock.mock({
