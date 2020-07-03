@@ -23,15 +23,15 @@ export class AuthenticationService {
   ) { }
 
   verifyUserNameOrEmail(userNameOrEmail: string): Observable<ValidationErrors | null> {
-    return this.http.get('api/auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
+    return this.http.get('auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
   }
 
   signIn(loginData: { userNameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
-    return this.http.post<ServerResponse<User | null>>('api/auth/signin', loginData, httpOptions);
+    return this.http.post<ServerResponse<User | null>>('auth/signIn', loginData, httpOptions);
   }
 
   signUp(signupData: SignUpRequest) {
-    return this.http.post('api/auth/signup', signupData);
+    return this.http.post('auth/signUp', signupData);
   }
 
 }
