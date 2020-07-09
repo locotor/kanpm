@@ -9,6 +9,7 @@
                 <mat-error *ngIf="teamName.errors?.maxlength">
                     team name letters should less than {{teamName.errors?.maxlength.requiredLength}}.
                 </mat-error>
+                <mat-error *ngIf="teamName.errors?.verifyTeamName">team name has been registed</mat-error>
             </mat-form-field>
             <div class="field-feedback">
                 <mat-icon class="checked-icon" *ngIf="teamName.dirty&&teamName.valid">check_circle_outline</mat-icon>

@@ -8,18 +8,11 @@ import { TeamService } from 'shared/services/team.service';
 
 @Component({
   templateUrl: './team-select.component.html',
-  styleUrls: ['./team-select.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./team-select.component.scss']
 })
 export class TeamSelectComponent implements OnInit {
 
-  teams: Team[] = [{
-    id: '1',
-    teamName: 'test1'
-  }, {
-    id: '2',
-    teamName: 'teat2'
-  }];
+  teams: Team[] = [];
 
   constructor(
     private dialog: MatDialog,
@@ -28,20 +21,25 @@ export class TeamSelectComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const currentUserId = this.globalService.currentUser.id;
-    this.teamService.getTeamListByMemberId(currentUserId).subscribe(resp => {
-      console.log(resp);
-    });
+    this.getTeamList();
   }
 
   getTeamList() {
-
+    const currentUserId = this.globalService.currentUser.id;
+    this.teamService.getTeamListByMemberId(currentUserId).subscribe((resp: any) => {
+      this.teams = resp.data;
+    });
   }
 
   openTeamCreatorDialog() {
-    this.dialog.open(TeamCreatorComponent, {
+    const dialogRef = this.dialog.open(TeamCreatorComponent, {
       autoFocus: false,
       width: '650px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.isCreateTeamSuccess) {
+        this.getTeamList();
+      }
     });
   }
 

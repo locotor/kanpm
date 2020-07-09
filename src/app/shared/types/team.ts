@@ -3,4 +3,5 @@ export interface Team {
     teamName: string;
     avatar?: string;
     createTime?: Date;
+    description?: string;
 }

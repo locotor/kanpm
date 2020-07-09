@@ -14,6 +14,10 @@ export class TeamService {
     return this.http.get('api/team/getTeam/' + id);
   }
 
+  verifyTeamName(teamName: string) {
+    return this.http.get('api/team/verifyTeamName', { params: { teamName } });
+  }
+
   getTeamListByMemberId(memberId: string) {
     return this.http.get('api/team/getTeamListByMemberId', { params: { memberId } });
   }
