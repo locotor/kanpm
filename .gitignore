@@ -8,7 +8,7 @@
 /bazel-out
 
 # dependencies
-/node_modules
+**/node_modules/*
 
 # profiling files
 chrome-profiler-events*.json
@@ -45,3 +45,34 @@ testem.log
 .DS_Store
 Thumbs.db
 .vscode/launch.json
+
+# backend
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
