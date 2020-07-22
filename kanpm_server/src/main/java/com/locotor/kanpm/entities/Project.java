@@ -27,13 +27,17 @@ public class Project {
 
     private String description;
 
-    public Project(String id, String projectName, String ownerId, String teamId, String creatorId, Date createTime) {
-        this.id = id;
+    public Project(String projectName, String teamId, String creatorId, String ownerId) {
         this.projectName = projectName;
-        this.createTime = createTime;
+        this.createTime = new Date(new java.util.Date().getTime());
         this.creatorId = creatorId;
         this.ownerId = ownerId;
         this.isArchived = false;
+    }
+
+    public Project(String id, String teamId) {
+        this.id = id;
+        this.teamId = teamId;
     }
 
 }

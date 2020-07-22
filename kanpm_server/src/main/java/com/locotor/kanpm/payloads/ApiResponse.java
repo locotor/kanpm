@@ -3,10 +3,10 @@ package com.locotor.kanpm.payloads;
 import lombok.Data;
 
 @Data
-public class ApiResponse<T> {
+public class ApiResponse {
     private Boolean success;
     private String message;
-    private T Data;
+    private Object Data;
 
     public ApiResponse(Boolean success, String message) {
         this.success = success;

@@ -1,7 +1,5 @@
 package com.locotor.kanpm.controllers;
 
-import java.util.List;
-
 import com.locotor.kanpm.entities.Team;
 import com.locotor.kanpm.payloads.AddTeamRequest;
 import com.locotor.kanpm.payloads.ApiResponse;
@@ -11,12 +9,7 @@ import com.locotor.kanpm.services.TeamService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,14 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/team")
-public class TeamController {
+public class TeamController extends ControllerBase {
 
     @Autowired
     private TeamService teamService;
 
-    @GetMapping("getTeam/{id}")
-    public Team getTeam(@PathVariable String id) {
-        return teamService.getTeamById(id);
+    @GetMapping("getTeam")
+    public ResponseEntity<?> getTeam(String id) {
+        Team team = teamService.getTeamById(id);
+        var resp = new ApiResponse(true, "Add team successfully");
+        resp.setData(team);
+        return ResponseEntity.ok(resp);
     }
 
     @GetMapping("/verifyTeamName")
@@ -50,7 +46,7 @@ public class TeamController {
     @GetMapping("getTeamListByMemberId")
     public ResponseEntity<?> getTeamListByMemberId(String memberId) {
         var teamList = teamService.getTeamListByMemberId(memberId);
-        var resp = new ApiResponse<List<Team>>(true, "get team list successfully");
+        var resp = new ApiResponse(true, "get team list successfully");
         resp.setData(teamList);
         return ResponseEntity.ok(resp);
     }
@@ -85,7 +81,6 @@ public class TeamController {
 
     @PutMapping("updateTeam")
     public ResponseEntity<?> updateTeam(@RequestBody UpdateTeamRequest request) {
-
         String teamId = request.getId();
         if (teamId.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Team id must not be null"));
@@ -119,19 +114,6 @@ public class TeamController {
         } else {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "archive team failed"));
         }
-
     }
 
-    private UserPrincipal getCurrentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            if (authentication instanceof AnonymousAuthenticationToken) {
-                return null;
-            }
-            if (authentication instanceof UsernamePasswordAuthenticationToken) {
-                return (UserPrincipal) authentication.getPrincipal();
-            }
-        }
-        return null;
-    }
 }
