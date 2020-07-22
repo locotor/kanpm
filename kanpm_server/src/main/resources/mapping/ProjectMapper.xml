@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.locotor.kanpm.mappers.ProjectMapper">
-    
+    <resultMap id="ProjectResultMap" type="Peoject">
+        <id column="id" property="id" />
+        <result column="project_name" property="projectName" />
+        <result column="create_time" property="createTime" />
+        <result column="creator_id" property="creatorId" />
+        <result column="is_archived" property="isArchived" />
+    </resultMap>
+    <sql id="project_select_column">
+        project.id,project_name,create_time,creator_id,owner_id,description
+    </sql>
+    <select id="getById" parameterType="string" resultMap="ProjectResultMap">
+        select
+        <include refid="project_select_column"></include>
+        from project 
+        where id = #{id}
+    </select>
+    <select id="getByName" parameterType="string" resultMap="ProjectResultMap">
+        select
+        <include refid="project_select_column"></include>
+        from project
+        where project_name = #{projectName} 
+        and team_id = #{teamId}
+    </select>
+    <select id="getProjectListByTeamId" parameterType="string" resultMap="ProjectResultMap">
+        select
+        <include refid="project_select_column"></include>
+        from project
+        where team_id = #{teamId}
+    </select>
+    <insert id="insert" parameterType="Project">
+        <selectKey keyProperty="id" order="BEFORE" resultType="string">
+            select uuid()
+        </selectKey>
+        insert into team(id,project_name,create_time,creator_id,owner_id,description)
+        values(
+            #{id},
+            #{projectName},
+            #{createTime},
+            #{creatorId},
+            #{ownerId},
+            #{description}
+        );
+    </insert>
+    <update id="update" parameterType="Project">
+        update project
+        <set>
+            <if test="projectName != null">
+                team_name = #{projectName},
+            </if>
+            <if test="description != null">
+                description = #{teamName},
+            </if>
+            <if test="ownerId != null">
+                owner_id = #{ownerId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="archiveById" parameterType="string">
+        update project
+        set is_archived = 1
+        where id = #{id}
+    </update>
 </mapper>
