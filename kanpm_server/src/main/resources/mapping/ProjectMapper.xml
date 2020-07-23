@@ -48,7 +48,7 @@
         update project
         <set>
             <if test="projectName != null">
-                team_name = #{projectName},
+                project_name = #{projectName},
             </if>
             <if test="description != null">
                 description = #{teamName},
