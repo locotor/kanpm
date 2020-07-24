@@ -43,5 +43,4 @@ export class TeamSelectComponent implements OnInit {
     });
   }
 
-
 }
