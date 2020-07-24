@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'projects',
         pathMatch: 'full'
       },
       {
@@ -25,16 +25,7 @@ const routes: Routes = [
       {
         path: 'projects',
         component: TeamProjectsComponent
-      },
-      // {
-      //   path: 'as-participant'
-      // },
-      // {
-      //   path: 'as-creator'
-      // }
-      // {
-      //   path: 'user/:userId'
-      // }
+      }
     ]
   },
   {

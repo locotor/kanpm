@@ -1,6 +1,6 @@
 <section class="project-list">
     <h3 class="mat-h3">项目列表</h3>
-    <kanpm-project-list-item *ngFor="let task of starredProjects"></kanpm-project-list-item>
+    <kanpm-project-list-item *ngFor="let task of projectList"></kanpm-project-list-item>
     <button class="project-add-button" (click)="openProjectCreatorDialog()" mat-raised-button
         color="primary">新建项目</button>
 </section>

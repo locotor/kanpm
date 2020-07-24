@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GlobalService } from 'shared/services/global.service';
 import { ProjectCreatorComponent } from 'shared/components/project-creator/project-creator.component';
+import { ProjectService } from 'shared/services/project.service';
 
 @Component({
   templateUrl: './team-projects.component.html',
@@ -9,14 +10,19 @@ import { ProjectCreatorComponent } from 'shared/components/project-creator/proje
 })
 export class TeamProjectsComponent implements OnInit {
 
-  starredProjects = new Array(8);
+  projectList = [];
+
+  private teamId = '';
 
   constructor(
     private dialog: MatDialog,
+    private projectService: ProjectService,
     private globalService: GlobalService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.teamId = this.globalService.currentTeamId;
+    this.getProjectListByTeamId(this.teamId);
   }
 
   openProjectCreatorDialog() {
@@ -25,10 +31,17 @@ export class TeamProjectsComponent implements OnInit {
       width: '650px'
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result && result.isCreateTeamSuccess) {
-        //  ToDo
+      if (result && result.isCreateProjectSuccess) {
+          this.getProjectListByTeamId(this.teamId);
       }
     });
+  }
+
+  getProjectListByTeamId(teamId: string) {
+    this.projectService.getProjectListByTeamId(teamId).subscribe(
+      (response: any) => {
+        this.projectList = response.data;
+      });
   }
 
 }

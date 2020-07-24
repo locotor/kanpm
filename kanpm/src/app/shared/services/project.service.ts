@@ -12,12 +12,24 @@ export class ProjectService {
     private http: HttpClient
   ) { }
 
-  getGroupProjects() {
-    return this.http.get<ServerResponse<Project[]>>('api/group-projects');
+  getProject(id: string) {
+    return this.http.get('api/project/getProjectById', { params: { id } });
   }
 
-  getCollaborators() {
-    return this.http.get<ServerResponse<any[]>>('api/group-collaborators');
+  verifyProjectName(projectName: string, teamId: string) {
+    return this.http.get('api/project/verifyProjectName', { params: { projectName, teamId } });
+  }
+
+  getProjectListByTeamId(teamId: string) {
+    return this.http.get('api/project/getProjectListByTeamId', { params: { teamId } });
+  }
+
+  addProject(addProjectParam) {
+    return this.http.post('api/project/addProject', addProjectParam);
+  }
+
+  updateProject(updateProjectParam) {
+    return this.http.put('api/project/updateProject', updateProjectParam);
   }
 
 }

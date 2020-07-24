@@ -9,7 +9,7 @@
         <result column="is_archived" property="isArchived" />
     </resultMap>
     <sql id="project_select_column">
-        project.id,project_name,create_time,creator_id,owner_id,description
+        id,team_id
     </sql>
     <select id="getById" parameterType="string" resultMap="ProjectResultMap">
         select
@@ -34,10 +34,11 @@
         <selectKey keyProperty="id" order="BEFORE" resultType="string">
             select uuid()
         </selectKey>
-        insert into project(id,project_name,create_time,creator_id,owner_id,description)
+        insert into project(id,project_name,team_id,create_time,creator_id,owner_id,description)
         values(
             #{id},
             #{projectName},
+            #{teamId},
             #{createTime},
             #{creatorId},
             #{ownerId},

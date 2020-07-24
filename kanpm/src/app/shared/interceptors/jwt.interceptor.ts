@@ -20,7 +20,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const reqClone = request.clone({
-      setHeaders: { Authorization: this.globalService.jwt },
+      setHeaders: { Authorization: this.globalService.getJWT() },
       url: 'http://localhost:8080/' + request.url
     });
     return next.handle(reqClone);

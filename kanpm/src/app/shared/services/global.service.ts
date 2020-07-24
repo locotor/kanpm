@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from 'types/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,15 @@ export class GlobalService {
 
   redirectUrl: string;
 
-  jwt: string = '';
-
   currentUser: User;
 
+  currentTeamId = '';
+
+  currentTeam$: Observable<object>;
+
   private storage: Storage = localStorage;
+
+  private jwt = '';
 
   constructor() { }
 
@@ -20,6 +25,10 @@ export class GlobalService {
   storeJWT(jwt: string) {
     this.storage.setItem('jwt', jwt);
     this.jwt = jwt;
+  }
+
+  getJWT() {
+    return this.jwt || this.storage.getItem('jwt');
   }
 
   // Remove userinfo from local storage

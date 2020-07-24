@@ -11,7 +11,7 @@ export class TeamService {
   ) { }
 
   getTeam(id: string) {
-    return this.http.get('api/team/getTeam/' + id);
+    return this.http.get('api/team/getTeam', { params: { id } });
   }
 
   verifyTeamName(teamName: string) {
@@ -27,7 +27,7 @@ export class TeamService {
   }
 
   updateTeam(updateTeamParam) {
-    return this.http.post('api/team/addTeam', updateTeamParam);
+    return this.http.put('api/team/updateTeam', updateTeamParam);
   }
 
 }

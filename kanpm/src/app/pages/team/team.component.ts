@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Project } from 'types/project';
-import { ProjectService } from 'shared/services/project.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { TeamService } from 'shared/services/team.service';
+import { GlobalService } from 'shared/services/global.service';
 
 @Component({
   templateUrl: './team.component.html',
@@ -9,8 +10,12 @@ import { ProjectService } from 'shared/services/project.service';
 })
 export class TeamComponent implements OnInit {
 
+  private teamId: string;
+
   constructor(
-    private _projectService: ProjectService
+    private route: ActivatedRoute,
+    private teamService: TeamService,
+    private globalService: GlobalService
   ) { }
 
   relevantNavs = [
@@ -20,35 +25,12 @@ export class TeamComponent implements OnInit {
     { name: '我创建的', icon: 'post_add' },
   ];
 
-  projects: Project[];
-
   collaborators = [];
 
   ngOnInit(): void {
-    this.getGroupProjects();
-    this.getCollaborators();
-  }
-
-  getGroupProjects() {
-    this._projectService.getGroupProjects().subscribe(
-      (response) => {
-        this.projects = response.data;
-      },
-      (error: HttpErrorResponse) => {
-        console.error(error);
-      }
-    );
-  }
-
-  getCollaborators() {
-    this._projectService.getCollaborators().subscribe(
-      (response) => {
-        this.collaborators = response.data;
-      },
-      (error: HttpErrorResponse) => {
-        console.error(error);
-      }
-    );
+    const teamId = this.route.snapshot.paramMap.get('teamId');
+    this.globalService.currentTeamId = teamId;
+    this.globalService.currentTeam$ = this.teamService.getTeam(teamId);
   }
 
 }

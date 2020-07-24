@@ -64,7 +64,8 @@ public class ProjectController extends ControllerBase {
         }
 
         String currentUserId = currentUser.getId();
-        Project project = new Project(request.getProjectName(), request.getTeamId(), currentUserId, currentUserId);
+        Project project = new Project(request.getProjectName(), request.getTeamId(), currentUserId, currentUserId,
+                request.getDescription());
         int insertResult = projectService.addProject(project);
 
         if (insertResult > 0) {
