@@ -6,12 +6,14 @@ import { TeamComponent } from './team.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TeamHomeComponent } from './team-home/team-home.component';
 import { TeamSelectComponent } from './team-select/team-select.component';
+import { TeamProjectsComponent } from './team-projects/team-projects.component';
 
 @NgModule({
   declarations: [
     TeamComponent,
     TeamHomeComponent,
-    TeamSelectComponent
+    TeamSelectComponent,
+    TeamProjectsComponent
   ],
   imports: [
     GroupRoutingModule,

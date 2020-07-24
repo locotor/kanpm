@@ -17,6 +17,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 //#endregion
 
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -50,7 +51,8 @@ const MaterialModules = [
     DragDropModule,
     MatInputModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatPaginatorModule
 ];
 
 const AntModules = [

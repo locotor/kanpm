@@ -4,6 +4,7 @@ import { TeamComponent } from './team.component';
 import { TeamHomeComponent } from './team-home/team-home.component';
 import { AuthGuardService } from 'shared/guards/auth-guard.service';
 import { TeamSelectComponent } from './team-select/team-select.component';
+import { TeamProjectsComponent } from './team-projects/team-projects.component';
 
 
 const routes: Routes = [
@@ -21,9 +22,10 @@ const routes: Routes = [
         path: 'home',
         component: TeamHomeComponent
       },
-      // {
-      //   path: 'as-performer'
-      // },
+      {
+        path: 'projects',
+        component: TeamProjectsComponent
+      },
       // {
       //   path: 'as-participant'
       // },

@@ -6,9 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamHomeComponent implements OnInit {
 
-  approachingDeadlineTasks = new Array(5);
-  starredProjects = new Array(2);
-
   constructor() { }
 
   ngOnInit(): void {
