@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'projects',
+        redirectTo: 'project',
         pathMatch: 'full'
       },
       {
@@ -23,7 +23,7 @@ const routes: Routes = [
         component: TeamHomeComponent
       },
       {
-        path: 'projects',
+        path: 'project',
         component: TeamProjectsComponent
       }
     ]

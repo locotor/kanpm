@@ -9,7 +9,7 @@
         <result column="is_archived" property="isArchived" />
     </resultMap>
     <sql id="project_select_column">
-        id,team_id
+        id,team_id,project_name,owner_id,create_time,description,avatar
     </sql>
     <select id="getById" parameterType="string" resultMap="ProjectResultMap">
         select

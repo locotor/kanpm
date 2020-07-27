@@ -1,13 +1,14 @@
 export interface Project {
     id: string;
+    teamId: string;
+    avatar?: string;
     projectName: string;
     description?: string;
-    projectManager: string;
-    organizationalUnit: string;
-    expectedStartDate?: number;
-    expectedCompletionDate?: number;
-    createTime: number;
-    projectTeam: string[];
+    ownerId: string;
+    creatorId: string;
+    expectedStartDate?: Date;
+    expectedCompletionDate?: Date;
+    createTime: Date;
     isArchived: boolean;
-    archiveTime: number;
+    archiveTime?: Date;
 }

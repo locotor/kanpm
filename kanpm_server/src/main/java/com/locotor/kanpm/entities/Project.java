@@ -37,6 +37,17 @@ public class Project {
         this.description = description;
     }
 
+    public Project(String id, String teamId, String projectName, String ownerId, Date createTime, String description,
+            String avatar) {
+        this.id = id;
+        this.teamId = teamId;
+        this.projectName = projectName;
+        this.createTime = createTime;
+        this.ownerId = ownerId;
+        this.description = description;
+        this.avatar = avatar;
+    }
+
     public Project(String id, String teamId) {
         this.id = id;
         this.teamId = teamId;

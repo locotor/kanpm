@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { GlobalService } from 'shared/services/global.service';
 import { ProjectCreatorComponent } from 'shared/components/project-creator/project-creator.component';
 import { ProjectService } from 'shared/services/project.service';
+import { Project } from 'types/project';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './team-projects.component.html',
@@ -10,7 +12,7 @@ import { ProjectService } from 'shared/services/project.service';
 })
 export class TeamProjectsComponent implements OnInit {
 
-  projectList = [];
+  projectList: Project[] = [];
 
   private teamId = '';
 
@@ -18,7 +20,8 @@ export class TeamProjectsComponent implements OnInit {
     private dialog: MatDialog,
     private projectService: ProjectService,
     private globalService: GlobalService,
-  ) {}
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.teamId = this.globalService.currentTeamId;
@@ -32,7 +35,7 @@ export class TeamProjectsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.isCreateProjectSuccess) {
-          this.getProjectListByTeamId(this.teamId);
+        this.getProjectListByTeamId(this.teamId);
       }
     });
   }
@@ -42,6 +45,10 @@ export class TeamProjectsComponent implements OnInit {
       (response: any) => {
         this.projectList = response.data;
       });
+  }
+
+  routeToProjectDetail(e: Project) {
+    this.router.navigate([`project/${e.id}`]);
   }
 
 }

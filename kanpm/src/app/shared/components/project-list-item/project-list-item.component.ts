@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
+import { Project } from 'types/project';
 
 @Component({
   selector: 'kanpm-project-list-item',
@@ -8,9 +9,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ProjectListItemComponent implements OnInit {
 
+  @Input() project: Project;
+  @Output() projectClick = new EventEmitter<Project>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  emitProjectItemClick() {
+    this.projectClick.emit(this.project);
   }
 
 }

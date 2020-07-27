@@ -1,6 +1,9 @@
 <section class="project-list">
     <h3 class="mat-h3">项目列表</h3>
-    <kanpm-project-list-item *ngFor="let task of projectList"></kanpm-project-list-item>
+    <ng-container *ngFor="let project of projectList">
+        <kanpm-project-list-item [project]="project" (projectClick)="routeToProjectDetail($event)">
+        </kanpm-project-list-item>
+    </ng-container>
     <button class="project-add-button" (click)="openProjectCreatorDialog()" mat-raised-button
         color="primary">新建项目</button>
 </section>
