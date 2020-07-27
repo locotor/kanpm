@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Debug (Launch)-KanpmApplication<kanpm>",
             "request": "launch",
-            "mainClass": "com.locotor.kanpm.KanpmApplication",
+            "mainClass": "com.locotor.kanpm.web.KanpmApplication",
             "projectName": "kanpm"
         }
     ]

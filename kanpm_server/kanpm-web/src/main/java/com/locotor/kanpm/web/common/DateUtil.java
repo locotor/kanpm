@@ -1,4 +1,4 @@
-package com.locotor.kanpm.common;
+package com.locotor.kanpm.web.common;
 
 // import org.apache.commons.lang3.StringUtils;
 

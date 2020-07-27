@@ -3,7 +3,7 @@ package com.locotor.kanpm.service.services;
 import java.util.List;
 
 import com.locotor.kanpm.model.entities.Project;
-import com.locotor.kanpm.mappers.ProjectMapper;
+import com.locotor.kanpm.mapper.mappers.ProjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

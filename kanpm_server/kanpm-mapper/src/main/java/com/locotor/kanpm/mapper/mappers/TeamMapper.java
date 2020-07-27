@@ -1,4 +1,4 @@
-package com.locotor.kanpm.mappers;
+package com.locotor.kanpm.mapper.mappers;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.locotor.kanpm.config;
+package com.locotor.kanpm.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

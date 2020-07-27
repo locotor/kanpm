@@ -1,4 +1,4 @@
-package com.locotor.kanpm.controllers;
+package com.locotor.kanpm.web.controllers;
 
 import com.locotor.kanpm.model.entities.User;
 import com.locotor.kanpm.service.services.UserService;
