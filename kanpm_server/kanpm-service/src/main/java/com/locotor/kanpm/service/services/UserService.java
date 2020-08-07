@@ -2,7 +2,7 @@
 package com.locotor.kanpm.service.services;
 
 import com.locotor.kanpm.model.entities.User;
-import com.locotor.kanpm.mapper.mappers.UserMapper;
+import com.locotor.kanpm.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

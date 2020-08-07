@@ -1,4 +1,4 @@
-package com.locotor.kanpm.mapper.mappers;
+package com.locotor.kanpm.mappers;
 
 import com.locotor.kanpm.model.entities.User;
 

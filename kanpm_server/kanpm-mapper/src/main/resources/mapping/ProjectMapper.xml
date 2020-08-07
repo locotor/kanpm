@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.locotor.kanpm.mappers.ProjectMapper">
-    <resultMap id="ProjectResultMap" type="Project">
+    <resultMap id="ProjectResultMap" type="com.locotor.kanpm.model.entities.Project">
         <id column="id" property="id" />
         <result column="project_name" property="projectName" />
         <result column="create_time" property="createTime" />
@@ -24,13 +24,13 @@
         where project_name = #{projectName} 
         and team_id = #{teamId}
     </select>
-    <select id="getProjectListByTeamId" parameterType="string" resultMap="ProjectResultMap">
+    <select id="getProjectListByTeamId" parameterType="string" resultMap="com.locotor.kanpm.model.entities.Project">
         select
         <include refid="project_select_column"></include>
         from project
         where team_id = #{teamId}
     </select>
-    <insert id="insert" parameterType="Project">
+    <insert id="insert" parameterType="com.locotor.kanpm.model.entities.Project">
         <selectKey keyProperty="id" order="BEFORE" resultType="string">
             select uuid()
         </selectKey>
@@ -45,7 +45,7 @@
             #{description}
         );
     </insert>
-    <update id="update" parameterType="Project">
+    <update id="update" parameterType="com.locotor.kanpm.model.entities.Project">
         update project
         <set>
             <if test="projectName != null">
