@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { GlobalService } from 'shared/services/global.service';
-import { ProjectService } from 'shared/services/project.service';
+import { GlobalService } from 'core/services/global.service';
+import { ProjectService } from 'core/services/project.service';
 
 @Component({
   templateUrl: './project-creator.component.html',

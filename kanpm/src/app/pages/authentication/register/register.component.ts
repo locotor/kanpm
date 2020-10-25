@@ -1,9 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
+import { AuthenticationService } from 'core/services/authentication.service';
 import { Observable, of } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
-
-import { AuthenticationService } from 'shared/services/authentication.service';
 
 @Component({
   selector: 'kanpm-register',

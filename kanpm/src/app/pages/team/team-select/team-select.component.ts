@@ -1,10 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GlobalService } from 'core/services/global.service';
+import { TeamService } from 'core/services/team.service';
+import { Team } from 'core/types/team';
 import { TeamCreatorComponent } from 'shared/components/team-creator/team-creator.component';
-
-import { Team } from 'types/team';
-import { GlobalService } from 'shared/services/global.service';
-import { TeamService } from 'shared/services/team.service';
 
 @Component({
   templateUrl: './team-select.component.html',

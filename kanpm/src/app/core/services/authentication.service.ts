@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs';
-
-import { ServerResponse } from 'types/response';
-import { User } from 'types/user';
-import { SignUpRequest } from 'types/signUpRequest';
+import { User } from 'core/types/user';
+import { ServerResponse } from 'core/types/response';
+import { SignUpRequest } from 'core/types/signUpRequest';
 
 const httpOptions = {
   headers: new HttpHeaders({

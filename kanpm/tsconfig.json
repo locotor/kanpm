@@ -21,6 +21,7 @@
     "paths": {
       "types/*": ["src/app/shared/types/*"],
       "shared/*": ["src/app/shared/*"],
+      "core/*":["src/app/core/*"],
       "@env/*": ["src/environments/*"]
     }
   },

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { GlobalService } from 'shared/services/global.service';
-import { ProjectCreatorComponent } from 'shared/components/project-creator/project-creator.component';
-import { ProjectService } from 'shared/services/project.service';
-import { Project } from 'types/project';
 import { Router } from '@angular/router';
+import { ProjectCreatorComponent } from 'shared/components/project-creator/project-creator.component';
+import { GlobalService } from 'core/services/global.service';
+import { ProjectService } from 'core/services/project.service';
+import { Project } from 'core/types/project';
 
 @Component({
   templateUrl: './team-projects.component.html',

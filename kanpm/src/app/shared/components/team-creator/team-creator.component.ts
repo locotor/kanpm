@@ -1,10 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
-import { TeamService } from 'shared/services/team.service';
 import { map, finalize, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TeamService } from 'core/services/team.service';
 
 @Component({
   templateUrl: './team-creator.component.html',

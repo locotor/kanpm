@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeamComponent } from './team.component';
 import { TeamHomeComponent } from './team-home/team-home.component';
-import { AuthGuardService } from 'shared/guards/auth-guard.service';
 import { TeamSelectComponent } from './team-select/team-select.component';
 import { TeamProjectsComponent } from './team-projects/team-projects.component';
 

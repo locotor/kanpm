@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from 'shared/services/authentication.service';
 import { Router } from '@angular/router';
-import { GlobalService } from 'shared/services/global.service';
+import { AuthenticationService } from 'core/services/authentication.service';
+import { GlobalService } from 'core/services/global.service';
 
 @Component({
   selector: 'kanpm-login',

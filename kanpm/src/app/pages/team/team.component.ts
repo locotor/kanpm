@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { TeamService } from 'shared/services/team.service';
-import { GlobalService } from 'shared/services/global.service';
+import { GlobalService } from 'core/services/global.service';
+import { TeamService } from 'core/services/team.service';
 
 @Component({
   templateUrl: './team.component.html',

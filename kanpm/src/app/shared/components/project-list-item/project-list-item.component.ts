@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, EventEmitter, Output } from '@angular/core';
-import { Project } from 'types/project';
+import { Project } from 'core/types/project';
 
 @Component({
   selector: 'kanpm-project-list-item',
