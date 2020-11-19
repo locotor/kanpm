@@ -7,11 +7,11 @@ import { DelonMockModule } from '@delon/mock';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './pages/app-routing.module';
-import { SharedModule } from './shared/shared.module';
+import { httpInterceptorProviders } from 'core/interceptors';
+import { SharedModule } from 'shared/shared.module';
 
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
-import { httpInterceptorProviders } from 'shared/interceptors';
 
 const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
