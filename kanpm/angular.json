@@ -39,13 +39,11 @@
                 "input": "src/styles.scss"
               },
               {
-                "lazy": true,
                 "inject": false,
                 "input": "src/themes/_lightgreen-amber.scss",
                 "bundleName": "assets/themes/lightgreen-amber"
               },
               {
-                "lazy": true,
                 "inject": false,
                 "input": "src/themes/_indigo-pink-default.scss",
                 "bundleName": "assets/themes/indigo-pink"

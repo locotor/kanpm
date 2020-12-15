@@ -1,9 +1,9 @@
 import {
-    HttpClient, HttpErrorResponse, HttpEvent, HttpHandler,
+    HttpErrorResponse, HttpEvent, HttpHandler,
     HttpInterceptor, HttpRequest, HttpResponse, HttpResponseBase
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
@@ -31,7 +31,7 @@ export class RespondInterceptor implements HttpInterceptor {
 
     constructor(
         private router: Router,
-        private snackBar: MatSnackBar
+        // private snackBar: MatSnackBar
     ) { }
 
     private goTo(url: string): void {
@@ -44,9 +44,9 @@ export class RespondInterceptor implements HttpInterceptor {
         }
 
         const errortext = CODEMESSAGE[ev.status] || ev.statusText;
-        this.snackBar.open(`请求错误 ${ev.status}: ${ev.url} -- ${errortext}`, null, {
-            duration: 3000
-        });
+        // this.snackBar.open(`请求错误 ${ev.status}: ${ev.url} -- ${errortext}`, null, {
+        //     duration: 3000
+        // });
     }
 
     private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -60,7 +60,7 @@ export class RespondInterceptor implements HttpInterceptor {
                 if (ev instanceof HttpResponse) {
                     const body = ev.body;
                     if (body && body.code !== '20000') {
-                        this.snackBar.open(body.msg);
+                        // this.snackBar.open(body.msg);
                         // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
                         // this.http.get('/').subscribe() 并不会触发
                         return throwError({ msg: body.msg });

@@ -3,7 +3,7 @@
   "version": "0.1.0-Snapshot",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --servePath=kanpm --baseHref=/kanpm/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

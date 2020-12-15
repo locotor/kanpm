@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 //#endregion
 
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -55,7 +55,7 @@ const MaterialModules = [
     MatDialogModule,
     MatListModule,
     MatPaginatorModule,
-    MatSnackBar,
+    // MatSnackBar,
 ];
 
 const AntModules = [
