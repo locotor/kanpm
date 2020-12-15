@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/kanpm/",
             "outputPath": "dist/kanpm",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -84,7 +85,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kanpm:build"
+            "browserTarget": "kanpm:build",
+            "servePath": "kanpm"
           },
           "configurations": {
             "production": {

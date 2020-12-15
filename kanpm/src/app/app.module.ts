@@ -13,7 +13,7 @@ import { SharedModule } from 'shared/shared.module';
 import { environment } from '@env/environment';
 import * as MOCKDATA from '../../_mock';
 
-const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
+// const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ const MOCKMODULE = !environment.production ? [DelonMockModule.forRoot({ data: MO
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    ...MOCKMODULE
+    // ...MOCKMODULE
   ],
   providers: [
     httpInterceptorProviders
