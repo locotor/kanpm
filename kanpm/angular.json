@@ -23,7 +23,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "extractCss": true,
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -36,15 +35,16 @@
             "styles": [
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               {
-                "input": "src/styles.scss"
+                "input": "src/styles.scss",
+                "inject": true
               },
               {
-                "inject": false,
+                "inject": true,
                 "input": "src/themes/_lightgreen-amber.scss",
                 "bundleName": "assets/themes/lightgreen-amber"
               },
               {
-                "inject": false,
+                "inject": true,
                 "input": "src/themes/_indigo-pink-default.scss",
                 "bundleName": "assets/themes/indigo-pink"
               }
@@ -62,7 +62,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
