@@ -2,7 +2,10 @@
   <mat-icon class="theme-picker-button" [mat-menu-trigger-for]="themeMenu">format_color_fill</mat-icon>
 </div>
 
-<mat-menu #themeMenu xPosition="before">
+<mat-menu #themeMenu>
+  <mat-slide-toggle [(ngModel)]="isDarkMode" class="dark-mode-toggle" (change)="darkModeSwitch($event.checked)">Slide me!
+  </mat-slide-toggle>
+  <mat-divider></mat-divider>
   <button mat-menu-item *ngFor="let theme of themes" (click)="selectTheme(theme.name)">
     <span>{{theme.displayName}}</span>
   </button>

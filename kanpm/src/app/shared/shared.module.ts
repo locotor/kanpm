@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 
 //#region material modules
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
-// import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 //#endregion
 
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
@@ -36,9 +38,6 @@ import { AvatarComponent } from './components/avatar/avatar.component';
 import { TeamCreatorComponent } from './components/team-creator/team-creator.component';
 import { ProjectCreatorComponent } from './components/project-creator/project-creator.component';
 
-// import { environment } from '@env/environment';
-// const MOCKMODULE = !environment.production ? [DelonMockModule.forChild()] : [];
-
 const MaterialModules = [
     MatSidenavModule,
     MatButtonModule,
@@ -55,7 +54,8 @@ const MaterialModules = [
     MatDialogModule,
     MatListModule,
     MatPaginatorModule,
-    // MatSnackBar,
+    MatSnackBarModule,
+    MatSlideToggleModule
 ];
 
 const AntModules = [
@@ -80,6 +80,7 @@ const AntModules = [
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        FormsModule,
         ...MaterialModules,
         ...AntModules
     ],

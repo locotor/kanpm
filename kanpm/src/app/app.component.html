@@ -14,13 +14,14 @@
       <span class="mat-body">市场监管项目组</span>
       <mat-icon class="team-switch-button" routerLink="/teamSelect">swap_horiz</mat-icon>
     </div>
-    <nz-divider nzType="vertical"></nz-divider>
+    <mat-divider vertical style="height: 20px; margin: 0 10px;"></mat-divider>
     <kanpm-theme-picker></kanpm-theme-picker>
-    <mat-icon class="header-chat-button">sms</mat-icon>
-    <nz-divider nzType="vertical"></nz-divider>
+    <mat-divider vertical style="height: 20px;margin: 0 10px;"></mat-divider>
     <nz-avatar nzIcon="user"></nz-avatar>
   </mat-toolbar>
-  <div class="main-content-container">
-    <router-outlet></router-outlet>
-  </div>
+  <mat-sidenav-container class="main-content-container">
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

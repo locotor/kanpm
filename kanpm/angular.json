@@ -35,19 +35,11 @@
             ],
             "styles": [
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.scss",
               {
-                "input": "src/styles.scss",
-                "inject": true
-              },
-              {
-                "inject": true,
-                "input": "src/themes/_lightgreen-amber.scss",
-                "bundleName": "assets/themes/lightgreen-amber"
-              },
-              {
-                "inject": true,
-                "input": "src/themes/_indigo-pink-default.scss",
-                "bundleName": "assets/themes/indigo-pink"
+                "inject": false,
+                "input": "src/themes/light-green-orange.scss",
+                "bundleName": "themes/light-green-orange"
               }
             ],
             "scripts": []
