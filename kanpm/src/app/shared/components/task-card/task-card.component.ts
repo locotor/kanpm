@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class TaskCardComponent implements OnInit {
 
-  @Input() task: { name: string }
+  // @Input() task: { name: string }
 
   constructor() { }
 

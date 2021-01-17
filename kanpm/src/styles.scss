@@ -44,7 +44,7 @@ li {
       color: #8bc34a;
     }
 
-    .faild-icon {
+    .failed-icon {
       color: #f44336;
     }
   }
@@ -56,7 +56,9 @@ li {
   border-radius: 4px;
 }
 
-.task-detail-root .task-checkbox .mat-checkbox-inner-container {
-  width: 32px;
-  height: 32px;
+.task-card {
+  .mat-checkbox-inner-container {
+    width: 24px;
+    height: 24px;
+  }
 }

@@ -1,14 +1,48 @@
-<mat-card class="task-card-wrapper">
+<mat-card class="task-card">
   <div class="card-content-wrapper">
     <mat-checkbox class="task-checkbox"></mat-checkbox>
-    <div class="task-info">
-      <div class="task-title">
-        <span class="mat-h4">{{task.name}}</span>
+    <!-- title + executor -->
+    <div class="task-content">
+      <section class="task-title">
+        <header class="title-text mat-h4">task test: Some description about this,
+          if this description too long to display, it
+          will be slice with...</header>
         <nz-avatar nzIcon="user"></nz-avatar>
-      </div>
-      <div class="task-content">
-        这里是任务信息列表，展示……
-      </div>
+      </section>
+      <!-- task infos -->
+      <section class="task-infos">
+        <div class="task-info mat-caption">
+          <mat-icon inline style="font-size: 16px; margin-right: 4px;">list</mat-icon>
+          <span>2 complete / 7 total</span>
+        </div>
+        <div class="task-info mat-caption">
+          <mat-icon inline style="font-size: 16px; margin-right: 4px;">calendar_today</mat-icon>
+          <span>2020/06/19</span>
+        </div>
+        <div class="task-info mat-caption">
+          <mat-icon inline style="font-size: 16px; margin-right: 4px;">alarm_on</mat-icon>
+          <span>06/25</span>
+        </div>
+        <div class="task-info mat-caption">
+          <mat-icon inline style="font-size: 16px; margin-right: 4px;">repeat</mat-icon>
+          <span>day repeat</span>
+        </div>
+        <div class="task-info mat-caption">
+          <mat-icon inline style="font-size: 16px;">description</mat-icon>
+        </div>
+        <div class=" task-info mat-caption">
+          <mat-icon inline style="font-size: 16px;">attachment</mat-icon>
+        </div>
+        <div class="task-info mat-caption task-tag-red">
+          important
+        </div>
+        <div class="task-info mat-caption task-tag-blue">
+          developing
+        </div>
+        <div class="task-info mat-caption task-tag-green">
+          normal
+        </div>
+      </section>
     </div>
   </div>
 </mat-card>

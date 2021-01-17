@@ -2470,7 +2470,7 @@
         },
         {
             "name": "TaskCardComponent",
-            "id": "component-TaskCardComponent-b987ff973e7168dec698895a2a2d0e56",
+            "id": "component-TaskCardComponent-02af061f48772b78d11c466cc767c858",
             "file": "src/app/shared/components/task-card/task-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2487,13 +2487,7 @@
                 "./task-card.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [
-                {
-                    "name": "task",
-                    "line": 11,
-                    "type": "literal type"
-                }
-            ],
+            "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
@@ -2511,11 +2505,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-card',\r\n  templateUrl: './task-card.component.html',\r\n  styleUrls: ['./task-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskCardComponent implements OnInit {\r\n\r\n  @Input() task: { name: string }\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-card',\r\n  templateUrl: './task-card.component.html',\r\n  styleUrls: ['./task-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskCardComponent implements OnInit {\r\n\r\n  // @Input() task: { name: string }\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n  display: block;\r\n}\r\n\r\n.task-card-wrapper {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.card-content-wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n\r\n  .task-checkbox {\r\n    display: block;\r\n    margin: 0 8px;\r\n  }\r\n\r\n  .task-info {\r\n    flex: 1 1 auto;\r\n  }\r\n\r\n  .task-title {\r\n    display: flex;\r\n    justify-content: space-between;\r\n  }\r\n}\r\n",
+                    "data": ".task-card {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  border-left: 4px solid green;\r\n}\r\n\r\n.card-content-wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n}\r\n\r\n.task-checkbox {\r\n  margin-right: 8px;\r\n}\r\n\r\n.task-content {\r\n  flex: 1 1 auto;\r\n  .task-title {\r\n    display: flex;\r\n    .title-text {\r\n      flex: 1;\r\n      margin-right: 8px;\r\n    }\r\n  }\r\n  .task-infos {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    .task-info {\r\n      margin-right: 8px;\r\n      margin-top: 4px;\r\n      white-space: nowrap;\r\n    }\r\n    .task-tag-red{\r\n      color: red;\r\n    }\r\n    .task-tag-blue{\r\n      color: blue;\r\n    }\r\n    .task-tag-green{\r\n      color: green;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./task-card.component.scss"
                 }
             ],
@@ -2524,12 +2518,12 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 11
+                "line": 9
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-card class=\"task-card-wrapper\">\r\n  <div class=\"card-content-wrapper\">\r\n    <mat-checkbox class=\"task-checkbox\"></mat-checkbox>\r\n    <div class=\"task-info\">\r\n      <div class=\"task-title\">\r\n        <span class=\"mat-h4\">{{task.name}}</span>\r\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\r\n      </div>\r\n      <div class=\"task-content\">\r\n        这里是任务信息列表，展示……\r\n      </div>\r\n    </div>\r\n  </div>\r\n</mat-card>\r\n"
+            "templateData": "<mat-card class=\"task-card\">\r\n  <div class=\"card-content-wrapper\">\r\n    <mat-checkbox class=\"task-checkbox\"></mat-checkbox>\r\n    <!-- title + executor -->\r\n    <div class=\"task-content\">\r\n      <section class=\"task-title\">\r\n        <header class=\"title-text mat-h4\">task test: Some description about this,\r\n          if this description too long to display, it\r\n          will be slice with...</header>\r\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\r\n      </section>\r\n      <!-- task infos -->\r\n      <section class=\"task-infos\">\r\n        <div class=\"task-info mat-caption\">\r\n          <mat-icon>home</mat-icon>\r\n          <span>2 complete / 7 total</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>2020/06/19</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>06/25</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>day repeat</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>remark</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>accessory</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-red\">\r\n          important\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-blue\">\r\n          developing\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-green\">\r\n          normal\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</mat-card>"
         },
         {
             "name": "TaskDetailComponent",
@@ -3579,7 +3573,122 @@
             ]
         },
         {
+            "name": "ComponentsModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AvatarComponent"
+                        },
+                        {
+                            "name": "ProjectCreatorComponent"
+                        },
+                        {
+                            "name": "ProjectListItemComponent"
+                        },
+                        {
+                            "name": "TaskCardComponent"
+                        },
+                        {
+                            "name": "TaskDetailComponent"
+                        },
+                        {
+                            "name": "TaskListItemComponent"
+                        },
+                        {
+                            "name": "TeamCreatorComponent"
+                        },
+                        {
+                            "name": "ThemePickerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "MaterialModule"
+                        },
+                        {
+                            "name": "ZorroModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "AvatarComponent"
+                        },
+                        {
+                            "name": "ProjectCreatorComponent"
+                        },
+                        {
+                            "name": "ProjectListItemComponent"
+                        },
+                        {
+                            "name": "TaskCardComponent"
+                        },
+                        {
+                            "name": "TaskDetailComponent"
+                        },
+                        {
+                            "name": "TaskListItemComponent"
+                        },
+                        {
+                            "name": "TeamCreatorComponent"
+                        },
+                        {
+                            "name": "ThemePickerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "GroupRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "MaterialModule",
             "children": [
                 {
                     "type": "providers",
@@ -3688,57 +3797,27 @@
                 },
                 {
                     "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "AvatarComponent"
-                        },
-                        {
-                            "name": "ProjectCreatorComponent"
-                        },
-                        {
-                            "name": "ProjectListItemComponent"
-                        },
-                        {
-                            "name": "TaskCardComponent"
-                        },
-                        {
-                            "name": "TaskDetailComponent"
-                        },
-                        {
-                            "name": "TaskListItemComponent"
-                        },
-                        {
-                            "name": "TeamCreatorComponent"
-                        },
-                        {
-                            "name": "ThemePickerComponent"
-                        }
-                    ]
+                    "elements": []
                 },
                 {
                     "type": "imports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "MaterialModule"
+                        },
+                        {
+                            "name": "ZorroModule"
+                        }
+                    ]
                 },
                 {
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "AvatarComponent"
+                            "name": "MaterialModule"
                         },
                         {
-                            "name": "ProjectListItemComponent"
-                        },
-                        {
-                            "name": "TaskCardComponent"
-                        },
-                        {
-                            "name": "TaskDetailComponent"
-                        },
-                        {
-                            "name": "TaskListItemComponent"
-                        },
-                        {
-                            "name": "ThemePickerComponent"
+                            "name": "ZorroModule"
                         }
                     ]
                 },
@@ -3800,18 +3879,39 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "ZorroModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
         "variables": [
-            {
-                "name": "AntModules",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/shared/shared.module.ts",
-                "type": "[]",
-                "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
-            },
             {
                 "name": "AuthenticationMockData",
                 "ctype": "miscellaneous",
@@ -3913,9 +4013,9 @@
                 "name": "MaterialModules",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/shared/shared.module.ts",
+                "file": "src/app/shared/third-parties/material.module.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n    MatSidenavModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatMenuModule,\r\n    MatCheckboxModule,\r\n    MatTabsModule,\r\n    MatDividerModule,\r\n    MatChipsModule,\r\n    MatToolbarModule,\r\n    MatCardModule,\r\n    DragDropModule,\r\n    MatInputModule,\r\n    MatDialogModule,\r\n    MatListModule,\r\n    MatPaginatorModule,\r\n    // MatSnackBar,\r\n]"
+                "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n]"
             },
             {
                 "name": "MOCKDATA",
@@ -3934,6 +4034,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3947,6 +4055,14 @@
                 "file": "src/stories/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "SharedComponents",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/components.modules.ts",
+                "type": "[]",
+                "defaultValue": "[\r\n    ThemePickerComponent,\r\n    TaskListItemComponent,\r\n    ProjectListItemComponent,\r\n    TaskCardComponent,\r\n    TaskDetailComponent,\r\n    AvatarComponent,\r\n    TeamCreatorComponent,\r\n    ProjectCreatorComponent\r\n]"
             },
             {
                 "name": "Small",
@@ -3979,6 +4095,22 @@
                 "file": "src/stories/Page.stories.ts",
                 "type": "Story<Page>",
                 "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                "type": "",
+                "defaultValue": "(args: TaskCardComponent) => ({\r\n    component: TaskCardComponent,\r\n    props: args,\r\n})"
+            },
+            {
+                "name": "ZorroModules",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/third-parties/zorro.module.ts",
+                "type": "[]",
+                "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
             }
         ],
         "functions": [
@@ -4046,24 +4178,6 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "src/app/shared/shared.module.ts": [
-                {
-                    "name": "AntModules",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/shared.module.ts",
-                    "type": "[]",
-                    "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
-                },
-                {
-                    "name": "MaterialModules",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/shared.module.ts",
-                    "type": "[]",
-                    "defaultValue": "[\r\n    MatSidenavModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatMenuModule,\r\n    MatCheckboxModule,\r\n    MatTabsModule,\r\n    MatDividerModule,\r\n    MatChipsModule,\r\n    MatToolbarModule,\r\n    MatCardModule,\r\n    DragDropModule,\r\n    MatInputModule,\r\n    MatDialogModule,\r\n    MatListModule,\r\n    MatPaginatorModule,\r\n    // MatSnackBar,\r\n]"
-                }
-            ],
             "_mock/_authentication.ts": [
                 {
                     "name": "AuthenticationMockData",
@@ -4236,6 +4350,16 @@
                     "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
                 }
             ],
+            "src/app/shared/third-parties/material.module.ts": [
+                {
+                    "name": "MaterialModules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/third-parties/material.module.ts",
+                    "type": "[]",
+                    "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n]"
+                }
+            ],
             "_mock/_projects.ts": [
                 {
                     "name": "MOCKDATA",
@@ -4244,6 +4368,44 @@
                     "file": "_mock/_projects.ts",
                     "type": "object",
                     "defaultValue": "{\r\n    'GET api/group-projects': (req: MockRequest) => new HttpResponse({\r\n        body: Mock.mock({\r\n            'data|3': [{\r\n                'id|14': /[a-z][A-Z][0-9]/,\r\n                projectName: /测试项目-\\w\\d{2}/\r\n            }]\r\n        })\r\n    }),\r\n    'GET api/group-collaborators': (req: MockRequest) => new HttpResponse({\r\n        body: Mock.mock({\r\n            'data|3': [{\r\n                name: /用户-\\w\\d{2}/\r\n            }]\r\n        })\r\n    }),\r\n}"
+                }
+            ],
+            "src/app/shared/components/task-card/task-card.stories.ts": [
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                    "type": "",
+                    "defaultValue": "(args: TaskCardComponent) => ({\r\n    component: TaskCardComponent,\r\n    props: args,\r\n})"
+                }
+            ],
+            "src/app/shared/components/components.modules.ts": [
+                {
+                    "name": "SharedComponents",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/components.modules.ts",
+                    "type": "[]",
+                    "defaultValue": "[\r\n    ThemePickerComponent,\r\n    TaskListItemComponent,\r\n    ProjectListItemComponent,\r\n    TaskCardComponent,\r\n    TaskDetailComponent,\r\n    AvatarComponent,\r\n    TeamCreatorComponent,\r\n    ProjectCreatorComponent\r\n]"
+                }
+            ],
+            "src/app/shared/third-parties/zorro.module.ts": [
+                {
+                    "name": "ZorroModules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/third-parties/zorro.module.ts",
+                    "type": "[]",
+                    "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
                 }
             ]
         },
@@ -4737,6 +4899,16 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/components/components.modules.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SharedComponents",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/components/project-creator/project-creator.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -4760,7 +4932,27 @@
                 "linktype": "component",
                 "name": "TaskCardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/task-card/task-card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/task-card/task-card.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -4854,21 +5046,21 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/shared.module.ts",
+                "filePath": "src/app/shared/third-parties/material.module.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "AntModules",
+                "name": "MaterialModules",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/shared.module.ts",
+                "filePath": "src/app/shared/third-parties/zorro.module.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "MaterialModules",
+                "name": "ZorroModules",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
