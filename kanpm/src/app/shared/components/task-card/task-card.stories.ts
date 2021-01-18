@@ -29,19 +29,14 @@ fullInfo.args = {
     task: {
         isComplete: false,
         subTasks: [
-            {
-                isComplete: true,
-            },
-            {
-                isComplete: false,
-            }
+            { isComplete: true, },
+            { isComplete: false, }
         ],
         priority: 'low',
-        description: `task test: Some description about this task,
-    if this description too long to display, it
-    will be slice with...`,
+        description: `task test: Some description about this task`,
         endTime: new Date().getTime(),
         remindTime: new Date().getTime(),
         repeat: 'daily',
     }
 };
+fullInfo.storyName = '完整信息';

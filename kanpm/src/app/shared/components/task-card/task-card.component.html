@@ -12,17 +12,17 @@
       <section class="task-infos">
         <div *ngIf="task.subTasks&&task.subTasks.length" class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">list</mat-icon>
-          <span>{{completedSubTask()}} complete / {{task.subTasks.length}} total</span>
+          <span>{{completedSubTask()}} completed / {{task.subTasks.length}} total</span>
         </div>
-        <div class="task-info mat-caption">
+        <div *ngIf="task.endTime" class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">calendar_today</mat-icon>
           <span>{{task.endTime | date:'yyyy/MM/dd'}}</span>
         </div>
-        <div class="task-info mat-caption">
+        <div *ngIf="task.remindTime" class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">alarm_on</mat-icon>
           <span>{{task.remindTime | date:'MM/dd, HH:mm'}}</span>
         </div>
-        <div class="task-info mat-caption">
+        <div *ngIf="task.repeat" class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">repeat</mat-icon>
           <span>{{ task.repeat}}</span>
         </div>
@@ -32,6 +32,7 @@
         <div *ngIf="task.attachments && task.attachments.length" class=" task-info mat-caption">
           <mat-icon inline style="font-size: 16px;">attachment</mat-icon>
         </div>
+        <!-- TODO tag component -->
         <div class="task-info mat-caption task-tag-red">
           important
         </div>

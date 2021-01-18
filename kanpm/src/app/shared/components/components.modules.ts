@@ -11,7 +11,7 @@ import { ProjectCreatorComponent } from './project-creator/project-creator.compo
 import { ZorroModule } from 'shared/third-parties/zorro.module';
 import { MaterialModule } from 'shared/third-parties/material.module';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const SharedComponents = [
     ThemePickerComponent,
@@ -31,6 +31,7 @@ const SharedComponents = [
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         MaterialModule,
         ZorroModule
     ],

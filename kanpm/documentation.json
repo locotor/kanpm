@@ -3,52 +3,52 @@
     "interfaces": [
         {
             "name": "Comment",
-            "id": "interface-Comment-4e9393b5d0e922a9dcbf4ab8de09ae85",
+            "id": "interface-Comment-bcbb476f3890b9a5e81d5f4d9e06396d",
             "file": "src/app/core/types/task.ts",
             "type": "interface",
-            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    taskName: string;\r\n    principalUserId: string;\r\n    startTime: number;\r\n    endTime: number;\r\n    completedTime: number;\r\n    tags: string[];\r\n    description: string;\r\n    createdTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport interface Tag {\r\n    id: string;\r\n    name: string;\r\n    color: string;\r\n    isInCommonUse: boolean;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
+            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    isComplete: boolean;\r\n    subTasks: Task[];\r\n    priority: 'high' | 'normal' | 'low';\r\n    description: string;\r\n    principalUserId: string;\r\n    endTime: number;\r\n    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';\r\n    remindTime: number;\r\n    remark: string;\r\n    attachments: string[];\r\n    tags: number[];\r\n    createdTime: number;\r\n    completedTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport enum TaskRepeat {\r\n\r\n}\r\n\r\nexport interface Tag {\r\n    id: number;\r\n    name: string;\r\n    color: string;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
             "properties": [
                 {
                     "name": "content",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 52
                 },
                 {
                     "name": "createdTime",
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 45
+                    "line": 53
                 },
                 {
                     "name": "creatorId",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 51
                 },
                 {
                     "name": "id",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 41
+                    "line": 49
                 },
                 {
                     "name": "mentionedFlags",
                     "type": "MentionedFlag[]",
                     "optional": false,
                     "description": "",
-                    "line": 46
+                    "line": 54
                 },
                 {
                     "name": "taskId",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 50
                 }
             ],
             "indexSignatures": [],
@@ -111,10 +111,10 @@
         },
         {
             "name": "MentionedFlag",
-            "id": "interface-MentionedFlag-4e9393b5d0e922a9dcbf4ab8de09ae85",
+            "id": "interface-MentionedFlag-bcbb476f3890b9a5e81d5f4d9e06396d",
             "file": "src/app/core/types/task.ts",
             "type": "interface",
-            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    taskName: string;\r\n    principalUserId: string;\r\n    startTime: number;\r\n    endTime: number;\r\n    completedTime: number;\r\n    tags: string[];\r\n    description: string;\r\n    createdTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport interface Tag {\r\n    id: string;\r\n    name: string;\r\n    color: string;\r\n    isInCommonUse: boolean;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
+            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    isComplete: boolean;\r\n    subTasks: Task[];\r\n    priority: 'high' | 'normal' | 'low';\r\n    description: string;\r\n    principalUserId: string;\r\n    endTime: number;\r\n    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';\r\n    remindTime: number;\r\n    remark: string;\r\n    attachments: string[];\r\n    tags: number[];\r\n    createdTime: number;\r\n    completedTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport enum TaskRepeat {\r\n\r\n}\r\n\r\nexport interface Tag {\r\n    id: number;\r\n    name: string;\r\n    color: string;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
             "properties": [
                 {
                     "name": "id",
@@ -306,38 +306,31 @@
         },
         {
             "name": "Tag",
-            "id": "interface-Tag-4e9393b5d0e922a9dcbf4ab8de09ae85",
+            "id": "interface-Tag-bcbb476f3890b9a5e81d5f4d9e06396d",
             "file": "src/app/core/types/task.ts",
             "type": "interface",
-            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    taskName: string;\r\n    principalUserId: string;\r\n    startTime: number;\r\n    endTime: number;\r\n    completedTime: number;\r\n    tags: string[];\r\n    description: string;\r\n    createdTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport interface Tag {\r\n    id: string;\r\n    name: string;\r\n    color: string;\r\n    isInCommonUse: boolean;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
+            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    isComplete: boolean;\r\n    subTasks: Task[];\r\n    priority: 'high' | 'normal' | 'low';\r\n    description: string;\r\n    principalUserId: string;\r\n    endTime: number;\r\n    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';\r\n    remindTime: number;\r\n    remark: string;\r\n    attachments: string[];\r\n    tags: number[];\r\n    createdTime: number;\r\n    completedTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport enum TaskRepeat {\r\n\r\n}\r\n\r\nexport interface Tag {\r\n    id: number;\r\n    name: string;\r\n    color: string;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
             "properties": [
                 {
                     "name": "color",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 45
                 },
                 {
                     "name": "id",
-                    "type": "string",
+                    "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 34
-                },
-                {
-                    "name": "isInCommonUse",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 37
+                    "line": 43
                 },
                 {
                     "name": "name",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 44
                 }
             ],
             "indexSignatures": [],
@@ -346,45 +339,52 @@
         },
         {
             "name": "Task",
-            "id": "interface-Task-4e9393b5d0e922a9dcbf4ab8de09ae85",
+            "id": "interface-Task-bcbb476f3890b9a5e81d5f4d9e06396d",
             "file": "src/app/core/types/task.ts",
             "type": "interface",
-            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    taskName: string;\r\n    principalUserId: string;\r\n    startTime: number;\r\n    endTime: number;\r\n    completedTime: number;\r\n    tags: string[];\r\n    description: string;\r\n    createdTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport interface Tag {\r\n    id: string;\r\n    name: string;\r\n    color: string;\r\n    isInCommonUse: boolean;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
+            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    isComplete: boolean;\r\n    subTasks: Task[];\r\n    priority: 'high' | 'normal' | 'low';\r\n    description: string;\r\n    principalUserId: string;\r\n    endTime: number;\r\n    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';\r\n    remindTime: number;\r\n    remark: string;\r\n    attachments: string[];\r\n    tags: number[];\r\n    createdTime: number;\r\n    completedTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport enum TaskRepeat {\r\n\r\n}\r\n\r\nexport interface Tag {\r\n    id: number;\r\n    name: string;\r\n    color: string;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
             "properties": [
+                {
+                    "name": "attachments",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
                 {
                     "name": "collaboratorsId",
                     "type": "string[]",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 35
                 },
                 {
                     "name": "completedTime",
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 26
+                    "line": 34
                 },
                 {
                     "name": "createdTime",
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 33
                 },
                 {
                     "name": "description",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 28
+                    "line": 25
                 },
                 {
                     "name": "endTime",
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 25
+                    "line": 27
                 },
                 {
                     "name": "id",
@@ -394,32 +394,60 @@
                     "line": 21
                 },
                 {
+                    "name": "isComplete",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
                     "name": "principalUserId",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 26
                 },
                 {
-                    "name": "startTime",
-                    "type": "number",
+                    "name": "priority",
+                    "type": "\"high\" | \"normal\" | \"low\"",
                     "optional": false,
                     "description": "",
                     "line": 24
                 },
                 {
-                    "name": "tags",
-                    "type": "string[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 27
-                },
-                {
-                    "name": "taskName",
+                    "name": "remark",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 30
+                },
+                {
+                    "name": "remindTime",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "repeat",
+                    "type": "\"daily\" | \"workday\" | \"weekly\" | \"monthly\" | \"yearly\"",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "subTasks",
+                    "type": "Task[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "tags",
+                    "type": "number[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
                 }
             ],
             "indexSignatures": [],
@@ -428,10 +456,10 @@
         },
         {
             "name": "TaskGroup",
-            "id": "interface-TaskGroup-4e9393b5d0e922a9dcbf4ab8de09ae85",
+            "id": "interface-TaskGroup-bcbb476f3890b9a5e81d5f4d9e06396d",
             "file": "src/app/core/types/task.ts",
             "type": "interface",
-            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    taskName: string;\r\n    principalUserId: string;\r\n    startTime: number;\r\n    endTime: number;\r\n    completedTime: number;\r\n    tags: string[];\r\n    description: string;\r\n    createdTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport interface Tag {\r\n    id: string;\r\n    name: string;\r\n    color: string;\r\n    isInCommonUse: boolean;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
+            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    isComplete: boolean;\r\n    subTasks: Task[];\r\n    priority: 'high' | 'normal' | 'low';\r\n    description: string;\r\n    principalUserId: string;\r\n    endTime: number;\r\n    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';\r\n    remindTime: number;\r\n    remark: string;\r\n    attachments: string[];\r\n    tags: number[];\r\n    createdTime: number;\r\n    completedTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport enum TaskRepeat {\r\n\r\n}\r\n\r\nexport interface Tag {\r\n    id: number;\r\n    name: string;\r\n    color: string;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
             "properties": [
                 {
                     "name": "groupName",
@@ -454,10 +482,10 @@
         },
         {
             "name": "TaskList",
-            "id": "interface-TaskList-4e9393b5d0e922a9dcbf4ab8de09ae85",
+            "id": "interface-TaskList-bcbb476f3890b9a5e81d5f4d9e06396d",
             "file": "src/app/core/types/task.ts",
             "type": "interface",
-            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    taskName: string;\r\n    principalUserId: string;\r\n    startTime: number;\r\n    endTime: number;\r\n    completedTime: number;\r\n    tags: string[];\r\n    description: string;\r\n    createdTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport interface Tag {\r\n    id: string;\r\n    name: string;\r\n    color: string;\r\n    isInCommonUse: boolean;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
+            "sourceCode": "interface MentionedFlag {\r\n    type: 'file' | 'task' | 'collaborator';\r\n    id: string;\r\n    label: string;\r\n}\r\n\r\nexport interface TaskGroup {\r\n    id: string;\r\n    groupName: string;\r\n}\r\n\r\nexport interface TaskList {\r\n    id: string;\r\n    listName: string;\r\n    taskCount: number;\r\n    completedTaskCount: number;\r\n    index: number;\r\n}\r\n\r\nexport interface Task {\r\n    id: string;\r\n    isComplete: boolean;\r\n    subTasks: Task[];\r\n    priority: 'high' | 'normal' | 'low';\r\n    description: string;\r\n    principalUserId: string;\r\n    endTime: number;\r\n    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';\r\n    remindTime: number;\r\n    remark: string;\r\n    attachments: string[];\r\n    tags: number[];\r\n    createdTime: number;\r\n    completedTime: number;\r\n    collaboratorsId: string[];\r\n}\r\n\r\nexport enum TaskRepeat {\r\n\r\n}\r\n\r\nexport interface Tag {\r\n    id: number;\r\n    name: string;\r\n    color: string;\r\n}\r\n\r\nexport interface Comment {\r\n    id: string;\r\n    taskId: string;\r\n    creatorId: string;\r\n    content: string;\r\n    createdTime: number;\r\n    mentionedFlags: MentionedFlag[];\r\n}\r\n",
             "properties": [
                 {
                     "name": "completedTaskCount",
@@ -2489,7 +2517,7 @@
         },
         {
             "name": "TaskCardComponent",
-            "id": "component-TaskCardComponent-dda79493752c33bde12e005b2cd2102d",
+            "id": "component-TaskCardComponent-de6e5d1779b42629d95e792415eb5ed1",
             "file": "src/app/shared/components/task-card/task-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2506,17 +2534,31 @@
                 "./task-card.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "task",
+                    "line": 12,
+                    "type": "Task"
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [
+                {
+                    "name": "completedSubTask",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 19
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15
+                    "line": 16
                 }
             ],
             "hostBindings": [],
@@ -2524,11 +2566,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\n\n@Component({\n  selector: 'kanpm-task-card',\n  templateUrl: './task-card.component.html',\n  styleUrls: ['./task-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TaskCardComponent implements OnInit {\n\n  // @Input() task: { name: string }\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\nimport { Task } from 'core/types/task';\n\n@Component({\n  selector: 'kanpm-task-card',\n  templateUrl: './task-card.component.html',\n  styleUrls: ['./task-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TaskCardComponent implements OnInit {\n\n  @Input() task: Task;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  completedSubTask() {\n    return this.task.subTasks.filter(task => task.isComplete).length;\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".task-card {\n  display: block;\n  margin-bottom: 8px;\n  border-left: 4px solid green;\n}\n\n.card-content-wrapper {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n.task-checkbox {\n  margin-right: 8px;\n}\n\n.task-content {\n  flex: 1 1 auto;\n  .task-title {\n    display: flex;\n    .title-text {\n      flex: 1;\n      margin-right: 8px;\n    }\n  }\n  .task-infos {\n    display: flex;\n    flex-wrap: wrap;\n    .task-info {\n      display: flex;\n      align-items: center;\n      margin-right: 8px;\n      margin-top: 4px;\n      white-space: nowrap;\n    }\n    .task-tag-red {\n      color: red;\n    }\n    .task-tag-blue {\n      color: blue;\n    }\n    .task-tag-green {\n      color: green;\n    }\n  }\n}\n",
+                    "data": ".task-card {\n  display: block;\n  margin-bottom: 8px;\n  &.low{\n    border-left: 2px solid green;\n  }\n  &.normal{\n    border-left: 2px solid orange;\n  }\n  &.high{\n    border-left: 2px solid red;\n  }\n}\n\n.card-content-wrapper {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n.task-checkbox {\n  margin-right: 8px;\n}\n\n.task-content {\n  flex: 1 1 auto;\n  .task-title {\n    display: flex;\n    .title-text {\n      flex: 1;\n      margin-right: 8px;\n    }\n  }\n  .task-infos {\n    display: flex;\n    flex-wrap: wrap;\n    .task-info {\n      display: flex;\n      align-items: center;\n      margin-right: 8px;\n      margin-top: 4px;\n      white-space: nowrap;\n    }\n    .task-tag-red {\n      color: red;\n    }\n    .task-tag-blue {\n      color: blue;\n    }\n    .task-tag-green {\n      color: green;\n    }\n  }\n}\n",
                     "styleUrl": "./task-card.component.scss"
                 }
             ],
@@ -2537,12 +2579,12 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 9
+                "line": 12
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-card class=\"task-card\">\n  <div class=\"card-content-wrapper\">\n    <mat-checkbox class=\"task-checkbox\"></mat-checkbox>\n    <!-- title + executor -->\n    <div class=\"task-content\">\n      <section class=\"task-title\">\n        <header class=\"title-text mat-h4\">task test: Some description about this,\n          if this description too long to display, it\n          will be slice with...</header>\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\n      </section>\n      <!-- task infos -->\n      <section class=\"task-infos\">\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">list</mat-icon>\n          <span>2 complete / 7 total</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">calendar_today</mat-icon>\n          <span>2020/06/19</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">alarm_on</mat-icon>\n          <span>06/25</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">repeat</mat-icon>\n          <span>day repeat</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">description</mat-icon>\n        </div>\n        <div class=\" task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">attachment</mat-icon>\n        </div>\n        <div class=\"task-info mat-caption task-tag-red\">\n          important\n        </div>\n        <div class=\"task-info mat-caption task-tag-blue\">\n          developing\n        </div>\n        <div class=\"task-info mat-caption task-tag-green\">\n          normal\n        </div>\n      </section>\n    </div>\n  </div>\n</mat-card>"
+            "templateData": "<mat-card class=\"task-card\" [class.high]=\"task.priority === 'high'\" [class.normal]=\"task.priority === 'normal'\"\n  [class.low]=\"task.priority === 'low'\">\n  <div class=\"card-content-wrapper\">\n    <mat-checkbox [(ngModel)]=\"task.isComplete\" class=\"task-checkbox\"></mat-checkbox>\n    <!-- title + executor -->\n    <div class=\"task-content\">\n      <section class=\"task-title\">\n        <header class=\"title-text mat-h4\">{{task.description}}</header>\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\n      </section>\n      <!-- task infos -->\n      <section class=\"task-infos\">\n        <div *ngIf=\"task.subTasks&&task.subTasks.length\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">list</mat-icon>\n          <span>{{completedSubTask()}} complete / {{task.subTasks.length}} total</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">calendar_today</mat-icon>\n          <span>{{task.endTime | date:'yyyy/MM/dd'}}</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">alarm_on</mat-icon>\n          <span>{{task.remindTime | date:'MM/dd, HH:mm'}}</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">repeat</mat-icon>\n          <span>{{ task.repeat}}</span>\n        </div>\n        <div *ngIf=\"task.remark\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">description</mat-icon>\n        </div>\n        <div *ngIf=\"task.attachments && task.attachments.length\" class=\" task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">attachment</mat-icon>\n        </div>\n        <div class=\"task-info mat-caption task-tag-red\">\n          important\n        </div>\n        <div class=\"task-info mat-caption task-tag-blue\">\n          developing\n        </div>\n        <div class=\"task-info mat-caption task-tag-green\">\n          normal\n        </div>\n      </section>\n    </div>\n  </div>\n</mat-card>"
         },
         {
             "name": "TaskDetailComponent",
@@ -4005,6 +4047,14 @@
                 "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: false\r\n}"
             },
             {
+                "name": "fullInfo",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "httpInterceptorProviders",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4074,14 +4124,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/Button.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/shared/components/task-card/task-card.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -4220,7 +4262,16 @@
             }
         ],
         "typealiases": [],
-        "enumerations": [],
+        "enumerations": [
+            {
+                "name": "TaskRepeat",
+                "childs": [],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "src/app/core/types/task.ts"
+            }
+        ],
         "groupedVariables": {
             "src/app/core/interceptors/respond.interceptor.ts": [
                 {
@@ -4267,6 +4318,24 @@
                     "file": "src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: false\r\n}"
+                }
+            ],
+            "src/app/shared/components/task-card/task-card.stories.ts": [
+                {
+                    "name": "fullInfo",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                    "type": "",
+                    "defaultValue": "(args: TaskCardComponent) => ({\n    component: TaskCardComponent,\n    props: args,\n})"
                 }
             ],
             "src/app/core/interceptors/index.ts": [
@@ -4394,24 +4463,6 @@
                     "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n]"
                 }
             ],
-            "src/app/shared/components/task-card/task-card.stories.ts": [
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
-                    "type": "",
-                    "defaultValue": "(args: TaskCardComponent) => ({\n    component: TaskCardComponent,\n    props: args,\n})"
-                }
-            ],
             "src/app/shared/components/components.modules.ts": [
                 {
                     "name": "SharedComponents",
@@ -4497,7 +4548,18 @@
                 }
             ]
         },
-        "groupedEnumerations": {},
+        "groupedEnumerations": {
+            "src/app/core/types/task.ts": [
+                {
+                    "name": "TaskRepeat",
+                    "childs": [],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "src/app/core/types/task.ts"
+                }
+            ]
+        },
         "groupedTypeAliases": {}
     },
     "routes": {
@@ -4818,7 +4880,7 @@
                 "linktype": "interface",
                 "name": "Tag",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -4827,7 +4889,7 @@
                 "linktype": "interface",
                 "name": "Task",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -4990,7 +5052,7 @@
                 "linktype": "component",
                 "name": "TaskCardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -4998,7 +5060,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Primary",
+                "name": "fullInfo",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

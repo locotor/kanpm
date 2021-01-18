@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const MaterialModules = [
   MatSidenavModule,
@@ -32,6 +33,7 @@ const MaterialModules = [
   MatDialogModule,
   MatListModule,
   MatPaginatorModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({
@@ -39,7 +41,7 @@ const MaterialModules = [
   imports: [
     ...MaterialModules
   ],
-  exports:[
+  exports: [
     ...MaterialModules
   ]
 })
