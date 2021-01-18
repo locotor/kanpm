@@ -1,36 +1,35 @@
-<mat-card class="task-card">
+<mat-card class="task-card" [class.high]="task.priority === 'high'" [class.normal]="task.priority === 'normal'"
+  [class.low]="task.priority === 'low'">
   <div class="card-content-wrapper">
-    <mat-checkbox class="task-checkbox"></mat-checkbox>
+    <mat-checkbox [(ngModel)]="task.isComplete" class="task-checkbox"></mat-checkbox>
     <!-- title + executor -->
     <div class="task-content">
       <section class="task-title">
-        <header class="title-text mat-h4">task test: Some description about this,
-          if this description too long to display, it
-          will be slice with...</header>
+        <header class="title-text mat-h4">{{task.description}}</header>
         <nz-avatar nzIcon="user"></nz-avatar>
       </section>
       <!-- task infos -->
       <section class="task-infos">
-        <div class="task-info mat-caption">
+        <div *ngIf="task.subTasks&&task.subTasks.length" class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">list</mat-icon>
-          <span>2 complete / 7 total</span>
+          <span>{{completedSubTask()}} complete / {{task.subTasks.length}} total</span>
         </div>
         <div class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">calendar_today</mat-icon>
-          <span>2020/06/19</span>
+          <span>{{task.endTime | date:'yyyy/MM/dd'}}</span>
         </div>
         <div class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">alarm_on</mat-icon>
-          <span>06/25</span>
+          <span>{{task.remindTime | date:'MM/dd, HH:mm'}}</span>
         </div>
         <div class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">repeat</mat-icon>
-          <span>day repeat</span>
+          <span>{{ task.repeat}}</span>
         </div>
-        <div class="task-info mat-caption">
+        <div *ngIf="task.remark" class="task-info mat-caption">
           <mat-icon inline style="font-size: 16px;">description</mat-icon>
         </div>
-        <div class=" task-info mat-caption">
+        <div *ngIf="task.attachments && task.attachments.length" class=" task-info mat-caption">
           <mat-icon inline style="font-size: 16px;">attachment</mat-icon>
         </div>
         <div class="task-info mat-caption task-tag-red">

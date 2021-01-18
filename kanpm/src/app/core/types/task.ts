@@ -19,22 +19,30 @@ export interface TaskList {
 
 export interface Task {
     id: string;
-    taskName: string;
-    principalUserId: string;
-    startTime: number;
-    endTime: number;
-    completedTime: number;
-    tags: string[];
+    isComplete: boolean;
+    subTasks: Task[];
+    priority: 'high' | 'normal' | 'low';
     description: string;
+    principalUserId: string;
+    endTime: number;
+    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';
+    remindTime: number;
+    remark: string;
+    attachments: string[];
+    tags: number[];
     createdTime: number;
+    completedTime: number;
     collaboratorsId: string[];
 }
 
+export enum TaskRepeat {
+
+}
+
 export interface Tag {
-    id: string;
+    id: number;
     name: string;
     color: string;
-    isInCommonUse: boolean;
 }
 
 export interface Comment {

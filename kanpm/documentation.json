@@ -57,10 +57,10 @@
         },
         {
             "name": "DocsSiteTheme",
-            "id": "interface-DocsSiteTheme-c8c2761822fc50750df849443755ee56",
-            "file": "src/app/shared/components/theme-picker/theme-storage/theme-storage.service.ts",
+            "id": "interface-DocsSiteTheme-bd861e397ec8c4da7cb902daf2487fbe",
+            "file": "src/app/core/services/localstorage.service.ts",
             "type": "interface",
-            "sourceCode": "import { Injectable, EventEmitter } from '@angular/core';\r\n\r\nexport interface DocsSiteTheme {\r\n  name: string;\r\n  displayName?: string;\r\n  accent: string;\r\n  primary: string;\r\n  isDark?: boolean;\r\n  isDefault?: boolean;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ThemeStorageService {\r\n\r\n  static storageKey = 'kanpm-theme-storage-current-name';\r\n\r\n  onThemeUpdate: EventEmitter<DocsSiteTheme> = new EventEmitter<DocsSiteTheme>();\r\n\r\n  storeTheme(theme: DocsSiteTheme) {\r\n    try {\r\n      window.localStorage[ThemeStorageService.storageKey] = theme.name;\r\n    } catch { }\r\n\r\n    this.onThemeUpdate.emit(theme);\r\n  }\r\n\r\n  getStoredThemeName(): string | null {\r\n    try {\r\n      return window.localStorage[ThemeStorageService.storageKey] || null;\r\n    } catch {\r\n      return null;\r\n    }\r\n  }\r\n\r\n  clearStorage() {\r\n    try {\r\n      window.localStorage.removeItem(ThemeStorageService.storageKey);\r\n    } catch { }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Injectable, EventEmitter } from '@angular/core';\r\n\r\nexport interface DocsSiteTheme {\r\n  name: string;\r\n  displayName?: string;\r\n  accent: string;\r\n  primary: string;\r\n  isDark?: boolean;\r\n  isDefault?: boolean;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class LocalStorageService {\r\n\r\n  storeValue(key: string, value: any) {\r\n    try {\r\n      window.localStorage[key] = value;\r\n    } catch { }\r\n  }\r\n\r\n  getValue(key: string): any {\r\n    try {\r\n      return window.localStorage[key] || null;\r\n    } catch {\r\n      return null;\r\n    }\r\n  }\r\n\r\n  remove(key: string) {\r\n    try {\r\n      window.localStorage.removeItem(key);\r\n    } catch { }\r\n  }\r\n\r\n}\r\n",
             "properties": [
                 {
                     "name": "accent",
@@ -843,6 +843,94 @@
             "type": "injectable"
         },
         {
+            "name": "LocalStorageService",
+            "id": "injectable-LocalStorageService-bd861e397ec8c4da7cb902daf2487fbe",
+            "file": "src/app/core/services/localstorage.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getValue",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 23,
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "remove",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "storeValue",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string"
+                        },
+                        {
+                            "name": "value",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable, EventEmitter } from '@angular/core';\r\n\r\nexport interface DocsSiteTheme {\r\n  name: string;\r\n  displayName?: string;\r\n  accent: string;\r\n  primary: string;\r\n  isDark?: boolean;\r\n  isDefault?: boolean;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class LocalStorageService {\r\n\r\n  storeValue(key: string, value: any) {\r\n    try {\r\n      window.localStorage[key] = value;\r\n    } catch { }\r\n  }\r\n\r\n  getValue(key: string): any {\r\n    try {\r\n      return window.localStorage[key] || null;\r\n    } catch {\r\n      return null;\r\n    }\r\n  }\r\n\r\n  remove(key: string) {\r\n    try {\r\n      window.localStorage.removeItem(key);\r\n    } catch { }\r\n  }\r\n\r\n}\r\n",
+            "type": "injectable"
+        },
+        {
             "name": "ProjectService",
             "id": "injectable-ProjectService-4b6ae6ec8c674530c89d545581d6d588",
             "file": "src/app/core/services/project.service.ts",
@@ -996,8 +1084,8 @@
         },
         {
             "name": "StyleManagerService",
-            "id": "injectable-StyleManagerService-7fe282ebf9b192cfa54762a2adffde1e",
-            "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+            "id": "injectable-StyleManagerService-af1b6e73b1c29f481030134cdab4a7f7",
+            "file": "src/app/core/services/style-manager/style-manager.service.ts",
             "properties": [],
             "methods": [
                 {
@@ -1012,7 +1100,7 @@
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 15,
-                    "description": "<p>Remove the stylesheet with the specified key.</p>\n",
+                    "description": "<p>Remove the stylesheet link with the specified key.</p>\n",
                     "jsdoctags": [
                         {
                             "name": "key",
@@ -1058,7 +1146,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class StyleManagerService {\r\n\r\n  setStyle(key: string, href: string) {\r\n    getLinkElementForKey(key).setAttribute('href', href);\r\n  }\r\n\r\n  /**\r\n   * Remove the stylesheet with the specified key.\r\n   */\r\n  removeStyle(key: string) {\r\n    const existingLinkElement = getExistingLinkElementByKey(key);\r\n    if (existingLinkElement) {\r\n      document.head.removeChild(existingLinkElement);\r\n    }\r\n  }\r\n\r\n}\r\n\r\nfunction createLinkElementWithKey(key: string) {\r\n  const linkEl = document.createElement('link');\r\n  linkEl.setAttribute('rel', 'stylesheet');\r\n  linkEl.setAttribute('type', 'text/css');\r\n  linkEl.classList.add(`style-manager-${key}`);\r\n  document.head.appendChild(linkEl);\r\n  return linkEl;\r\n}\r\n\r\nfunction getExistingLinkElementByKey(key: string) {\r\n  return document.head.querySelector(`link[rel=\"stylesheet\"].style-manager-${key}`);\r\n}\r\n\r\nfunction getLinkElementForKey(key: string) {\r\n  return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);\r\n}\r\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class StyleManagerService {\r\n\r\n  setStyle(key: string, href: string) {\r\n    getLinkElementForKey(key).setAttribute('href', href);\r\n  }\r\n\r\n  /**\r\n   * Remove the stylesheet link with the specified key.\r\n   */\r\n  removeStyle(key: string) {\r\n    const existingLinkElement = getExistingLinkElementByKey(key);\r\n    if (existingLinkElement) {\r\n      document.head.removeChild(existingLinkElement);\r\n    }\r\n  }\r\n}\r\n\r\nfunction createLinkElementWithKey(key: string) {\r\n  const linkEl = document.createElement('link');\r\n  linkEl.setAttribute('rel', 'stylesheet');\r\n  linkEl.setAttribute('type', 'text/css');\r\n  linkEl.classList.add(`style-manager-${key}`);\r\n  document.head.appendChild(linkEl);\r\n  return linkEl;\r\n}\r\n\r\nfunction getExistingLinkElementByKey(key: string) {\r\n  return document.head.querySelector(`link[rel=\"stylesheet\"].style-manager-${key}`);\r\n}\r\n\r\nfunction getLinkElementForKey(key: string) {\r\n  return getExistingLinkElementByKey(key) || createLinkElementWithKey(key);\r\n}\r\n",
             "type": "injectable"
         },
         {
@@ -1201,75 +1289,6 @@
                 ]
             },
             "type": "injectable"
-        },
-        {
-            "name": "ThemeStorageService",
-            "id": "injectable-ThemeStorageService-c8c2761822fc50750df849443755ee56",
-            "file": "src/app/shared/components/theme-picker/theme-storage/theme-storage.service.ts",
-            "properties": [
-                {
-                    "name": "onThemeUpdate",
-                    "defaultValue": "new EventEmitter<DocsSiteTheme>()",
-                    "type": "EventEmitter<DocsSiteTheme>",
-                    "optional": false,
-                    "description": "",
-                    "line": 19
-                },
-                {
-                    "name": "storageKey",
-                    "defaultValue": "'kanpm-theme-storage-current-name'",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 17,
-                    "modifierKind": [
-                        115
-                    ]
-                }
-            ],
-            "methods": [
-                {
-                    "name": "clearStorage",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 37
-                },
-                {
-                    "name": "getStoredThemeName",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "string | null",
-                    "typeParameters": [],
-                    "line": 29
-                },
-                {
-                    "name": "storeTheme",
-                    "args": [
-                        {
-                            "name": "theme",
-                            "type": "DocsSiteTheme"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 21,
-                    "jsdoctags": [
-                        {
-                            "name": "theme",
-                            "type": "DocsSiteTheme",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "description": "",
-            "sourceCode": "import { Injectable, EventEmitter } from '@angular/core';\r\n\r\nexport interface DocsSiteTheme {\r\n  name: string;\r\n  displayName?: string;\r\n  accent: string;\r\n  primary: string;\r\n  isDark?: boolean;\r\n  isDefault?: boolean;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class ThemeStorageService {\r\n\r\n  static storageKey = 'kanpm-theme-storage-current-name';\r\n\r\n  onThemeUpdate: EventEmitter<DocsSiteTheme> = new EventEmitter<DocsSiteTheme>();\r\n\r\n  storeTheme(theme: DocsSiteTheme) {\r\n    try {\r\n      window.localStorage[ThemeStorageService.storageKey] = theme.name;\r\n    } catch { }\r\n\r\n    this.onThemeUpdate.emit(theme);\r\n  }\r\n\r\n  getStoredThemeName(): string | null {\r\n    try {\r\n      return window.localStorage[ThemeStorageService.storageKey] || null;\r\n    } catch {\r\n      return null;\r\n    }\r\n  }\r\n\r\n  clearStorage() {\r\n    try {\r\n      window.localStorage.removeItem(ThemeStorageService.storageKey);\r\n    } catch { }\r\n  }\r\n}\r\n",
-            "type": "injectable"
         }
     ],
     "classes": [
@@ -1358,7 +1377,7 @@
                 "args": [],
                 "line": 10
             },
-            "templateData": "<div class=\"root-container\">\r\n  <!-- <kanpm-nav-header></kanpm-nav-header> -->\r\n  <mat-toolbar color=\"primary\" class=\"main-header-nav\">\r\n    <span class=\"mat-h1\">Kanpm</span>\r\n    <div class=\"flex-spacer\">\r\n      <mat-form-field class=\"group-search\">\r\n        <input matInput type=\"text\">\r\n        <button mat-button matSuffix mat-icon-button aria-label=\"search\">\r\n          <mat-icon>search</mat-icon>\r\n        </button>\r\n      </mat-form-field>\r\n    </div>\r\n    <div class=\"team-selector-container\">\r\n      <span class=\"mat-body\">市场监管项目组</span>\r\n      <mat-icon class=\"team-switch-button\" routerLink=\"/teamSelect\">swap_horiz</mat-icon>\r\n    </div>\r\n    <nz-divider nzType=\"vertical\"></nz-divider>\r\n    <kanpm-theme-picker></kanpm-theme-picker>\r\n    <mat-icon class=\"header-chat-button\">sms</mat-icon>\r\n    <nz-divider nzType=\"vertical\"></nz-divider>\r\n    <nz-avatar nzIcon=\"user\"></nz-avatar>\r\n  </mat-toolbar>\r\n  <div class=\"main-content-container\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n</div>"
+            "templateData": "<div class=\"root-container\">\r\n  <!-- <kanpm-nav-header></kanpm-nav-header> -->\r\n  <mat-toolbar color=\"primary\" class=\"main-header-nav\">\r\n    <span class=\"mat-h1\">Kanpm</span>\r\n    <div class=\"flex-spacer\">\r\n      <mat-form-field class=\"group-search\">\r\n        <input matInput type=\"text\">\r\n        <button mat-button matSuffix mat-icon-button aria-label=\"search\">\r\n          <mat-icon>search</mat-icon>\r\n        </button>\r\n      </mat-form-field>\r\n    </div>\r\n    <div class=\"team-selector-container\">\r\n      <span class=\"mat-body\">市场监管项目组</span>\r\n      <mat-icon class=\"team-switch-button\" routerLink=\"/teamSelect\">swap_horiz</mat-icon>\r\n    </div>\r\n    <mat-divider vertical style=\"height: 20px; margin: 0 10px;\"></mat-divider>\r\n    <kanpm-theme-picker></kanpm-theme-picker>\r\n    <mat-divider vertical style=\"height: 20px;margin: 0 10px;\"></mat-divider>\r\n    <nz-avatar nzIcon=\"user\"></nz-avatar>\r\n  </mat-toolbar>\r\n  <mat-sidenav-container class=\"main-content-container\">\r\n    <mat-sidenav-content>\r\n      <router-outlet></router-outlet>\r\n    </mat-sidenav-content>\r\n  </mat-sidenav-container>\r\n</div>"
         },
         {
             "name": "AuthenticationRootComponent",
@@ -1426,7 +1445,7 @@
         },
         {
             "name": "AvatarComponent",
-            "id": "component-AvatarComponent-b986ed86adda0a48482130ee9bd6fd29",
+            "id": "component-AvatarComponent-0a87024693c92677793379b74e8e3205",
             "file": "src/app/shared/components/avatar/avatar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1467,7 +1486,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'kanpm-avatar',\r\n  templateUrl: './avatar.component.html',\r\n  styleUrls: ['./avatar.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class AvatarComponent implements OnInit {\r\n\r\n  @Input() avatar: string;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\n\n@Component({\n  selector: 'kanpm-avatar',\n  templateUrl: './avatar.component.html',\n  styleUrls: ['./avatar.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class AvatarComponent implements OnInit {\n\n  @Input() avatar: string;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2035,7 +2054,7 @@
                     }
                 }
             },
-            "templateData": "<h1 mat-dialog-title>Create a new project</h1>\r\n<mat-dialog-content>\r\n    <form [formGroup]=\"createProjectForm\">\r\n        <div class=\"form-field-row\">\r\n            <mat-form-field appearance=\"outline\">\r\n                <mat-label>project name</mat-label>\r\n                <input matInput formControlName=\"projectName\" required>\r\n                <mat-error *ngIf=\"projectName.errors?.required\">Project name is required</mat-error>\r\n                <mat-error *ngIf=\"projectName.errors?.maxlength\">\r\n                    Project name letters should less than {{projectName.errors?.maxlength.requiredLength}}.\r\n                </mat-error>\r\n            </mat-form-field>\r\n            <div class=\"field-feedback\">\r\n                <mat-icon class=\"checked-icon\" *ngIf=\"projectName.dirty&&projectName.valid\">check_circle_outline</mat-icon>\r\n                <mat-icon color=\"warn\" *ngIf=\"projectName.dirty&&projectName.invalid\">highlight_off</mat-icon>\r\n                <mat-icon color=\"accent\" *ngIf=\"projectName.pending\">hourglass_empty</mat-icon>\r\n            </div>\r\n        </div>\r\n        <div class=\"form-field-row\">\r\n            <mat-form-field appearance=\"outline\">\r\n                <mat-label>description</mat-label>\r\n                <textarea matInput formControlName=\"description\"></textarea>\r\n                <mat-error *ngIf=\"description.errors?.maxlength\">\r\n                    Project description letters should less than {{description.errors?.maxlength.requiredLength}}.\r\n                </mat-error>\r\n            </mat-form-field>\r\n            <div class=\"field-feedback\">\r\n                <mat-icon class=\"checked-icon\" *ngIf=\"description.dirty&&description.valid\">check_circle_outline\r\n                </mat-icon>\r\n                <mat-icon color=\"warn\" *ngIf=\"description.dirty&&description.invalid\">highlight_off</mat-icon>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</mat-dialog-content>\r\n<div mat-dialog-actions [align]=\"'end'\">\r\n    <button mat-flat-button mat-dialog-close>cancel</button>\r\n    <button mat-flat-button color=\"primary\" [disabled]=\"!createProjectForm.valid\" (click)=\"createProject()\">create</button>\r\n</div>"
+            "templateData": "<h1 mat-dialog-title>Create a new project</h1>\n<mat-dialog-content>\n    <form [formGroup]=\"createProjectForm\">\n        <div class=\"form-field-row\">\n            <mat-form-field appearance=\"outline\">\n                <mat-label>project name</mat-label>\n                <input matInput formControlName=\"projectName\" required>\n                <mat-error *ngIf=\"projectName.errors?.required\">Project name is required</mat-error>\n                <mat-error *ngIf=\"projectName.errors?.maxlength\">\n                    Project name letters should less than {{projectName.errors?.maxlength.requiredLength}}.\n                </mat-error>\n            </mat-form-field>\n            <div class=\"field-feedback\">\n                <mat-icon class=\"checked-icon\" *ngIf=\"projectName.dirty&&projectName.valid\">check_circle_outline</mat-icon>\n                <mat-icon color=\"warn\" *ngIf=\"projectName.dirty&&projectName.invalid\">highlight_off</mat-icon>\n                <mat-icon color=\"accent\" *ngIf=\"projectName.pending\">hourglass_empty</mat-icon>\n            </div>\n        </div>\n        <div class=\"form-field-row\">\n            <mat-form-field appearance=\"outline\">\n                <mat-label>description</mat-label>\n                <textarea matInput formControlName=\"description\"></textarea>\n                <mat-error *ngIf=\"description.errors?.maxlength\">\n                    Project description letters should less than {{description.errors?.maxlength.requiredLength}}.\n                </mat-error>\n            </mat-form-field>\n            <div class=\"field-feedback\">\n                <mat-icon class=\"checked-icon\" *ngIf=\"description.dirty&&description.valid\">check_circle_outline\n                </mat-icon>\n                <mat-icon color=\"warn\" *ngIf=\"description.dirty&&description.invalid\">highlight_off</mat-icon>\n            </div>\n        </div>\n    </form>\n</mat-dialog-content>\n<div mat-dialog-actions [align]=\"'end'\">\n    <button mat-flat-button mat-dialog-close>cancel</button>\n    <button mat-flat-button color=\"primary\" [disabled]=\"!createProjectForm.valid\" (click)=\"createProject()\">create</button>\n</div>"
         },
         {
             "name": "ProjectListItemComponent",
@@ -2470,7 +2489,7 @@
         },
         {
             "name": "TaskCardComponent",
-            "id": "component-TaskCardComponent-02af061f48772b78d11c466cc767c858",
+            "id": "component-TaskCardComponent-dda79493752c33bde12e005b2cd2102d",
             "file": "src/app/shared/components/task-card/task-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2505,11 +2524,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-card',\r\n  templateUrl: './task-card.component.html',\r\n  styleUrls: ['./task-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskCardComponent implements OnInit {\r\n\r\n  // @Input() task: { name: string }\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\n\n@Component({\n  selector: 'kanpm-task-card',\n  templateUrl: './task-card.component.html',\n  styleUrls: ['./task-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TaskCardComponent implements OnInit {\n\n  // @Input() task: { name: string }\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".task-card {\r\n  display: block;\r\n  margin-bottom: 8px;\r\n  border-left: 4px solid green;\r\n}\r\n\r\n.card-content-wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n}\r\n\r\n.task-checkbox {\r\n  margin-right: 8px;\r\n}\r\n\r\n.task-content {\r\n  flex: 1 1 auto;\r\n  .task-title {\r\n    display: flex;\r\n    .title-text {\r\n      flex: 1;\r\n      margin-right: 8px;\r\n    }\r\n  }\r\n  .task-infos {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    .task-info {\r\n      margin-right: 8px;\r\n      margin-top: 4px;\r\n      white-space: nowrap;\r\n    }\r\n    .task-tag-red{\r\n      color: red;\r\n    }\r\n    .task-tag-blue{\r\n      color: blue;\r\n    }\r\n    .task-tag-green{\r\n      color: green;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ".task-card {\n  display: block;\n  margin-bottom: 8px;\n  border-left: 4px solid green;\n}\n\n.card-content-wrapper {\n  display: flex;\n  flex-direction: row;\n  align-items: flex-start;\n}\n\n.task-checkbox {\n  margin-right: 8px;\n}\n\n.task-content {\n  flex: 1 1 auto;\n  .task-title {\n    display: flex;\n    .title-text {\n      flex: 1;\n      margin-right: 8px;\n    }\n  }\n  .task-infos {\n    display: flex;\n    flex-wrap: wrap;\n    .task-info {\n      display: flex;\n      align-items: center;\n      margin-right: 8px;\n      margin-top: 4px;\n      white-space: nowrap;\n    }\n    .task-tag-red {\n      color: red;\n    }\n    .task-tag-blue {\n      color: blue;\n    }\n    .task-tag-green {\n      color: green;\n    }\n  }\n}\n",
                     "styleUrl": "./task-card.component.scss"
                 }
             ],
@@ -2523,7 +2542,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-card class=\"task-card\">\r\n  <div class=\"card-content-wrapper\">\r\n    <mat-checkbox class=\"task-checkbox\"></mat-checkbox>\r\n    <!-- title + executor -->\r\n    <div class=\"task-content\">\r\n      <section class=\"task-title\">\r\n        <header class=\"title-text mat-h4\">task test: Some description about this,\r\n          if this description too long to display, it\r\n          will be slice with...</header>\r\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\r\n      </section>\r\n      <!-- task infos -->\r\n      <section class=\"task-infos\">\r\n        <div class=\"task-info mat-caption\">\r\n          <mat-icon>home</mat-icon>\r\n          <span>2 complete / 7 total</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>2020/06/19</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>06/25</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>day repeat</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>remark</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption\">\r\n          <span>⚪</span><span>accessory</span>\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-red\">\r\n          important\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-blue\">\r\n          developing\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-green\">\r\n          normal\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</mat-card>"
+            "templateData": "<mat-card class=\"task-card\">\n  <div class=\"card-content-wrapper\">\n    <mat-checkbox class=\"task-checkbox\"></mat-checkbox>\n    <!-- title + executor -->\n    <div class=\"task-content\">\n      <section class=\"task-title\">\n        <header class=\"title-text mat-h4\">task test: Some description about this,\n          if this description too long to display, it\n          will be slice with...</header>\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\n      </section>\n      <!-- task infos -->\n      <section class=\"task-infos\">\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">list</mat-icon>\n          <span>2 complete / 7 total</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">calendar_today</mat-icon>\n          <span>2020/06/19</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">alarm_on</mat-icon>\n          <span>06/25</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">repeat</mat-icon>\n          <span>day repeat</span>\n        </div>\n        <div class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">description</mat-icon>\n        </div>\n        <div class=\" task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">attachment</mat-icon>\n        </div>\n        <div class=\"task-info mat-caption task-tag-red\">\n          important\n        </div>\n        <div class=\"task-info mat-caption task-tag-blue\">\n          developing\n        </div>\n        <div class=\"task-info mat-caption task-tag-green\">\n          normal\n        </div>\n      </section>\n    </div>\n  </div>\n</mat-card>"
         },
         {
             "name": "TaskDetailComponent",
@@ -3149,7 +3168,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<section class=\"project-list\">\r\n    <h3 class=\"mat-h3\">项目列表</h3>\r\n    <ng-container *ngFor=\"let project of projectList\">\r\n        <kanpm-project-list-item [project]=\"project\" (projectClick)=\"routeToProjectDetail($event)\">\r\n        </kanpm-project-list-item>\r\n    </ng-container>\r\n    <button class=\"project-add-button\" (click)=\"openProjectCreatorDialog()\" mat-raised-button\r\n        color=\"primary\">新建项目</button>\r\n</section>"
+            "templateData": "<section class=\"project-list\">\n    <h3 class=\"mat-h3\">项目列表</h3>\n    <ng-container *ngFor=\"let project of projectList\">\n        <kanpm-project-list-item [project]=\"project\" (projectClick)=\"routeToProjectDetail($event)\">\n        </kanpm-project-list-item>\n    </ng-container>\n    <button class=\"project-add-button\" (click)=\"openProjectCreatorDialog()\" mat-raised-button\n        color=\"primary\">新建项目</button>\n</section>"
         },
         {
             "name": "TeamSelectComponent",
@@ -3269,7 +3288,7 @@
         },
         {
             "name": "ThemePickerComponent",
-            "id": "component-ThemePickerComponent-fbee7e68571d3dae667dbf437c0cb14f",
+            "id": "component-ThemePickerComponent-b4c02b3dfe494b67bff34d40f7a61a48",
             "file": "src/app/shared/components/theme-picker/theme-picker.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -3294,35 +3313,87 @@
                     "type": "DocsSiteTheme",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 17
+                },
+                {
+                    "name": "darkModeThemeKey",
+                    "defaultValue": "'kanpm-storage-is-dark-mode'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "isDarkMode",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "storageThemeKey",
+                    "defaultValue": "'kanpm-storage-current-theme-name'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        112
+                    ]
                 },
                 {
                     "name": "styleManager",
                     "type": "StyleManagerService",
                     "optional": false,
                     "description": "",
-                    "line": 34,
+                    "line": 38,
                     "modifierKind": [
                         114
                     ]
                 },
                 {
                     "name": "themes",
-                    "defaultValue": "[\r\n    {\r\n      primary: '#3F51B5',\r\n      accent: '#E91E63',\r\n      displayName: 'Indigo & Pink - light',\r\n      name: 'indigo-pink',\r\n      isDark: false,\r\n      isDefault: true,\r\n    },\r\n    {\r\n      primary: '#8BC34A',\r\n      accent: '#FFC107',\r\n      displayName: 'Light-green & Amber - dark',\r\n      name: 'lightgreen-amber',\r\n      isDark: true,\r\n    }\r\n  ]",
+                    "defaultValue": "[\r\n    {\r\n      primary: '#3F51B5',\r\n      accent: '#E91E63',\r\n      displayName: 'Indigo & Pink',\r\n      name: 'indigo-pink',\r\n      isDark: false,\r\n      isDefault: true,\r\n    },\r\n    {\r\n      primary: '#8BC34A',\r\n      accent: '#FFC107',\r\n      displayName: 'Light-green & Amber',\r\n      name: 'light-green-orange',\r\n      isDark: true,\r\n    }\r\n  ]",
                     "type": "DocsSiteTheme[]",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 19
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "darkModeSwitch",
+                    "args": [
+                        {
+                            "name": "isDarkMode",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "jsdoctags": [
+                        {
+                            "name": "isDarkMode",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39
+                    "line": 42
                 },
                 {
                     "name": "selectTheme",
@@ -3335,7 +3406,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 64,
                     "jsdoctags": [
                         {
                             "name": "themeName",
@@ -3352,11 +3423,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';\r\nimport { DocsSiteTheme, ThemeStorageService } from './theme-storage/theme-storage.service';\r\nimport { StyleManagerService } from './style-manager/style-manager.service';\r\nimport { LiveAnnouncer } from '@angular/cdk/a11y';\r\n\r\n@Component({\r\n  selector: 'kanpm-theme-picker',\r\n  templateUrl: './theme-picker.component.html',\r\n  styleUrls: ['./theme-picker.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ThemePickerComponent implements OnInit {\r\n\r\n  currentTheme: DocsSiteTheme;\r\n  themes: DocsSiteTheme[] = [\r\n    {\r\n      primary: '#3F51B5',\r\n      accent: '#E91E63',\r\n      displayName: 'Indigo & Pink - light',\r\n      name: 'indigo-pink',\r\n      isDark: false,\r\n      isDefault: true,\r\n    },\r\n    {\r\n      primary: '#8BC34A',\r\n      accent: '#FFC107',\r\n      displayName: 'Light-green & Amber - dark',\r\n      name: 'lightgreen-amber',\r\n      isDark: true,\r\n    }\r\n  ];\r\n\r\n  constructor(\r\n    public styleManager: StyleManagerService,\r\n    private _themeStorage: ThemeStorageService,\r\n    private liveAnnouncer: LiveAnnouncer,\r\n  ) { }\r\n\r\n  ngOnInit(): void {\r\n    const currentThemeName = this._themeStorage.getStoredThemeName();\r\n    if (currentThemeName) {\r\n      this.selectTheme(currentThemeName);\r\n    }\r\n  }\r\n\r\n  selectTheme(themeName: string) {\r\n    const theme = this.themes.find(currentTheme => currentTheme.name === themeName);\r\n\r\n    if (!theme) {\r\n      return;\r\n    }\r\n\r\n    this.currentTheme = theme;\r\n\r\n    if (theme.isDefault) {\r\n      this.styleManager.removeStyle('theme');\r\n    } else {\r\n      this.styleManager.setStyle('theme', `assets/themes/${theme.name}.css`);\r\n    }\r\n\r\n    if (this.currentTheme) {\r\n      this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);\r\n      this._themeStorage.storeTheme(this.currentTheme);\r\n    }\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';\r\nimport { DocsSiteTheme, LocalStorageService } from 'core/services/localstorage.service';\r\nimport { StyleManagerService } from 'core/services/style-manager/style-manager.service';\r\nimport { MatSlideToggleChange } from '@angular/material/slide-toggle';\r\n\r\n@Component({\r\n  selector: 'kanpm-theme-picker',\r\n  templateUrl: './theme-picker.component.html',\r\n  styleUrls: ['./theme-picker.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class ThemePickerComponent implements OnInit {\r\n\r\n  private storageThemeKey = 'kanpm-storage-current-theme-name';\r\n  private darkModeThemeKey = 'kanpm-storage-is-dark-mode';\r\n\r\n  currentTheme: DocsSiteTheme;\r\n  isDarkMode = false;\r\n  themes: DocsSiteTheme[] = [\r\n    {\r\n      primary: '#3F51B5',\r\n      accent: '#E91E63',\r\n      displayName: 'Indigo & Pink',\r\n      name: 'indigo-pink',\r\n      isDark: false,\r\n      isDefault: true,\r\n    },\r\n    {\r\n      primary: '#8BC34A',\r\n      accent: '#FFC107',\r\n      displayName: 'Light-green & Amber',\r\n      name: 'light-green-orange',\r\n      isDark: true,\r\n    }\r\n  ];\r\n\r\n  constructor(\r\n    public styleManager: StyleManagerService,\r\n    private themeStorage: LocalStorageService\r\n  ) { }\r\n\r\n  ngOnInit(): void {\r\n    const currentThemeName = this.themeStorage.getValue(this.storageThemeKey);\r\n    const isDarkMode = this.themeStorage.getValue(this.darkModeThemeKey);\r\n    if (currentThemeName) {\r\n      this.selectTheme(currentThemeName);\r\n    }\r\n    if (isDarkMode) {\r\n      this.darkModeSwitch(isDarkMode);\r\n    }\r\n  }\r\n\r\n  darkModeSwitch(isDarkMode: boolean): void {\r\n    this.isDarkMode = isDarkMode;\r\n    const body = document.getElementsByTagName('body')[0];\r\n    if (this.isDarkMode) {\r\n      body.classList.add('dark-theme');\r\n    } else {\r\n      body.classList.remove('dark-theme');\r\n    }\r\n    this.themeStorage.storeValue(this.darkModeThemeKey, isDarkMode);\r\n  }\r\n\r\n  selectTheme(themeName: string) {\r\n    const theme = this.themes.find(currentTheme => currentTheme.name === themeName);\r\n\r\n    if (!theme) {\r\n      return;\r\n    }\r\n\r\n    this.currentTheme = theme;\r\n\r\n    if (theme.isDefault) {\r\n      this.styleManager.removeStyle('theme');\r\n    } else {\r\n      this.styleManager.setStyle('theme', `themes/${theme.name}.css`);\r\n    }\r\n\r\n    this.themeStorage.storeValue(this.storageThemeKey, themeName);\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n  display: block;\r\n}\r\n\r\n.theme-picker-container {\r\n  display: flex;\r\n  align-items: center;\r\n  margin: 0 5px;\r\n}\r\n\r\n.theme-picker-button {\r\n  cursor: pointer;\r\n  height: 18px;\r\n  width: 18px;\r\n  font-size: 18px;\r\n}\r\n",
+                    "data": ":host {\r\n  display: block;\r\n}\r\n\r\n.theme-picker-container {\r\n  display: flex;\r\n  align-items: center;\r\n  margin: 0 5px;\r\n}\r\n\r\n.theme-picker-button {\r\n  cursor: pointer;\r\n  height: 18px;\r\n  width: 18px;\r\n  font-size: 18px;\r\n}\r\n\r\n.dark-mode-toggle{\r\n  margin: 5px 15px;\r\n}\r\n",
                     "styleUrl": "./theme-picker.component.scss"
                 }
             ],
@@ -3370,15 +3441,11 @@
                         "type": "StyleManagerService"
                     },
                     {
-                        "name": "_themeStorage",
-                        "type": "ThemeStorageService"
-                    },
-                    {
-                        "name": "liveAnnouncer",
-                        "type": "LiveAnnouncer"
+                        "name": "themeStorage",
+                        "type": "LocalStorageService"
                     }
                 ],
-                "line": 31,
+                "line": 35,
                 "jsdoctags": [
                     {
                         "name": "styleManager",
@@ -3388,15 +3455,8 @@
                         }
                     },
                     {
-                        "name": "_themeStorage",
-                        "type": "ThemeStorageService",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "liveAnnouncer",
-                        "type": "LiveAnnouncer",
+                        "name": "themeStorage",
+                        "type": "LocalStorageService",
                         "tagName": {
                             "text": "param"
                         }
@@ -3406,7 +3466,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"theme-picker-container \">\r\n  <mat-icon class=\"theme-picker-button\" [mat-menu-trigger-for]=\"themeMenu\">format_color_fill</mat-icon>\r\n</div>\r\n\r\n<mat-menu #themeMenu xPosition=\"before\">\r\n  <button mat-menu-item *ngFor=\"let theme of themes\" (click)=\"selectTheme(theme.name)\">\r\n    <span>{{theme.displayName}}</span>\r\n  </button>\r\n</mat-menu>"
+            "templateData": "<div class=\"theme-picker-container \">\r\n  <mat-icon class=\"theme-picker-button\" [mat-menu-trigger-for]=\"themeMenu\">format_color_fill</mat-icon>\r\n</div>\r\n\r\n<mat-menu #themeMenu>\r\n  <mat-slide-toggle [(ngModel)]=\"isDarkMode\" class=\"dark-mode-toggle\" (change)=\"darkModeSwitch($event.checked)\">Slide me!\r\n  </mat-slide-toggle>\r\n  <mat-divider></mat-divider>\r\n  <button mat-menu-item *ngFor=\"let theme of themes\" (click)=\"selectTheme(theme.name)\">\r\n    <span>{{theme.displayName}}</span>\r\n  </button>\r\n</mat-menu>"
         }
     ],
     "modules": [
@@ -3913,14 +3973,6 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "AuthenticationMockData",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "_mock/_authentication.ts",
-                "type": "object",
-                "defaultValue": "{\r\n    'POST api/auth/login': (req: MockRequest) => new HttpResponse({\r\n        body: {\r\n            accessToken: Mock.Random.id(),\r\n            user: Mock.mock({\r\n                'id|14': /[a-z][A-Z][0-9]/,\r\n                userName: /测试项目-\\w\\d{2}/,\r\n                isVerified: true,\r\n                createdTime: new Date().getTime(),\r\n            })\r\n        }\r\n    }),\r\n\r\n    'POST api/verify-username': (req: MockRequest) => new HttpResponse({\r\n        body: {\r\n            code: '20000',\r\n            data: Mock.mock({\r\n                'isUnique|1': true\r\n            })\r\n        }\r\n    })\r\n}"
-            },
-            {
                 "name": "CODEMESSAGE",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4018,14 +4070,6 @@
                 "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n]"
             },
             {
-                "name": "MOCKDATA",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "_mock/_projects.ts",
-                "type": "object",
-                "defaultValue": "{\r\n    'GET api/group-projects': (req: MockRequest) => new HttpResponse({\r\n        body: Mock.mock({\r\n            'data|3': [{\r\n                'id|14': /[a-z][A-Z][0-9]/,\r\n                projectName: /测试项目-\\w\\d{2}/\r\n            }]\r\n        })\r\n    }),\r\n    'GET api/group-collaborators': (req: MockRequest) => new HttpResponse({\r\n        body: Mock.mock({\r\n            'data|3': [{\r\n                name: /用户-\\w\\d{2}/\r\n            }]\r\n        })\r\n    }),\r\n}"
-            },
-            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4062,7 +4106,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/components/components.modules.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n    ThemePickerComponent,\r\n    TaskListItemComponent,\r\n    ProjectListItemComponent,\r\n    TaskCardComponent,\r\n    TaskDetailComponent,\r\n    AvatarComponent,\r\n    TeamCreatorComponent,\r\n    ProjectCreatorComponent\r\n]"
+                "defaultValue": "[\n    ThemePickerComponent,\n    TaskListItemComponent,\n    ProjectListItemComponent,\n    TaskCardComponent,\n    TaskDetailComponent,\n    AvatarComponent,\n    TeamCreatorComponent,\n    ProjectCreatorComponent\n]"
             },
             {
                 "name": "Small",
@@ -4102,7 +4146,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/components/task-card/task-card.stories.ts",
                 "type": "",
-                "defaultValue": "(args: TaskCardComponent) => ({\r\n    component: TaskCardComponent,\r\n    props: args,\r\n})"
+                "defaultValue": "(args: TaskCardComponent) => ({\n    component: TaskCardComponent,\n    props: args,\n})"
             },
             {
                 "name": "ZorroModules",
@@ -4110,13 +4154,13 @@
                 "subtype": "variable",
                 "file": "src/app/shared/third-parties/zorro.module.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
+                "defaultValue": "[\n    NzAvatarModule,\n    NzIconModule,\n    NzDividerModule,\n    NzTagModule,\n    NzCommentModule\n]"
             }
         ],
         "functions": [
             {
                 "name": "createLinkElementWithKey",
-                "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+                "file": "src/app/core/services/style-manager/style-manager.service.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "description": "",
@@ -4136,7 +4180,7 @@
             },
             {
                 "name": "getExistingLinkElementByKey",
-                "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+                "file": "src/app/core/services/style-manager/style-manager.service.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "description": "",
@@ -4156,7 +4200,7 @@
             },
             {
                 "name": "getLinkElementForKey",
-                "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+                "file": "src/app/core/services/style-manager/style-manager.service.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "description": "",
@@ -4178,16 +4222,6 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "_mock/_authentication.ts": [
-                {
-                    "name": "AuthenticationMockData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "_mock/_authentication.ts",
-                    "type": "object",
-                    "defaultValue": "{\r\n    'POST api/auth/login': (req: MockRequest) => new HttpResponse({\r\n        body: {\r\n            accessToken: Mock.Random.id(),\r\n            user: Mock.mock({\r\n                'id|14': /[a-z][A-Z][0-9]/,\r\n                userName: /测试项目-\\w\\d{2}/,\r\n                isVerified: true,\r\n                createdTime: new Date().getTime(),\r\n            })\r\n        }\r\n    }),\r\n\r\n    'POST api/verify-username': (req: MockRequest) => new HttpResponse({\r\n        body: {\r\n            code: '20000',\r\n            data: Mock.mock({\r\n                'isUnique|1': true\r\n            })\r\n        }\r\n    })\r\n}"
-                }
-            ],
             "src/app/core/interceptors/respond.interceptor.ts": [
                 {
                     "name": "CODEMESSAGE",
@@ -4360,16 +4394,6 @@
                     "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n]"
                 }
             ],
-            "_mock/_projects.ts": [
-                {
-                    "name": "MOCKDATA",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "_mock/_projects.ts",
-                    "type": "object",
-                    "defaultValue": "{\r\n    'GET api/group-projects': (req: MockRequest) => new HttpResponse({\r\n        body: Mock.mock({\r\n            'data|3': [{\r\n                'id|14': /[a-z][A-Z][0-9]/,\r\n                projectName: /测试项目-\\w\\d{2}/\r\n            }]\r\n        })\r\n    }),\r\n    'GET api/group-collaborators': (req: MockRequest) => new HttpResponse({\r\n        body: Mock.mock({\r\n            'data|3': [{\r\n                name: /用户-\\w\\d{2}/\r\n            }]\r\n        })\r\n    }),\r\n}"
-                }
-            ],
             "src/app/shared/components/task-card/task-card.stories.ts": [
                 {
                     "name": "Primary",
@@ -4385,7 +4409,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/components/task-card/task-card.stories.ts",
                     "type": "",
-                    "defaultValue": "(args: TaskCardComponent) => ({\r\n    component: TaskCardComponent,\r\n    props: args,\r\n})"
+                    "defaultValue": "(args: TaskCardComponent) => ({\n    component: TaskCardComponent,\n    props: args,\n})"
                 }
             ],
             "src/app/shared/components/components.modules.ts": [
@@ -4395,7 +4419,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/components/components.modules.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n    ThemePickerComponent,\r\n    TaskListItemComponent,\r\n    ProjectListItemComponent,\r\n    TaskCardComponent,\r\n    TaskDetailComponent,\r\n    AvatarComponent,\r\n    TeamCreatorComponent,\r\n    ProjectCreatorComponent\r\n]"
+                    "defaultValue": "[\n    ThemePickerComponent,\n    TaskListItemComponent,\n    ProjectListItemComponent,\n    TaskCardComponent,\n    TaskDetailComponent,\n    AvatarComponent,\n    TeamCreatorComponent,\n    ProjectCreatorComponent\n]"
                 }
             ],
             "src/app/shared/third-parties/zorro.module.ts": [
@@ -4405,15 +4429,15 @@
                     "subtype": "variable",
                     "file": "src/app/shared/third-parties/zorro.module.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
+                    "defaultValue": "[\n    NzAvatarModule,\n    NzIconModule,\n    NzDividerModule,\n    NzTagModule,\n    NzCommentModule\n]"
                 }
             ]
         },
         "groupedFunctions": {
-            "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts": [
+            "src/app/core/services/style-manager/style-manager.service.ts": [
                 {
                     "name": "createLinkElementWithKey",
-                    "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+                    "file": "src/app/core/services/style-manager/style-manager.service.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "description": "",
@@ -4433,7 +4457,7 @@
                 },
                 {
                     "name": "getExistingLinkElementByKey",
-                    "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+                    "file": "src/app/core/services/style-manager/style-manager.service.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "description": "",
@@ -4453,7 +4477,7 @@
                 },
                 {
                     "name": "getLinkElementForKey",
-                    "file": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
+                    "file": "src/app/core/services/style-manager/style-manager.service.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "description": "",
@@ -4579,26 +4603,6 @@
         "status": "low",
         "files": [
             {
-                "filePath": "_mock/_authentication.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "AuthenticationMockData",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "_mock/_projects.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "MOCKDATA",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "e2e/src/app.po.ts",
                 "type": "class",
                 "linktype": "classe",
@@ -4692,12 +4696,66 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/core/services/localstorage.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "LocalStorageService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/localstorage.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DocsSiteTheme",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/core/services/project.service.ts",
                 "type": "injectable",
                 "linktype": "injectable",
                 "name": "ProjectService",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/style-manager/style-manager.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "StyleManagerService",
+                "coveragePercent": 33,
+                "coverageCount": "1/3",
+                "status": "medium"
+            },
+            {
+                "filePath": "src/app/core/services/style-manager/style-manager.service.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "createLinkElementWithKey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/style-manager/style-manager.service.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "getExistingLinkElementByKey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/style-manager/style-manager.service.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "getLinkElementForKey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -4983,66 +5041,12 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "StyleManagerService",
-                "coveragePercent": 33,
-                "coverageCount": "1/3",
-                "status": "medium"
-            },
-            {
-                "filePath": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
-                "type": "function",
-                "linksubtype": "function",
-                "name": "createLinkElementWithKey",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
-                "type": "function",
-                "linksubtype": "function",
-                "name": "getExistingLinkElementByKey",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/components/theme-picker/style-manager/style-manager.service.ts",
-                "type": "function",
-                "linksubtype": "function",
-                "name": "getLinkElementForKey",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/shared/components/theme-picker/theme-picker.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ThemePickerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/components/theme-picker/theme-storage/theme-storage.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "ThemeStorageService",
-                "coveragePercent": 0,
-                "coverageCount": "0/6",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/components/theme-picker/theme-storage/theme-storage.service.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "DocsSiteTheme",
-                "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {

@@ -10,6 +10,8 @@ import { TeamCreatorComponent } from './team-creator/team-creator.component';
 import { ProjectCreatorComponent } from './project-creator/project-creator.component';
 import { ZorroModule } from 'shared/third-parties/zorro.module';
 import { MaterialModule } from 'shared/third-parties/material.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const SharedComponents = [
     ThemePickerComponent,
@@ -27,6 +29,8 @@ const SharedComponents = [
         ...SharedComponents
     ],
     imports: [
+        CommonModule,
+        FormsModule,
         MaterialModule,
         ZorroModule
     ],

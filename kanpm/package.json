@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "theme": "node-sass src/themes/ -o src/assets/themes",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -s ./.storybook-public -p 6006",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,

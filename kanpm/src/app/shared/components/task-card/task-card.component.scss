@@ -1,7 +1,15 @@
 .task-card {
   display: block;
   margin-bottom: 8px;
-  border-left: 4px solid green;
+  &.low{
+    border-left: 2px solid green;
+  }
+  &.normal{
+    border-left: 2px solid orange;
+  }
+  &.high{
+    border-left: 2px solid red;
+  }
 }
 
 .card-content-wrapper {
