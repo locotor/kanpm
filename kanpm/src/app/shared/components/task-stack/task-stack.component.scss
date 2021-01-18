@@ -1,0 +1,117 @@
+@import "~@angular/material/theming";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.tasks-root-container {
+  height: 100%;
+}
+
+.task-detail-container {
+  width: 50%;
+  min-width: 660px;
+  max-width: 879px;
+}
+
+.task-list-group-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+
+  .kanban-header {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    margin: 8px 0;
+
+    .kanban-switch-button-group {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+
+  .kanban-wrapper {
+    display: flex;
+    align-items: flex-start;
+    height: calc(100% - 56px);
+  }
+}
+
+.task-list-wrapper {
+  flex-shrink: 0;
+  width: 296px;
+  height: 100%;
+  margin-right: 16px;
+  border-radius: 5px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0 10px;
+  max-height: 100%;
+  border-radius: 3px;
+
+  .list-header {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      margin: 0;
+    }
+  }
+
+  ul.list-content {
+    flex: 1;
+    min-height: 90px;
+    overflow: auto;
+  }
+
+  .list-footer {
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+
+    .task-quick-create-button {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      span {
+        margin-left: 6px;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    .task-quick-create-pane {
+      width: 100%;
+
+      .task-additional-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+
+        .icon {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+.cdk-drag-preview {
+  opacity: 100;
+  @include mat-elevation(24);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

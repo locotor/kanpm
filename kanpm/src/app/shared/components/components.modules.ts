@@ -12,6 +12,7 @@ import { ZorroModule } from 'shared/third-parties/zorro.module';
 import { MaterialModule } from 'shared/third-parties/material.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TaskStackComponent } from './task-stack/task-stack.component';
 
 const SharedComponents = [
     ThemePickerComponent,
@@ -21,7 +22,8 @@ const SharedComponents = [
     TaskDetailComponent,
     AvatarComponent,
     TeamCreatorComponent,
-    ProjectCreatorComponent
+    ProjectCreatorComponent,
+    TaskStackComponent
 ]
 
 @NgModule({

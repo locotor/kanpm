@@ -1,0 +1,41 @@
+<div class="task-list-wrapper mat-elevation-z8">
+    <div class="task-list">
+      <div cdkDragHandle class="list-header">
+        <span class="mat-h3">
+          list name<em>0</em>/4
+        </span>
+        <mat-icon>more_horiz</mat-icon>
+      </div>
+      <!-- task card drag zone -->
+      <ul class="list-content">
+        <li *ngFor="let task of tasks; index as i">
+          <kanpm-task-card [task]=task></kanpm-task-card>
+        </li>
+      </ul>
+      <div class="list-footer">
+        <div class="task-quick-create-pane" *ngIf="isShowCreatePane;else create_button">
+          <mat-form-field style="width: 100%;">
+            <mat-label>任务描述</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+          <div class="task-additional-info">
+            <div>
+              <mat-icon class="icon">calendar_today</mat-icon>
+              <mat-icon class="icon">person_add</mat-icon>
+            </div>
+            <div>
+              <mat-checkbox></mat-checkbox> 只对参与者可见
+            </div>
+          </div>
+          <button mat-raised-button color="primary">创建任务</button>
+          <button mat-button (click)="isShowCreatePane=false">取消</button>
+        </div>
+        <ng-template #create_button>
+          <div class="task-quick-create-button" (click)="isShowCreatePane=true">
+            <mat-icon>add</mat-icon>
+            <span>新建任务</span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
