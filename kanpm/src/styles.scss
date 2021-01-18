@@ -1,60 +1,50 @@
 @import "~@angular/material/theming";
-@import "./themes/indigo-pink-default.scss";
+
+/* default material theme */
 
 @include mat-core();
+
+$default-primary: mat-palette($mat-indigo);
+$default-accent: mat-palette($mat-pink);
+$default-theme: mat-light-theme(
+  (
+    color: (
+      primary: $default-primary,
+      accent: $default-accent,
+    ),
+  )
+);
+$default-theme-dark: mat-dark-theme(
+  (
+    color: (
+      primary: $default-primary,
+      accent: $default-accent,
+    ),
+  )
+);
+
+@include angular-material-theme($default-theme);
+.dark-theme {
+  @include angular-material-color($default-theme-dark);
+}
+
+/* You can add global styles to this file, and also import other style files */
 
 html,
 body {
   height: 100%;
 }
-
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-ul,
-li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.form-field-row {
-  display: flex;
-
-  mat-form-field {
-    flex-grow: 1;
-  }
-
-  // keep same space with mat-form-field
-  .field-feedback {
-    display: flex;
-    align-items: center;
-    width: 48px;
-    padding-left: 8px;
-    margin: 0.25em 0;
-    padding-bottom: 1.34375em;
-
-    .checked-icon {
-      color: #8bc34a;
-    }
-
-    .failed-icon {
-      color: #f44336;
-    }
-  }
-}
-
-.mat-basic-chip {
-  padding: 4px 6px;
-  margin: 0 5px 5px 0;
-  border-radius: 4px;
-}
+// to disable chrome user agent stylesheets
+// input:-internal-autofill-previewed,
+// input:-internal-autofill-selected {
+//   -webkit-text-fill-color: map-get($foreground, text);
+//   transition: background-color 5000s ease-in-out 0s;
+// }
 
 .task-card {
   .mat-checkbox-inner-container {

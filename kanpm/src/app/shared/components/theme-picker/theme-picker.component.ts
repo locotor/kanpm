@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { DocsSiteTheme, ThemeStorageService } from './theme-storage/theme-storage.service';
-import { StyleManagerService } from './style-manager/style-manager.service';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { DocsSiteTheme, LocalStorageService } from 'core/services/localstorage.service';
+import { StyleManagerService } from 'core/services/style-manager/style-manager.service';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'kanpm-theme-picker',
@@ -11,12 +11,16 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 })
 export class ThemePickerComponent implements OnInit {
 
+  private storageThemeKey = 'kanpm-storage-current-theme-name';
+  private darkModeThemeKey = 'kanpm-storage-is-dark-mode';
+
   currentTheme: DocsSiteTheme;
+  isDarkMode = false;
   themes: DocsSiteTheme[] = [
     {
       primary: '#3F51B5',
       accent: '#E91E63',
-      displayName: 'Indigo & Pink - light',
+      displayName: 'Indigo & Pink',
       name: 'indigo-pink',
       isDark: false,
       isDefault: true,
@@ -24,23 +28,37 @@ export class ThemePickerComponent implements OnInit {
     {
       primary: '#8BC34A',
       accent: '#FFC107',
-      displayName: 'Light-green & Amber - dark',
-      name: 'lightgreen-amber',
+      displayName: 'Light-green & Amber',
+      name: 'light-green-orange',
       isDark: true,
     }
   ];
 
   constructor(
     public styleManager: StyleManagerService,
-    private _themeStorage: ThemeStorageService,
-    private liveAnnouncer: LiveAnnouncer,
+    private themeStorage: LocalStorageService
   ) { }
 
   ngOnInit(): void {
-    const currentThemeName = this._themeStorage.getStoredThemeName();
+    const currentThemeName = this.themeStorage.getValue(this.storageThemeKey);
+    const isDarkMode = this.themeStorage.getValue(this.darkModeThemeKey);
     if (currentThemeName) {
       this.selectTheme(currentThemeName);
     }
+    if (isDarkMode) {
+      this.darkModeSwitch(isDarkMode);
+    }
+  }
+
+  darkModeSwitch(isDarkMode: boolean): void {
+    this.isDarkMode = isDarkMode;
+    const body = document.getElementsByTagName('body')[0];
+    if (this.isDarkMode) {
+      body.classList.add('dark-theme');
+    } else {
+      body.classList.remove('dark-theme');
+    }
+    this.themeStorage.storeValue(this.darkModeThemeKey, isDarkMode);
   }
 
   selectTheme(themeName: string) {
@@ -55,13 +73,10 @@ export class ThemePickerComponent implements OnInit {
     if (theme.isDefault) {
       this.styleManager.removeStyle('theme');
     } else {
-      this.styleManager.setStyle('theme', `assets/themes/${theme.name}.css`);
+      this.styleManager.setStyle('theme', `themes/${theme.name}.css`);
     }
 
-    if (this.currentTheme) {
-      this.liveAnnouncer.announce(`${theme.displayName} theme selected.`, 'polite', 3000);
-      this._themeStorage.storeTheme(this.currentTheme);
-    }
+    this.themeStorage.storeValue(this.storageThemeKey, themeName);
   }
 
 }
