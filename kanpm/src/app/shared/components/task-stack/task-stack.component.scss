@@ -36,10 +36,16 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
 
   .task-list{
+    height: 100%;
     width: 100%;
+    padding: 0 10px;
+    overflow-y: auto;
+    li{
+      margin-bottom: 10px;
+    }
   }
 
   .empty-content-tips{

@@ -12,6 +12,7 @@ export const defaultTasksData = {
 
 export default {
     title: '组件/任务卡',
+    component: TaskCardComponent,
     decorators: [
         moduleMetadata({
             imports: [
@@ -25,7 +26,6 @@ export default {
 };
 
 const Template = (args: TaskCardComponent) => ({
-    component: TaskCardComponent,
     props: args,
 });
 

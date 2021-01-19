@@ -1,4 +1,9 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ZorroModule } from 'shared/third-parties/zorro.module';
+import { MaterialModule } from 'shared/third-parties/material.module';
 
 import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 import { TaskListItemComponent } from './task-list-item/task-list-item.component';
@@ -8,10 +13,6 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { TeamCreatorComponent } from './team-creator/team-creator.component';
 import { ProjectCreatorComponent } from './project-creator/project-creator.component';
-import { ZorroModule } from 'shared/third-parties/zorro.module';
-import { MaterialModule } from 'shared/third-parties/material.module';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskStackComponent } from './task-stack/task-stack.component';
 
 const SharedComponents = [
@@ -24,7 +25,7 @@ const SharedComponents = [
     TeamCreatorComponent,
     ProjectCreatorComponent,
     TaskStackComponent
-]
+];
 
 @NgModule({
     declarations: [

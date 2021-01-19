@@ -6,6 +6,7 @@ import { TaskStackComponent } from './task-stack.component';
 export default {
     title: '组件/任务列表',
     excludeStories: /.*Data$/,
+    component: TaskStackComponent,
     decorators: [
         moduleMetadata({
             imports: [SharedModule]
@@ -20,9 +21,7 @@ export const defaultTasksListData = [
 ];
 
 const Template = (args: TaskStackComponent) => ({
-    component: TaskStackComponent,
-    props: args,
-    template: '<kanpm-task-stack></kanpm-task-stack>'
+    props: args
 });
 
 export const defaultStatus = Template.bind({});
@@ -46,7 +45,7 @@ overflowStatus.decorators = [
         const story = storyFunc();
         return {
             ...story,
-            template: `<div style="height: 400px; padding:10px">${story.template}</div>`,
+            template: `<div style="height: 400px; padding:20px">${story.template}</div>`,
         };
     },
 ];
