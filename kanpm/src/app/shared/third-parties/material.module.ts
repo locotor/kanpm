@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const MaterialModules = [
   MatSidenavModule,
@@ -33,7 +34,8 @@ const MaterialModules = [
   MatDialogModule,
   MatListModule,
   MatPaginatorModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({

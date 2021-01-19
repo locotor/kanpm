@@ -1,8 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { moduleMetadata } from '@storybook/angular';
-import { MaterialModule } from 'shared/third-parties/material.module';
-import { ZorroModule } from 'shared/third-parties/zorro.module';
+import { Meta, moduleMetadata } from '@storybook/angular';
+import { SharedModule } from 'shared/shared.module';
 import { TaskCardComponent } from './task-card.component';
 
 export const defaultTasksData = {
@@ -12,18 +9,16 @@ export const defaultTasksData = {
 
 export default {
     title: '组件/任务卡',
+    excludeStories: /.*Data$/,
     component: TaskCardComponent,
     decorators: [
         moduleMetadata({
             imports: [
-                CommonModule,
-                HttpClientModule,
-                MaterialModule,
-                ZorroModule
+                SharedModule
             ],
         })
     ]
-};
+} as Meta;
 
 const Template = (args: TaskCardComponent) => ({
     props: args,

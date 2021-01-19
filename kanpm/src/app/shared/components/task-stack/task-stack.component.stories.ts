@@ -45,7 +45,7 @@ overflowStatus.decorators = [
         const story = storyFunc();
         return {
             ...story,
-            template: `<div style="height: 400px; padding:20px">${story.template}</div>`,
+            template: `<div style="height: 800px; padding:20px">${story.template}</div>`,
         };
     },
 ];

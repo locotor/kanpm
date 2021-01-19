@@ -2517,7 +2517,7 @@
         },
         {
             "name": "TaskCardComponent",
-            "id": "component-TaskCardComponent-1803f8ee1cdbde498cde2395c0a2f703",
+            "id": "component-TaskCardComponent-12ee1e0bb65efe08703ef659cd7e67de",
             "file": "src/app/shared/components/task-card/task-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2548,7 +2548,7 @@
                     "name": "completedSubTask",
                     "args": [],
                     "optional": false,
-                    "returnType": "any",
+                    "returnType": "number",
                     "typeParameters": [],
                     "line": 19
                 },
@@ -2566,11 +2566,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\nimport { Task } from 'core/types/task';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-card',\r\n  templateUrl: './task-card.component.html',\r\n  styleUrls: ['./task-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskCardComponent implements OnInit {\r\n\r\n  @Input() task: Task;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  completedSubTask() {\r\n    return this.task.subTasks.filter(task => task.isComplete).length;\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\nimport { Task } from 'core/types/task';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-card',\r\n  templateUrl: './task-card.component.html',\r\n  styleUrls: ['./task-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskCardComponent implements OnInit {\r\n\r\n  @Input() task: Task;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  completedSubTask(): number {\r\n    return this.task.subTasks.filter(task => task.isComplete).length;\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".task-card {\r\n  display: block;\r\n  &.low{\r\n    border-left: 2px solid green;\r\n  }\r\n  &.normal{\r\n    border-left: 2px solid orange;\r\n  }\r\n  &.high{\r\n    border-left: 2px solid red;\r\n  }\r\n}\r\n\r\n.card-content-wrapper {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n}\r\n\r\n.task-checkbox {\r\n  margin-right: 10px;\r\n}\r\n\r\n.task-content {\r\n  flex: 1 1 auto;\r\n  .task-title {\r\n    display: flex;\r\n    .title-text {\r\n      flex: 1;\r\n      margin-right: 8px;\r\n    }\r\n  }\r\n  .task-infos {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    .task-info {\r\n      display: flex;\r\n      align-items: center;\r\n      margin-right: 8px;\r\n      margin-top: 4px;\r\n      white-space: nowrap;\r\n    }\r\n    .task-tag-red {\r\n      color: red;\r\n    }\r\n    .task-tag-blue {\r\n      color: blue;\r\n    }\r\n    .task-tag-green {\r\n      color: green;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ".task-card {\r\n  &.low{\r\n    border-left: 2px solid green;\r\n  }\r\n  &.normal{\r\n    border-left: 2px solid orange;\r\n  }\r\n  &.high{\r\n    border-left: 2px solid red;\r\n  }\r\n}\r\n\r\n.card-content-wrapper {\r\n  display: flex;\r\n}\r\n\r\n.task-checkbox {\r\n  margin-right: 10px;\r\n}\r\n\r\n.task-content {\r\n  flex: 1 1 auto;\r\n  .task-title {\r\n    display: flex;\r\n    .title-text {\r\n      flex: 1;\r\n      margin-right: 8px;\r\n    }\r\n  }\r\n  .task-infos {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    .task-info {\r\n      display: flex;\r\n      align-items: center;\r\n      margin-right: 8px;\r\n      margin-top: 4px;\r\n      white-space: nowrap;\r\n    }\r\n    .task-tag-red {\r\n      color: red;\r\n    }\r\n    .task-tag-blue {\r\n      color: blue;\r\n    }\r\n    .task-tag-green {\r\n      color: green;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./task-card.component.scss"
                 }
             ],
@@ -2793,7 +2793,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"task-stack-wrapper\">\r\n  <div class=\"task-stack\">\r\n    <!-- stack header -->\r\n    <header cdkDragHandle class=\"stack-header mat-elevation-z1\">\r\n      <div>\r\n        <span class=\"stack-name\">stack name</span>\r\n        <span *ngIf=\"tasks&&tasks.length\" class=\"stack-status\">{{getStackStatus()}}</span>\r\n      </div>\r\n      <div>\r\n        <button mat-icon-button>\r\n          <mat-icon>add_task</mat-icon>\r\n        </button>\r\n        <button mat-icon-button>\r\n          <mat-icon>more_horiz</mat-icon>\r\n        </button>\r\n      </div>\r\n    </header>\r\n    <!-- stack content, task card drag zone -->\r\n    <div class=\"stack-content\">\r\n      <div *ngIf=\"isLoading\">is loading</div>\r\n      <ul *ngIf=\"!isLoading && tasks.length != 0\" class=\"task-list\">\r\n        <li *ngFor=\"let task of tasks; index as i\">\r\n          <kanpm-task-card [task]=task></kanpm-task-card>\r\n        </li>\r\n      </ul>\r\n      <div *ngIf=\"!isLoading && tasks.length == 0\" class=\"empty-content-tips\">\r\n        <mat-icon color=\"primary\">check_box</mat-icon>\r\n        <span>列表无任务</span>\r\n        <span class=\"mat-caption\">动静有时，张驰有度</span>\r\n      </div>\r\n    </div>\r\n    <!-- stack footer -->\r\n    <footer *ngIf=\"!isLoading\" class=\"stack-footer\">\r\n      <ng-container *ngIf=\"isShowCreatePane;else create_button\">\r\n        <form class=\"task-quick-create-form\">\r\n          <mat-form-field appearance=\"outline\">\r\n            <mat-label>任务描述</mat-label>\r\n            <textarea matInput></textarea>\r\n          </mat-form-field>\r\n          <button mat-stroked-button color=\"primary\">创建</button>\r\n          <button mat-button (click)=\"isShowCreatePane=false\">取消</button>\r\n        </form>\r\n      </ng-container>\r\n      <ng-template #create_button>\r\n        <button mat-stroked-button color=\"primary\" (click)=\"isShowCreatePane=true\">快速创建任务</button>\r\n      </ng-template>\r\n    </footer>\r\n  </div>\r\n</div>"
+            "templateData": "<div class=\"task-stack-wrapper\">\r\n  <div class=\"task-stack\">\r\n    <!-- stack header -->\r\n    <header cdkDragHandle class=\"stack-header mat-elevation-z1\">\r\n      <div>\r\n        <span class=\"stack-name\">stack name</span>\r\n        <span *ngIf=\"tasks&&tasks.length\" class=\"stack-status\">{{getStackStatus()}}</span>\r\n      </div>\r\n      <div>\r\n        <button mat-icon-button>\r\n          <mat-icon>add_task</mat-icon>\r\n        </button>\r\n        <button mat-icon-button>\r\n          <mat-icon>more_horiz</mat-icon>\r\n        </button>\r\n      </div>\r\n    </header>\r\n    <!-- stack content, task card drag zone -->\r\n    <div class=\"stack-content\">\r\n      <div *ngIf=\"isLoading\" class=\"flex-center\">\r\n        <mat-spinner></mat-spinner>\r\n      </div>\r\n      <ul *ngIf=\"!isLoading && tasks.length != 0\" class=\"task-list\">\r\n        <li *ngFor=\"let task of tasks; index as i\">\r\n          <kanpm-task-card [task]=task></kanpm-task-card>\r\n        </li>\r\n      </ul>\r\n      <div *ngIf=\"!isLoading && tasks.length == 0\" class=\"empty-content-tips\">\r\n        <mat-icon color=\"primary\">check_box</mat-icon>\r\n        <span>列表无任务</span>\r\n        <span class=\"mat-caption\">动静有时，张驰有度</span>\r\n      </div>\r\n    </div>\r\n    <!-- stack footer -->\r\n    <footer *ngIf=\"!isLoading\" class=\"stack-footer\">\r\n      <ng-container *ngIf=\"isShowCreatePane;else create_button\">\r\n        <form class=\"task-quick-create-form\">\r\n          <mat-form-field appearance=\"outline\">\r\n            <mat-label>任务描述</mat-label>\r\n            <textarea matInput></textarea>\r\n          </mat-form-field>\r\n          <button mat-stroked-button color=\"primary\">创建</button>\r\n          <button mat-button (click)=\"isShowCreatePane=false\">取消</button>\r\n        </form>\r\n      </ng-container>\r\n      <ng-template #create_button>\r\n        <button mat-stroked-button color=\"primary\" (click)=\"isShowCreatePane=true\">快速创建任务</button>\r\n      </ng-template>\r\n    </footer>\r\n  </div>\r\n</div>"
         },
         {
             "name": "TeamComponent",
@@ -4266,7 +4266,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/third-parties/material.module.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n  MatSidenavModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatMenuModule,\r\n  MatCheckboxModule,\r\n  MatTabsModule,\r\n  MatDividerModule,\r\n  MatChipsModule,\r\n  MatToolbarModule,\r\n  MatCardModule,\r\n  DragDropModule,\r\n  MatInputModule,\r\n  MatDialogModule,\r\n  MatListModule,\r\n  MatPaginatorModule,\r\n  MatSlideToggleModule\r\n]"
+                "defaultValue": "[\r\n  MatSidenavModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatMenuModule,\r\n  MatCheckboxModule,\r\n  MatTabsModule,\r\n  MatDividerModule,\r\n  MatChipsModule,\r\n  MatToolbarModule,\r\n  MatCardModule,\r\n  DragDropModule,\r\n  MatInputModule,\r\n  MatDialogModule,\r\n  MatListModule,\r\n  MatPaginatorModule,\r\n  MatSlideToggleModule,\r\n  MatProgressSpinnerModule\r\n]"
             },
             {
                 "name": "overflowStatus",
@@ -4351,17 +4351,17 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/shared/components/task-stack/task-stack.component.stories.ts",
+                "file": "src/app/shared/components/task-detail/task-detail.component.stories.ts",
                 "type": "",
-                "defaultValue": "(args: TaskStackComponent) => ({\r\n    props: args\r\n})"
+                "defaultValue": "(args: TaskDetailComponent) => ({\r\n    component: TaskDetailComponent,\r\n    props: args,\r\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/shared/components/task-detail/task-detail.component.stories.ts",
+                "file": "src/app/shared/components/task-stack/task-stack.component.stories.ts",
                 "type": "",
-                "defaultValue": "(args: TaskDetailComponent) => ({\r\n    component: TaskDetailComponent,\r\n    props: args,\r\n})"
+                "defaultValue": "(args: TaskStackComponent) => ({\r\n    props: args\r\n})"
             },
             {
                 "name": "ZorroModules",
@@ -4709,7 +4709,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/third-parties/material.module.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n  MatSidenavModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatMenuModule,\r\n  MatCheckboxModule,\r\n  MatTabsModule,\r\n  MatDividerModule,\r\n  MatChipsModule,\r\n  MatToolbarModule,\r\n  MatCardModule,\r\n  DragDropModule,\r\n  MatInputModule,\r\n  MatDialogModule,\r\n  MatListModule,\r\n  MatPaginatorModule,\r\n  MatSlideToggleModule\r\n]"
+                    "defaultValue": "[\r\n  MatSidenavModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatMenuModule,\r\n  MatCheckboxModule,\r\n  MatTabsModule,\r\n  MatDividerModule,\r\n  MatChipsModule,\r\n  MatToolbarModule,\r\n  MatCardModule,\r\n  DragDropModule,\r\n  MatInputModule,\r\n  MatDialogModule,\r\n  MatListModule,\r\n  MatPaginatorModule,\r\n  MatSlideToggleModule,\r\n  MatProgressSpinnerModule\r\n]"
                 }
             ],
             "src/app/shared/components/components.modules.ts": [

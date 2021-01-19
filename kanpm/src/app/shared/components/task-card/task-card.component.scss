@@ -1,5 +1,4 @@
 .task-card {
-  display: block;
   &.low{
     border-left: 2px solid green;
   }
@@ -13,8 +12,6 @@
 
 .card-content-wrapper {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
 }
 
 .task-checkbox {

@@ -39,7 +39,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-ul,li{
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -60,7 +61,7 @@ ul,li{
 }
 
 /* layout */
-.flex-center{
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +71,7 @@ ul,li{
 /*滚动条的宽度*/
 
 ::-webkit-scrollbar {
-  width:8px;
+  width: 8px;
   // height:9px;
 }
 
@@ -81,5 +82,5 @@ ul,li{
 
 /*滚动条的设置*/
 ::-webkit-scrollbar-thumb {
-  background-color: mat-color($default-primary,lighter);
+  background-color: mat-color($default-primary, lighter);
 }
