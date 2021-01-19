@@ -5,6 +5,11 @@ import { MaterialModule } from 'shared/third-parties/material.module';
 import { ZorroModule } from 'shared/third-parties/zorro.module';
 import { TaskCardComponent } from './task-card.component';
 
+export const defaultTasksData = {
+    description: `task test: Some description about this task`,
+    endTime: new Date().getTime(),
+};
+
 export default {
     title: '组件/任务卡',
     decorators: [
@@ -27,14 +32,13 @@ const Template = (args: TaskCardComponent) => ({
 export const fullInfo = Template.bind({});
 fullInfo.args = {
     task: {
+        ...defaultTasksData,
         isComplete: false,
         subTasks: [
             { isComplete: true, },
             { isComplete: false, }
         ],
         priority: 'low',
-        description: `task test: Some description about this task`,
-        endTime: new Date().getTime(),
         remindTime: new Date().getTime(),
         repeat: 'daily',
     }

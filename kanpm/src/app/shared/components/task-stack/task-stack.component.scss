@@ -1,117 +1,82 @@
-@import "~@angular/material/theming";
+// @import "~@angular/material/theming";
 
-:host {
-  display: block;
+.task-stack-wrapper {
   height: 100%;
-}
-
-.tasks-root-container {
-  height: 100%;
-}
-
-.task-detail-container {
-  width: 50%;
-  min-width: 660px;
-  max-width: 879px;
-}
-
-.task-list-group-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 10px;
-
-  .kanban-header {
-    display: flex;
-    height: 40px;
-    justify-content: space-between;
-    margin: 8px 0;
-
-    .kanban-switch-button-group {
-      display: inline-flex;
-      align-items: center;
-    }
-  }
-
-  .kanban-wrapper {
-    display: flex;
-    align-items: flex-start;
-    height: calc(100% - 56px);
-  }
-}
-
-.task-list-wrapper {
-  flex-shrink: 0;
-  width: 296px;
-  height: 100%;
-  margin-right: 16px;
   border-radius: 5px;
+  border: 1px solid #CCC;
 }
 
-.task-list {
+.task-stack {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   position: relative;
-  padding: 0 10px;
   max-height: 100%;
   border-radius: 3px;
+}
 
-  .list-header {
-    height: 48px;
+.stack-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+
+  .stack-name {
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 8px;
+  }
+}
+
+.stack-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow-y: auto;
+
+  .task-list{
+    width: 100%;
+  }
+
+  .empty-content-tips{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-
-    span {
-      margin: 0;
+    height: 100%;
+    min-height: 150px;
+    mat-icon{
+      height: 32px;
+      width: 32px;
+      font-size: 32px;
     }
   }
 
-  ul.list-content {
-    flex: 1;
-    min-height: 90px;
-    overflow: auto;
-  }
+  // .task-list{
+  // }
+}
 
-  .list-footer {
-    border-radius: 5px;
-    margin: 10px 0;
-    padding: 10px;
+.stack-footer {
+  display: flex;
+  justify-content: center;
+  padding: 16px 10px;
 
-    .task-quick-create-button {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
-      span {
-        margin-left: 6px;
-        font-size: 16px;
-        line-height: 24px;
-      }
-    }
-
-    .task-quick-create-pane {
+  .task-quick-create-form{
+    mat-form-field{
       width: 100%;
-
-      .task-additional-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 6px;
-
-        .icon {
-          font-size: 18px;
-        }
-      }
     }
   }
 }
 
-.cdk-drag-preview {
-  opacity: 100;
-  @include mat-elevation(24);
-}
+// .cdk-drag-preview {
+//   opacity: 100;
+//   @include mat-elevation(24);
+// }
 
-.cdk-drag-placeholder {
-  opacity: 0;
-}
+// .cdk-drag-placeholder {
+//   opacity: 0;
+// }

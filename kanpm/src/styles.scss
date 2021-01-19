@@ -39,6 +39,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 // to disable chrome user agent stylesheets
 // input:-internal-autofill-previewed,
 // input:-internal-autofill-selected {
@@ -51,4 +57,11 @@ body {
     width: 24px;
     height: 24px;
   }
+}
+
+/* layout */
+.flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

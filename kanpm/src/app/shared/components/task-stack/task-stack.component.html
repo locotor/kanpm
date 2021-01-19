@@ -1,41 +1,49 @@
-<div class="task-list-wrapper mat-elevation-z8">
-    <div class="task-list">
-      <div cdkDragHandle class="list-header">
-        <span class="mat-h3">
-          list name<em>0</em>/4
-        </span>
-        <mat-icon>more_horiz</mat-icon>
+<div class="task-stack-wrapper">
+  <div class="task-stack">
+    <!-- stack header -->
+    <header cdkDragHandle class="stack-header mat-elevation-z1">
+      <div>
+        <span class="stack-name">stack name</span>
+        <span *ngIf="tasks&&tasks.length" class="stack-status">{{getStackStatus()}}</span>
       </div>
-      <!-- task card drag zone -->
-      <ul class="list-content">
+      <div>
+        <button mat-icon-button>
+          <mat-icon>add_task</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+      </div>
+    </header>
+    <!-- stack content, task card drag zone -->
+    <div class="stack-content">
+      <div *ngIf="isLoading">is loading</div>
+      <ul *ngIf="!isLoading && tasks.length != 0" class="task-list">
         <li *ngFor="let task of tasks; index as i">
           <kanpm-task-card [task]=task></kanpm-task-card>
         </li>
       </ul>
-      <div class="list-footer">
-        <div class="task-quick-create-pane" *ngIf="isShowCreatePane;else create_button">
-          <mat-form-field style="width: 100%;">
+      <div *ngIf="!isLoading && tasks.length == 0" class="empty-content-tips">
+        <mat-icon color="primary">check_box</mat-icon>
+        <span>列表无任务</span>
+        <span class="mat-caption">动静有时，张驰有度</span>
+      </div>
+    </div>
+    <!-- stack footer -->
+    <footer *ngIf="!isLoading" class="stack-footer">
+      <ng-container *ngIf="isShowCreatePane;else create_button">
+        <form class="task-quick-create-form">
+          <mat-form-field appearance="outline">
             <mat-label>任务描述</mat-label>
             <textarea matInput></textarea>
           </mat-form-field>
-          <div class="task-additional-info">
-            <div>
-              <mat-icon class="icon">calendar_today</mat-icon>
-              <mat-icon class="icon">person_add</mat-icon>
-            </div>
-            <div>
-              <mat-checkbox></mat-checkbox> 只对参与者可见
-            </div>
-          </div>
-          <button mat-raised-button color="primary">创建任务</button>
+          <button mat-stroked-button color="primary">创建</button>
           <button mat-button (click)="isShowCreatePane=false">取消</button>
-        </div>
-        <ng-template #create_button>
-          <div class="task-quick-create-button" (click)="isShowCreatePane=true">
-            <mat-icon>add</mat-icon>
-            <span>新建任务</span>
-          </div>
-        </ng-template>
-      </div>
-    </div>
+        </form>
+      </ng-container>
+      <ng-template #create_button>
+        <button mat-stroked-button color="primary" (click)="isShowCreatePane=true">快速创建任务</button>
+      </ng-template>
+    </footer>
   </div>
+</div>
