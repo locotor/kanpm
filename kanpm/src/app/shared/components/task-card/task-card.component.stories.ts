@@ -39,3 +39,9 @@ fullInfo.args = {
     }
 };
 fullInfo.storyName = '完整信息';
+
+export const completeTask = Template.bind({});
+completeTask.args = {
+    task: { ...defaultTasksData, isComplete: true }
+};
+completeTask.storyName = '已完成状态';

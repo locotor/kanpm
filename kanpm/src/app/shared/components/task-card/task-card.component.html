@@ -3,7 +3,7 @@
   <div class="card-content-wrapper">
     <mat-checkbox [(ngModel)]="task.isComplete" class="task-checkbox"></mat-checkbox>
     <!-- title + executor -->
-    <div class="task-content">
+    <div class="task-content" [class.is-complete]="task.isComplete">
       <section class="task-title">
         <header class="title-text mat-h4">{{task.description}}</header>
         <nz-avatar nzIcon="user"></nz-avatar>

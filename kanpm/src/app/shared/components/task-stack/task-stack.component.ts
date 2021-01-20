@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Task, TaskList } from 'core/types/task';
 
@@ -5,7 +6,7 @@ import { Task, TaskList } from 'core/types/task';
   selector: 'kanpm-task-stack',
   templateUrl: './task-stack.component.html',
   styleUrls: ['./task-stack.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskStackComponent implements OnInit {
 
@@ -22,6 +23,10 @@ export class TaskStackComponent implements OnInit {
   getStackStatus(): string {
     const completed = this.tasks.filter(task => task.isComplete);
     return `${completed.length}/${this.tasks.length}`;
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 
 }

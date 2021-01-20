@@ -1,6 +1,6 @@
 import { Meta, moduleMetadata } from '@storybook/angular';
 import { SharedModule } from 'shared/shared.module';
-import { defaultTasksData } from '../task-card/task-card.stories';
+import { defaultTasksData } from '../task-card/task-card.component.stories';
 import { TaskStackComponent } from './task-stack.component';
 
 export default {

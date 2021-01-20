@@ -1473,7 +1473,7 @@
         },
         {
             "name": "AvatarComponent",
-            "id": "component-AvatarComponent-b986ed86adda0a48482130ee9bd6fd29",
+            "id": "component-AvatarComponent-0a87024693c92677793379b74e8e3205",
             "file": "src/app/shared/components/avatar/avatar.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1514,7 +1514,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'kanpm-avatar',\r\n  templateUrl: './avatar.component.html',\r\n  styleUrls: ['./avatar.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class AvatarComponent implements OnInit {\r\n\r\n  @Input() avatar: string;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\n\n@Component({\n  selector: 'kanpm-avatar',\n  templateUrl: './avatar.component.html',\n  styleUrls: ['./avatar.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class AvatarComponent implements OnInit {\n\n  @Input() avatar: string;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1536,7 +1536,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-44f2f1e1b3a1e0ebc1e0edafd90d05c0",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
             "file": "src/stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1594,11 +1594,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-button',\r\n  template: ` <button\r\n    type=\"button\"\r\n    (click)=\"onClick.emit($event)\"\r\n    [ngClass]=\"classes\"\r\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  >\r\n    {{ label }}\r\n  </button>`,\r\n  styleUrls: ['./button.css'],\r\n})\r\nexport default class ButtonComponent {\r\n  /**\r\n   * Is this the principal call to action on the page?\r\n   */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-weight: 700;\r\n  border: 0;\r\n  border-radius: 3em;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  line-height: 1;\r\n}\r\n.storybook-button--primary {\r\n  color: white;\r\n  background-color: #1ea7fd;\r\n}\r\n.storybook-button--secondary {\r\n  color: #333;\r\n  background-color: transparent;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n}\r\n.storybook-button--small {\r\n  font-size: 12px;\r\n  padding: 10px 16px;\r\n}\r\n.storybook-button--medium {\r\n  font-size: 14px;\r\n  padding: 11px 20px;\r\n}\r\n.storybook-button--large {\r\n  font-size: 16px;\r\n  padding: 12px 24px;\r\n}\r\n",
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
                     "styleUrl": "./button.css"
                 }
             ],
@@ -1617,7 +1617,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-c349aa42f2121da4b5737d60a50fa413",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1667,11 +1667,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  template: `<header>\r\n    <div class=\"wrapper\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <storybook-button\r\n          *ngIf=\"user\"\r\n          size=\"small\"\r\n          (onClick)=\"onLogout.emit($event)\"\r\n          label=\"Log out\"\r\n        ></storybook-button>\r\n        <storybook-button\r\n          *ngIf=\"!user\"\r\n          size=\"small\"\r\n          (onClick)=\"onLogin.emit($event)\"\r\n          label=\"Log in\"\r\n        ></storybook-button>\r\n        <storybook-button\r\n          *ngIf=\"!user\"\r\n          primary\r\n          size=\"small\"\r\n          (onClick)=\"onCreateAccount.emit($event)\"\r\n          label=\"Sign up\"\r\n        ></storybook-button>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport default class HeaderComponent {\r\n  @Input()\r\n  user: unknown = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".wrapper {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\r\n  padding: 15px 20px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\nsvg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nh1 {\r\n  font-weight: 900;\r\n  font-size: 20px;\r\n  line-height: 1;\r\n  margin: 6px 0 6px 10px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nbutton + button {\r\n  margin-left: 10px;\r\n}\r\n",
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
                     "styleUrl": "./header.css"
                 }
             ],
@@ -1828,7 +1828,7 @@
         },
         {
             "name": "PageComponent",
-            "id": "component-PageComponent-caf3f2fce2bf7356cf7ccd76b8a88482",
+            "id": "component-PageComponent-cca1a8911321fa17756ce90c90de65cc",
             "file": "src/stories/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1878,11 +1878,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-page',\r\n  template: `<article>\r\n    <storybook-header\r\n      [user]=\"user\"\r\n      (onLogout)=\"onLogout.emit($event)\"\r\n      (onLogin)=\"onLogin.emit($event)\"\r\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\r\n    ></storybook-header>\r\n    <section>\r\n      <h2>Pages in Storybook</h2>\r\n      <p>\r\n        We recommend building UIs with a\r\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          <strong>component-driven</strong>\r\n        </a>\r\n        process starting with atomic components and ending with pages.\r\n      </p>\r\n      <p>\r\n        Render pages with mock data. This makes it easy to build and review page states without\r\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\r\n        in Storybook:\r\n      </p>\r\n      <ul>\r\n        <li>\r\n          Use a higher-level connected component. Storybook helps you compose such data from the\r\n          \"args\" of child component stories\r\n        </li>\r\n        <li>\r\n          Assemble data in the page component from your services. You can mock these services out\r\n          using Storybook.\r\n        </li>\r\n      </ul>\r\n      <p>\r\n        Get a guided tutorial on component-driven development at\r\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          Learn Storybook\r\n        </a>\r\n        . Read more in the\r\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          docs\r\n        </a>\r\n        .\r\n      </p>\r\n      <div class=\"tip-wrapper\">\r\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\r\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\r\n              id=\"a\"\r\n              fill=\"#999\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        Viewports addon in the toolbar\r\n      </div>\r\n    </section>\r\n  </article>`,\r\n  styleUrls: ['./page.css'],\r\n})\r\nexport default class PageComponent {\r\n  @Input()\r\n  user: unknown = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n\r\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\r\n//   <article>\r\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\r\n\r\n// );\r\n// Page.propTypes = {\r\n//   user: PropTypes.shape({}),\r\n//   onLogin: PropTypes.func.isRequired,\r\n//   onLogout: PropTypes.func.isRequired,\r\n//   onCreateAccount: PropTypes.func.isRequired,\r\n// };\r\n\r\n// Page.defaultProps = {\r\n//   user: null,\r\n// };\r\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "section {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n  padding: 48px 20px;\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  color: #333;\r\n}\r\n\r\nh2 {\r\n  font-weight: 900;\r\n  font-size: 32px;\r\n  line-height: 1;\r\n  margin: 0 0 4px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\np {\r\n  margin: 1em 0;\r\n}\r\n\r\na {\r\n  text-decoration: none;\r\n  color: #1ea7fd;\r\n}\r\n\r\nul {\r\n  padding-left: 30px;\r\n  margin: 1em 0;\r\n}\r\n\r\nli {\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.tip {\r\n  display: inline-block;\r\n  border-radius: 1em;\r\n  font-size: 11px;\r\n  line-height: 12px;\r\n  font-weight: 700;\r\n  background: #e7fdd8;\r\n  color: #66bf3c;\r\n  padding: 4px 12px;\r\n  margin-right: 10px;\r\n  vertical-align: top;\r\n}\r\n\r\n.tip-wrapper {\r\n  font-size: 13px;\r\n  line-height: 20px;\r\n  margin-top: 40px;\r\n  margin-bottom: 40px;\r\n}\r\n\r\n.tip-wrapper svg {\r\n  display: inline-block;\r\n  height: 12px;\r\n  width: 12px;\r\n  margin-right: 4px;\r\n  vertical-align: top;\r\n  margin-top: 3px;\r\n}\r\n\r\n.tip-wrapper svg path {\r\n  fill: #1ea7fd;\r\n}\r\n",
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
                     "styleUrl": "./page.css"
                 }
             ],
@@ -2082,7 +2082,7 @@
                     }
                 }
             },
-            "templateData": "<h1 mat-dialog-title>Create a new project</h1>\r\n<mat-dialog-content>\r\n    <form [formGroup]=\"createProjectForm\">\r\n        <div class=\"form-field-row\">\r\n            <mat-form-field appearance=\"outline\">\r\n                <mat-label>project name</mat-label>\r\n                <input matInput formControlName=\"projectName\" required>\r\n                <mat-error *ngIf=\"projectName.errors?.required\">Project name is required</mat-error>\r\n                <mat-error *ngIf=\"projectName.errors?.maxlength\">\r\n                    Project name letters should less than {{projectName.errors?.maxlength.requiredLength}}.\r\n                </mat-error>\r\n            </mat-form-field>\r\n            <div class=\"field-feedback\">\r\n                <mat-icon class=\"checked-icon\" *ngIf=\"projectName.dirty&&projectName.valid\">check_circle_outline</mat-icon>\r\n                <mat-icon color=\"warn\" *ngIf=\"projectName.dirty&&projectName.invalid\">highlight_off</mat-icon>\r\n                <mat-icon color=\"accent\" *ngIf=\"projectName.pending\">hourglass_empty</mat-icon>\r\n            </div>\r\n        </div>\r\n        <div class=\"form-field-row\">\r\n            <mat-form-field appearance=\"outline\">\r\n                <mat-label>description</mat-label>\r\n                <textarea matInput formControlName=\"description\"></textarea>\r\n                <mat-error *ngIf=\"description.errors?.maxlength\">\r\n                    Project description letters should less than {{description.errors?.maxlength.requiredLength}}.\r\n                </mat-error>\r\n            </mat-form-field>\r\n            <div class=\"field-feedback\">\r\n                <mat-icon class=\"checked-icon\" *ngIf=\"description.dirty&&description.valid\">check_circle_outline\r\n                </mat-icon>\r\n                <mat-icon color=\"warn\" *ngIf=\"description.dirty&&description.invalid\">highlight_off</mat-icon>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</mat-dialog-content>\r\n<div mat-dialog-actions [align]=\"'end'\">\r\n    <button mat-flat-button mat-dialog-close>cancel</button>\r\n    <button mat-flat-button color=\"primary\" [disabled]=\"!createProjectForm.valid\" (click)=\"createProject()\">create</button>\r\n</div>"
+            "templateData": "<h1 mat-dialog-title>Create a new project</h1>\n<mat-dialog-content>\n    <form [formGroup]=\"createProjectForm\">\n        <div class=\"form-field-row\">\n            <mat-form-field appearance=\"outline\">\n                <mat-label>project name</mat-label>\n                <input matInput formControlName=\"projectName\" required>\n                <mat-error *ngIf=\"projectName.errors?.required\">Project name is required</mat-error>\n                <mat-error *ngIf=\"projectName.errors?.maxlength\">\n                    Project name letters should less than {{projectName.errors?.maxlength.requiredLength}}.\n                </mat-error>\n            </mat-form-field>\n            <div class=\"field-feedback\">\n                <mat-icon class=\"checked-icon\" *ngIf=\"projectName.dirty&&projectName.valid\">check_circle_outline</mat-icon>\n                <mat-icon color=\"warn\" *ngIf=\"projectName.dirty&&projectName.invalid\">highlight_off</mat-icon>\n                <mat-icon color=\"accent\" *ngIf=\"projectName.pending\">hourglass_empty</mat-icon>\n            </div>\n        </div>\n        <div class=\"form-field-row\">\n            <mat-form-field appearance=\"outline\">\n                <mat-label>description</mat-label>\n                <textarea matInput formControlName=\"description\"></textarea>\n                <mat-error *ngIf=\"description.errors?.maxlength\">\n                    Project description letters should less than {{description.errors?.maxlength.requiredLength}}.\n                </mat-error>\n            </mat-form-field>\n            <div class=\"field-feedback\">\n                <mat-icon class=\"checked-icon\" *ngIf=\"description.dirty&&description.valid\">check_circle_outline\n                </mat-icon>\n                <mat-icon color=\"warn\" *ngIf=\"description.dirty&&description.invalid\">highlight_off</mat-icon>\n            </div>\n        </div>\n    </form>\n</mat-dialog-content>\n<div mat-dialog-actions [align]=\"'end'\">\n    <button mat-flat-button mat-dialog-close>cancel</button>\n    <button mat-flat-button color=\"primary\" [disabled]=\"!createProjectForm.valid\" (click)=\"createProject()\">create</button>\n</div>"
         },
         {
             "name": "ProjectListItemComponent",
@@ -2517,7 +2517,7 @@
         },
         {
             "name": "TaskCardComponent",
-            "id": "component-TaskCardComponent-12ee1e0bb65efe08703ef659cd7e67de",
+            "id": "component-TaskCardComponent-cf844445f30bd96bd028bb31735fd420",
             "file": "src/app/shared/components/task-card/task-card.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -2566,11 +2566,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\nimport { Task } from 'core/types/task';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-card',\r\n  templateUrl: './task-card.component.html',\r\n  styleUrls: ['./task-card.component.scss'],\r\n  changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskCardComponent implements OnInit {\r\n\r\n  @Input() task: Task;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  completedSubTask(): number {\r\n    return this.task.subTasks.filter(task => task.isComplete).length;\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\nimport { Task } from 'core/types/task';\n\n@Component({\n  selector: 'kanpm-task-card',\n  templateUrl: './task-card.component.html',\n  styleUrls: ['./task-card.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TaskCardComponent implements OnInit {\n\n  @Input() task: Task;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  completedSubTask(): number {\n    return this.task.subTasks.filter(task => task.isComplete).length;\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".task-card {\r\n  &.low{\r\n    border-left: 2px solid green;\r\n  }\r\n  &.normal{\r\n    border-left: 2px solid orange;\r\n  }\r\n  &.high{\r\n    border-left: 2px solid red;\r\n  }\r\n}\r\n\r\n.card-content-wrapper {\r\n  display: flex;\r\n}\r\n\r\n.task-checkbox {\r\n  margin-right: 10px;\r\n}\r\n\r\n.task-content {\r\n  flex: 1 1 auto;\r\n  .task-title {\r\n    display: flex;\r\n    .title-text {\r\n      flex: 1;\r\n      margin-right: 8px;\r\n    }\r\n  }\r\n  .task-infos {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    .task-info {\r\n      display: flex;\r\n      align-items: center;\r\n      margin-right: 8px;\r\n      margin-top: 4px;\r\n      white-space: nowrap;\r\n    }\r\n    .task-tag-red {\r\n      color: red;\r\n    }\r\n    .task-tag-blue {\r\n      color: blue;\r\n    }\r\n    .task-tag-green {\r\n      color: green;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ".task-card {\n  &.low{\n    border-left: 2px solid green;\n  }\n  &.normal{\n    border-left: 2px solid orange;\n  }\n  &.high{\n    border-left: 2px solid red;\n  }\n}\n\n.card-content-wrapper {\n  display: flex;\n}\n\n.task-checkbox {\n  margin-right: 10px;\n}\n\n.task-content {\n  flex: 1 1 auto;\n  &.is-complete{\n    opacity: 0.5;\n  }\n  .task-title {\n    display: flex;\n    .title-text {\n      flex: 1;\n      margin-right: 8px;\n    }\n  }\n  .task-infos {\n    display: flex;\n    flex-wrap: wrap;\n    .task-info {\n      display: flex;\n      align-items: center;\n      margin-right: 8px;\n      margin-top: 4px;\n      white-space: nowrap;\n    }\n    .task-tag-red {\n      color: red;\n    }\n    .task-tag-blue {\n      color: blue;\n    }\n    .task-tag-green {\n      color: green;\n    }\n  }\n}\n",
                     "styleUrl": "./task-card.component.scss"
                 }
             ],
@@ -2584,7 +2584,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-card class=\"task-card\" [class.high]=\"task.priority === 'high'\" [class.normal]=\"task.priority === 'normal'\"\r\n  [class.low]=\"task.priority === 'low'\">\r\n  <div class=\"card-content-wrapper\">\r\n    <mat-checkbox [(ngModel)]=\"task.isComplete\" class=\"task-checkbox\"></mat-checkbox>\r\n    <!-- title + executor -->\r\n    <div class=\"task-content\">\r\n      <section class=\"task-title\">\r\n        <header class=\"title-text mat-h4\">{{task.description}}</header>\r\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\r\n      </section>\r\n      <!-- task infos -->\r\n      <section class=\"task-infos\">\r\n        <div *ngIf=\"task.subTasks&&task.subTasks.length\" class=\"task-info mat-caption\">\r\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">list</mat-icon>\r\n          <span>{{completedSubTask()}} completed / {{task.subTasks.length}} total</span>\r\n        </div>\r\n        <div *ngIf=\"task.endTime\" class=\"task-info mat-caption\">\r\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">calendar_today</mat-icon>\r\n          <span>{{task.endTime | date:'yyyy/MM/dd'}}</span>\r\n        </div>\r\n        <div *ngIf=\"task.remindTime\" class=\"task-info mat-caption\">\r\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">alarm_on</mat-icon>\r\n          <span>{{task.remindTime | date:'MM/dd, HH:mm'}}</span>\r\n        </div>\r\n        <div *ngIf=\"task.repeat\" class=\"task-info mat-caption\">\r\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">repeat</mat-icon>\r\n          <span>{{ task.repeat}}</span>\r\n        </div>\r\n        <div *ngIf=\"task.remark\" class=\"task-info mat-caption\">\r\n          <mat-icon inline style=\"font-size: 16px;\">description</mat-icon>\r\n        </div>\r\n        <div *ngIf=\"task.attachments && task.attachments.length\" class=\" task-info mat-caption\">\r\n          <mat-icon inline style=\"font-size: 16px;\">attachment</mat-icon>\r\n        </div>\r\n        <!-- TODO tag component -->\r\n        <div class=\"task-info mat-caption task-tag-red\">\r\n          important\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-blue\">\r\n          developing\r\n        </div>\r\n        <div class=\"task-info mat-caption task-tag-green\">\r\n          normal\r\n        </div>\r\n      </section>\r\n    </div>\r\n  </div>\r\n</mat-card>"
+            "templateData": "<mat-card class=\"task-card\" [class.high]=\"task.priority === 'high'\" [class.normal]=\"task.priority === 'normal'\"\n  [class.low]=\"task.priority === 'low'\">\n  <div class=\"card-content-wrapper\">\n    <mat-checkbox [(ngModel)]=\"task.isComplete\" class=\"task-checkbox\"></mat-checkbox>\n    <!-- title + executor -->\n    <div class=\"task-content\" [class.is-complete]=\"task.isComplete\">\n      <section class=\"task-title\">\n        <header class=\"title-text mat-h4\">{{task.description}}</header>\n        <nz-avatar nzIcon=\"user\"></nz-avatar>\n      </section>\n      <!-- task infos -->\n      <section class=\"task-infos\">\n        <div *ngIf=\"task.subTasks&&task.subTasks.length\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">list</mat-icon>\n          <span>{{completedSubTask()}} completed / {{task.subTasks.length}} total</span>\n        </div>\n        <div *ngIf=\"task.endTime\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">calendar_today</mat-icon>\n          <span>{{task.endTime | date:'yyyy/MM/dd'}}</span>\n        </div>\n        <div *ngIf=\"task.remindTime\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">alarm_on</mat-icon>\n          <span>{{task.remindTime | date:'MM/dd, HH:mm'}}</span>\n        </div>\n        <div *ngIf=\"task.repeat\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px; margin-right: 4px;\">repeat</mat-icon>\n          <span>{{ task.repeat}}</span>\n        </div>\n        <div *ngIf=\"task.remark\" class=\"task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">description</mat-icon>\n        </div>\n        <div *ngIf=\"task.attachments && task.attachments.length\" class=\" task-info mat-caption\">\n          <mat-icon inline style=\"font-size: 16px;\">attachment</mat-icon>\n        </div>\n        <!-- TODO tag component -->\n        <div class=\"task-info mat-caption task-tag-red\">\n          important\n        </div>\n        <div class=\"task-info mat-caption task-tag-blue\">\n          developing\n        </div>\n        <div class=\"task-info mat-caption task-tag-green\">\n          normal\n        </div>\n      </section>\n    </div>\n  </div>\n</mat-card>"
         },
         {
             "name": "TaskDetailComponent",
@@ -2702,7 +2702,7 @@
         },
         {
             "name": "TaskStackComponent",
-            "id": "component-TaskStackComponent-db9571e342e203d33636be926be1d1a3",
+            "id": "component-TaskStackComponent-3b5590f37da2e0aa21c98fc58f91a1fa",
             "file": "src/app/shared/components/task-stack/task-stack.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2775,11 +2775,11 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\r\nimport { Task, TaskList } from 'core/types/task';\r\n\r\n@Component({\r\n  selector: 'kanpm-task-stack',\r\n  templateUrl: './task-stack.component.html',\r\n  styleUrls: ['./task-stack.component.scss'],\r\n  // changeDetection: ChangeDetectionStrategy.OnPush\r\n})\r\nexport class TaskStackComponent implements OnInit {\r\n\r\n  @Input() list: TaskList;\r\n  tasks: Task[] = [];\r\n  isLoading = false;\r\n  isShowCreatePane = false;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  getStackStatus(): string {\r\n    const completed = this.tasks.filter(task => task.isComplete);\r\n    return `${completed.length}/${this.tasks.length}`;\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';\nimport { Task, TaskList } from 'core/types/task';\n\n@Component({\n  selector: 'kanpm-task-stack',\n  templateUrl: './task-stack.component.html',\n  styleUrls: ['./task-stack.component.scss'],\n  // changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TaskStackComponent implements OnInit {\n\n  @Input() list: TaskList;\n  tasks: Task[] = [];\n  isLoading = false;\n  isShowCreatePane = false;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  getStackStatus(): string {\n    const completed = this.tasks.filter(task => task.isComplete);\n    return `${completed.length}/${this.tasks.length}`;\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// @import \"~@angular/material/theming\";\r\n\r\n.task-stack-wrapper {\r\n  height: 100%;\r\n  border-radius: 5px;\r\n  border: 1px solid #CCC;\r\n}\r\n\r\n.task-stack {\r\n  display: flex;\r\n  flex-direction: column;\r\n  box-sizing: border-box;\r\n  position: relative;\r\n  max-height: 100%;\r\n  border-radius: 3px;\r\n}\r\n\r\n.stack-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 60px;\r\n  padding: 0 10px;\r\n  margin-bottom: 10px;\r\n\r\n  .stack-name {\r\n    font-size: 18px;\r\n    font-weight: 400;\r\n    margin-right: 8px;\r\n  }\r\n}\r\n\r\n.stack-content {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex: 1;\r\n  overflow: hidden;\r\n\r\n  .task-list{\r\n    height: 100%;\r\n    width: 100%;\r\n    padding: 0 10px;\r\n    overflow-y: auto;\r\n    li{\r\n      margin-bottom: 10px;\r\n    }\r\n  }\r\n\r\n  .empty-content-tips{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: 100%;\r\n    min-height: 150px;\r\n    mat-icon{\r\n      height: 32px;\r\n      width: 32px;\r\n      font-size: 32px;\r\n    }\r\n  }\r\n\r\n  // .task-list{\r\n  // }\r\n}\r\n\r\n.stack-footer {\r\n  display: flex;\r\n  justify-content: center;\r\n  padding: 16px 10px;\r\n\r\n  .task-quick-create-form{\r\n    mat-form-field{\r\n      width: 100%;\r\n    }\r\n  }\r\n}\r\n\r\n// .cdk-drag-preview {\r\n//   opacity: 100;\r\n//   @include mat-elevation(24);\r\n// }\r\n\r\n// .cdk-drag-placeholder {\r\n//   opacity: 0;\r\n// }\r\n",
+                    "data": "// @import \"~@angular/material/theming\";\n\n.task-stack-wrapper {\n  height: 100%;\n  border-radius: 5px;\n  border: 1px solid #ccc;\n}\n\n.task-stack {\n  display: flex;\n  flex-direction: column;\n  box-sizing: border-box;\n  position: relative;\n  max-height: 100%;\n  border-radius: 3px;\n}\n\n.stack-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  height: 64px;\n  padding: 0 10px;\n  margin-bottom: 10px;\n\n  .stack-name {\n    font-size: 18px;\n    font-weight: 400;\n    margin-right: 8px;\n  }\n}\n\n.stack-content {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  flex: 1;\n  overflow: hidden;\n\n  .task-list {\n    height: 100%;\n    width: 100%;\n    padding: 0 10px;\n    overflow-y: auto;\n    li {\n      margin-bottom: 10px;\n    }\n  }\n\n  .empty-content-tips {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    height: 100%;\n    min-height: 150px;\n    mat-icon {\n      height: 32px;\n      width: 32px;\n      font-size: 32px;\n    }\n  }\n\n  .list-loading {\n    height: 100%;\n    min-height: 150px;\n    flex-direction: column;\n  }\n}\n\n.stack-footer {\n  border-top: 1px solid #ccc;\n  padding: 16px 10px;\n\n  .task-quick-create-form {\n    mat-form-field {\n      width: 100%;\n    }\n    button {\n      margin-right: 5px;\n    }\n  }\n}\n\n// .cdk-drag-preview {\n//   opacity: 100;\n//   @include mat-elevation(24);\n// }\n\n// .cdk-drag-placeholder {\n//   opacity: 0;\n// }\n",
                     "styleUrl": "./task-stack.component.scss"
                 }
             ],
@@ -2793,7 +2793,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"task-stack-wrapper\">\r\n  <div class=\"task-stack\">\r\n    <!-- stack header -->\r\n    <header cdkDragHandle class=\"stack-header mat-elevation-z1\">\r\n      <div>\r\n        <span class=\"stack-name\">stack name</span>\r\n        <span *ngIf=\"tasks&&tasks.length\" class=\"stack-status\">{{getStackStatus()}}</span>\r\n      </div>\r\n      <div>\r\n        <button mat-icon-button>\r\n          <mat-icon>add_task</mat-icon>\r\n        </button>\r\n        <button mat-icon-button>\r\n          <mat-icon>more_horiz</mat-icon>\r\n        </button>\r\n      </div>\r\n    </header>\r\n    <!-- stack content, task card drag zone -->\r\n    <div class=\"stack-content\">\r\n      <div *ngIf=\"isLoading\" class=\"flex-center\">\r\n        <mat-spinner></mat-spinner>\r\n      </div>\r\n      <ul *ngIf=\"!isLoading && tasks.length != 0\" class=\"task-list\">\r\n        <li *ngFor=\"let task of tasks; index as i\">\r\n          <kanpm-task-card [task]=task></kanpm-task-card>\r\n        </li>\r\n      </ul>\r\n      <div *ngIf=\"!isLoading && tasks.length == 0\" class=\"empty-content-tips\">\r\n        <mat-icon color=\"primary\">check_box</mat-icon>\r\n        <span>列表无任务</span>\r\n        <span class=\"mat-caption\">动静有时，张驰有度</span>\r\n      </div>\r\n    </div>\r\n    <!-- stack footer -->\r\n    <footer *ngIf=\"!isLoading\" class=\"stack-footer\">\r\n      <ng-container *ngIf=\"isShowCreatePane;else create_button\">\r\n        <form class=\"task-quick-create-form\">\r\n          <mat-form-field appearance=\"outline\">\r\n            <mat-label>任务描述</mat-label>\r\n            <textarea matInput></textarea>\r\n          </mat-form-field>\r\n          <button mat-stroked-button color=\"primary\">创建</button>\r\n          <button mat-button (click)=\"isShowCreatePane=false\">取消</button>\r\n        </form>\r\n      </ng-container>\r\n      <ng-template #create_button>\r\n        <button mat-stroked-button color=\"primary\" (click)=\"isShowCreatePane=true\">快速创建任务</button>\r\n      </ng-template>\r\n    </footer>\r\n  </div>\r\n</div>"
+            "templateData": "<div class=\"task-stack-wrapper\">\n  <div class=\"task-stack\">\n    <!-- stack header -->\n    <header cdkDragHandle class=\"stack-header mat-elevation-z1\">\n      <div>\n        <span class=\"stack-name\">stack name</span>\n        <span *ngIf=\"tasks&&tasks.length\" class=\"stack-status\">{{getStackStatus()}}</span>\n      </div>\n      <div>\n        <button mat-icon-button>\n          <mat-icon>add_task</mat-icon>\n        </button>\n        <button mat-icon-button>\n          <mat-icon>more_horiz</mat-icon>\n        </button>\n      </div>\n    </header>\n    <!-- stack content, task card drag zone -->\n    <div class=\"stack-content\">\n      <div *ngIf=\"isLoading\" class=\"flex-center list-loading\">\n        <mat-spinner [diameter]=\"24\" [strokeWidth]=\"4\"></mat-spinner>\n        <span>列表加载中</span>\n      </div>\n      <ul *ngIf=\"!isLoading && tasks.length != 0\" class=\"task-list\">\n        <li *ngFor=\"let task of tasks; index as i\">\n          <kanpm-task-card [task]=task></kanpm-task-card>\n        </li>\n      </ul>\n      <div *ngIf=\"!isLoading && tasks.length == 0\" class=\"empty-content-tips\">\n        <mat-icon color=\"primary\">check_box</mat-icon>\n        <span>列表无任务</span>\n        <span class=\"mat-caption\">动静有时，张驰有度</span>\n      </div>\n    </div>\n    <!-- stack footer -->\n    <footer *ngIf=\"!isLoading\" class=\"flex-center stack-footer\">\n      <ng-container *ngIf=\"isShowCreatePane;else create_button\">\n        <form class=\"task-quick-create-form\">\n          <mat-form-field appearance=\"outline\">\n            <mat-label>任务描述</mat-label>\n            <textarea matInput></textarea>\n          </mat-form-field>\n          <button mat-stroked-button color=\"primary\">创建</button>\n          <button mat-button (click)=\"isShowCreatePane=false\">取消</button>\n        </form>\n      </ng-container>\n      <ng-template #create_button>\n        <button mat-stroked-button color=\"primary\" (click)=\"isShowCreatePane=true\">快速创建任务</button>\n      </ng-template>\n    </footer>\n  </div>\n</div>"
         },
         {
             "name": "TeamComponent",
@@ -3305,7 +3305,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<section class=\"project-list\">\r\n    <h3 class=\"mat-h3\">项目列表</h3>\r\n    <ng-container *ngFor=\"let project of projectList\">\r\n        <kanpm-project-list-item [project]=\"project\" (projectClick)=\"routeToProjectDetail($event)\">\r\n        </kanpm-project-list-item>\r\n    </ng-container>\r\n    <button class=\"project-add-button\" (click)=\"openProjectCreatorDialog()\" mat-raised-button\r\n        color=\"primary\">新建项目</button>\r\n</section>"
+            "templateData": "<section class=\"project-list\">\n    <h3 class=\"mat-h3\">项目列表</h3>\n    <ng-container *ngFor=\"let project of projectList\">\n        <kanpm-project-list-item [project]=\"project\" (projectClick)=\"routeToProjectDetail($event)\">\n        </kanpm-project-list-item>\n    </ng-container>\n    <button class=\"project-add-button\" (click)=\"openProjectCreatorDialog()\" mat-raised-button\n        color=\"primary\">新建项目</button>\n</section>"
         },
         {
             "name": "TeamSelectComponent",
@@ -4124,6 +4124,14 @@
                 "defaultValue": "{\r\n    200: '服务器成功返回请求的数据。',\r\n    201: '新建或修改数据成功。',\r\n    202: '请求已经进入后台排队（异步任务）。',\r\n    204: '删除数据成功。',\r\n    400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',\r\n    401: '用户没有权限（令牌、用户名、密码错误）。',\r\n    403: '用户得到授权，但是访问是被禁止的。',\r\n    404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',\r\n    406: '请求的格式不可得。',\r\n    410: '请求的资源被永久删除，且不会再得到的。',\r\n    422: '当创建对象时，发生一个验证错误。',\r\n    500: '服务器发生错误，请检查服务器。',\r\n    502: '网关错误。',\r\n    503: '服务不可用，服务器暂时过载或维护。',\r\n    504: '网关超时。',\r\n}"
             },
             {
+                "name": "completeTask",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -4143,9 +4151,9 @@
                 "name": "defaultTasksData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
                 "type": "object",
-                "defaultValue": "{\r\n    description: `task test: Some description about this task`,\r\n    endTime: new Date().getTime(),\r\n}"
+                "defaultValue": "{\n    description: `task test: Some description about this task`,\n    endTime: new Date().getTime(),\n}"
             },
             {
                 "name": "defaultTasksListData",
@@ -4153,7 +4161,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/components/task-stack/task-stack.component.stories.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n    { ...defaultTasksData, isComplete: true, id: '1', title: 'Task 1' },\r\n    { ...defaultTasksData, id: '2', title: 'Task 2' },\r\n]"
+                "defaultValue": "[\n    { ...defaultTasksData, isComplete: true, id: '1', title: 'Task 1' },\n    { ...defaultTasksData, id: '2', title: 'Task 2' },\n]"
             },
             {
                 "name": "empty",
@@ -4167,23 +4175,23 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
-                "type": "object",
-                "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: true\r\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "type": "object",
                 "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: false\r\n}"
             },
             {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: true\r\n}"
+            },
+            {
                 "name": "fullInfo",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -4266,7 +4274,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/third-parties/material.module.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n  MatSidenavModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatMenuModule,\r\n  MatCheckboxModule,\r\n  MatTabsModule,\r\n  MatDividerModule,\r\n  MatChipsModule,\r\n  MatToolbarModule,\r\n  MatCardModule,\r\n  DragDropModule,\r\n  MatInputModule,\r\n  MatDialogModule,\r\n  MatListModule,\r\n  MatPaginatorModule,\r\n  MatSlideToggleModule,\r\n  MatProgressSpinnerModule\r\n]"
+                "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n  MatSlideToggleModule,\n  MatProgressSpinnerModule\n]"
             },
             {
                 "name": "overflowStatus",
@@ -4305,7 +4313,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/components/components.modules.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n    ThemePickerComponent,\r\n    TaskListItemComponent,\r\n    ProjectListItemComponent,\r\n    TaskCardComponent,\r\n    TaskDetailComponent,\r\n    AvatarComponent,\r\n    TeamCreatorComponent,\r\n    ProjectCreatorComponent,\r\n    TaskStackComponent\r\n]"
+                "defaultValue": "[\n    ThemePickerComponent,\n    TaskListItemComponent,\n    ProjectListItemComponent,\n    TaskCardComponent,\n    TaskDetailComponent,\n    AvatarComponent,\n    TeamCreatorComponent,\n    ProjectCreatorComponent,\n    TaskStackComponent\n]"
             },
             {
                 "name": "Small",
@@ -4321,7 +4329,7 @@
                 "subtype": "variable",
                 "file": "src/stories/Button.stories.ts",
                 "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\r\n  component: Button,\r\n  props: args,\r\n})"
+                "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
             },
             {
                 "name": "Template",
@@ -4329,7 +4337,7 @@
                 "subtype": "variable",
                 "file": "src/stories/Header.stories.ts",
                 "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\r\n  component: Header,\r\n  props: args,\r\n})"
+                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
             },
             {
                 "name": "Template",
@@ -4337,15 +4345,15 @@
                 "subtype": "variable",
                 "file": "src/stories/Page.stories.ts",
                 "type": "Story<Page>",
-                "defaultValue": "(args: Page) => ({\r\n  component: Page,\r\n  props: args,\r\n})"
+                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/shared/components/task-card/task-card.stories.ts",
+                "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
                 "type": "",
-                "defaultValue": "(args: TaskCardComponent) => ({\r\n    props: args,\r\n})"
+                "defaultValue": "(args: TaskCardComponent) => ({\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -4361,7 +4369,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/components/task-stack/task-stack.component.stories.ts",
                 "type": "",
-                "defaultValue": "(args: TaskStackComponent) => ({\r\n    props: args\r\n})"
+                "defaultValue": "(args: TaskStackComponent) => ({\n    props: args\n})"
             },
             {
                 "name": "ZorroModules",
@@ -4369,7 +4377,7 @@
                 "subtype": "variable",
                 "file": "src/app/shared/third-parties/zorro.module.ts",
                 "type": "[]",
-                "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
+                "defaultValue": "[\n    NzAvatarModule,\n    NzIconModule,\n    NzDividerModule,\n    NzTagModule,\n    NzCommentModule\n]"
             }
         ],
         "functions": [
@@ -4456,6 +4464,40 @@
                     "defaultValue": "{\r\n    200: '服务器成功返回请求的数据。',\r\n    201: '新建或修改数据成功。',\r\n    202: '请求已经进入后台排队（异步任务）。',\r\n    204: '删除数据成功。',\r\n    400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',\r\n    401: '用户没有权限（令牌、用户名、密码错误）。',\r\n    403: '用户得到授权，但是访问是被禁止的。',\r\n    404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',\r\n    406: '请求的格式不可得。',\r\n    410: '请求的资源被永久删除，且不会再得到的。',\r\n    422: '当创建对象时，发生一个验证错误。',\r\n    500: '服务器发生错误，请检查服务器。',\r\n    502: '网关错误。',\r\n    503: '服务不可用，服务器暂时过载或维护。',\r\n    504: '网关超时。',\r\n}"
                 }
             ],
+            "src/app/shared/components/task-card/task-card.component.stories.ts": [
+                {
+                    "name": "completeTask",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "defaultTasksData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
+                    "type": "object",
+                    "defaultValue": "{\n    description: `task test: Some description about this task`,\n    endTime: new Date().getTime(),\n}"
+                },
+                {
+                    "name": "fullInfo",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/task-card/task-card.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "(args: TaskCardComponent) => ({\n    props: args,\n})"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -4488,7 +4530,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/components/task-stack/task-stack.component.stories.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n    { ...defaultTasksData, isComplete: true, id: '1', title: 'Task 1' },\r\n    { ...defaultTasksData, id: '2', title: 'Task 2' },\r\n]"
+                    "defaultValue": "[\n    { ...defaultTasksData, isComplete: true, id: '1', title: 'Task 1' },\n    { ...defaultTasksData, id: '2', title: 'Task 2' },\n]"
                 },
                 {
                     "name": "empty",
@@ -4520,43 +4562,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/components/task-stack/task-stack.component.stories.ts",
                     "type": "",
-                    "defaultValue": "(args: TaskStackComponent) => ({\r\n    props: args\r\n})"
-                }
-            ],
-            "src/app/shared/components/task-card/task-card.stories.ts": [
-                {
-                    "name": "defaultTasksData",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
-                    "type": "object",
-                    "defaultValue": "{\r\n    description: `task test: Some description about this task`,\r\n    endTime: new Date().getTime(),\r\n}"
-                },
-                {
-                    "name": "fullInfo",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/task-card/task-card.stories.ts",
-                    "type": "",
-                    "defaultValue": "(args: TaskCardComponent) => ({\r\n    props: args,\r\n})"
-                }
-            ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "type": "object",
-                    "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: true\r\n}"
+                    "defaultValue": "(args: TaskStackComponent) => ({\n    props: args\n})"
                 }
             ],
             "src/environments/environment.ts": [
@@ -4567,6 +4573,16 @@
                     "file": "src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: false\r\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  SERVER_URL: '/',\r\n  production: true\r\n}"
                 }
             ],
             "src/app/shared/components/task-detail/task-detail.component.stories.ts": [
@@ -4647,7 +4663,7 @@
                     "subtype": "variable",
                     "file": "src/stories/Button.stories.ts",
                     "type": "Story<Button>",
-                    "defaultValue": "(args: Button) => ({\r\n  component: Button,\r\n  props: args,\r\n})"
+                    "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -4673,7 +4689,7 @@
                     "subtype": "variable",
                     "file": "src/stories/Header.stories.ts",
                     "type": "Story<Header>",
-                    "defaultValue": "(args: Header) => ({\r\n  component: Header,\r\n  props: args,\r\n})"
+                    "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
                 }
             ],
             "src/stories/Page.stories.ts": [
@@ -4699,7 +4715,7 @@
                     "subtype": "variable",
                     "file": "src/stories/Page.stories.ts",
                     "type": "Story<Page>",
-                    "defaultValue": "(args: Page) => ({\r\n  component: Page,\r\n  props: args,\r\n})"
+                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
                 }
             ],
             "src/app/shared/third-parties/material.module.ts": [
@@ -4709,7 +4725,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/third-parties/material.module.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n  MatSidenavModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatMenuModule,\r\n  MatCheckboxModule,\r\n  MatTabsModule,\r\n  MatDividerModule,\r\n  MatChipsModule,\r\n  MatToolbarModule,\r\n  MatCardModule,\r\n  DragDropModule,\r\n  MatInputModule,\r\n  MatDialogModule,\r\n  MatListModule,\r\n  MatPaginatorModule,\r\n  MatSlideToggleModule,\r\n  MatProgressSpinnerModule\r\n]"
+                    "defaultValue": "[\n  MatSidenavModule,\n  MatButtonModule,\n  MatIconModule,\n  MatMenuModule,\n  MatCheckboxModule,\n  MatTabsModule,\n  MatDividerModule,\n  MatChipsModule,\n  MatToolbarModule,\n  MatCardModule,\n  DragDropModule,\n  MatInputModule,\n  MatDialogModule,\n  MatListModule,\n  MatPaginatorModule,\n  MatSlideToggleModule,\n  MatProgressSpinnerModule\n]"
                 }
             ],
             "src/app/shared/components/components.modules.ts": [
@@ -4719,7 +4735,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/components/components.modules.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n    ThemePickerComponent,\r\n    TaskListItemComponent,\r\n    ProjectListItemComponent,\r\n    TaskCardComponent,\r\n    TaskDetailComponent,\r\n    AvatarComponent,\r\n    TeamCreatorComponent,\r\n    ProjectCreatorComponent,\r\n    TaskStackComponent\r\n]"
+                    "defaultValue": "[\n    ThemePickerComponent,\n    TaskListItemComponent,\n    ProjectListItemComponent,\n    TaskCardComponent,\n    TaskDetailComponent,\n    AvatarComponent,\n    TeamCreatorComponent,\n    ProjectCreatorComponent,\n    TaskStackComponent\n]"
                 }
             ],
             "src/app/shared/third-parties/zorro.module.ts": [
@@ -4729,7 +4745,7 @@
                     "subtype": "variable",
                     "file": "src/app/shared/third-parties/zorro.module.ts",
                     "type": "[]",
-                    "defaultValue": "[\r\n    NzAvatarModule,\r\n    NzIconModule,\r\n    NzDividerModule,\r\n    NzTagModule,\r\n    NzCommentModule\r\n]"
+                    "defaultValue": "[\n    NzAvatarModule,\n    NzIconModule,\n    NzDividerModule,\n    NzTagModule,\n    NzCommentModule\n]"
                 }
             ]
         },
@@ -5296,16 +5312,17 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/components/task-card/task-card.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "TaskCardComponent",
+                "filePath": "src/app/shared/components/task-card/task-card.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "completeTask",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/components/task-card/task-card.stories.ts",
+                "filePath": "src/app/shared/components/task-card/task-card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -5315,7 +5332,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/components/task-card/task-card.stories.ts",
+                "filePath": "src/app/shared/components/task-card/task-card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -5325,13 +5342,22 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/components/task-card/task-card.stories.ts",
+                "filePath": "src/app/shared/components/task-card/task-card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/task-card/task-card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskCardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

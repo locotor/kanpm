@@ -21,8 +21,8 @@
         <mat-spinner [diameter]="24" [strokeWidth]="4"></mat-spinner>
         <span>列表加载中</span>
       </div>
-      <ul *ngIf="!isLoading && tasks.length != 0" class="task-list">
-        <li *ngFor="let task of tasks; index as i">
+      <ul *ngIf="!isLoading && tasks.length != 0" cdkDropList (cdkDropListDropped)="drop($event)" class="task-list">
+        <li *ngFor="let task of tasks; index as i" cdkDrag>
           <kanpm-task-card [task]=task></kanpm-task-card>
         </li>
       </ul>

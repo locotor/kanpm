@@ -20,6 +20,9 @@
 
 .task-content {
   flex: 1 1 auto;
+  &.is-complete{
+    opacity: 0.5;
+  }
   .task-title {
     display: flex;
     .title-text {
