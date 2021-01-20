@@ -5,7 +5,7 @@
   <mat-drawer-content class="task-list-group-container">
     <!-- task list drag zone -->
     <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
-      (cdkDropListDropped)="dropTaskList($event)">
+      (cdkDropListDropped)="dropTaskList($event)" cdkDropListGroup>
       <div cdkDrag *ngFor="let stack of taskStacks" class="task-list-wrapper mat-elevation-z2">
         <kanpm-task-stack [stack]="stack"></kanpm-task-stack>
       </div>
