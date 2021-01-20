@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TaskList } from 'core/types/task';
 
 @Component({
   templateUrl: './project-tasks.component.html',
@@ -8,29 +9,15 @@ import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 export class ProjectTasksComponent implements OnInit {
 
   @ViewChild('taskDetailDrawer') taskDetailDrawer;
-  taskLists = [];
+  taskStacks:TaskList[] = [];
   isShowCreatePane = false;
 
   ngOnInit(): void {
-    for (let index = 0; index < 3; index++) {
-      const taskList = {
-        id: `${index}`,
-        name: '测试任务列表0' + index,
-        connected: index !== 2 ? `${index + 1}` : '0',
-        tasks: []
-      };
-      const random = Math.floor(Math.random() * 5 + 1);
-      for (let taskID = 0; taskID < random; taskID++) {
-        taskList.tasks.push({
-          name: '任务' + taskID
-        });
-      }
-      this.taskLists.push(taskList);
-    }
+    this.taskStacks = this.getProjectTaskStacks();
   }
 
   dropTaskList(event) {
-    moveItemInArray(this.taskLists, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.taskStacks, event.previousIndex, event.currentIndex);
   }
 
   dropTaskCard(event) {
@@ -46,6 +33,20 @@ export class ProjectTasksComponent implements OnInit {
 
   test() {
     this.taskDetailDrawer.open();
+  }
+
+  private getProjectTaskStacks(): TaskList[] {
+    const stacks: TaskList[] = [];
+    const random = Math.floor(Math.random() * 5 + 1);
+    for (let index = 0; index <= random; index++) {
+      const stack = {
+        id: `${index}`,
+        name: '测试任务列表0' + index,
+        index
+      };
+      stacks.push(stack);
+    }
+    return stacks;
   }
 
 }

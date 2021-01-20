@@ -11,28 +11,27 @@ export interface TaskGroup {
 
 export interface TaskList {
     id: string;
-    listName: string;
-    taskCount: number;
-    completedTaskCount: number;
+    name: string;
     index: number;
 }
 
 export interface Task {
     id: string;
     isComplete: boolean;
-    subTasks: Task[];
-    priority: 'high' | 'normal' | 'low';
     description: string;
-    principalUserId: string;
-    endTime: number;
-    repeat: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';
-    remindTime: number;
-    remark: string;
-    attachments: string[];
-    tags: number[];
+    index: number;
+    subTasks?: Task[];
+    priority?: 'high' | 'normal' | 'low';
+    principalUserId?: string;
+    endTime?: number;
+    repeat?: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';
+    remindTime?: number;
+    remark?: string;
+    attachments?: string[];
+    tags?: number[];
     createdTime: number;
-    completedTime: number;
-    collaboratorsId: string[];
+    completedTime?: number;
+    collaboratorsId?: string[];
 }
 
 export enum TaskRepeat {

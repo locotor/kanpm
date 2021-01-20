@@ -3,64 +3,11 @@
     <kanpm-task-detail></kanpm-task-detail>
   </mat-drawer>
   <mat-drawer-content class="task-list-group-container">
-    <div class="kanban-header">
-      <section class="kanban-switch-button-group">
-        <mat-icon>menu</mat-icon>
-        <span>任务</span>
-      </section>
-      <section>
-        <button mat-button [matMenuTriggerFor]="menu">筛选</button>
-        <button mat-button [matMenuTriggerFor]="menu">排序</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
-      </section>
-    </div>
     <!-- task list drag zone -->
     <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="dropTaskList($event)">
-      <div cdkDrag *ngFor="let list of taskLists" class="task-list-wrapper mat-elevation-z8">
-        <div class="task-list">
-          <div cdkDragHandle class="list-header">
-            <span class="mat-h3">
-              {{list.name}}<em>0</em>/4
-            </span>
-            <mat-icon>more_horiz</mat-icon>
-          </div>
-          <!-- task card drag zone -->
-          <ul cdkDropList class="list-content" id="{{list.id}}" [cdkDropListData]="list"
-            [cdkDropListConnectedTo]="list.connected" (cdkDropListDropped)="dropTaskCard($event)">
-            <li cdkDrag *ngFor="let task of list.tasks; index as i">
-              <kanpm-task-card [task]=task (click)="test()"></kanpm-task-card>
-            </li>
-          </ul>
-          <div class="list-footer">
-            <div class="task-quick-create-pane" *ngIf="isShowCreatePane;else create_button">
-              <mat-form-field style="width: 100%;">
-                <mat-label>任务描述</mat-label>
-                <textarea matInput></textarea>
-              </mat-form-field>
-              <div class="task-additional-info">
-                <div>
-                  <mat-icon class="icon">calendar_today</mat-icon>
-                  <mat-icon class="icon">person_add</mat-icon>
-                </div>
-                <div>
-                  <mat-checkbox></mat-checkbox> 只对参与者可见
-                </div>
-              </div>
-              <button mat-raised-button color="primary">创建任务</button>
-              <button mat-button (click)="isShowCreatePane=false">取消</button>
-            </div>
-            <ng-template #create_button>
-              <div class="task-quick-create-button" (click)="isShowCreatePane=true">
-                <mat-icon>add</mat-icon>
-                <span>新建任务</span>
-              </div>
-            </ng-template>
-          </div>
-        </div>
+      <div cdkDrag *ngFor="let stack of taskStacks" class="task-list-wrapper mat-elevation-z2">
+        <kanpm-task-stack [stack]="stack"></kanpm-task-stack>
       </div>
     </div>
   </mat-drawer-content>

@@ -21,22 +21,10 @@
   height: 100%;
   padding: 10px;
 
-  .kanban-header {
-    display: flex;
-    height: 40px;
-    justify-content: space-between;
-    margin: 8px 0;
-
-    .kanban-switch-button-group {
-      display: inline-flex;
-      align-items: center;
-    }
-  }
-
   .kanban-wrapper {
     display: flex;
     align-items: flex-start;
-    height: calc(100% - 56px);
+    height: 100%;
   }
 }
 

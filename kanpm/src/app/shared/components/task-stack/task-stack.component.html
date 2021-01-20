@@ -1,9 +1,9 @@
-<div class="task-stack-wrapper">
+<mat-card class="task-stack-wrapper">
   <div class="task-stack">
     <!-- stack header -->
     <header cdkDragHandle class="stack-header mat-elevation-z1">
       <div>
-        <span class="stack-name">stack name</span>
+        <span class="stack-name">{{stack?.name}}</span>
         <span *ngIf="tasks&&tasks.length" class="stack-status">{{getStackStatus()}}</span>
       </div>
       <div>
@@ -49,4 +49,4 @@
       </ng-template>
     </footer>
   </div>
-</div>
+</mat-card>
