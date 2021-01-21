@@ -87,3 +87,21 @@ li {
 ::-webkit-scrollbar-thumb {
   background-color: mat-color($default-primary, lighter);
 }
+
+
+/* drag drop */
+.cdk-drag-preview {
+  @include mat-elevation(24);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging li:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
