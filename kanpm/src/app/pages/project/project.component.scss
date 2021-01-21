@@ -3,45 +3,16 @@
   height: 100%;
 }
 
-.project-root-container {
+.project-container {
   display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
-.project-header {
+.project-sidebar{
   display: flex;
-  align-items: center;
-
-  .tabs {
-    flex: 1;
-
-    .tab {
-      float: left;
-      cursor: pointer;
-      box-sizing: border-box;
-      padding: 10px 15px;
-    }
-  }
-
-  .settings {
-    a {
-      display: inline-flex;
-      align-items: center;
-      margin-right: 5px;
-
-      .icon {
-        width: 16px;
-        height: 16px;
-        font-size: 16px;
-        margin-right: 5px;
-      }
-
-      span {
-        font-size: 14px;
-      }
-    }
-  }
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-content {

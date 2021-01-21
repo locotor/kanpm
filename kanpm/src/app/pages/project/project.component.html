@@ -1,24 +1,30 @@
-<div class="project-root-container">
-  <div class="project-header">
-    <section class="tabs">
-      <ul class="mat-h3">
-        <li class="tab active"><span>任务</span></li>
-        <li class="tab"><span>日历</span></li>
-        <li class="tab"><span>统计</span></li>
-      </ul>
-    </section>
-    <section class="settings">
-      <a>
-        <mat-icon class="icon">group</mat-icon>
-        <span>3</span>
-      </a>
-      <a>
-        <mat-icon class="icon">tune</mat-icon>
-        <span>菜单</span>
-      </a>
-    </section>
-  </div>
-  <div class="project-content">
+<mat-sidenav-container class="project-container">
+  <!-- side nav -->
+  <mat-sidenav mode="side" opened class="project-sidebar">
+    <div class="project-sidebar">
+      <mat-nav-list>
+        <mat-list-item>
+          <a>任务</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a>日历</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a>统计</a>
+        </mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list>
+        <mat-list-item>
+          <mat-icon class="icon">group</mat-icon>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="icon">settings</mat-icon>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <!-- content wrapper -->
+  <mat-sidenav-content class="project-content">
     <router-outlet></router-outlet>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
