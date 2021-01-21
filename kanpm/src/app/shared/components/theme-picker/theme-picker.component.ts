@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DocsSiteTheme, LocalStorageService } from 'core/services/localstorage.service';
 import { StyleManagerService } from 'core/services/style-manager/style-manager.service';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'kanpm-theme-picker',
@@ -41,10 +40,11 @@ export class ThemePickerComponent implements OnInit {
 
   ngOnInit(): void {
     const currentThemeName = this.themeStorage.getValue(this.storageThemeKey);
-    const isDarkMode = this.themeStorage.getValue(this.darkModeThemeKey);
+    let isDarkMode = this.themeStorage.getValue(this.darkModeThemeKey);
     if (currentThemeName) {
       this.selectTheme(currentThemeName);
     }
+    isDarkMode = JSON.parse(isDarkMode);
     if (isDarkMode) {
       this.darkModeSwitch(isDarkMode);
     }

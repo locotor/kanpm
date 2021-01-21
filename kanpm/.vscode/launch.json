@@ -8,7 +8,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch kanpm",
-      "url": "http://localhost:4200",
+      "url": "http://localhost:4200/kanpm",
       "webRoot": "${workspaceFolder}"
     },
     {
