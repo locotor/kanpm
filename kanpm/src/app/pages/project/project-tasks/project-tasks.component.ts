@@ -38,7 +38,7 @@ export class ProjectTasksComponent implements OnInit {
   private getProjectTaskStacks(): TaskList[] {
     const stacks: TaskList[] = [];
     const random = Math.floor(Math.random() * 5 + 1);
-    for (let index = 0; index <= random; index++) {
+    for (let index = 0; index <= 7; index++) {
       const stack = {
         id: `${index}`,
         name: '测试任务列表0' + index,

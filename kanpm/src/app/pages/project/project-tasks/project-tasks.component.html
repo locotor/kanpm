@@ -2,13 +2,13 @@
   <mat-drawer #taskDetailDrawer class="task-detail-container" mode="cover" position="end">
     <kanpm-task-detail></kanpm-task-detail>
   </mat-drawer>
-  <mat-drawer-content class="task-list-group-container">
+  <mat-drawer-content class="task-stacks-wrapper">
     <!-- task list drag zone -->
-    <div cdkDropList class="kanban-wrapper" cdkDropListOrientation="horizontal"
+    <ul cdkDropList class="task-stacks" cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="dropTaskList($event)" cdkDropListGroup>
-      <div cdkDrag *ngFor="let stack of taskStacks" class="task-list-wrapper mat-elevation-z2">
+      <li cdkDrag *ngFor="let stack of taskStacks" class="task-stack mat-elevation-z2">
         <kanpm-task-stack [stack]="stack"></kanpm-task-stack>
-      </div>
-    </div>
+      </li>
+    </ul>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,10 +1,5 @@
 @import "~@angular/material/theming";
 
-:host {
-  display: block;
-  height: 100%;
-}
-
 .tasks-root-container {
   height: 100%;
 }
@@ -15,83 +10,19 @@
   max-width: 879px;
 }
 
-.task-list-group-container {
-  display: flex;
-  flex-direction: column;
+.task-stacks-wrapper {
   height: 100%;
-  padding: 10px;
+  padding: 16px;
 
-  .kanban-wrapper {
-    display: flex;
-    align-items: flex-start;
+  ul.task-stacks {
     height: 100%;
+    white-space: nowrap;
   }
-}
-
-.task-list-wrapper {
-  flex-shrink: 0;
-  width: 296px;
-  height: 100%;
-  margin-right: 16px;
-  border-radius: 5px;
-}
-
-.task-list {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  position: relative;
-  padding: 0 10px;
-  max-height: 100%;
-  border-radius: 3px;
-
-  .list-header {
-    height: 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-      margin: 0;
-    }
-  }
-
-  ul.list-content {
-    flex: 1;
-    min-height: 90px;
-    overflow: auto;
-  }
-
-  .list-footer {
-    border-radius: 5px;
-    margin: 10px 0;
-    padding: 10px;
-
-    .task-quick-create-button {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
-      span {
-        margin-left: 6px;
-        font-size: 16px;
-        line-height: 24px;
-      }
-    }
-
-    .task-quick-create-pane {
-      width: 100%;
-
-      .task-additional-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 6px;
-
-        .icon {
-          font-size: 18px;
-        }
-      }
-    }
+  li.task-stack {
+    display: inline-block;
+    width: 320px;
+    height: 100%;
+    margin-right: 16px;
   }
 }
 
