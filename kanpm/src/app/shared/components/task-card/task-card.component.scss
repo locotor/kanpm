@@ -10,44 +10,47 @@
   }
 }
 
-.card-content-wrapper {
-  display: flex;
-}
-
 .task-checkbox {
   margin-right: 10px;
 }
 
 .task-content {
   flex: 1 1 auto;
+  
   &.is-complete{
     opacity: 0.5;
   }
-  .task-title {
-    display: flex;
-    .title-text {
-      flex: 1;
-      margin-right: 8px;
+  
+  .task-header {
+    justify-content: space-between;
+    
+    .title {
+      margin-bottom: 0;
     }
   }
+  
   .task-infos {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
+    
     .task-info {
-      display: flex;
-      align-items: center;
       margin-right: 8px;
       margin-top: 4px;
       white-space: nowrap;
     }
+    
     .task-tag-red {
       color: red;
     }
+  
     .task-tag-blue {
       color: blue;
     }
+    
     .task-tag-green {
       color: green;
     }
   }
 }
+

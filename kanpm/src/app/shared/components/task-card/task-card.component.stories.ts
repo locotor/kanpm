@@ -4,7 +4,6 @@ import { TaskCardComponent } from './task-card.component';
 
 export const defaultTasksData = {
     description: `task test: Some description about this task`,
-    endTime: new Date().getTime(),
 };
 
 export default {
@@ -24,6 +23,12 @@ const Template = (args: TaskCardComponent) => ({
     props: args,
 });
 
+export const basicInfo = Template.bind({});
+basicInfo.args = {
+    task: { ...defaultTasksData }
+};
+basicInfo.storyName = '基本信息';
+
 export const fullInfo = Template.bind({});
 fullInfo.args = {
     task: {
@@ -34,6 +39,7 @@ fullInfo.args = {
             { isComplete: false, }
         ],
         priority: 'low',
+        endTime: new Date().getTime(),
         remindTime: new Date().getTime(),
         repeat: 'daily',
     }

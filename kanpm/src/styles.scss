@@ -70,6 +70,16 @@ li {
   justify-content: center;
 }
 
+.flex-vertical-center{
+  display: flex;
+  align-items: center;
+}
+
+.flex-horizontal-center{
+  display: flex;
+  justify-content: center;
+}
+
 /* scrollbar */
 /*滚动条的宽度*/
 
