@@ -19,7 +19,7 @@ export interface Task {
     id: string;
     isComplete: boolean;
     description: string;
-    index: number;
+    index?: number;
     subTasks?: Task[];
     priority?: 'high' | 'normal' | 'low';
     principalUserId?: string;
@@ -29,7 +29,7 @@ export interface Task {
     remark?: string;
     attachments?: string[];
     tags?: number[];
-    createdTime: number;
+    createdTime?: number;
     completedTime?: number;
     collaboratorsId?: string[];
 }

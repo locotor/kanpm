@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ComponentsModule } from './components/components.modules';
@@ -11,16 +11,18 @@ import { ZorroModule } from './third-parties/zorro.module';
     imports: [
         CommonModule,
         ReactiveFormsModule,
+        FormsModule,
         MaterialModule,
         ZorroModule,
         ComponentsModule
     ],
     exports: [
         ReactiveFormsModule,
+        FormsModule,
         HttpClientModule,
         MaterialModule,
         ZorroModule,
-        ComponentsModule
+        ComponentsModule,
     ]
 })
 export class SharedModule { }

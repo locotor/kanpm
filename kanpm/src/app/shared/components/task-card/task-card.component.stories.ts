@@ -3,11 +3,11 @@ import { SharedModule } from 'shared/shared.module';
 import { TaskCardComponent } from './task-card.component';
 
 export const defaultTasksData = {
-    description: `task test: Some description about this task`,
+    description: `test: description about this task`,
 };
 
 export default {
-    title: '组件/任务卡',
+    title: '任务卡',
     excludeStories: /.*Data$/,
     component: TaskCardComponent,
     decorators: [
@@ -16,7 +16,23 @@ export default {
                 SharedModule
             ],
         })
-    ]
+    ],
+    argTypes: {
+        task: {
+            description: '任务信息对象，包含当前任务的所有信息',
+            type: {
+                required: true
+            },
+            table: {
+                type: {
+                    summary: 'Task',
+                },
+                defaultValue: {
+                    summary: 'null'
+                }
+            },
+        }
+    }
 } as Meta;
 
 const Template = (args: TaskCardComponent) => ({
@@ -28,6 +44,12 @@ basicInfo.args = {
     task: { ...defaultTasksData }
 };
 basicInfo.storyName = '基本信息';
+
+export const completeTask = Template.bind({});
+completeTask.args = {
+    task: { ...defaultTasksData, isComplete: true }
+};
+completeTask.storyName = '已完成状态';
 
 export const fullInfo = Template.bind({});
 fullInfo.args = {
@@ -45,9 +67,3 @@ fullInfo.args = {
     }
 };
 fullInfo.storyName = '完整信息';
-
-export const completeTask = Template.bind({});
-completeTask.args = {
-    task: { ...defaultTasksData, isComplete: true }
-};
-completeTask.storyName = '已完成状态';
