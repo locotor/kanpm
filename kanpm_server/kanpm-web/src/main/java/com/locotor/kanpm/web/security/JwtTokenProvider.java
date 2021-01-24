@@ -3,7 +3,8 @@ package com.locotor.kanpm.web.security;
 import java.security.Key;
 import java.util.Date;
 
-import com.locotor.kanpm.model.entities.UserPrincipal;
+import com.locotor.kanpm.model.entities.User;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,14 +29,13 @@ public class JwtTokenProvider {
     private int jwtExpirationInMs;
 
     public String generateToken(Authentication authentication) {
-        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        User userPrincipal = (User) authentication.getPrincipal();
         Date expiryDate = new Date(new Date().getTime() + jwtExpirationInMs);
-        var jwt = Jwts.builder().setSubject(userPrincipal.getId()).setIssuedAt(new Date()).setExpiration(expiryDate)
+        return Jwts.builder().setSubject(userPrincipal.getUsername()).setIssuedAt(new Date()).setExpiration(expiryDate)
                 .signWith(key).compact();
-        return jwt;
     }
 
-    public String getUserIdFromJWT(String authToken) {
+    public String getUsernameFromJWT(String authToken) {
         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(authToken).getBody().getSubject();
     }
 

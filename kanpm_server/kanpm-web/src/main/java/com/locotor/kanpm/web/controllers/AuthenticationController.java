@@ -14,7 +14,6 @@ import com.google.code.kaptcha.Producer;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import com.locotor.kanpm.model.entities.User;
-import com.locotor.kanpm.model.entities.UserPrincipal;
 import com.locotor.kanpm.model.payloads.ApiResponse;
 import com.locotor.kanpm.model.payloads.JwtAuthenticationResponse;
 import com.locotor.kanpm.model.payloads.SignInRequest;
@@ -57,13 +56,13 @@ public class AuthenticationController {
                 new UsernamePasswordAuthenticationToken(request.getUsernameOrEmail(), request.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
-        UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
+        User principal = (User) authentication.getPrincipal();
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, principal));
     }
 
     @PostMapping("/signUp")
     public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request) {
-        User userTest = userService.getUserByUsernameOrEmail(request.getUserName());
+        User userTest = userService.loadUserByUsernameOrEmail(request.getUserName());
         if (userTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Username is already taken!"));
         }
@@ -85,9 +84,9 @@ public class AuthenticationController {
         if (userNameOrEmail.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "parameter should not be blank"));
         }
-        User userTest = userService.getUserByUsernameOrEmail(userNameOrEmail);
+        User userTest = userService.loadUserByUsernameOrEmail(userNameOrEmail);
         if (userTest != null) {
-            return ResponseEntity.badRequest().body(new ApiResponse(false,"this username is already exist"));
+            return ResponseEntity.badRequest().body(new ApiResponse(false, "this username is already exist"));
         }
         return ResponseEntity.ok(true);
     }

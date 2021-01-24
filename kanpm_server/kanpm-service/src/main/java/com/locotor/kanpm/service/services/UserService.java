@@ -4,10 +4,12 @@ package com.locotor.kanpm.service.services;
 import com.locotor.kanpm.model.entities.User;
 import com.locotor.kanpm.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     @Autowired
     UserMapper userMapper;
 
@@ -15,18 +17,17 @@ public class UserService {
         return userMapper.insert(user);
     }
 
-    public User getUserById(String id) {
-        User result = userMapper.getById(id);
-        return result;
+    @Override
+    @Transactional
+    public User loadUserByUsername(String username) {
+        return userMapper.getByUsername(username);
     }
 
-    public User getUserByUsername(String username) {
-        User result = userMapper.getByUsername(username);
-        return result;
+    public User loadUserById(String id) {
+        return userMapper.getById(id);
     }
 
-    public User getUserByUsernameOrEmail(String username) {
-        User result = userMapper.getByUsernameOrEmail(username);
-        return result;
+    public User loadUserByUsernameOrEmail(String username) {
+        return userMapper.getByUsernameOrEmail(username);
     }
 }

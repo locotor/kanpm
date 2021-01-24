@@ -1,7 +1,7 @@
 package com.locotor.kanpm.web.controllers;
 
 import com.locotor.kanpm.model.entities.Project;
-import com.locotor.kanpm.model.entities.UserPrincipal;
+import com.locotor.kanpm.model.entities.User;
 import com.locotor.kanpm.model.payloads.AddProjectRequest;
 import com.locotor.kanpm.model.payloads.ApiResponse;
 import com.locotor.kanpm.model.payloads.UpdateProjectRequest;
@@ -24,7 +24,7 @@ public class ProjectController extends ControllerBase {
     ProjectService projectService;
 
     @GetMapping("getProjectById")
-    public ResponseEntity<?> getProjectById(String id) {
+    public ResponseEntity<ApiResponse> getProjectById(String id) {
         Project project = projectService.getProjectById(id);
         var resp = new ApiResponse(true, "Add project successfully");
         resp.setData(project);
@@ -32,7 +32,7 @@ public class ProjectController extends ControllerBase {
     }
 
     @GetMapping("getProjectListByTeamId")
-    public ResponseEntity<?> getProjectListByTeamId(String teamId) {
+    public ResponseEntity<ApiResponse> getProjectListByTeamId(String teamId) {
         var teamList = projectService.getProjectListByTeamId(teamId);
         var resp = new ApiResponse(true, "get project list successfully");
         resp.setData(teamList);
@@ -40,25 +40,25 @@ public class ProjectController extends ControllerBase {
     }
 
     @GetMapping("verifyProjectName")
-    public ResponseEntity<?> verifyProjectName(String projectName, String teamId) {
+    public ResponseEntity<ApiResponse> verifyProjectName(String projectName, String teamId) {
         if (projectName.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "parameter should not be blank"));
         }
         Project projectTest = projectService.getProjectByName(projectName, teamId);
         if (projectTest != null) {
-            return ResponseEntity.ok(false);
+            return ResponseEntity.ok(new ApiResponse(false, "project name is already exist"));
         }
-        return ResponseEntity.ok(true);
+        return ResponseEntity.ok(new ApiResponse(true));
     }
 
     @PostMapping("addProject")
-    public ResponseEntity<?> postMethodName(@RequestBody AddProjectRequest request) {
+    public ResponseEntity<ApiResponse> postMethodName(@RequestBody AddProjectRequest request) {
         Project projectTest = projectService.getProjectByName(request.getProjectName(), request.getTeamId());
         if (projectTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Project name is already taken!"));
         }
 
-        UserPrincipal currentUser = getCurrentUser();
+        User currentUser = getCurrentUser();
         if (currentUser == null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "need to signin first!"));
         }
@@ -75,7 +75,7 @@ public class ProjectController extends ControllerBase {
     }
 
     @PutMapping("updateProject")
-    public ResponseEntity<?> updateProject(@RequestBody UpdateProjectRequest request) {
+    public ResponseEntity<ApiResponse> updateProject(@RequestBody UpdateProjectRequest request) {
         String teamId = request.getId();
         if (teamId.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Project id must not be null"));
@@ -100,7 +100,7 @@ public class ProjectController extends ControllerBase {
     }
 
     @PutMapping("archiveProject")
-    public ResponseEntity<?> archiveProject(@RequestBody UpdateProjectRequest request) {
+    public ResponseEntity<ApiResponse> archiveProject(@RequestBody UpdateProjectRequest request) {
         String id = request.getId();
         if (id.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Project id must not be null"));

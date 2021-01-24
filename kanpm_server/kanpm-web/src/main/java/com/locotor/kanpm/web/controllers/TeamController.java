@@ -1,7 +1,7 @@
 package com.locotor.kanpm.web.controllers;
 
 import com.locotor.kanpm.model.entities.Team;
-import com.locotor.kanpm.model.entities.UserPrincipal;
+import com.locotor.kanpm.model.entities.User;
 import com.locotor.kanpm.model.payloads.AddTeamRequest;
 import com.locotor.kanpm.model.payloads.ApiResponse;
 import com.locotor.kanpm.model.payloads.UpdateTeamRequest;
@@ -24,7 +24,7 @@ public class TeamController extends ControllerBase {
     private TeamService teamService;
 
     @GetMapping("getTeam")
-    public ResponseEntity<?> getTeam(String id) {
+    public ResponseEntity<ApiResponse> getTeam(String id) {
         Team team = teamService.getTeamById(id);
         var resp = new ApiResponse(true, "Add team successfully");
         resp.setData(team);
@@ -32,19 +32,19 @@ public class TeamController extends ControllerBase {
     }
 
     @GetMapping("/verifyTeamName")
-    public ResponseEntity<?> verifyTeamName(String teamName) {
+    public ResponseEntity<ApiResponse> verifyTeamName(String teamName) {
         if (teamName.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "parameter should not be blank"));
         }
         Team teamTest = teamService.getTeamByName(teamName);
         if (teamTest != null) {
-            return ResponseEntity.ok(false);
+            return ResponseEntity.ok(new ApiResponse(false,"team name is already exist"));
         }
-        return ResponseEntity.ok(true);
+        return ResponseEntity.ok(new ApiResponse(true));
     }
 
     @GetMapping("getTeamListByMemberId")
-    public ResponseEntity<?> getTeamListByMemberId(String memberId) {
+    public ResponseEntity<ApiResponse> getTeamListByMemberId(String memberId) {
         var teamList = teamService.getTeamListByMemberId(memberId);
         var resp = new ApiResponse(true, "get team list successfully");
         resp.setData(teamList);
@@ -52,13 +52,13 @@ public class TeamController extends ControllerBase {
     }
 
     @PostMapping("addTeam")
-    public ResponseEntity<?> addTeam(@RequestBody AddTeamRequest request) {
+    public ResponseEntity<ApiResponse> addTeam(@RequestBody AddTeamRequest request) {
         Team teamTest = teamService.getTeamByName(request.getTeamName());
         if (teamTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Team name is already taken!"));
         }
 
-        UserPrincipal currentUser = getCurrentUser();
+        User currentUser = getCurrentUser();
         if (currentUser == null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "need to signin first!"));
         }
@@ -80,7 +80,7 @@ public class TeamController extends ControllerBase {
     }
 
     @PutMapping("updateTeam")
-    public ResponseEntity<?> updateTeam(@RequestBody UpdateTeamRequest request) {
+    public ResponseEntity<ApiResponse> updateTeam(@RequestBody UpdateTeamRequest request) {
         String teamId = request.getId();
         if (teamId.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Team id must not be null"));
@@ -102,7 +102,7 @@ public class TeamController extends ControllerBase {
     }
 
     @PutMapping("archiveTeam")
-    public ResponseEntity<?> archiveTeam(@RequestBody UpdateTeamRequest request) {
+    public ResponseEntity<ApiResponse> archiveTeam(@RequestBody UpdateTeamRequest request) {
         String teamId = request.getId();
         if (teamId.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Team id must not be null"));

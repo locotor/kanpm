@@ -1,6 +1,6 @@
 package com.locotor.kanpm.model.payloads;
 
-import com.locotor.kanpm.model.entities.UserPrincipal;
+import com.locotor.kanpm.model.entities.User;
 
 import lombok.Data;
 
@@ -9,13 +9,13 @@ public class JwtAuthenticationResponse {
 
     private String accessToken;
 
-    private UserPrincipal user;
+    private User user;
 
     private String tokenType = "Bearer";
 
-    public JwtAuthenticationResponse(String token, UserPrincipal principal) {
+    public JwtAuthenticationResponse(String token, User user) {
         this.accessToken = token;
-        this.user = principal;
+        this.user = user;
     }
 
 }
