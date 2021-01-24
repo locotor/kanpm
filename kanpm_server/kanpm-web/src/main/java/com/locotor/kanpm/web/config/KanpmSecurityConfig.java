@@ -49,21 +49,8 @@ public class KanpmSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors()
-                // using jwt,so the csrf defender is no need
-                .and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
-                // add permit urls
-                .and().authorizeRequests()
-                .antMatchers("/", "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html",
-                        "/**/*.css", "/**/*.js")
-                .permitAll()
-                // for test
-                .antMatchers("/**/*").permitAll()
-                // permit auth apis
-                .antMatchers("/auth/**").permitAll()
-                // authenticate others
-                .anyRequest().authenticated();
-
+        http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().authorizeRequests()
+                .antMatchers("/auth/**").permitAll().anyRequest().authenticated();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 

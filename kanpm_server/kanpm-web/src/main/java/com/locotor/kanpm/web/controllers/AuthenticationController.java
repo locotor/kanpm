@@ -62,7 +62,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signUp")
-    public ResponseEntity<?> signUp(@RequestBody SignUpRequest request) {
+    public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request) {
         User userTest = userService.getUserByUsernameOrEmail(request.getUserName());
         if (userTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Username is already taken!"));
@@ -81,13 +81,13 @@ public class AuthenticationController {
     }
 
     @GetMapping("/verifyUserNameOrEmail")
-    public ResponseEntity<?> verifyUserNameOrEmail(String userNameOrEmail) {
+    public ResponseEntity<Object> verifyUserNameOrEmail(String userNameOrEmail) {
         if (userNameOrEmail.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "parameter should not be blank"));
         }
         User userTest = userService.getUserByUsernameOrEmail(userNameOrEmail);
         if (userTest != null) {
-            return ResponseEntity.ok(false);
+            return ResponseEntity.badRequest().body(new ApiResponse(false,"this username is already exist"));
         }
         return ResponseEntity.ok(true);
     }
