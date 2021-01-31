@@ -1,8 +1,14 @@
 package com.locotor.kanpm.web.security;
 
-import java.security.Key;
 import java.util.Date;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.interfaces.JWTVerifier;
 import com.locotor.kanpm.model.entities.User;
 
 import org.slf4j.Logger;
@@ -11,49 +17,54 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
-import io.jsonwebtoken.security.Keys;
-
 @Component
 public class JwtTokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
-    Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    @Value("${app.jwtExpirationInMs}")
-    private int jwtExpirationInMs;
+    private static final long JWT_EXPIRATION = 5 * 60 * 1000L;
+
+    public static final String TOKEN_PREFIX = "Bearer ";
+
+    @Value("${app.jwtSecret}")
+    private String jwtSecret;
 
     public String generateToken(Authentication authentication) {
         User userPrincipal = (User) authentication.getPrincipal();
-        Date expiryDate = new Date(new Date().getTime() + jwtExpirationInMs);
-        return Jwts.builder().setSubject(userPrincipal.getUsername()).setIssuedAt(new Date()).setExpiration(expiryDate)
-                .signWith(key).compact();
+        Date expireDate = new Date(System.currentTimeMillis() + JWT_EXPIRATION);
+        try {
+            // 创建签名的算法实例
+            Algorithm algorithm = Algorithm.HMAC256(jwtSecret);
+            return JWT.create().withExpiresAt(expireDate).withClaim("username", userPrincipal.getUsername())
+                    .sign(algorithm);
+        } catch (JWTCreationException jwtCreationException) {
+            logger.warn("Token create failed");
+            return null;
+        }
     }
 
     public String getUsernameFromJWT(String authToken) {
-        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(authToken).getBody().getSubject();
+        try {
+            DecodedJWT jwt = JWT.decode(authToken);
+            return jwt.getClaim("username").asString();
+        } catch (JWTDecodeException jwtDecodeException) {
+            logger.warn("get username by decoding token failed");
+            return null;
+        }
     }
 
     public boolean validateToken(String authToken) {
         try {
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(authToken);
+            Algorithm algorithm = Algorithm.HMAC256(jwtSecret);
+            // 构建 JWT 验证器，token合法同时 payload 必须含有私有字段 username 且值一致
+            // token 过期也会验证失败
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            // 验证token
+            verifier.verify(authToken);
             return true;
-        } catch (MalformedJwtException ex) {
-            logger.error("Invalid JWT token");
-        } catch (ExpiredJwtException ex) {
-            logger.error("Expired JWT token");
-        } catch (UnsupportedJwtException ex) {
-            logger.error("Unsupported JWT token");
-        } catch (IllegalArgumentException ex) {
-            logger.error("JWT claims string is empty.");
-        } catch (JwtException e) {
-            logger.error("JWT claims parse failed.");
+        } catch (JWTVerificationException jwtVerificationException) {
+            logger.warn("verify token field");
+            return false;
         }
-        return false;
     }
 }

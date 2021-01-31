@@ -18,13 +18,11 @@ public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    @NonNull
     private String id;
 
     @NonNull
     private String username;
 
-    @NonNull
     private String password;
 
     private String alias;
@@ -32,6 +30,10 @@ public class User implements UserDetails {
     private String email;
 
     private transient Set<Role> roles = new HashSet<>();
+
+    public User(String username) {
+        this.username = username;
+    }
 
     public User(String id, String username, String password) {
         this.id = id;

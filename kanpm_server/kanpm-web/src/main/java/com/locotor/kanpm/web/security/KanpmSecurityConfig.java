@@ -1,7 +1,4 @@
-package com.locotor.kanpm.web.config;
-
-import com.locotor.kanpm.web.security.JwtAuthenticationEntryPoint;
-import com.locotor.kanpm.web.security.JwtAuthenticationFilter;
+package com.locotor.kanpm.web.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +24,9 @@ public class KanpmSecurityConfig extends WebSecurityConfigurerAdapter {
     JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
+    private LoginSuccessHandler loginSuccessHandler;
+
+    @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
 
     @Bean
@@ -47,9 +47,10 @@ public class KanpmSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().authorizeRequests()
-                .antMatchers("/auth/**").permitAll().anyRequest().authenticated();
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.formLogin().loginProcessingUrl("auth/login").successHandler(loginSuccessHandler).permitAll().and()
+                .authorizeRequests().anyRequest().permitAll().and().exceptionHandling()
+                .authenticationEntryPoint(unauthorizedHandler).and()
+                .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
 }
