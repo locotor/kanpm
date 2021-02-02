@@ -13,23 +13,36 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
-public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-
-    protected JwtAuthenticationFilter() {
-        super(new AntPathRequestMatcher("/auth/login", "POST"));
-    }
+@Component
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private static final Logger jwtLogger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
     @Autowired
     private JwtTokenProvider jwtProvider;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+        try {
+            String jwt = getJwtFromRequest(request);
+            UsernamePasswordAuthenticationToken authentication = verifyToken(jwt);
+            if (authentication != null) {
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            }
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } catch (Exception e) {
+            jwtLogger.error("Could not set user authentication in security context", e);
+        }
+
+        filterChain.doFilter(request, response);
+    }
 
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
@@ -59,21 +72,4 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         // 构建认证过的token
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
-
-    @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-            throws AuthenticationException, IOException, ServletException {
-        try {
-            String jwt = getJwtFromRequest(request);
-            UsernamePasswordAuthenticationToken authentication = verifyToken(jwt);
-            if (authentication != null) {
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            }
-            return this.getAuthenticationManager().authenticate(authentication);
-        } catch (Exception e) {
-            jwtLogger.error("Could not set user authentication in security context", e);
-            return null;
-        }
-    }
-
 }
