@@ -34,10 +34,10 @@ public enum CodeMessage {
     /**
      * 登录和用户 10120-10150
      */
-    USER_NOT_LOGIN("10120", "未登录或登录超时"), USER_EMPTY("10121", "用户名或密码为空"), USER_IS_ERROR("10122", "用户名或密码错误"),
+    USER_NOT_LOGIN("10120", "未登录或登录超时"), USER_EMPTY("10121", "用户名或密码为空"), AUTH_ERROR("10122", "用户名或密码错误"),
     USER_NOT_EXIST("10123", "用户不存在"), USER_IS_EXIST("10124", "用户名已存在"), USER_DISABLE("10125", "用户被禁用或被注销"),
-    USER_IS_RIGHT("10126", "合法用户"), USER_NOT_RIGHT("10127", "用户不合法"), USER_LOGOUT("10128", "已注销"),
-    USER_IS_LOCK("10129", "登录次数过多，用户被锁定"), USER_PWD_EQUAL("10130", "原始密码和新密码相同"),
+    USER_IS_RIGHT("10126", "合法用户"), USER_NOT_RIGHT("10127", "用户不合法"), CREDENTIAL_NOT_RIGHT("10131", "密码已过期"),
+    USER_LOGOUT("10128", "已注销"), USER_IS_LOCK("10129", "登录次数过多，用户被锁定"), USER_PWD_EQUAL("10130", "原始密码和新密码相同"),
 
     /**
      * 服务器异常 10150-10180
