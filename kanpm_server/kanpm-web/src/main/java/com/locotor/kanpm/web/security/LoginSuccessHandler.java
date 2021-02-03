@@ -27,9 +27,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         ResponseData responseData = new ResponseData();
         // 创建token
         String token = jwtTokenProvider.generateToken(authentication);
-        responseData.setData(token);
+        responseData.setData(JwtTokenProvider.TOKEN_PREFIX + token);
         response.setCharacterEncoding("utf-8");
-        response.setHeader("WWW-Authenticate", JwtTokenProvider.TOKEN_PREFIX + token);
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(response.getWriter(), responseData);
     }

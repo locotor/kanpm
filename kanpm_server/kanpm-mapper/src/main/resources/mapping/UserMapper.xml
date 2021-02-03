@@ -3,6 +3,10 @@
 <mapper namespace="com.locotor.kanpm.mappers.UserMapper">
 
     <resultMap id="UserResultMap" type="com.locotor.kanpm.model.entities.User">
+        <constructor>
+            <idArg column="id" javaType="string" />
+            <arg column="user_name" javaType="string" />
+        </constructor>
         <id column="id" property="id" />
         <result column="user_name" property="username" />
         <result column="email" property="email" />

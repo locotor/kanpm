@@ -34,7 +34,7 @@ public class KanpmSecurityConfig extends WebSecurityConfigurerAdapter {
         LoginFilter loginFilter = new LoginFilter();
         loginFilter.setAuthenticationSuccessHandler(loginSuccessHandler);
         loginFilter.setAuthenticationManager(authenticationManagerBean());
-        loginFilter.setFilterProcessesUrl("/login");
+        loginFilter.setFilterProcessesUrl("/auth/login");
         return loginFilter;
     }
 
@@ -56,10 +56,11 @@ public class KanpmSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().permitAll().and()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.csrf().disable().authorizeRequests().anyRequest().authenticated().and()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
+
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(loginFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
 }

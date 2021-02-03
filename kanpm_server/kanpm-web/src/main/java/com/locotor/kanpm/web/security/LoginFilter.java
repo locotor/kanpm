@@ -18,19 +18,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
+    @SuppressWarnings("unchecked")
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
         if (!request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
-        if (request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)
-                || request.getContentType().equals(MediaType.APPLICATION_JSON)) {
+        if (request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)) {
             Map<String, String> loginData = new HashMap<>();
             try {
                 loginData = new ObjectMapper().readValue(request.getInputStream(), Map.class);
             } catch (IOException e) {
-            } finally {
-                String code = loginData.get("code");
             }
             String username = loginData.get(getUsernameParameter());
             String password = loginData.get(getPasswordParameter());
