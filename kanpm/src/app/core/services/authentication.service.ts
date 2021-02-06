@@ -25,12 +25,12 @@ export class AuthenticationService {
     return this.http.get('auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
   }
 
-  signIn(loginData: { userNameOrEmail: string, password: string }): Observable<ServerResponse<User | null>> {
-    return this.http.post<ServerResponse<User | null>>('auth/signIn', loginData, httpOptions);
+  login(loginData: { username: string, password: string }): Observable<ServerResponse<User | null>> {
+    return this.http.post<ServerResponse<User | null>>('auth/login', loginData, httpOptions);
   }
 
-  signUp(signupData: SignUpRequest) {
-    return this.http.post('auth/signUp', signupData);
+  register(registerData: SignUpRequest) {
+    return this.http.post('auth/register', registerData);
   }
 
 }

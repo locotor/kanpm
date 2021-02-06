@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   isPasswordHide = true;
   loginForm = this.fb.group({
-    usernameOrEmail: ['', [
+    username: ['', [
       Validators.required,
       Validators.maxLength(64)
     ]],
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }, {
     updateOn: 'blur'
   });
-  get usernameOrEmail() { return this.loginForm.get('usernameOrEmail'); }
+  get username() { return this.loginForm.get('username'); }
   get password() { return this.loginForm.get('password'); }
 
   constructor(
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm() {
-    this.authServer.signIn(this.loginForm.value).subscribe(
+    this.authServer.login(this.loginForm.value).subscribe(
       (response: any) => {
         this.globalService.storeJWT(response.accessToken);
         this.globalService.currentUser = response.user;

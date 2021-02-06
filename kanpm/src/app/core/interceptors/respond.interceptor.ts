@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
 
-const CODEMESSAGE: { [key: number]: string } = {
+const CODE_MESSAGE: { [key: number]: string } = {
     200: '服务器成功返回请求的数据。',
     201: '新建或修改数据成功。',
     202: '请求已经进入后台排队（异步任务）。',
@@ -34,16 +34,43 @@ export class RespondInterceptor implements HttpInterceptor {
         // private snackBar: MatSnackBar
     ) { }
 
-    private goTo(url: string): void {
-        setTimeout(() => this.router.navigateByUrl(url));
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        return next.handle(req).pipe(
+            mergeMap((ev) => {
+                // 统一处理服务器返回的响应对象
+                if (ev instanceof HttpResponseBase) {
+                    return this.handleData(ev, req, next);
+                }
+                return of(ev);
+            }),
+            catchError((err: HttpErrorResponse) => this.handleData(err, req, next)),
+        );
+    }
+
+    private checkHttpStatus(ev: HttpResponseBase) {
+        if (ev.status >= 200 && ev.status < 300) {
+            // TODO check system code
+        } else {
+            for (const status in CODE_MESSAGE) {
+                if (Object.prototype.hasOwnProperty.call(CODE_MESSAGE, status)) {
+                    if (parseInt(status) === ev.status) {
+                        return throwError({ msg: CODE_MESSAGE[status] });
+                    } else {
+                        return throwError({ msg: '未知错误，请联系管理员' });
+                    }
+                }
+            }
+
+        }
     }
 
     private checkStatus(ev: HttpResponseBase): void {
-        if ((ev.status >= 200 && ev.status < 300) || ev.status === 401) {
+        if (ev.status >= 200 && ev.status < 300) {
             return;
         }
 
-        const errortext = CODEMESSAGE[ev.status] || ev.statusText;
+        const errortext = CODE_MESSAGE[ev.status] || ev.statusText;
         // this.snackBar.open(`请求错误 ${ev.status}: ${ev.url} -- ${errortext}`, null, {
         //     duration: 3000
         // });
@@ -51,7 +78,6 @@ export class RespondInterceptor implements HttpInterceptor {
 
     private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
         this.checkStatus(ev);
-        // 业务处理：一些通用操作
         switch (ev.status) {
             case 200:
                 // 业务层级错误处理,例如响应内容：
@@ -80,7 +106,7 @@ export class RespondInterceptor implements HttpInterceptor {
                 break;
             default:
                 if (ev instanceof HttpErrorResponse) {
-                    console.warn('未知错误，大部分是由于后端不支持跨域CORS或无效配置引起', ev);
+                    console.warn('未知错误:', ev);
                 }
                 break;
         }
@@ -91,18 +117,7 @@ export class RespondInterceptor implements HttpInterceptor {
         }
     }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-        return next.handle(req).pipe(
-            mergeMap((ev) => {
-                // 允许统一对请求错误处理
-                if (ev instanceof HttpResponseBase) {
-                    return this.handleData(ev, req, next);
-                }
-                // 若一切都正常，则后续操作
-                return of(ev);
-            }),
-            catchError((err: HttpErrorResponse) => this.handleData(err, req, next)),
-        );
+    private goTo(url: string): void {
+        setTimeout(() => this.router.navigateByUrl(url));
     }
 }
