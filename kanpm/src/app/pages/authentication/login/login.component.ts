@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   submitLoginForm() {
     this.authServer.login(this.loginForm.value).subscribe(
       (response: any) => {
+        if (response === null) { return; }
         this.globalService.storeJWT(response.accessToken);
         this.globalService.currentUser = response.user;
         if (this.globalService.redirectUrl) {

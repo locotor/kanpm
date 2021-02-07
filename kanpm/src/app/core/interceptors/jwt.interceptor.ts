@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   HttpRequest,
   HttpHandler,
@@ -13,14 +12,14 @@ import { GlobalService } from 'core/services/global.service';
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(
-    private globalService: GlobalService,
-    private router: Router
+    private globalService: GlobalService
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const jwt = this.globalService.getJWT();
+    if (!jwt) { return next.handle(request); }
     const reqClone = request.clone({
-      setHeaders: { Authorization: this.globalService.getJWT() },
-      url: 'http://localhost:8080/' + request.url
+      setHeaders: { Authorization: jwt }
     });
     return next.handle(reqClone);
   }
