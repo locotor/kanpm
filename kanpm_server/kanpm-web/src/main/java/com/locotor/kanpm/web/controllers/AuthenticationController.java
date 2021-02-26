@@ -15,18 +15,12 @@ import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import com.locotor.kanpm.model.entities.User;
 import com.locotor.kanpm.model.payloads.ApiResponse;
-import com.locotor.kanpm.model.payloads.JwtAuthenticationResponse;
-import com.locotor.kanpm.model.payloads.SignInRequest;
 import com.locotor.kanpm.model.payloads.SignUpRequest;
-import com.locotor.kanpm.web.security.JwtTokenProvider;
 import com.locotor.kanpm.service.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,20 +39,7 @@ public class AuthenticationController {
     UserService userService;
 
     @Autowired
-    JwtTokenProvider tokenProvider;
-
-    @Autowired
     PasswordEncoder passwordEncoder;
-
-    @PostMapping("/signIn")
-    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody SignInRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsernameOrEmail(), request.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = tokenProvider.generateToken(authentication);
-        User principal = (User) authentication.getPrincipal();
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, principal));
-    }
 
     @PostMapping("/signUp")
     public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request) {
