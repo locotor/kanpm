@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,6 +23,7 @@ public class User implements UserDetails {
     private String id;
 
     @NonNull
+    @TableField("user_name")
     private String username;
 
     private String password;
@@ -32,6 +35,11 @@ public class User implements UserDetails {
     private transient Set<Role> roles = new HashSet<>();
 
     public User(String username) {
+        this.username = username;
+    }
+
+    public User(String id, String username, String password, String alias, String email) {
+        this.id = id;
         this.username = username;
     }
 
