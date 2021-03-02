@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch kanpm",
-            "request": "launch",
-            "mainClass": "com.locotor.kanpm.KanpmApplication",
-            "projectName": "kanpm-web"
-        },
-        {
-            "type": "java",
             "name": "Debug (Launch)-kanpm",
             "request": "launch",
             "mainClass": "com.locotor.kanpm.KanpmApplication",
