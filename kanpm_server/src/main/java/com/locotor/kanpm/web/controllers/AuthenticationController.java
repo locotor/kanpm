@@ -32,14 +32,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 public class AuthenticationController {
 
-    @Autowired
-    AuthenticationManager authenticationManager;
+    final AuthenticationManager authenticationManager;
+
+    final UserService userService;
+
+    final PasswordEncoder passwordEncoder;
 
     @Autowired
-    UserService userService;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    AuthenticationController(AuthenticationManager authenticationManager,
+                             UserService userService,
+                             PasswordEncoder passwordEncoder) {
+        this.authenticationManager = authenticationManager;
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @PostMapping("/signUp")
     public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request) {
