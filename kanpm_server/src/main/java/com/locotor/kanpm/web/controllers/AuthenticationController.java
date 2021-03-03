@@ -43,7 +43,7 @@ public class AuthenticationController {
 
     @PostMapping("/signUp")
     public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request) {
-        User userTest = userService.loadUserByUsernameOrEmail(request.getUserName());
+        User userTest = (User) userService.loadUserByUsername(request.getUserName());
         if (userTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Username is already taken!"));
         }
@@ -51,8 +51,8 @@ public class AuthenticationController {
         User user = new User(UUID.randomUUID().toString(), request.getUserName(),
                 passwordEncoder.encode(request.getPassword()));
 
-        int insertResult = userService.addUser(user);
-        if (insertResult > 0) {
+        boolean insertResult = userService.save(user);
+        if (insertResult) {
             return ResponseEntity.ok(new ApiResponse(true, "sign up successfully"));
         } else {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "sign up failed"));
@@ -65,7 +65,7 @@ public class AuthenticationController {
         if (userNameOrEmail.isBlank()) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "parameter should not be blank"));
         }
-        User userTest = userService.loadUserByUsernameOrEmail(userNameOrEmail);
+        User userTest = (User) userService.loadUserByUsername(userNameOrEmail);
         if (userTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "this username is already exist"));
         }

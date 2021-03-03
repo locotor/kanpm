@@ -17,6 +17,6 @@ public class UserController {
 
     @GetMapping("getUser/{id}")
     public User getUser(@PathVariable String id) {
-        return userService.loadUserById(id);
+        return userService.getById(id);
     }
 }

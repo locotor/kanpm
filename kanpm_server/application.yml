@@ -1,10 +1,6 @@
 server:
  port: 8080
 
-app: 
-  jwtSecret: JWTSuperSecretKey
-  jwtExpirationInMs: 1800000
-
 spring:
  datasource:
   username: root
@@ -13,9 +9,6 @@ spring:
   type: com.alibaba.druid.pool.DruidDataSource
   
 
-mybatis:
- mapper-locations:
-  - classpath:mapping/*Mapper.xml
- type-aliases-package: com.locotor.kanpm.entities
- configuration:
-    use-generated-keys: true
+mybatis-plus:
+ mapper-locations: mapper/*.xml
+ type-aliases-package: com.locotor.kanpm.model.entities
