@@ -1,5 +1,7 @@
 package com.locotor.kanpm.web.common;
 
+import org.springframework.stereotype.Component;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -7,11 +9,12 @@ import java.util.Random;
 import java.io.IOException;
 import java.io.OutputStream;
 
+@Component
 public class Captcha {
 
     private int width = 100;// 生成验证码图片的宽度
     private int height = 50;// 生成验证码图片的高度
-    private String[] fontNames = { "宋体", "楷体", "隶书", "微软雅黑" };
+    private String[] fontNames = {"宋体", "楷体", "隶书", "微软雅黑"};
     private Color bgColor = new Color(255, 255, 255);// 定义验证码图片的背景颜色为白色
     private Random random = new Random();
     private String codes = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -43,6 +46,25 @@ public class Captcha {
         return image;
     }
 
+    /**
+     * 绘制干扰线
+     *
+     * @param image
+     */
+    private void drawLine(BufferedImage image) {
+        Graphics2D g2 = (Graphics2D) image.getGraphics();
+        int num = 5;
+        for (int i = 0; i < num; i++) {
+            int x1 = random.nextInt(width);
+            int y1 = random.nextInt(height);
+            int x2 = random.nextInt(width);
+            int y2 = random.nextInt(height);
+            g2.setColor(randomColor());
+            g2.setStroke(new BasicStroke(1.5f));
+            g2.drawLine(x1, y1, x2, y2);
+        }
+    }
+
     public BufferedImage getImage() {
         BufferedImage image = createImage();
         Graphics2D g2 = (Graphics2D) image.getGraphics();
@@ -58,25 +80,6 @@ public class Captcha {
         this.text = sb.toString();
         drawLine(image);
         return image;
-    }
-
-    /**
-     * 绘制干扰线
-     * 
-     * @param image
-     */
-    private void drawLine(BufferedImage image) {
-        Graphics2D g2 = (Graphics2D) image.getGraphics();
-        int num = 5;
-        for (int i = 0; i < num; i++) {
-            int x1 = random.nextInt(width);
-            int y1 = random.nextInt(height);
-            int x2 = random.nextInt(width);
-            int y2 = random.nextInt(height);
-            g2.setColor(randomColor());
-            g2.setStroke(new BasicStroke(1.5f));
-            g2.drawLine(x1, y1, x2, y2);
-        }
     }
 
     public String getText() {

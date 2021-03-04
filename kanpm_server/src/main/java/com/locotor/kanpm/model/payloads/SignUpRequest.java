@@ -15,4 +15,8 @@ public class SignUpRequest {
     @NotBlank
     @Size(min = 6, max = 64)
     private String password;
+
+    @NotBlank
+    private String captcha;
+
 }

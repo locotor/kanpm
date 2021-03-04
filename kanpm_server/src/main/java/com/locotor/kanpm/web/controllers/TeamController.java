@@ -25,7 +25,7 @@ public class TeamController extends ControllerBase {
 
     @GetMapping("getTeam")
     public ResponseEntity<ApiResponse> getTeam(String id) {
-        Team team = teamService.getTeamById(id);
+        Team team = teamService.getById(id);
         var resp = new ApiResponse(true, "Add team successfully");
         resp.setData(team);
         return ResponseEntity.ok(resp);
@@ -66,9 +66,9 @@ public class TeamController extends ControllerBase {
         String currentUserId = currentUser.getId();
         Team team = new Team(request.getTeamName(), currentUser.getId(), request.getDescription());
         team.setCreatorId(currentUserId);
-        int insertResult = teamService.addTeam(team);
+        boolean insertResult = teamService.save(team);
 
-        if (insertResult > 0) {
+        if (insertResult) {
             String insertTeamId = team.getId();
             int insertTeamMemberResult = this.teamService.insertTeamMembers(insertTeamId,
                     new String[] { currentUserId });
@@ -92,9 +92,9 @@ public class TeamController extends ControllerBase {
         }
 
         Team team = new Team(teamId, request.getTeamName(), request.getOwnerId(), request.getDescription());
-        int updateResult = teamService.updateTeam(team);
+        boolean updateResult = teamService.save(team);
 
-        if (updateResult > 0) {
+        if (updateResult) {
             return ResponseEntity.ok(new ApiResponse(true, "update team successfully"));
         } else {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "update team failed"));
@@ -108,8 +108,8 @@ public class TeamController extends ControllerBase {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Team id must not be null"));
         }
 
-        int updateResult = teamService.archiveTeam(teamId);
-        if (updateResult > 0) {
+        boolean updateResult = teamService.archiveTeam(teamId);
+        if (updateResult) {
             return ResponseEntity.ok(new ApiResponse(true, "archive team successfully"));
         } else {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "archive team failed"));

@@ -1,18 +1,17 @@
-package com.locotor.kanpm.mappers;
+package com.locotor.kanpm.services;
 
 import java.util.List;
 
 import com.locotor.kanpm.KanpmApplication;
 import com.locotor.kanpm.model.entities.User;
 
-import com.locotor.kanpm.services.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = KanpmApplication.class)
-public class UserMapperTest {
+public class UserServiceTest {
     @Autowired
     private UserService userService;
 
