@@ -25,7 +25,7 @@ public class ProjectController extends ControllerBase {
 
     @GetMapping("getProjectById")
     public ResponseEntity<ApiResponse> getProjectById(String id) {
-        Project project = projectService.getProjectById(id);
+        Project project = projectService.getById(id);
         var resp = new ApiResponse(true, "Add project successfully");
         resp.setData(project);
         return ResponseEntity.ok(resp);
@@ -66,9 +66,9 @@ public class ProjectController extends ControllerBase {
         String currentUserId = currentUser.getId();
         Project project = new Project(request.getProjectName(), request.getTeamId(), currentUserId, currentUserId,
                 request.getDescription());
-        int insertResult = projectService.addProject(project);
+        boolean insertResult = projectService.save(project);
 
-        if (insertResult > 0) {
+        if (insertResult) {
             return ResponseEntity.ok(new ApiResponse(true, "Add project successfully"));
         }
         return ResponseEntity.badRequest().body(new ApiResponse(false, "Add project failed"));
@@ -90,9 +90,9 @@ public class ProjectController extends ControllerBase {
         project.setProjectName(request.getProjectName());
         project.setDescription(request.getDescription());
         project.setOwnerId(request.getOwnerId());
-        int updateResult = projectService.updateProject(project);
+        boolean updateResult = projectService.updateById(project);
 
-        if (updateResult > 0) {
+        if (updateResult) {
             return ResponseEntity.ok(new ApiResponse(true, "update project successfully"));
         } else {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "update project failed"));
@@ -106,8 +106,8 @@ public class ProjectController extends ControllerBase {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Project id must not be null"));
         }
 
-        int updateResult = projectService.archiveProject(id);
-        if (updateResult > 0) {
+        boolean updateResult = projectService.archiveProject(id);
+        if (updateResult) {
             return ResponseEntity.ok(new ApiResponse(true, "archive project successfully"));
         } else {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "archive project failed"));

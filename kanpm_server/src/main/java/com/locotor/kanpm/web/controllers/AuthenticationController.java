@@ -2,12 +2,8 @@ package com.locotor.kanpm.web.controllers;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Locale;
-import java.util.Properties;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,9 +35,11 @@ public class AuthenticationController {
 
     final PasswordEncoder passwordEncoder;
 
+    private final String captchaKey = "captcha";
 
     @Autowired
-    AuthenticationController(AuthenticationManager authenticationManager, UserService userService, PasswordEncoder passwordEncoder) {
+    AuthenticationController(AuthenticationManager authenticationManager, UserService userService,
+            PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
@@ -50,14 +48,14 @@ public class AuthenticationController {
     @PostMapping("/signUp")
     public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request, HttpSession session) {
         String requestCaptcha = request.getCaptcha();
-        String sessionCaptcha = (String) session.getAttribute("captcha");
-        if(StringUtils.isEmpty(requestCaptcha)){
+        String sessionCaptcha = (String) session.getAttribute(captchaKey);
+        if (StringUtils.isEmpty(requestCaptcha)) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Captcha can not be null!"));
         }
-        if(!session.equals(requestCaptcha.toLowerCase())){
+        if (!sessionCaptcha.equalsIgnoreCase(requestCaptcha)) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Captcha is wrong!"));
         }
-        session.removeAttribute("captcha");
+        session.removeAttribute(captchaKey);
         User userTest = (User) userService.loadUserByUsername(request.getUserName());
         if (userTest != null) {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Username is already taken!"));
@@ -91,8 +89,8 @@ public class AuthenticationController {
         Captcha captcha = new Captcha();
         BufferedImage img = captcha.getImage();
         String text = captcha.getText();
-        request.getSession().setAttribute("captcha",text.toLowerCase());
-        Captcha.output(img,response.getOutputStream());
+        request.getSession().setAttribute(captchaKey, text);
+        Captcha.output(img, response.getOutputStream());
     }
 
 }
