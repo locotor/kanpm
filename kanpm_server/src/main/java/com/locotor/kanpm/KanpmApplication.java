@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-@MapperScan(basePackages = "com.locotor.kanpm.mappers")
+@MapperScan("com.locotor.kanpm.mappers")
 public class KanpmApplication {
 
 	public static void main(String[] args) {

@@ -10,5 +10,5 @@ spring:
   
 
 mybatis-plus:
- mapper-locations: mapper/*.xml
+ mapper-locations: /mapper/*.xml
  type-aliases-package: com.locotor.kanpm.model.entities

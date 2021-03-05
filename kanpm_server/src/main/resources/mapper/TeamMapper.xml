@@ -8,4 +8,22 @@
         <result column="creator_id" property="creatorId" />
         <result column="is_archived" property="isArchived" />
     </resultMap>
+    <sql id="team_select_column">
+        team.id,team_name,create_time,creator_id,owner_id,description
+    </sql>
+    <select id="getTeamListByUserId" parameterType="string" resultMap="TeamResultMap">
+        select
+        <include refid="team_select_column"></include>
+        from team inner join team_members as tm
+        on team.id = tm.team_id
+        where tm.member_id = #{userId}
+    </select>
+    <insert id="insertTeamMembers">
+        INSERT INTO
+        team_members(id,team_id,member_id)
+        VALUES
+        <foreach collection="userIds" index="index" item="item" open="(" separator="," close=")">
+            uuid(),#{teamId},#{item}
+        </foreach>
+    </insert>
 </mapper>
