@@ -16,12 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/api/project")
 public class ProjectController extends ControllerBase {
 
+    private ProjectService projectService;
+
     @Autowired
-    ProjectService projectService;
+    public  ProjectController(ProjectService projectService){
+        this.projectService = projectService;
+    }
 
     @GetMapping("getProjectById")
     public ResponseEntity<ApiResponse> getProjectById(String id) {
@@ -64,8 +70,12 @@ public class ProjectController extends ControllerBase {
         }
 
         String currentUserId = currentUser.getId();
-        Project project = new Project(request.getProjectName(), request.getTeamId(), currentUserId, currentUserId,
-                request.getDescription());
+        Project project = new Project(request.getProjectName(), request.getTeamId());
+        project.setOwnerId(currentUserId);
+        project.setCreatorId(currentUserId);
+        project.setIsArchived(false);
+        project.setDescription(request.getDescription());
+        project.setCreateTime(new Date());
         boolean insertResult = projectService.save(project);
 
         if (insertResult) {

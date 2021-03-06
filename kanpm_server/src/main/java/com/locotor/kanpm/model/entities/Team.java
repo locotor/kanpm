@@ -2,6 +2,9 @@ package com.locotor.kanpm.model.entities;
 
 import java.sql.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.NonNull;
 
@@ -9,14 +12,19 @@ import lombok.NonNull;
 public class Team {
     
     @NonNull
+    @TableId(type = IdType.ASSIGN_ID)
     private String id;
 
+    @TableField("team_name")
     private String teamName;
 
+    @TableField("create_time")
     private Date createTime;
 
+    @TableField("creator_id")
     private String creatorId;
 
+    @TableField("owner_id")
     private String ownerId;
 
     private String description;

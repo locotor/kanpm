@@ -6,13 +6,19 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.NonNull;
 
+import java.sql.Date;
+
 @Data
-public class Role {
+public class TeamMember {
+
     @NonNull
     @TableId(type = IdType.ASSIGN_ID)
-    private String id;
-    
-    @NonNull
-    @TableField("role_name")
-    private String roleName;
+    private  String id;
+
+    @TableField("team_id")
+    private Date teamId;
+
+    @TableField("member_id")
+    private Date memberId;
+
 }

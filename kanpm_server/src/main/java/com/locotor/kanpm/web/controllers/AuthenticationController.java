@@ -39,7 +39,7 @@ public class AuthenticationController {
 
     @Autowired
     AuthenticationController(AuthenticationManager authenticationManager, UserService userService,
-            PasswordEncoder passwordEncoder) {
+                             PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
@@ -61,8 +61,7 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body(new ApiResponse(false, "Username is already taken!"));
         }
 
-        User user = new User(UUID.randomUUID().toString(), request.getUserName(),
-                passwordEncoder.encode(request.getPassword()));
+        User user = new User(request.getUserName(), passwordEncoder.encode(request.getPassword()));
         boolean insertResult = userService.save(user);
         if (insertResult) {
             return ResponseEntity.ok(new ApiResponse(true, "sign up successfully"));

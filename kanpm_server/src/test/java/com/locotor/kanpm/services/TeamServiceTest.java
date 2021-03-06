@@ -1,6 +1,5 @@
 package com.locotor.kanpm.services;
 
-import com.locotor.kanpm.KanpmApplication;
 import com.locotor.kanpm.model.entities.Team;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest(classes = KanpmApplication.class)
+@SpringBootTest
 public class TeamServiceTest {
 
     @Autowired

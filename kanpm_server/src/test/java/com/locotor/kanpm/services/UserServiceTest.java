@@ -1,19 +1,22 @@
 package com.locotor.kanpm.services;
 
-import java.util.List;
-
-import com.locotor.kanpm.KanpmApplication;
+import com.locotor.kanpm.mappers.UserMapper;
 import com.locotor.kanpm.model.entities.User;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = KanpmApplication.class)
+import java.util.List;
+
+@SpringBootTest
 public class UserServiceTest {
+
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     public void testSelect() {
@@ -22,4 +25,5 @@ public class UserServiceTest {
         Assertions.assertEquals(2, userList.size());
         userList.forEach(System.out::println);
     }
+
 }

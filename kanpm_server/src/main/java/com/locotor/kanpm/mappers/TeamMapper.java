@@ -8,11 +8,8 @@ import com.locotor.kanpm.model.entities.Team;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-@Component
 public interface TeamMapper extends BaseMapper<Team> {
 
     List<Team> getTeamListByUserId(String userId);
-
-    int insertTeamMembers(@Param("teamId") String teamId, @Param("userIds") String[] userIds);
 
 }
