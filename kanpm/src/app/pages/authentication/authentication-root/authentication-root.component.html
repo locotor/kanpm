@@ -10,11 +10,10 @@
   <section class="auth-section">
     <div class="tabs">
       <ul class="mat-h2">
-        <li class="tab" [class.active]="isLoginTab" (click)="isLoginTab=true">Login</li>
-        <li class="tab" [class.active]="!isLoginTab" (click)="isLoginTab=false">Register</li>
+        <li class="tab" [class.active]="isLoginTab" routerLink="sign-in" routerLinkActive="active">Login</li>
+        <li class="tab" [class.active]="!isLoginTab" routerLink="register" routerLinkActive="active">Register</li>
       </ul>
     </div>
-    <kanpm-login *ngIf="isLoginTab"></kanpm-login>
-    <kanpm-register *ngIf="!isLoginTab"></kanpm-register>
+    <router-outlet></router-outlet>
   </section>
 </div>

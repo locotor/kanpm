@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'kanpm-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -16,7 +15,7 @@ export class RegisterComponent implements OnInit {
   registerForm = this.fb.group({
     userName: ['', [
       Validators.required,
-      Validators.maxLength(64)
+      Validators.maxLength(128)
     ], [this.userNameUniqueValidator.bind(this)]],
     password: ['', [
       Validators.required,
@@ -26,14 +25,20 @@ export class RegisterComponent implements OnInit {
     ]],
     passwordConfirm: ['', [
       Validators.required
+    ]],
+    captcha: ['',[
+      Validators.required
     ]]
   }, {
     validators: this.passwordConfirmValidator,
     updateOn: 'blur'
   });
+  captchaSrc = '/auth/captcha';
+
   get userName() { return this.registerForm.get('userName'); }
   get password() { return this.registerForm.get('password'); }
   get passwordConfirm() { return this.registerForm.get('passwordConfirm'); }
+  get captcha() { return this.registerForm.get('captcha')}
 
   constructor(
     private fb: FormBuilder,
@@ -75,9 +80,14 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  refreshCaptcha() {
+    let timeStamp = new Date().getTime();
+    this.captchaSrc = `/auth/captcha?stamp=${timeStamp}`
+  }
+
   submitRegisterForm() {
-    this.authServer.register(this.registerForm.value).subscribe(resp => {
-      console.log(resp);
+    this.authServer.register(this.registerForm.value).subscribe({
+      next: (resp) => { console.log(resp); }
     });
   }
 

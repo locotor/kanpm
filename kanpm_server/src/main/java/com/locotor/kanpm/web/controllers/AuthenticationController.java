@@ -2,7 +2,6 @@ package com.locotor.kanpm.web.controllers;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +44,7 @@ public class AuthenticationController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping("/signUp")
+    @PostMapping("/register")
     public ResponseEntity<ApiResponse> signUp(@RequestBody SignUpRequest request, HttpSession session) {
         String requestCaptcha = request.getCaptcha();
         String sessionCaptcha = (String) session.getAttribute(captchaKey);

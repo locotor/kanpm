@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.login-root {
+  width: 550px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-field-row {
+  display: flex;
+
+  mat-form-field {
+    flex-grow: 1;
+  }
+}

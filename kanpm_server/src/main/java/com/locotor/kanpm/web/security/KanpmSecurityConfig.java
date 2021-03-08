@@ -30,7 +30,7 @@ public class KanpmSecurityConfig extends WebSecurityConfigurerAdapter {
         loginFilter.setAuthenticationSuccessHandler(loginSuccessHandler);
         loginFilter.setAuthenticationFailureHandler(loginFailureHandler);
         loginFilter.setAuthenticationManager(authenticationManagerBean());
-        loginFilter.setFilterProcessesUrl("/auth/login");
+        loginFilter.setFilterProcessesUrl("/auth/sign-in");
         return loginFilter;
     }
 

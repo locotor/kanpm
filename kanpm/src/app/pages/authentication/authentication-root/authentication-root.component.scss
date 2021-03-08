@@ -16,7 +16,7 @@
 .auth-illustration {
   position: fixed;
   z-index: 1;
-  top: 48px;
+  top: 3rem;
   right: 0;
 }
 
@@ -28,14 +28,12 @@
   align-items: center;
   position: relative;
   z-index: 3;
-  width: 360px;
-  height: 650px;
-  border-radius: 12px;
-  @include mat-elevation(12);
+  width: 22.5rem;
+  height: 37.5rem;
 
   .auth-banner-img {
     width: 50%;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -45,21 +43,21 @@
   align-items: center;
   position: relative;
   z-index: 2;
-  height: 600px;
-  padding: 48px;
-  border-bottom-right-radius: 12px;
-  border-top-right-radius: 12px;
+  height: 37.5rem;
+  padding: 3rem;
+  border-bottom-right-radius: .75rem;
+  border-top-right-radius: .75rem;
   @include mat-elevation(6);
 
   .tabs {
-    margin: 32px 0;
-    padding-right: 48px;
+    margin-bottom: 2rem;
+    padding-right: 3rem;
 
     .tab {
       float: left;
       cursor: pointer;
       box-sizing: border-box;
-      padding: 10px 15px;
+      margin-left:2rem
     }
   }
 }

@@ -20,7 +20,7 @@ export class AuthenticationService {
   }
 
   login(loginData: { username: string, password: string }): Observable<ServerResponse<User | null>> {
-    return this.http.post<ServerResponse<User | null>>('/auth/login', loginData);
+    return this.http.post<ServerResponse<User | null>>('/auth/sign-in', loginData);
   }
 
   register(registerData: SignUpRequest) {

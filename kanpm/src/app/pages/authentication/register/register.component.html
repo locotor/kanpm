@@ -1,23 +1,18 @@
 <div class="register-root">
   <form class="register-form" [formGroup]="registerForm" (submit)="submitRegisterForm()">
     <div class="form-field-row">
-      <mat-form-field appearance="outline">
+      <mat-form-field class="w-100" appearance="outline">
         <mat-label>User Name</mat-label>
         <input matInput formControlName="userName" required>
         <mat-error *ngIf="userName.errors?.required">user name is required</mat-error>
         <mat-error *ngIf="userName.errors?.maxlength">
           user name letters should less than {{userName.errors?.maxlength.requiredLength}}.
         </mat-error>
-        <mat-error *ngIf="userName.errors?.verifyUserName">user name has been registed</mat-error>
+        <mat-error *ngIf="userName.errors?.verifyUserName">user name has been registered</mat-error>
       </mat-form-field>
-      <div class="field-feedback">
-        <mat-icon class="checked-icon" *ngIf="userName.dirty&&userName.valid">check_circle_outline</mat-icon>
-        <mat-icon color="warn" *ngIf="userName.dirty&&userName.invalid">highlight_off</mat-icon>
-        <mat-icon color="accent" *ngIf="userName.pending">hourglass_empty</mat-icon>
-      </div>
     </div>
     <div class="form-field-row">
-      <mat-form-field appearance="outline">
+      <mat-form-field class="w-100" appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" required [type]="isPasswordHide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
@@ -26,13 +21,9 @@
         </button>
         <mat-error *ngIf="password.errors?.valueFormat">password must has 6 ~ 64 number and letters </mat-error>
       </mat-form-field>
-      <div class="field-feedback">
-        <mat-icon class="checked-icon" *ngIf="password.dirty&&password.valid">check_circle_outline</mat-icon>
-        <mat-icon color="warn" *ngIf="password.dirty&&password.invalid">highlight_off</mat-icon>
-      </div>
     </div>
     <div class="form-field-row">
-      <mat-form-field appearance="outline">
+      <mat-form-field class="w-100" appearance="outline">
         <mat-label>Password Confirm</mat-label>
         <input matInput formControlName="passwordConfirm" required [type]="isPasswordHide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
@@ -42,11 +33,14 @@
         <mat-error>inconsistent password confirm entered
         </mat-error>
       </mat-form-field>
-      <div class="field-feedback">
-        <mat-icon class="checked-icon" *ngIf="passwordConfirm.dirty&&passwordConfirm.valid">check_circle_outline
-        </mat-icon>
-        <mat-icon color="warn" *ngIf="passwordConfirm.dirty&&passwordConfirm.invalid">highlight_off</mat-icon>
-      </div>
+    </div>
+    <div class="form-field-row">
+      <mat-form-field class="w-50" appearance="outline">
+        <mat-label>Verify Code</mat-label>
+        <input matInput formControlName="captcha" required>
+        <mat-error>inconsistent password confirm entered</mat-error>
+      </mat-form-field>
+      <img [src]="captchaSrc" (click)="refreshCaptcha()" />
     </div>
     <div class="form-field-row">
       <button mat-raised-button type="submit" color="primary">register</button>

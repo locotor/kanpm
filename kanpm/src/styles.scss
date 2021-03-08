@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "./themes//utilities";
 
 /* default material theme */
 
@@ -39,6 +40,7 @@ body {
 }
 body {
   margin: 0;
+  font-size: 16px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 

@@ -5,12 +5,11 @@ import { AuthenticationService } from 'core/services/authentication.service';
 import { GlobalService } from 'core/services/global.service';
 
 @Component({
-  selector: 'kanpm-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
   isPasswordHide = true;
   loginForm = this.fb.group({

@@ -6,7 +6,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 
 import { AuthenticationRootComponent } from './authentication-root/authentication-root.component';
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AuthenticationRootComponent,
     RegisterComponent,
-    LoginComponent
+    SignInComponent
   ],
   imports: [
     CommonModule,
