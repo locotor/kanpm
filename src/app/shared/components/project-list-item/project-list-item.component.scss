@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.root-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 12px 6px;
+}
+
+.project-icon {
+  height: 40px;
+  width: 40px;
+  font-size: 40px;
+  margin-right: 32px;
+}
+
+.project-title {
+  flex: 1 1 auto;
+  margin: 0;
+  height: 40px;
+
+  span {
+    line-height: 40px;
+  }
+}
+
+.project-operation-wrapper {
+  display: flex;
+  align-items: center;
+  height: 40px;
+
+  a {
+    margin-right: 8px;
+  }
+
+  .operation-icon {
+    height: 16px;
+    width: 16px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,41 @@
+@import "~@angular/material/theming";
+
+@mixin authentication-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $is-dark: map-get($theme, is-dark);
+  // this a Sass map
+  // https://github.com/angular/components/blob/master/src/material/core/theming/_palette.scss
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .authentication-root {
+    .tabs {
+      .tab {
+        color: map-get($foreground, slider-off);
+      }
+
+      .active {
+        border-bottom: 2px solid mat-color($primary);
+        color: map-get($foreground, slider-off-active);
+      }
+    }
+
+    .ad-section {
+      background: mat-color($primary);
+      color: map-get($foreground, icon);
+    }
+
+    .auth-section {
+      background: map-get($background, background);
+    }
+
+    .form-field-row {
+      .mat-icon-button,
+      .mat-button,
+      input {
+        color: map-get($map: $foreground, $key: text);
+      }
+    }
+  }
+}

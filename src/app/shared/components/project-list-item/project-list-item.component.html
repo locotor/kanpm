@@ -1,0 +1,18 @@
+<div class="root-wrapper" (click)="emitProjectItemClick()">
+  <mat-icon color="primary" class="project-icon">folder</mat-icon>
+  <div class="mat-h3 project-title">
+    <span>{{project.projectName}}</span>
+  </div>
+  <div class="project-operation-wrapper">
+    <a>
+      <mat-icon class="operation-icon">person_add</mat-icon>
+    </a>
+    <a>
+      <mat-icon class="operation-icon">settings</mat-icon>
+    </a>
+    <a>
+      <mat-icon class="star-icon" color="accent">star</mat-icon>
+    </a>
+  </div>
+</div>
+<mat-divider></mat-divider>

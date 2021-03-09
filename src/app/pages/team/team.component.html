@@ -1,0 +1,45 @@
+<mat-sidenav-container class="group-side-container">
+  <mat-sidenav mode="side" opened class="side-nav-wrapper">
+    <section class="side-nav-section">
+      <nav>
+        <ul>
+          <li *ngFor="let relevant of relevantNavs">
+            <div class="nav-item-wrapper">
+              <mat-icon>{{relevant.icon}}</mat-icon>
+              <span class="name mat-body-strong">{{relevant.name}}</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    <!-- <section class="side-nav-section">
+      <header>项目</header>
+      <nav>
+        <ul>
+          <li *ngFor="let project of projects">
+            <div class="nav-item-wrapper" routerLink="/project/{{project.id}}">
+              <mat-icon>folder_open</mat-icon>
+              <span class="name mat-body-strong">{{project?.projectName}}</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </section> -->
+    <section class="side-nav-section">
+      <header>团队成员</header>
+      <nav>
+        <ul>
+          <li *ngFor="let collaborator of collaborators">
+            <div class="nav-item-wrapper">
+              <mat-icon>person</mat-icon>
+              <span class="name mat-body-strong">{{collaborator.name}}</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </mat-sidenav>
+  <mat-sidenav-content class="group-content-container">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

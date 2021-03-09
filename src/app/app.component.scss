@@ -1,0 +1,60 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.root-container {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.main-header-nav {
+  box-sizing: border-box;
+
+  .mat-h1 {
+    margin: 0;
+  }
+
+  .flex-spacer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    .group-search {
+      width: 350px;
+      font-size: 16px;
+    }
+  }
+
+  .header-divider {
+    margin: 0 8px;
+  }
+
+  .header-chat-container {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    .header-chat-button {
+      cursor: pointer;
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+    }
+  }
+
+  .team-selector-container {
+    display: flex;
+    align-items: center;
+    .team-switch-button {
+      cursor: pointer;
+      height: 18px;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.main-content-container {
+  flex: 1;
+  overflow: hidden;
+}

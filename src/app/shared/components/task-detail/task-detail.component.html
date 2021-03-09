@@ -1,0 +1,107 @@
+<div class="task-detail-root">
+  <div class="task-header">
+    <div class="task-directory">
+      <span class="mat-h3">测试项目1</span>
+      <mat-divider vertical class="directory-divider"></mat-divider>
+      <button mat-button><span class="mat-h3">开发任务 - 测试任务列表00</span></button>
+    </div>
+    <div>
+      <mat-icon>sort</mat-icon>
+      <mat-icon>attachment</mat-icon>
+      <mat-icon>more_vert</mat-icon>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="task-info">
+    <div class="task-info-wrapper">
+      <mat-checkbox class="task-checkbox"></mat-checkbox>
+      <div class="base-info">
+        <h2>任务0</h2>
+        <div>
+          <!-- <span>研发调研</span> -->
+          <!-- <mat-basic-chip style="background: red;">研发调研</mat-basic-chip> -->
+          <nz-tag [nzColor]="'magenta'">研发调研</nz-tag>
+          <!-- <mat-basic-chip style="background: blue;">测试开发</mat-basic-chip> -->
+          <nz-tag [nzColor]="'red'">测试开发</nz-tag>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <span>暂无备注</span>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center;">
+            <span>参与人 ：</span>
+            <nz-avatar nzIcon="user"></nz-avatar>
+            <button mat-icon-button>
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="assign-info">
+        <div>执行人 ：Anderson</div>
+        <div>开始日期 -- 结束时间</div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <section>
+      <mat-tab-group>
+        <mat-tab label="评论">
+          <nz-comment nzAuthor="Han Solo">
+            <nz-avatar nz-comment-avatar nzIcon="user"></nz-avatar>
+            <nz-comment-content>
+              <p>
+                We supply a series of design principles, practical patterns and high quality design resources (Sketch
+                and Axure), to help people
+                create their product prototypes beautifully and efficiently.
+              </p>
+            </nz-comment-content>
+            <nz-comment-action>
+              <i nz-tooltip nzTooltipTitle="Like" nz-icon nzType="like"></i>
+              <span class="count like">1</span>
+            </nz-comment-action>
+            <nz-comment-action>
+              <i nz-tooltip nzTooltipTitle="Dislike" nz-icon nzType="dislike"></i>
+              <span class="count dislike">22</span>
+            </nz-comment-action>
+            <nz-comment-action>Reply to</nz-comment-action>
+          </nz-comment>
+        </mat-tab>
+        <mat-tab label="动态">暂无动态</mat-tab>
+      </mat-tab-group>
+    </section>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="task-footer">
+    <div class="comment-emitter">
+      <mat-form-field class="comment-editor">
+        <mat-label>发表评论 ：</mat-label>
+        <textarea matInput #commentEditor cdkTextareaAutosize placeholder="评论内容，文字上限2000" cdkAutosizeMinRows="2"
+          cdkAutosizeMaxRows="5"></textarea>
+        <mat-hint align="end">{{commentEditor.value.length}} / 2000</mat-hint>
+      </mat-form-field>
+      <div class="emitter-footer">
+        <ul class="tool-bar">
+          <li>
+            <mat-icon>emoji_emotions</mat-icon>
+          </li>
+          <li>
+            <mat-icon>alternate_email</mat-icon>
+          </li>
+          <li>
+            <mat-icon>link</mat-icon>
+          </li>
+        </ul>
+        <div>
+          <button mat-button>取消</button>
+          <button mat-raised-button color="primary">发送</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="root-wrapper">
+  <div>
+    <mat-checkbox></mat-checkbox>
+  </div>
+  <div class="task-info-wrapper">
+    <span class="task-title">任务XXX</span>
+    <div class="task-infos">
+      <!-- task status -->
+      <nz-tag [nzColor]="'green'">进行中</nz-tag>
+      <div class="info-with-icon">
+        <!-- task type -->
+        <mat-icon class="icon">library_add_check</mat-icon>
+        <span class="mat-caption">任务</span>
+      </div>
+      <div class="info-with-icon">
+        <!-- project -->
+        <mat-icon class="icon">layers</mat-icon>
+        <span class="mat-caption">项目1</span>
+      </div>
+      <div class="info-with-icon">
+        <!-- parent task -->
+        <mat-icon class="icon">account_tree</mat-icon>
+        <span class="mat-caption">父级任务</span>
+      </div>
+    </div>
+  </div>
+  <div class="task-assgin-wrapper">
+    <span class="task-time-label">开始时间</span>
+    <span class="task-time-divider">-</span>
+    <span class="task-time-label">结束时间</span>
+  </div>
+</div>
+<mat-divider></mat-divider>

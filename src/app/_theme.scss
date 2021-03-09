@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+@mixin app-root-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  
+  .main-header-nav {
+    border-bottom: 2px solid map-get($foreground, divider);
+  }
+
+}

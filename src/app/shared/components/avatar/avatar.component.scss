@@ -1,0 +1,31 @@
+.avatar-container {
+  position: relative;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+
+.mask {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: #ffffff;
+  // background: #000000;
+  opacity: 0%;
+
+  &:hover {
+    opacity: 50%;
+  }
+}
+
+
+.avatar {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+}

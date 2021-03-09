@@ -1,0 +1,101 @@
+:host {
+  display: block;
+  height: 100%;
+  padding: 10px;
+}
+
+.task-detail-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+  }
+}
+
+.task-directory {
+  height: 40px;
+
+  .directory-divider {
+    display: inline;
+    margin-left: 16px;
+  }
+}
+
+.task-info-wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  .base-info {
+    flex: 1;
+    padding: 0 10px;
+  }
+}
+
+.task-comment-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 20px 30px;
+
+  .comment-avator {
+    height: 32px;
+    width: 32px;
+    font-size: 32px;
+    margin-right: 8px;
+  }
+
+  .comment-items {
+    flex: 1;
+
+    .comment-header {
+      display: inline-flex;
+      align-items: center;
+
+      .user {
+        font-size: 16px;
+        margin-right: 16px;
+      }
+
+      .create-time {
+        font-size: 12px;
+        color: #ccc;
+      }
+    }
+  }
+}
+
+
+.comment-emitter {
+  width: 100%;
+  padding: 12px 30px;
+
+  .comment-editor {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .emitter-footer {
+    display: flex;
+
+    .tool-bar {
+      flex: 1;
+
+      li {
+        float: left;
+        padding: 0 6px;
+      }
+    }
+  }
+}
