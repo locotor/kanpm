@@ -15,16 +15,20 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  verifyUserNameOrEmail(userNameOrEmail: string): Observable<ValidationErrors | null> {
-    return this.http.get('/auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
+  verifyUserNameOrEmail(userNameOrEmail: string) {
+    return this.http.get<ServerResponse<boolean>>('/auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
   }
 
-  login(loginData: { username: string, password: string }): Observable<ServerResponse<User | null>> {
+  verifyCaptcha(captcha: string) {
+    return this.http.get<ServerResponse<boolean>>('/auth/verifyCaptcha', { params: { captcha } });
+  }
+
+  signIn(loginData: { username: string, password: string }) {
     return this.http.post<ServerResponse<User | null>>('/auth/sign-in', loginData);
   }
 
   register(registerData: SignUpRequest) {
-    return this.http.post('/auth/register', registerData);
+    return this.http.post<ServerResponse<boolean>>('/auth/register', registerData);
   }
 
 }

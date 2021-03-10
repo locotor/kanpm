@@ -3,19 +3,10 @@
 }
 
 .login-root {
-  width: 550px;
+  width: 35rem;
 }
 
 .login-form {
-  display: flex;
-  flex-direction: column;
   width: 100%;
 }
 
-.form-field-row {
-  display: flex;
-
-  mat-form-field {
-    flex-grow: 1;
-  }
-}

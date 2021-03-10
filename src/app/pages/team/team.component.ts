@@ -27,9 +27,10 @@ export class TeamComponent implements OnInit {
   collaborators = [];
 
   ngOnInit(): void {
-    const teamId = this.route.snapshot.paramMap.get('teamId');
-    this.globalService.currentTeamId = teamId;
-    this.globalService.currentTeam$ = this.teamService.getTeam(teamId);
+    // FIXME 用路由参数跳转
+    // const teamId = this.route.snapshot.paramMap.get('teamId');
+    // this.globalService.currentTeamId = teamId;
+    // this.globalService.currentTeam$ = this.teamService.getTeam(teamId);
   }
 
 }

@@ -1,48 +1,56 @@
 <div class="register-root">
   <form class="register-form" [formGroup]="registerForm" (submit)="submitRegisterForm()">
-    <div class="form-field-row">
+    <div>
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>User Name</mat-label>
+        <mat-label>用户名</mat-label>
         <input matInput formControlName="userName" required>
-        <mat-error *ngIf="userName.errors?.required">user name is required</mat-error>
-        <mat-error *ngIf="userName.errors?.maxlength">
-          user name letters should less than {{userName.errors?.maxlength.requiredLength}}.
+        <mat-icon matSuffix *ngIf="userName?.dirty&&userName?.invalid" color="accent">highlight_off</mat-icon>
+        <mat-icon matSuffix *ngIf="userName?.dirty&&userName?.valid" color="primary">check_circle_outline</mat-icon>
+        <mat-error *ngIf="userName?.errors?.required">用户名不能为空</mat-error>
+        <mat-error *ngIf="userName?.errors?.maxlength">
+          用户名长度不能大于 {{userName?.errors?.maxlength.requiredLength}}.
         </mat-error>
-        <mat-error *ngIf="userName.errors?.verifyUserName">user name has been registered</mat-error>
+        <mat-error *ngIf="userName?.errors?.verify">用户名已被占用</mat-error>
       </mat-form-field>
     </div>
-    <div class="form-field-row">
+    <div>
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Password</mat-label>
+        <mat-label>密码</mat-label>
         <input matInput formControlName="password" required [type]="isPasswordHide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+        <button mat-icon-button matPrefix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="isPasswordHide">
           <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="password.errors?.valueFormat">password must has 6 ~ 64 number and letters </mat-error>
+        <mat-icon matSuffix *ngIf="password?.dirty&&password?.invalid" color="accent">highlight_off</mat-icon>
+        <mat-icon matSuffix *ngIf="password?.dirty&&password?.valid" color="primary">check_circle_outline</mat-icon>
+        <mat-error *ngIf="password?.errors?.valueFormat">密码必须有 6 ~ 64 个字符</mat-error>
       </mat-form-field>
     </div>
-    <div class="form-field-row">
+    <div>
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Password Confirm</mat-label>
+        <mat-label>确认密码</mat-label>
         <input matInput formControlName="passwordConfirm" required [type]="isPasswordHide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+        <button mat-icon-button matPrefix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="isPasswordHide">
           <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error>inconsistent password confirm entered
-        </mat-error>
+        <mat-icon matSuffix *ngIf="passwordConfirm?.dirty&&passwordConfirm?.invalid" color="accent">highlight_off</mat-icon>
+        <mat-icon matSuffix *ngIf="passwordConfirm?.dirty&&passwordConfirm?.valid" color="primary">check_circle_outline</mat-icon>
+        <mat-error>两次密码输入不一致</mat-error>
       </mat-form-field>
     </div>
-    <div class="form-field-row">
+    <div>
       <mat-form-field class="w-50" appearance="outline">
-        <mat-label>Verify Code</mat-label>
+        <mat-label>验证码</mat-label>
         <input matInput formControlName="captcha" required>
-        <mat-error>inconsistent password confirm entered</mat-error>
+        <mat-icon matSuffix *ngIf="captcha?.dirty&&captcha?.invalid" color="accent">highlight_off</mat-icon>
+        <mat-icon matSuffix *ngIf="captcha?.dirty&&captcha?.valid" color="primary">check_circle_outline</mat-icon>
+        <mat-error *ngIf="captcha?.errors?.required">验证码不能为空</mat-error>
+        <mat-error *ngIf="captcha?.errors?.verify">验证码错误</mat-error>
       </mat-form-field>
-      <img [src]="captchaSrc" (click)="refreshCaptcha()" />
+      <img class="captcha-img" [src]="captchaSrc" (click)="refreshCaptcha()" />
     </div>
-    <div class="form-field-row">
+    <div class="form-operations">
       <button mat-raised-button type="submit" color="primary">register</button>
       <button mat-button>cancel</button>
     </div>

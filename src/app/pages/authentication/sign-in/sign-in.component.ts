@@ -12,8 +12,8 @@ import { GlobalService } from 'core/services/global.service';
 export class SignInComponent implements OnInit {
 
   isPasswordHide = true;
-  loginForm = this.fb.group({
-    username: ['', [
+  signInForm = this.fb.group({
+    userName: ['', [
       Validators.required,
       Validators.maxLength(64)
     ]],
@@ -22,11 +22,9 @@ export class SignInComponent implements OnInit {
       Validators.minLength(6),
       Validators.maxLength(64),
     ]]
-  }, {
-    updateOn: 'blur'
   });
-  get username() { return this.loginForm.get('username'); }
-  get password() { return this.loginForm.get('password'); }
+  get userName() { return this.signInForm.get('userName'); }
+  get password() { return this.signInForm.get('password'); }
 
   constructor(
     private fb: FormBuilder,
@@ -39,20 +37,15 @@ export class SignInComponent implements OnInit {
   }
 
   submitLoginForm() {
-    this.authServer.login(this.loginForm.value).subscribe(
-      (response: any) => {
-        if (response === null) { return; }
-        this.globalService.storeJWT(response.accessToken);
-        this.globalService.currentUser = response.user;
+    if (this.signInForm.invalid) { return; }
+    this.authServer.signIn(this.signInForm.value).subscribe(
+      (resp) => {
+        if (!resp.data) { return; }
+        this.globalService.currentUser = resp.data;
         if (this.globalService.redirectUrl) {
           this.router.navigate([this.globalService.redirectUrl]);
         } else {
-          // ToDo add recentTeamId, if null, then go to the team select page
-          if (response.user.recentGroupId) {
-            this.router.navigate([`/team/${response.recentGroupId}`]);
-          } else {
-            this.router.navigate(['teamSelect']);
-          }
+          this.router.navigate(['teamSelect']);
         }
       });
   }

@@ -5,9 +5,10 @@ import {
 import { Injectable } from '@angular/core';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MessageService } from 'core/services/message.service';
 import { ServerResponse } from 'core/types/response';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, mergeMap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 const CODE_MESSAGE = new Map([
     [200, '服务器成功返回请求的数据'],
@@ -31,19 +32,12 @@ const CODE_MESSAGE = new Map([
 export class ResponseInterceptor implements HttpInterceptor {
 
     constructor(
-        private router: Router
+        private router: Router,
+        private message: MessageService
     ) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
         return next.handle(req).pipe(
-            mergeMap((ev) => {
-                if (ev instanceof HttpResponse) {
-                    // 请求成功 status >= 200 && ev.status < 300
-                    return this.handleServerStatus(ev);
-                }
-                return of(ev);
-            }),
             catchError((err: HttpErrorResponse) => {
                 // 网络错误处理
                 return this.handleHttpError(err);
@@ -54,19 +48,20 @@ export class ResponseInterceptor implements HttpInterceptor {
     private handleHttpError(err: HttpErrorResponse) {
         // 构造错误信息。
         let errorData: { message: string; };
-        if (CODE_MESSAGE.has(err.status)) {
-            errorData = { message: CODE_MESSAGE.get(err.status) };
+        if (err.error.message) {
+            errorData = { message: err.error.message };
+        } else if (CODE_MESSAGE.has(err.status)) {
+            errorData = { message: CODE_MESSAGE.get(err.status) || '' };
         } else {
             errorData = { message: '未知错误，请联系管理员' };
         }
 
-        // TODO 发出错误信息事件，由弹窗服务注册
-        console.error('HTTP错误', errorData.message);
+        this.message.openMessage(errorData.message);
 
         // 特定网络错误，跳转到提示页
         switch (err.status) {
             case 401:
-                this.goTo('/authentication');
+                this.goTo('/authentication/sign-in');
                 break;
             case 403:
             case 404:
@@ -77,17 +72,6 @@ export class ResponseInterceptor implements HttpInterceptor {
 
         // 抛出异常消息
         return throwError(errorData);
-    }
-
-    private handleServerStatus(ev: HttpResponse<ServerResponse<any>>): Observable<any> {
-        const body = ev.body;
-        if (body && body.code === '20000') {
-            return of({ data: body.data });
-        } else {
-            //TODO 业务层报错，弹窗提示后端错误信息。
-            console.warn('服务出错:', body.message);
-            return of(null);
-        }
     }
 
     private goTo(url: string): void {

@@ -8,6 +8,10 @@ export class MessageService {
     ) { }
 
     openMessage(message: string) {
-        this.snackBar.open(message);
+        this.snackBar.open(message, '', {
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+            duration: 2000
+        });
     }
 }
