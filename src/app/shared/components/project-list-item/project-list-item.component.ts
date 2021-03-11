@@ -9,7 +9,7 @@ import { Project } from 'core/types/project';
 })
 export class ProjectListItemComponent implements OnInit {
 
-  @Input() project: Project;
+  @Input() project!: Project;
   @Output() projectClick = new EventEmitter<Project>();
 
   constructor() { }

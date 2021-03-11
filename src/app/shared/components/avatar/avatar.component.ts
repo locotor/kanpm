@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class AvatarComponent implements OnInit {
 
-  @Input() avatar: string;
+  @Input() avatar?: string;
 
   constructor() { }
 

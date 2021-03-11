@@ -24,7 +24,8 @@ export class TeamSelectComponent implements OnInit {
   }
 
   getTeamList() {
-    const currentUserId = this.globalService.currentUser.id;
+    const currentUserId = this.globalService.currentUser?.id;
+    if (!currentUserId) { return; }
     this.teamService.getTeamListByMemberId(currentUserId).subscribe((resp: any) => {
       this.teams = resp.data;
     });

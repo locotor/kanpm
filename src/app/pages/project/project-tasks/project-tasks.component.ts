@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { TaskList } from 'core/types/task';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TaskStack } from 'core/types/task';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   templateUrl: './project-tasks.component.html',
@@ -8,19 +9,19 @@ import { TaskList } from 'core/types/task';
 })
 export class ProjectTasksComponent implements OnInit {
 
-  @ViewChild('taskDetailDrawer') taskDetailDrawer;
-  taskStacks:TaskList[] = [];
+  @ViewChild('taskDetailDrawer') taskDetailDrawer?: MatDrawer;
+  taskStacks: TaskStack[] = [];
   isShowCreatePane = false;
 
   ngOnInit(): void {
     this.taskStacks = this.getProjectTaskStacks();
   }
 
-  dropTaskList(event) {
+  dropTaskList(event: CdkDragDrop<any, any>) {
     moveItemInArray(this.taskStacks, event.previousIndex, event.currentIndex);
   }
 
-  dropTaskCard(event) {
+  dropTaskCard(event: CdkDragDrop<any, any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data.tasks, event.previousIndex, event.currentIndex);
     } else {
@@ -32,11 +33,11 @@ export class ProjectTasksComponent implements OnInit {
   }
 
   test() {
-    this.taskDetailDrawer.open();
+    this.taskDetailDrawer?.open();
   }
 
-  private getProjectTaskStacks(): TaskList[] {
-    const stacks: TaskList[] = [];
+  private getProjectTaskStacks(): TaskStack[] {
+    const stacks: TaskStack[] = [];
     const random = Math.floor(Math.random() * 5 + 1);
     for (let index = 0; index <= 7; index++) {
       const stack = {

@@ -22,11 +22,11 @@ export class ProjectService {
     return this.http.get('api/project/getProjectListByTeamId', { params: { teamId } });
   }
 
-  addProject(addProjectParam) {
+  addProject(addProjectParam: any) {
     return this.http.post('api/project/addProject', addProjectParam);
   }
 
-  updateProject(updateProjectParam) {
+  updateProject(updateProjectParam: any) {
     return this.http.put('api/project/updateProject', updateProjectParam);
   }
 

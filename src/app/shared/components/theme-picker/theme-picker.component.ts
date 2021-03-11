@@ -13,7 +13,7 @@ export class ThemePickerComponent implements OnInit {
   private storageThemeKey = 'kanpm-storage-current-theme-name';
   private darkModeThemeKey = 'kanpm-storage-is-dark-mode';
 
-  currentTheme: DocsSiteTheme;
+  currentTheme?: DocsSiteTheme;
   isDarkMode = false;
   themes: DocsSiteTheme[] = [
     {

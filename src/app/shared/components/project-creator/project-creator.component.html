@@ -5,29 +5,29 @@
             <mat-form-field appearance="outline">
                 <mat-label>project name</mat-label>
                 <input matInput formControlName="projectName" required>
-                <mat-error *ngIf="projectName.errors?.required">Project name is required</mat-error>
-                <mat-error *ngIf="projectName.errors?.maxlength">
-                    Project name letters should less than {{projectName.errors?.maxlength.requiredLength}}.
+                <mat-error *ngIf="projectName?.errors?.required">Project name is required</mat-error>
+                <mat-error *ngIf="projectName?.errors?.maxlength">
+                    Project name letters should less than {{projectName?.errors?.maxlength.requiredLength}}.
                 </mat-error>
             </mat-form-field>
             <div class="field-feedback">
-                <mat-icon class="checked-icon" *ngIf="projectName.dirty&&projectName.valid">check_circle_outline</mat-icon>
-                <mat-icon color="warn" *ngIf="projectName.dirty&&projectName.invalid">highlight_off</mat-icon>
-                <mat-icon color="accent" *ngIf="projectName.pending">hourglass_empty</mat-icon>
+                <mat-icon class="checked-icon" *ngIf="projectName?.dirty&&projectName?.valid">check_circle_outline</mat-icon>
+                <mat-icon color="warn" *ngIf="projectName?.dirty&&projectName?.invalid">highlight_off</mat-icon>
+                <mat-icon color="accent" *ngIf="projectName?.pending">hourglass_empty</mat-icon>
             </div>
         </div>
         <div class="form-field-row">
             <mat-form-field appearance="outline">
                 <mat-label>description</mat-label>
                 <textarea matInput formControlName="description"></textarea>
-                <mat-error *ngIf="description.errors?.maxlength">
-                    Project description letters should less than {{description.errors?.maxlength.requiredLength}}.
+                <mat-error *ngIf="description?.errors?.maxlength">
+                    Project description letters should less than {{description?.errors?.maxlength.requiredLength}}.
                 </mat-error>
             </mat-form-field>
             <div class="field-feedback">
-                <mat-icon class="checked-icon" *ngIf="description.dirty&&description.valid">check_circle_outline
+                <mat-icon class="checked-icon" *ngIf="description?.dirty&&description?.valid">check_circle_outline
                 </mat-icon>
-                <mat-icon color="warn" *ngIf="description.dirty&&description.invalid">highlight_off</mat-icon>
+                <mat-icon color="warn" *ngIf="description?.dirty&&description?.invalid">highlight_off</mat-icon>
             </div>
         </div>
     </form>

@@ -22,11 +22,11 @@ export class TeamService {
     return this.http.get('api/team/getTeamListByMemberId', { params: { memberId } });
   }
 
-  addTeam(addTeamParam) {
+  addTeam(addTeamParam: any) {
     return this.http.post('api/team/addTeam', addTeamParam);
   }
 
-  updateTeam(updateTeamParam) {
+  updateTeam(updateTeamParam: any) {
     return this.http.put('api/team/updateTeam', updateTeamParam);
   }
 

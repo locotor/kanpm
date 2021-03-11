@@ -9,7 +9,7 @@ import { TeamService } from 'core/services/team.service';
 })
 export class TeamComponent implements OnInit {
 
-  private teamId: string;
+  private teamId?: string;
 
   constructor(
     private route: ActivatedRoute,

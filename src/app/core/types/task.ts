@@ -9,7 +9,7 @@ export interface TaskGroup {
     groupName: string;
 }
 
-export interface TaskList {
+export interface TaskStack {
     id: string;
     name: string;
     index: number;

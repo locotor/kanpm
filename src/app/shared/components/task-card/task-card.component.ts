@@ -9,7 +9,7 @@ import { Task } from 'core/types/task';
 })
 export class TaskCardComponent implements OnInit {
 
-  @Input() task: Task;
+  @Input() task!: Task;
 
   constructor() { }
 
@@ -17,6 +17,7 @@ export class TaskCardComponent implements OnInit {
   }
 
   completedSubTask(): number {
+    if (!this.task || !this.task.subTasks || this.task.subTasks.length === 0) { return 0; }
     return this.task.subTasks.filter(task => task.isComplete).length;
   }
 

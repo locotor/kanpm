@@ -1,6 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Task, TaskList } from 'core/types/task';
+import { Task, TaskStack } from 'core/types/task';
 
 @Component({
   selector: 'kanpm-task-stack',
@@ -10,7 +10,7 @@ import { Task, TaskList } from 'core/types/task';
 })
 export class TaskStackComponent implements OnInit {
 
-  @Input() stack: TaskList;
+  @Input() stack?: TaskStack;
   tasks: Task[] = [];
   isLoading = false;
   isShowCreatePane = false;

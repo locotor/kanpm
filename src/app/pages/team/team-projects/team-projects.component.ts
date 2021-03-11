@@ -24,7 +24,8 @@ export class TeamProjectsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.teamId = this.globalService.currentTeamId;
+    // TODO 采用路由守卫保证页面加载时，主键一定存在
+    this.teamId = this.globalService.currentTeamId as string;
     this.getProjectListByTeamId(this.teamId);
   }
 
