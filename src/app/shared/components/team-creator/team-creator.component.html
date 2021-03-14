@@ -1,35 +1,31 @@
-<h1 mat-dialog-title>Create your Team</h1>
+<h1 mat-dialog-title>创建你的团队</h1>
 <mat-dialog-content>
     <form [formGroup]="createTeamForm">
-        <div class="form-field-row">
-            <mat-form-field appearance="outline">
-                <mat-label>team name</mat-label>
+        <div>
+            <mat-form-field  class="w-100" appearance="outline">
+                <mat-label>团队名称</mat-label>
                 <input matInput formControlName="teamName" required>
-                <mat-error *ngIf="teamName?.errors?.required">team name is required</mat-error>
+                <mat-icon matSuffix class="checked-icon" *ngIf="teamName?.dirty&&teamName?.valid">check_circle_outline</mat-icon>
+                <mat-icon matSuffix color="warn" *ngIf="teamName?.dirty&&teamName?.invalid">highlight_off</mat-icon>
+                <mat-icon matSuffix color="accent" *ngIf="teamName?.pending">hourglass_empty</mat-icon>
+                <mat-error *ngIf="teamName?.errors?.required">团队名称是必填项</mat-error>
                 <mat-error *ngIf="teamName?.errors?.maxlength">
-                    team name letters should less than {{teamName?.errors?.maxlength.requiredLength}}.
+                    团队名称应不大于 {{teamName?.errors?.maxlength.requiredLength}} 个字
                 </mat-error>
-                <mat-error *ngIf="teamName?.errors?.verifyTeamName">team name has been registed</mat-error>
+                <mat-error *ngIf="teamName?.errors?.verifyTeamName">该团队名称已被注册</mat-error>
             </mat-form-field>
-            <div class="field-feedback">
-                <mat-icon class="checked-icon" *ngIf="teamName?.dirty&&teamName?.valid">check_circle_outline</mat-icon>
-                <mat-icon color="warn" *ngIf="teamName?.dirty&&teamName?.invalid">highlight_off</mat-icon>
-                <mat-icon color="accent" *ngIf="teamName?.pending">hourglass_empty</mat-icon>
-            </div>
         </div>
-        <div class="form-field-row">
-            <mat-form-field appearance="outline">
-                <mat-label>description</mat-label>
+        <div>
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>团队描述</mat-label>
                 <textarea matInput formControlName="description"></textarea>
-                <mat-error *ngIf="description?.errors?.maxlength">
-                    team description letters should less than {{description?.errors?.maxlength.requiredLength}}.
-                </mat-error>
-            </mat-form-field>
-            <div class="field-feedback">
                 <mat-icon class="checked-icon" *ngIf="description?.dirty&&description?.valid">check_circle_outline
                 </mat-icon>
                 <mat-icon color="warn" *ngIf="description?.dirty&&description?.invalid">highlight_off</mat-icon>
-            </div>
+                <mat-error *ngIf="description?.errors?.maxlength">
+                    团队描述应不大于 {{description?.errors?.maxlength.requiredLength}} 个字
+                </mat-error>
+            </mat-form-field>
         </div>
     </form>
 </mat-dialog-content>

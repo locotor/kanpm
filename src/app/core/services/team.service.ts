@@ -11,23 +11,23 @@ export class TeamService {
   ) { }
 
   getTeam(id: string) {
-    return this.http.get('api/team/getTeam', { params: { id } });
+    return this.http.get('/api/team/getTeam', { params: { id } });
   }
 
   verifyTeamName(teamName: string) {
-    return this.http.get('api/team/verifyTeamName', { params: { teamName } });
+    return this.http.get('/api/team/verifyTeamName', { params: { teamName } });
   }
 
   getTeamListByMemberId(memberId: string) {
-    return this.http.get('api/team/getTeamListByMemberId', { params: { memberId } });
+    return this.http.get('/api/team/getTeamListByMemberId', { params: { memberId } });
   }
 
   addTeam(addTeamParam: any) {
-    return this.http.post('api/team/addTeam', addTeamParam);
+    return this.http.post('/api/team/addTeam', addTeamParam);
   }
 
   updateTeam(updateTeamParam: any) {
-    return this.http.put('api/team/updateTeam', updateTeamParam);
+    return this.http.put('/api/team/updateTeam', updateTeamParam);
   }
 
 }

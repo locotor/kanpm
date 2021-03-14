@@ -32,7 +32,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
     this.globalService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(['/authentication']);
+    this.router.navigate(['/authentication/sign-in']);
     return true;
   }
 }
