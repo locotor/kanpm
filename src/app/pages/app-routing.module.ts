@@ -6,7 +6,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'authentication',
+    redirectTo: 'authentication/sign-in',
     pathMatch: 'full'
   },
   {

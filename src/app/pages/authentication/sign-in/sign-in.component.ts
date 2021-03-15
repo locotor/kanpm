@@ -13,7 +13,7 @@ export class SignInComponent implements OnInit {
 
   isPasswordHide = true;
   signInForm = this.fb.group({
-    userName: ['', [
+    username: ['', [
       Validators.required,
       Validators.maxLength(64)
     ]],
@@ -23,7 +23,7 @@ export class SignInComponent implements OnInit {
       Validators.maxLength(64),
     ]]
   });
-  get userName() { return this.signInForm.get('userName'); }
+  get username() { return this.signInForm.get('username'); }
   get password() { return this.signInForm.get('password'); }
 
   constructor(
