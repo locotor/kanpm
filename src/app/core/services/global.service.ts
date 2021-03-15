@@ -18,8 +18,8 @@ export class GlobalService {
   }
 
   get currentUser() {
-    const storageValue = this.storage.getItem('currentUser')
-    if (!storageValue) { throw { msg:'user cache on found'} }
+    const storageValue = this.storage.getItem('currentUser');
+    if (!storageValue) { throw { msg: 'user cache on found' }; }
     return JSON.parse(storageValue);
   }
 

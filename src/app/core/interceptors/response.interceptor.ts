@@ -1,14 +1,12 @@
 import {
-    HttpErrorResponse, HttpEvent, HttpHandler,
-    HttpInterceptor, HttpRequest, HttpResponse, HttpResponseBase
-} from '@angular/common/http';
+    HttpErrorResponse, HttpHandler,
+    HttpInterceptor, HttpRequest} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MessageService } from 'core/services/message.service';
-import { ServerResponse } from 'core/types/response';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 const CODE_MESSAGE = new Map([
     [200, '服务器成功返回请求的数据'],

@@ -2,10 +2,11 @@
 <mat-dialog-content>
     <form [formGroup]="createTeamForm">
         <div>
-            <mat-form-field  class="w-100" appearance="outline">
+            <mat-form-field class="w-100" appearance="outline">
                 <mat-label>团队名称</mat-label>
                 <input matInput formControlName="teamName" required>
-                <mat-icon matSuffix color="primary" class="checked-icon" *ngIf="teamName?.dirty&&teamName?.valid">check_circle_outline</mat-icon>
+                <mat-icon matSuffix color="primary" class="checked-icon" *ngIf="teamName?.dirty&&teamName?.valid">
+                    check_circle_outline</mat-icon>
                 <mat-icon matSuffix color="warn" *ngIf="teamName?.dirty&&teamName?.invalid">highlight_off</mat-icon>
                 <mat-icon matSuffix *ngIf="teamName?.pending">hourglass_empty</mat-icon>
                 <mat-error *ngIf="teamName?.errors?.required">团队名称是必填项</mat-error>
@@ -19,7 +20,8 @@
             <mat-form-field class="w-100" appearance="outline">
                 <mat-label>团队描述</mat-label>
                 <textarea matInput formControlName="description"></textarea>
-                <mat-icon color="primary" class="checked-icon" *ngIf="description?.dirty&&description?.valid">check_circle_outline
+                <mat-icon color="primary" class="checked-icon" *ngIf="description?.dirty&&description?.valid">
+                    check_circle_outline
                 </mat-icon>
                 <mat-icon color="warn" *ngIf="description?.dirty&&description?.invalid">highlight_off</mat-icon>
                 <mat-error *ngIf="description?.errors?.maxlength">

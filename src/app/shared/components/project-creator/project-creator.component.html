@@ -1,27 +1,29 @@
-<h1 mat-dialog-title>Create a new project</h1>
+<h1 mat-dialog-title>创建一个项目</h1>
 <mat-dialog-content>
     <form [formGroup]="createProjectForm">
-        <div class="form-field-row">
-            <mat-form-field appearance="outline">
-                <mat-label>project name</mat-label>
+        <div>
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>项目名称</mat-label>
                 <input matInput formControlName="projectName" required>
-                <mat-error *ngIf="projectName?.errors?.required">Project name is required</mat-error>
+                <mat-icon matSuffix class="checked-icon" *ngIf="projectName?.dirty&&projectName?.valid">
+                    check_circle_outline
+                </mat-icon>
+                <mat-icon matSuffix color="warn" *ngIf="projectName?.dirty&&projectName?.invalid">highlight_off
+                </mat-icon>
+                <mat-icon matSuffix *ngIf="projectName?.pending">hourglass_empty</mat-icon>
+                <mat-error *ngIf="projectName?.errors?.required">项目名称是必填项</mat-error>
+                <mat-error *ngIf="projectName?.errors?.verifyProjectName">当前团队已有同名项目</mat-error>
                 <mat-error *ngIf="projectName?.errors?.maxlength">
-                    Project name letters should less than {{projectName?.errors?.maxlength.requiredLength}}.
+                    项目名称应不大于 {{projectName?.errors?.maxlength.requiredLength}} 个字
                 </mat-error>
             </mat-form-field>
-            <div class="field-feedback">
-                <mat-icon class="checked-icon" *ngIf="projectName?.dirty&&projectName?.valid">check_circle_outline</mat-icon>
-                <mat-icon color="warn" *ngIf="projectName?.dirty&&projectName?.invalid">highlight_off</mat-icon>
-                <mat-icon color="accent" *ngIf="projectName?.pending">hourglass_empty</mat-icon>
-            </div>
         </div>
-        <div class="form-field-row">
-            <mat-form-field appearance="outline">
-                <mat-label>description</mat-label>
+        <div>
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>项目描述</mat-label>
                 <textarea matInput formControlName="description"></textarea>
                 <mat-error *ngIf="description?.errors?.maxlength">
-                    Project description letters should less than {{description?.errors?.maxlength.requiredLength}}.
+                    项目描述应不大于 {{description?.errors?.maxlength.requiredLength}} 个字
                 </mat-error>
             </mat-form-field>
             <div class="field-feedback">
@@ -33,6 +35,7 @@
     </form>
 </mat-dialog-content>
 <div mat-dialog-actions [align]="'end'">
-    <button mat-flat-button mat-dialog-close>cancel</button>
-    <button mat-flat-button color="primary" [disabled]="!createProjectForm.valid" (click)="createProject()">create</button>
+    <button mat-flat-button mat-dialog-close>取消</button>
+    <button mat-flat-button color="primary" [disabled]="!createProjectForm.valid"
+        (click)="createProject()">创建项目</button>
 </div>

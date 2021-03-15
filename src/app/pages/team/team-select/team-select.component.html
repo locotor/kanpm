@@ -3,12 +3,13 @@
         <h1>选择团队</h1>
         <mat-divider></mat-divider>
         <mat-nav-list>
-            <mat-list-item *ngFor="let team of teams">
+            <mat-list-item *ngFor="let team of teams" (click)="enterTeam(team)">
                 <img matListAvatar src="http://placekitten.com/50/50">
-                <a matLine [routerLink]="'/team/'+team.id"> {{team.teamName }}</a>
+                <span matLine> {{team.teamName }}</span>
                 <mat-icon>input</mat-icon>
             </mat-list-item>
         </mat-nav-list>
-        <button class="create-team-button" mat-raised-button color="primary" (click)="openTeamCreatorDialog()">创建团队</button>
+        <button class="create-team-button" mat-raised-button color="primary"
+            (click)="openTeamCreatorDialog()">创建团队</button>
     </div>
 </div>

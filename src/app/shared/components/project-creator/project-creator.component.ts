@@ -6,8 +6,7 @@ import { ProjectService } from 'core/services/project.service';
 
 @Component({
   templateUrl: './project-creator.component.html',
-  styleUrls: ['./project-creator.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./project-creator.component.scss']
 })
 export class ProjectCreatorComponent {
 
@@ -26,7 +25,6 @@ export class ProjectCreatorComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ProjectCreatorComponent>,
-    private CDRef: ChangeDetectorRef,
     private globalService: GlobalService,
     private projectService: ProjectService
   ) { }
@@ -35,7 +33,7 @@ export class ProjectCreatorComponent {
     const projectParam = Object.assign(this.createProjectForm.value, {});
     projectParam.teamId = this.globalService.currentTeamId;
     this.projectService.addProject(projectParam).subscribe((resp: any) => {
-      if (resp.success) {
+      if (resp.data) {
         this.dialogRef.close({ isCreateProjectSuccess: true });
       }
     });

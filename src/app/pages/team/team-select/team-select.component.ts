@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { GlobalService } from 'core/services/global.service';
 import { TeamService } from 'core/services/team.service';
 import { Team } from 'core/types/team';
@@ -16,7 +17,8 @@ export class TeamSelectComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private globalService: GlobalService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,11 @@ export class TeamSelectComponent implements OnInit {
         this.getTeamList();
       }
     });
+  }
+
+  enterTeam(team: Team) {
+    this.globalService.currentTeamId = team.id;
+    this.router.navigate([`/team/${team.id}`]);
   }
 
 }

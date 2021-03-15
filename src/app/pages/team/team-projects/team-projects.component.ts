@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ProjectCreatorComponent } from 'shared/components/project-creator/project-creator.component';
-import { GlobalService } from 'core/services/global.service';
 import { ProjectService } from 'core/services/project.service';
 import { Project } from 'core/types/project';
+import { GlobalService } from 'core/services/global.service';
 
 @Component({
   templateUrl: './team-projects.component.html',
@@ -20,32 +20,36 @@ export class TeamProjectsComponent implements OnInit {
     private dialog: MatDialog,
     private projectService: ProjectService,
     private globalService: GlobalService,
+    private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    // TODO 采用路由守卫保证页面加载时，主键一定存在
-    this.teamId = this.globalService.currentTeamId as string;
-    this.getProjectListByTeamId(this.teamId);
+    let currentTeamId = this.globalService.currentTeamId;
+    if (!currentTeamId) {
+      currentTeamId = this.route.parent?.snapshot.paramMap.get('teamId') || '';
+      this.globalService.currentTeamId = currentTeamId;
+    }
+    this.teamId = currentTeamId;
+    this.getProjectListByTeamId();
   }
 
   openProjectCreatorDialog() {
     const dialogRef = this.dialog.open(ProjectCreatorComponent, {
       autoFocus: false,
-      width: '650px'
+      width: '40rem'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.isCreateProjectSuccess) {
-        this.getProjectListByTeamId(this.teamId);
+        this.getProjectListByTeamId();
       }
     });
   }
 
-  getProjectListByTeamId(teamId: string) {
-    this.projectService.getProjectListByTeamId(teamId).subscribe(
-      (response: any) => {
-        this.projectList = response.data;
-      });
+  getProjectListByTeamId() {
+    this.projectService.getProjectListByTeamId(this.teamId).subscribe(resp => {
+      this.projectList = resp.data;
+    });
   }
 
   routeToProjectDetail(e: Project) {
