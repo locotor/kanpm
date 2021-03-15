@@ -1,4 +1,5 @@
 <div class="login-root">
+  <h1>登录</h1>
   <form class="login-form" [formGroup]="signInForm" (ngSubmit)="submitLoginForm()">
     <div>
       <mat-form-field class="w-100" appearance="outline">
@@ -28,7 +29,8 @@
     </div>
     <div class="form-operations">
       <button mat-raised-button type="submit" color="primary" [disabled]="!signInForm.valid">login</button>
-      <button mat-button>cancel</button>
+      <mat-divider class="vertical-divider" [vertical]="true"></mat-divider>
+      <span>没有账号？<a routerLink="../register">前往注册</a></span>
     </div>
   </form>
 </div>

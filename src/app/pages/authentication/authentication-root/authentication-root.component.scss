@@ -11,6 +11,7 @@
   justify-content: flex-start;
   height: 100%;
   padding-left: 10%;
+  background: url("~src/assets/images/auth-illustration.png") no-repeat 95% 90%/35%;
 }
 
 .auth-illustration {
@@ -48,16 +49,4 @@
   border-bottom-right-radius: .75rem;
   border-top-right-radius: .75rem;
   @include mat-elevation(6);
-
-  .tabs {
-    margin-bottom: 2rem;
-    padding-right: 3rem;
-
-    .tab {
-      float: left;
-      cursor: pointer;
-      box-sizing: border-box;
-      margin-left:2rem
-    }
-  }
 }

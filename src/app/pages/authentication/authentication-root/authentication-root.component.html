@@ -1,19 +1,12 @@
 <div class="authentication-root">
-  <!-- <img class="auth-illustration" src="/assets/images/auth-illustration.png" /> -->
   <section class="ad-section">
-    <img class="auth-banner-img" src="~/assets/images/auth-banner.png">
+    <img class="auth-banner-img" src="assets/images/auth-banner.png">
     <p class="mat-h3">Lorem ipsum dolor sit amet</p>
     <p>Consectetur adipiscing elit</p>
     <p>Phasellus orci dolor</p>
     <p>dapibus suscipit quam</p>
   </section>
   <section class="auth-section">
-    <div class="tabs">
-      <ul class="mat-h2">
-        <li class="tab" [class.active]="isLoginTab" routerLink="sign-in" routerLinkActive="active">Login</li>
-        <li class="tab" [class.active]="!isLoginTab" routerLink="register" routerLinkActive="active">Register</li>
-      </ul>
-    </div>
     <router-outlet></router-outlet>
   </section>
 </div>

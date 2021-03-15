@@ -1,4 +1,12 @@
 
 .form-operations{
+    display: flex;
+    align-items: center;
     margin-top: 1rem;
+}
+
+.vertical-divider{
+    display: inline-block!important;
+    height: 1.25rem;
+    margin: 0 .75rem!important;
 }

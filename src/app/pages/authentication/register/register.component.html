@@ -1,4 +1,5 @@
 <div class="register-root">
+  <h1>注册</h1>
   <form class="register-form" [formGroup]="registerForm" (submit)="submitRegisterForm()">
     <div>
       <mat-form-field class="w-100" appearance="outline">
@@ -52,7 +53,8 @@
     </div>
     <div class="form-operations">
       <button mat-raised-button type="submit" color="primary">register</button>
-      <button mat-button>cancel</button>
+      <mat-divider class="vertical-divider" [vertical]="true"></mat-divider>
+      <span>已有账号？<a routerLink="../sign-in">前往登录</a></span>
     </div>
   </form>
 </div>

@@ -52,6 +52,10 @@ li {
   margin: 0;
 }
 
+a{
+  text-decoration: none;
+}
+
 // to disable chrome user agent stylesheets
 // input:-internal-autofill-previewed,
 // input:-internal-autofill-selected {
