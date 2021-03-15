@@ -1,6 +1,6 @@
 <div class="select-layout-wrapper">
     <div class="team-select-wrapper">
-        <h1>select a team to enter workspace</h1>
+        <h1>选择团队</h1>
         <mat-divider></mat-divider>
         <mat-nav-list>
             <mat-list-item *ngFor="let team of teams">
@@ -9,7 +9,6 @@
                 <mat-icon>input</mat-icon>
             </mat-list-item>
         </mat-nav-list>
-        <button class="create-team-button" mat-raised-button color="primary" (click)="openTeamCreatorDialog()">create a
-            team</button>
+        <button class="create-team-button" mat-raised-button color="primary" (click)="openTeamCreatorDialog()">创建团队</button>
     </div>
 </div>

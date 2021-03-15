@@ -37,8 +37,8 @@ export class TeamCreatorComponent implements OnInit {
 
   private teamNameUniqueValidator(control: AbstractControl): Observable<ValidationErrors | null> {
     return this.teamService.verifyTeamName(control.value).pipe(
-      map(response => {
-        return response ? null : { verifyTeamName: true };
+      map(resp => {
+        return resp.data ? null : { verifyTeamName: true };
       }),
       finalize(() => {
         this.CDRef.markForCheck();
@@ -49,7 +49,7 @@ export class TeamCreatorComponent implements OnInit {
 
   createTeam() {
     this.teamService.addTeam(this.createTeamForm.value).subscribe((resp: any) => {
-      if (resp.success) {
+      if (resp.data) {
         this.dialogRef.close({ isCreateTeamSuccess: true });
       }
     });

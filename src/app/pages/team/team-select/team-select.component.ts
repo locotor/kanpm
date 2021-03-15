@@ -34,7 +34,7 @@ export class TeamSelectComponent implements OnInit {
   openTeamCreatorDialog() {
     const dialogRef = this.dialog.open(TeamCreatorComponent, {
       autoFocus: false,
-      width: '650px'
+      width: '40rem'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.isCreateTeamSuccess) {
