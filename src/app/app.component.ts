@@ -1,4 +1,6 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { AuthenticationService } from 'core/services/authentication.service';
+import { GlobalService } from 'core/services/global.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,15 @@ export class AppComponent {
 
   title = 'kanpm';
 
-  constructor() { }
+  constructor(
+    public global: GlobalService,
+    private authService: AuthenticationService
+  ) { }
+
+  logout(): void {
+    this.authService.logout().subscribe(resp => {
+      this.global.currentUser = null;
+    })
+  }
 
 }

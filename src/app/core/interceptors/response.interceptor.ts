@@ -1,9 +1,11 @@
 import {
     HttpErrorResponse, HttpHandler,
-    HttpInterceptor, HttpRequest} from '@angular/common/http';
+    HttpInterceptor, HttpRequest
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { GlobalService } from 'core/services/global.service';
 import { MessageService } from 'core/services/message.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -31,7 +33,8 @@ export class ResponseInterceptor implements HttpInterceptor {
 
     constructor(
         private router: Router,
-        private message: MessageService
+        private message: MessageService,
+        private global: GlobalService
     ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
@@ -46,9 +49,9 @@ export class ResponseInterceptor implements HttpInterceptor {
     private handleHttpError(err: HttpErrorResponse) {
         // 构造错误信息。
         let errorData: { message: string; };
-        if (err.error.message) {
+        if (err.error?.message) {
             errorData = { message: err.error.message };
-        } else if (CODE_MESSAGE.has(err.status)) {
+        } else if (CODE_MESSAGE.has(err?.status)) {
             errorData = { message: CODE_MESSAGE.get(err.status) || '' };
         } else {
             errorData = { message: '未知错误，请联系管理员' };
@@ -59,13 +62,14 @@ export class ResponseInterceptor implements HttpInterceptor {
         // 特定网络错误，跳转到提示页
         switch (err.status) {
             case 401:
+                this.global.currentUser = null;
                 this.goTo('/authentication/sign-in');
                 break;
-            case 403:
-            case 404:
-            case 500:
-                this.goTo(`/exception/${err.status}`);
-                break;
+            // case 403:
+            // case 404:
+            // case 500:
+            //     this.goTo(`/exception/${err.status}`);
+            //     break;
         }
 
         // 抛出异常消息

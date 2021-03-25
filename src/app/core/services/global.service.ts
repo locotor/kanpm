@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from 'core/types/user';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +15,34 @@ export class GlobalService {
 
   private storage: Storage = localStorage;
 
-  set currentUser(user: User) {
+  set currentUser(user: User | null) {
     this.storage.setItem('currentUser', JSON.stringify(user));
   }
 
   get currentUser() {
     const storageValue = this.storage.getItem('currentUser');
-    if (!storageValue) { throw { msg: 'user cache on found' }; }
+    if (!storageValue) { return null; }
     return JSON.parse(storageValue);
   }
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  isLoggedIn(): boolean {
-    return this.currentUser ? true : false;
+  isUserSignIn(): Observable<boolean> {
+    if (this.currentUser) {
+      return of(true);
+    } else {
+      return this.userService.getCurrentUser().pipe(
+        tap(resp => {
+          if (resp.code === '20000') {
+            this.currentUser = resp.data;
+          }
+        }),
+        map(resp => {
+          if (resp.code === '20000') { return true; }
+          return false;
+        })
+      );
+    }
   }
+
 }

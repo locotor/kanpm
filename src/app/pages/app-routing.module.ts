@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TeamModule } from './team/team.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthGuardService } from 'core/guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
   {
     path: 'project/:id',
     loadChildren: () => import('./project/project.module').then(m => m.ProjectModule),
-    // canLoad: [AuthGuardService],
+    canLoad: [AuthGuardService],
   }
   // Todo add 404 page
 ];

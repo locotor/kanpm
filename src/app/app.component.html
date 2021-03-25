@@ -17,7 +17,8 @@
     <mat-divider vertical style="height: 20px; margin: 0 10px;"></mat-divider>
     <kanpm-theme-picker></kanpm-theme-picker>
     <mat-divider vertical style="height: 20px;margin: 0 10px;"></mat-divider>
-    <nz-avatar nzIcon="user"></nz-avatar>
+    <!-- <nz-avatar nzIcon="user"></nz-avatar> -->
+    <button *ngIf="global.currentUser" mat-button (click)="logout()">登出</button>
   </mat-toolbar>
   <mat-sidenav-container class="main-content-container">
     <mat-sidenav-content>

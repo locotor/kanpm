@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ValidationErrors } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { User } from 'core/types/user';
 import { ServerResponse } from 'core/types/response';
 import { SignUpRequest } from 'core/types/signUpRequest';
@@ -15,16 +13,20 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  verifyUserNameOrEmail(userNameOrEmail: string) {
-    return this.http.get<ServerResponse<boolean>>('/auth/verifyUserNameOrEmail', { params: { userNameOrEmail } });
+  verifyUsername(username: string) {
+    return this.http.get<ServerResponse<boolean>>('/auth/verify-username', { params: { username } });
   }
 
   verifyCaptcha(captcha: string) {
-    return this.http.get<ServerResponse<boolean>>('/auth/verifyCaptcha', { params: { captcha } });
+    return this.http.get<ServerResponse<boolean>>('/auth/verify-captcha', { params: { captcha } });
   }
 
   signIn(loginData: { username: string, password: string }) {
     return this.http.post<ServerResponse<User | null>>('/auth/sign-in', loginData);
+  }
+
+  logout() {
+    return this.http.get<ServerResponse<any>>('/auth/logout',{});
   }
 
   register(registerData: SignUpRequest) {

@@ -1,10 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors, FormGroup, AsyncValidatorFn, AbstractControlOptions } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'core/services/authentication.service';
 import { MessageService } from 'core/services/message.service';
-import { Observable, of } from 'rxjs';
-import { map, catchError, finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: './register.component.html',
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private userNameUniqueValidator(control: AbstractControl): Observable<ValidationErrors | null> {
-    return this.authServer.verifyUserNameOrEmail(control.value).pipe(
+    return this.authServer.verifyUsername(control.value).pipe(
       map(resp => {
         return resp.data ? null : { verify: true };
       })

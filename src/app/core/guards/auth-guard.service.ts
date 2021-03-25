@@ -9,30 +9,14 @@ import { Observable } from 'rxjs';
 export class AuthGuardService implements CanActivate, CanLoad {
   constructor(
     private globalService: GlobalService,
-    private router: Router
   ) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot):
-    boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const url: string = state.url;
-    return this.checkLogin(url);
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
+    : boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    return this.globalService.isUserSignIn();
   }
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | Observable<boolean> | Promise<boolean> {
-    const url = `/${route.path}`;
-    return this.checkLogin(url);
-  }
-
-  checkLogin(url: string): boolean {
-    if (this.globalService.isLoggedIn()) { return true; }
-
-    // Store the attempted URL for redirecting
-    this.globalService.redirectUrl = url;
-
-    // Navigate to the login page with extras
-    this.router.navigate(['/authentication/sign-in']);
-    return true;
+    return this.globalService.isUserSignIn();
   }
 }

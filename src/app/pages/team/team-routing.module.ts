@@ -4,13 +4,14 @@ import { TeamComponent } from './team.component';
 import { TeamHomeComponent } from './team-home/team-home.component';
 import { TeamSelectComponent } from './team-select/team-select.component';
 import { TeamProjectsComponent } from './team-projects/team-projects.component';
+import { AuthGuardService } from 'core/guards/auth-guard.service';
 
 
 const routes: Routes = [
   {
     path: 'team/:teamId',
     component: TeamComponent,
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     children: [
       {
         path: '',
@@ -29,7 +30,8 @@ const routes: Routes = [
   },
   {
     path: 'teamSelect',
-    component: TeamSelectComponent
+    component: TeamSelectComponent,
+    canActivate: [AuthGuardService],
   },
 ];
 

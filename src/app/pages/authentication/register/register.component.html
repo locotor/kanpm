@@ -18,7 +18,7 @@
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>密码</mat-label>
         <input matInput formControlName="password" required [type]="isPasswordHide ? 'password' : 'text'">
-        <button mat-icon-button matPrefix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+        <button mat-icon-button matPrefix tabindex="-1" (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="isPasswordHide">
           <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
@@ -31,7 +31,7 @@
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>确认密码</mat-label>
         <input matInput formControlName="passwordConfirm" required [type]="isPasswordHide ? 'password' : 'text'">
-        <button mat-icon-button matPrefix (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
+        <button mat-icon-button matPrefix tabindex="-1" (click)="isPasswordHide = !isPasswordHide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="isPasswordHide">
           <mat-icon>{{isPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
