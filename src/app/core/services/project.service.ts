@@ -13,7 +13,7 @@ export class ProjectService {
   ) { }
 
   getProject(id: string) {
-    return this.http.get<ServerResponse<Project>>('/api/project/getProjectById', { params: { id } });
+    return this.http.get<ServerResponse<Project>>('/api/project/get', { params: { id } });
   }
 
   verifyProjectName(projectName: string, teamId: string) {
@@ -21,7 +21,7 @@ export class ProjectService {
   }
 
   getProjectListByTeamId(teamId: string) {
-    return this.http.get<ServerResponse<Project[]>>('/api/project/getProjectListByTeamId', { params: { teamId } });
+    return this.http.get<ServerResponse<Project[]>>('/api/project/list-by-team-id', { params: { teamId } });
   }
 
   addProject(addProjectParam: any) {

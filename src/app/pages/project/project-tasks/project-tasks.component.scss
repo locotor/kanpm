@@ -10,7 +10,7 @@
 
 .task-stacks-wrapper {
   height: 100%;
-  padding: 16px;
+  padding: 1rem;
 
   ul.task-stacks {
     height: 100%;
@@ -18,8 +18,16 @@
   }
   li.task-stack {
     display: inline-block;
-    width: 320px;
+    width: 20rem;
     height: 100%;
-    margin-right: 16px;
+    margin-right: 1rem;
+  }
+  li.task-stack-creator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    width: 20rem;
+    margin-right: 1rem;
   }
 }

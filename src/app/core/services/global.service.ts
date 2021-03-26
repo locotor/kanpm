@@ -38,8 +38,7 @@ export class GlobalService {
           }
         }),
         map(resp => {
-          if (resp.code === '20000') { return true; }
-          return false;
+          return resp.code === '20000' ? true : false;
         })
       );
     }

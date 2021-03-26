@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'kanpm-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  templateUrl: './project-root.component.html',
+  styleUrls: ['./project-root.component.scss']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectRootComponent implements OnInit {
 
   constructor() { }
 

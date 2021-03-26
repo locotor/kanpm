@@ -4,10 +4,10 @@ import { GlobalService } from 'core/services/global.service';
 import { TeamService } from 'core/services/team.service';
 
 @Component({
-  templateUrl: './team.component.html',
-  styleUrls: ['./team.component.scss']
+  templateUrl: './team-root.component.html',
+  styleUrls: ['./team-root.component.scss']
 })
-export class TeamComponent implements OnInit {
+export class TeamRootComponent implements OnInit {
 
   private teamId?: string;
 

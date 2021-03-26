@@ -9,6 +9,11 @@
       <li cdkDrag *ngFor="let stack of taskStacks" class="task-stack mat-elevation-z2">
         <kanpm-task-stack [stack]="stack"></kanpm-task-stack>
       </li>
+      <li class="task-stack-creator mat-elevation-z2">
+        <div>
+          <span *ngIf="!isShowCreatePane" (click)="isShowCreatePane=true">新建任务列表</span>
+        </div>
+      </li>
     </ul>
   </mat-drawer-content>
 </mat-drawer-container>

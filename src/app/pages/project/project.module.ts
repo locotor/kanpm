@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ProjectRoutingModule } from './project-routing.module';
-import { ProjectComponent } from './project.component';
 import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
+import { ProjectRootComponent } from './project-root/project-root.component';
+import { ProjectRoutingModule } from './project-routing.module';
 
 
 @NgModule({
-  declarations: [ProjectComponent, ProjectTasksComponent],
+  declarations: [ProjectRootComponent, ProjectTasksComponent],
   imports: [
     CommonModule,
     SharedModule,

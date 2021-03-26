@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TeamComponent } from './team.component';
 import { TeamHomeComponent } from './team-home/team-home.component';
 import { TeamSelectComponent } from './team-select/team-select.component';
 import { TeamProjectsComponent } from './team-projects/team-projects.component';
-import { AuthGuardService } from 'core/guards/auth-guard.service';
+import { AuthGuard } from 'core/guards/auth.guard';
+import { TeamRootComponent } from './team-root/team-root.component';
 
 
 const routes: Routes = [
   {
     path: 'team/:teamId',
-    component: TeamComponent,
-    canActivate: [AuthGuardService],
+    component: TeamRootComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
-        redirectTo: 'project',
+        redirectTo: 'projects',
         pathMatch: 'full'
       },
       {
@@ -23,7 +23,7 @@ const routes: Routes = [
         component: TeamHomeComponent
       },
       {
-        path: 'project',
+        path: 'projects',
         component: TeamProjectsComponent
       }
     ]
@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: 'teamSelect',
     component: TeamSelectComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
 ];
 

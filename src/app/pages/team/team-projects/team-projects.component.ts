@@ -53,7 +53,7 @@ export class TeamProjectsComponent implements OnInit {
   }
 
   routeToProjectDetail(e: Project) {
-    this.router.navigate([`project/${e.id}`]);
+    this.router.navigate([`projects/${e.id}`]);
   }
 
 }

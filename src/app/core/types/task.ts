@@ -11,8 +11,10 @@ export interface TaskGroup {
 
 export interface TaskStack {
     id: string;
-    name: string;
-    index: number;
+    stackName: string;
+    projectId: string;
+    alignment: number;
+    sortBy: number;
 }
 
 export interface Task {
