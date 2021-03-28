@@ -9,10 +9,25 @@
       <li cdkDrag *ngFor="let stack of taskStacks" class="task-stack mat-elevation-z2">
         <kanpm-task-stack [stack]="stack"></kanpm-task-stack>
       </li>
-      <li class="task-stack-creator mat-elevation-z2">
-        <div>
-          <span *ngIf="!isShowCreatePane" (click)="isShowCreatePane=true">新建任务列表</span>
+      <li class="task-stack-creator p-3 mat-elevation-z2">
+        <div class="stack-create-button w-100" (click)="isShowStackCreateForm=true" *ngIf="!isShowStackCreateForm">
+          <span>新建任务列表</span>
         </div>
+        <form *ngIf="isShowStackCreateForm" class="w-100" [formGroup]="createStackForm">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>列表名称</mat-label>
+            <input matInput formControlName="stackName" required>
+            <mat-error *ngIf="stackName?.errors?.required">列表名称不能为空</mat-error>
+            <mat-error *ngIf="stackName?.errors?.maxlength">
+              列表名称长度不能大于 {{stackName?.errors?.maxlength.requiredLength}}.
+            </mat-error>
+            <mat-error *ngIf="stackName?.errors?.verify">列表名称已被占用</mat-error>
+          </mat-form-field>
+          <div class="form-operations">
+            <button mat-raised-button type="submit" color="primary" (click)="createTaskStack()">确定</button>
+            <button mat-button (click)="isShowStackCreateForm=false;this.createStackForm.reset()">取消</button>
+          </div>
+        </form>
       </li>
     </ul>
   </mat-drawer-content>

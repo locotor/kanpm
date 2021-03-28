@@ -13,8 +13,10 @@ export interface TaskStack {
     id: string;
     stackName: string;
     projectId: string;
-    alignment: number;
-    sortBy: number;
+    creatorId: string;
+    createTime: Date;
+    nextStackId?: string;
+    sortBy?: number;
 }
 
 export interface Task {
