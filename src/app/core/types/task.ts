@@ -15,7 +15,7 @@ export interface TaskStack {
     projectId: string;
     creatorId: string;
     createTime: Date;
-    nextStackId?: string;
+    nextId?: string;
     sortBy?: number;
 }
 
@@ -23,7 +23,7 @@ export interface Task {
     id: string;
     isComplete: boolean;
     description: string;
-    nextTaskId?: number;
+    nextId?: number;
     priority?: number;
     principalUserId?: string;
     endTime?: number;

@@ -6,6 +6,7 @@ import { TaskStackService } from 'core/services/task-stack.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskApi } from 'core/services/task-api';
+import { LinkedListElement } from 'core/types/common';
 
 @Component({
   templateUrl: './project-tasks.component.html',
@@ -90,7 +91,7 @@ export class ProjectTasksComponent implements OnInit {
     if (!this.currentProjectId) { return; }
     this.taskStackApi.getStackListByProjectId(this.currentProjectId).subscribe(resp => {
       this.taskStacks = [];
-      this.sortLinkedStacks(resp.data);
+      this.sortLinkedStacks(resp.data as LinkedListElement[], this.taskStacks as LinkedListElement[]);
       this.taskStacks.forEach(stack => {
         this.getTasks(stack.id);
       });
@@ -104,20 +105,20 @@ export class ProjectTasksComponent implements OnInit {
   }
 
   // TODO 改为通用
-  private sortLinkedStacks(stacks: TaskStack[], nextId?: string) {
+  private sortLinkedStacks(stacks: LinkedListElement[], target: LinkedListElement[], nextId?: string) {
     let index = -1;
     if (!nextId) {
-      index = stacks.findIndex((stack) => !stack.nextStackId);
+      index = stacks.findIndex((stack) => !stack.nextId);
     } else {
-      index = stacks.findIndex((stack) => stack.nextStackId === nextId);
+      index = stacks.findIndex((stack) => stack.nextId === nextId);
     }
 
     if (index < 0) { throw new Error('任务列表数据出错'); }
     const currentStack = stacks.splice(index, 1)[0];
-    this.taskStacks.unshift(currentStack);
+    target.unshift(currentStack);
 
     if (stacks.length) {
-      this.sortLinkedStacks(stacks, currentStack.id);
+      this.sortLinkedStacks(stacks, target, currentStack.id);
     }
   }
 
