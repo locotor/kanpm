@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Task, TaskStack } from 'core/types/task';
 
 @Component({
@@ -11,14 +12,24 @@ import { Task, TaskStack } from 'core/types/task';
 export class TaskStackComponent implements OnInit {
 
   @Input() stack?: TaskStack;
-  tasks: Task[] = [];
+  @Input() tasks: Task[] = [];
+  @Output() moveTask = new EventEmitter();
+  @Output() newTask = new EventEmitter();
   isLoading = false;
   isShowCreatePane = false;
+  taskCreateForm = this.fb.group({
+    description: ['', [
+      Validators.required,
+      Validators.maxLength(128)
+    ]]
+  });
+  get description() { return this.taskCreateForm.get('description'); }
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    this.tasks = this.getStackTasks('for-test-string');
   }
 
   getStackStatus(): string {
@@ -37,20 +48,9 @@ export class TaskStackComponent implements OnInit {
     }
   }
 
-  getStackTasks(stackId: string): Task[] {
-    const tasks: Task[] = [];
-    const random = Math.floor(Math.random() * 12 + 1);
-    for (let index = 0; index < random; index++) {
-      const task = {
-        id: `${index}`,
-        isComplete: index % 2 == 1,
-        description: '测试任务0' + index,
-        index,
-        createdTime: new Date().getTime()
-      };
-      tasks.push(task);
-    }
-    return tasks;
+  emitNewTask(): void {
+    this.newTask.emit(this.taskCreateForm.value);
+    this.taskCreateForm.reset()
   }
 
 }

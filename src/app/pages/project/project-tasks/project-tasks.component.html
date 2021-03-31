@@ -5,15 +5,16 @@
   <mat-drawer-content class="task-stacks-wrapper">
     <!-- task list drag zone -->
     <ul class="task-stacks" cdkDropList cdkDropListGroup cdkDropListOrientation="horizontal"
-      (cdkDropListDropped)="dropTaskList($event)">
+      (cdkDropListDropped)="moveTaskStack($event)">
       <li cdkDrag *ngFor="let stack of taskStacks" class="task-stack">
-        <kanpm-task-stack [stack]="stack"></kanpm-task-stack>
+        <kanpm-task-stack [stack]="stack" [tasks]="tasksMap.get(stack.id)" (newTask)="createTask($event,stack.id)">
+        </kanpm-task-stack>
       </li>
       <li class="task-stack-creator p-3 mat-elevation-z2">
         <div class="stack-create-button w-100" (click)="isShowStackCreateForm=true" *ngIf="!isShowStackCreateForm">
           <span>新建任务列表</span>
         </div>
-        <form *ngIf="isShowStackCreateForm" class="w-100" [formGroup]="createStackForm">
+        <form *ngIf="isShowStackCreateForm" class="w-100" [formGroup]="stackCreateForm">
           <mat-form-field class="w-100" appearance="outline">
             <mat-label>列表名称</mat-label>
             <input matInput formControlName="stackName" required>
@@ -25,7 +26,7 @@
           </mat-form-field>
           <div class="form-operations">
             <button mat-raised-button type="submit" color="primary" (click)="createTaskStack()">确定</button>
-            <button mat-button (click)="isShowStackCreateForm=false;this.createStackForm.reset()">取消</button>
+            <button mat-button (click)="isShowStackCreateForm=false;this.stackCreateForm.reset()">取消</button>
           </div>
         </form>
       </li>

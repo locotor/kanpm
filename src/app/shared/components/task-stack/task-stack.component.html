@@ -3,7 +3,7 @@
   <header class="stack-header mat-elevation-z1">
     <div>
       <span class="stack-name">{{stack?.stackName}}</span>
-      <span *ngIf="tasks&&tasks.length" class="stack-status">{{getStackStatus()}}</span>
+      <span *ngIf="tasks&&tasks?.length" class="stack-status">{{getStackStatus()}}</span>
     </div>
     <div>
       <button mat-icon-button (click)="isShowCreatePane=true">
@@ -20,18 +20,23 @@
       <mat-spinner [diameter]="24" [strokeWidth]="4"></mat-spinner>
       <span>列表加载中</span>
     </div>
-    <ul class="task-list h-100 w-100 px-2" *ngIf="!isLoading && tasks.length != 0" cdkDropList [cdkDropListData]="tasks"
+    <ul class="task-list h-100 w-100 px-2" *ngIf="!isLoading" cdkDropList [cdkDropListData]="tasks"
       (cdkDropListDropped)="drop($event)">
       <!-- task creator -->
       <mat-card *ngIf="!isLoading && isShowCreatePane" class="w-100 mb-2">
-        <form class="w-100">
-          <mat-form-field appearance="outline" class="w-100">
+        <form class="w-100" [formGroup]="taskCreateForm">
+          <mat-form-field class="w-100" appearance="outline">
             <mat-label>任务描述</mat-label>
-            <textarea matInput></textarea>
+            <textarea matInput formControlName="description" require></textarea>
+            <mat-error *ngIf="description?.errors?.required">任务描述不能为空</mat-error>
+            <mat-error *ngIf="description?.errors?.maxlength">
+              任务描述长度不能大于 {{description?.errors?.maxlength.requiredLength}}.
+            </mat-error>
           </mat-form-field>
           <section>
-            <button mat-stroked-button color="primary">创建</button>
-            <button mat-button class="ms-1" (click)="isShowCreatePane=false">取消</button>
+            <button mat-stroked-button color="primary" [disabled]="taskCreateForm.invalid"
+              (click)="emitNewTask()">创建</button>
+            <button mat-button class="ms-1" (click)="isShowCreatePane=false;taskCreateForm.reset()">取消</button>
           </section>
         </form>
       </mat-card>
@@ -39,7 +44,7 @@
         <kanpm-task-card [task]=task></kanpm-task-card>
       </li>
     </ul>
-    <div class="empty-content-tips" *ngIf="!isLoading && tasks.length == 0">
+    <div class="empty-content-tips" *ngIf="!isLoading && tasks?.length == 0">
       <mat-icon color="primary">check_box</mat-icon>
       <span>列表无任务</span>
       <span class="mat-caption">动静有时，张驰有度</span>

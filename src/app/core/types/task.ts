@@ -23,15 +23,11 @@ export interface Task {
     id: string;
     isComplete: boolean;
     description: string;
-    index?: number;
-    subTasks?: Task[];
-    priority?: 'high' | 'normal' | 'low';
+    nextTaskId?: number;
+    priority?: number;
     principalUserId?: string;
     endTime?: number;
-    repeat?: 'daily' | 'workday' | 'weekly' | 'monthly' | 'yearly';
-    remindTime?: number;
     remark?: string;
-    attachments?: string[];
     tags?: number[];
     createdTime?: number;
     completedTime?: number;

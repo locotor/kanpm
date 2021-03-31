@@ -16,9 +16,4 @@ export class TaskCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  completedSubTask(): number {
-    if (!this.task || !this.task.subTasks || this.task.subTasks.length === 0) { return 0; }
-    return this.task.subTasks.filter(task => task.isComplete).length;
-  }
-
 }

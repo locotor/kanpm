@@ -1,5 +1,6 @@
-<mat-card class="task-card" [class.high]="task.priority === 'high'" [class.normal]="task.priority === 'normal'"
-  [class.low]="task.priority === 'low'">
+<!-- <mat-card class="task-card" [class.high]="task.priority === 'high'" [class.normal]="task.priority === 'normal'"
+  [class.low]="task.priority === 'low'"> -->
+<mat-card>
   <div style="display: flex;">
     <mat-checkbox [(ngModel)]="task.isComplete" class="task-checkbox"></mat-checkbox>
     <!-- title + executor -->
@@ -9,28 +10,28 @@
         <nz-avatar nzIcon="user"></nz-avatar>
       </section>
       <section class="task-infos">
-        <div *ngIf="task.subTasks&&task.subTasks.length" class="flex-center task-info mat-caption">
+        <!-- <div *ngIf="task.subTasks&&task.subTasks.length" class="flex-center task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">list</mat-icon>
           <span>{{completedSubTask()}} completed / {{task.subTasks.length}} total</span>
-        </div>
+        </div> -->
         <div *ngIf="task.endTime" class="flex-center task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">calendar_today</mat-icon>
           <span>{{task.endTime | date:'yyyy/MM/dd'}}</span>
         </div>
-        <div *ngIf="task.remindTime" class="flex-center task-info mat-caption">
+        <!-- <div *ngIf="task.remindTime" class="flex-center task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">alarm_on</mat-icon>
           <span>{{task.remindTime | date:'MM/dd, HH:mm'}}</span>
         </div>
         <div *ngIf="task.repeat" class="flex-center task-info mat-caption">
           <mat-icon inline style="font-size: 16px; margin-right: 4px;">repeat</mat-icon>
           <span>{{ task.repeat}}</span>
-        </div>
+        </div> -->
         <div *ngIf="task.remark" class="flex-center task-info mat-caption">
           <mat-icon inline style="font-size: 16px;">description</mat-icon>
         </div>
-        <div *ngIf="task.attachments && task.attachments.length" class=" task-info mat-caption">
+        <!-- <div *ngIf="task.attachments && task.attachments.length" class=" task-info mat-caption">
           <mat-icon inline style="font-size: 16px;">attachment</mat-icon>
-        </div>
+        </div> -->
         <!-- TODO tag component -->
         <!-- <div class="task-info mat-caption task-tag-red">
                 important
