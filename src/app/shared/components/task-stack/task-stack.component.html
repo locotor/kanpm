@@ -1,55 +1,48 @@
-<mat-card class="task-stack-wrapper">
-  <div class="task-stack">
-    <!-- stack header -->
-    <header class="stack-header mat-elevation-z1">
-      <div>
-        <span class="stack-name">{{stack?.stackName}}</span>
-        <span *ngIf="tasks&&tasks.length" class="stack-status">{{getStackStatus()}}</span>
-      </div>
-      <div>
-        <button mat-icon-button>
-          <mat-icon>add_task</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>more_horiz</mat-icon>
-        </button>
-      </div>
-    </header>
-    <!-- stack content, task card drag zone -->
-    <div class="stack-content">
-      <div *ngIf="isLoading" class="flex-center list-loading">
-        <mat-spinner [diameter]="24" [strokeWidth]="4"></mat-spinner>
-        <span>列表加载中</span>
-      </div>
-      <ul class="task-list" *ngIf="!isLoading && tasks.length != 0" cdkDropList [cdkDropListData]="tasks"
-        (cdkDropListDropped)="drop($event)">
-        <li *ngFor="let task of tasks; index as i" cdkDrag [cdkDragData]="task">
-          <kanpm-task-card [task]=task></kanpm-task-card>
-        </li>
-      </ul>
-      <div class="empty-content-tips" *ngIf="!isLoading && tasks.length == 0">
-        <mat-icon color="primary">check_box</mat-icon>
-        <span>列表无任务</span>
-        <span class="mat-caption">动静有时，张驰有度</span>
-      </div>
+<div class="task-stack">
+  <!-- stack header -->
+  <header class="stack-header mat-elevation-z1">
+    <div>
+      <span class="stack-name">{{stack?.stackName}}</span>
+      <span *ngIf="tasks&&tasks.length" class="stack-status">{{getStackStatus()}}</span>
     </div>
-    <!-- stack footer -->
-    <footer *ngIf="!isLoading" class="flex-center stack-footer">
-      <ng-container *ngIf="isShowCreatePane;else create_button">
-        <form class="task-quick-create-form">
-          <mat-form-field appearance="outline">
+    <div>
+      <button mat-icon-button (click)="isShowCreatePane=true">
+        <mat-icon>add_task</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+    </div>
+  </header>
+  <!-- stack content, task card drag zone -->
+  <div class="stack-content">
+    <div *ngIf="isLoading" class="flex-center list-loading">
+      <mat-spinner [diameter]="24" [strokeWidth]="4"></mat-spinner>
+      <span>列表加载中</span>
+    </div>
+    <ul class="task-list h-100 w-100 px-2" *ngIf="!isLoading && tasks.length != 0" cdkDropList [cdkDropListData]="tasks"
+      (cdkDropListDropped)="drop($event)">
+      <!-- task creator -->
+      <mat-card *ngIf="!isLoading && isShowCreatePane" class="w-100 mb-2">
+        <form class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>任务描述</mat-label>
             <textarea matInput></textarea>
           </mat-form-field>
           <section>
             <button mat-stroked-button color="primary">创建</button>
-            <button mat-button (click)="isShowCreatePane=false">取消</button>
+            <button mat-button class="ms-1" (click)="isShowCreatePane=false">取消</button>
           </section>
         </form>
-      </ng-container>
-      <ng-template #create_button>
-        <button mat-stroked-button color="primary" (click)="isShowCreatePane=true">快速创建任务</button>
-      </ng-template>
-    </footer>
+      </mat-card>
+      <li *ngFor="let task of tasks; index as i" cdkDrag [cdkDragData]="task">
+        <kanpm-task-card [task]=task></kanpm-task-card>
+      </li>
+    </ul>
+    <div class="empty-content-tips" *ngIf="!isLoading && tasks.length == 0">
+      <mat-icon color="primary">check_box</mat-icon>
+      <span>列表无任务</span>
+      <span class="mat-caption">动静有时，张驰有度</span>
+    </div>
   </div>
-</mat-card>
+</div>

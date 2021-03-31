@@ -1,4 +1,4 @@
-.task-stack-wrapper {
+:host {
   height: 100%;
   padding: 0;
 }
@@ -36,9 +36,6 @@
   overflow: hidden;
 
   .task-list {
-    height: 100%;
-    width: 100%;
-    padding: 0 10px;
     overflow-y: auto;
     li {
       margin-bottom: 10px;
@@ -66,17 +63,4 @@
   }
 }
 
-.stack-footer {
-  border-top: 1px solid #ccc;
-  padding: 16px 10px;
 
-  .task-quick-create-form {
-    width: 100%;
-    mat-form-field {
-      width: 100%;
-    }
-    button {
-      margin-right: 5px;
-    }
-  }
-}

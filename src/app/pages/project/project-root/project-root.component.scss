@@ -10,9 +10,11 @@
 
 .project-sidebar{
   display: flex;
-  height: 100%;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  width: 5rem;
+  height: 100%;
 }
 
 .project-content {
