@@ -54,14 +54,39 @@ export class ProjectTasksComponent implements OnInit {
     });
   }
 
-  dropTaskCard(event: CdkDragDrop<any, any>) {
+  moveTaskCard(event: CdkDragDrop<any, any>) {
+    let taskList = [];
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data.tasks, event.previousIndex, event.currentIndex);
+      taskList = event.container.data;
+      const oldPrevious = taskList[event.previousIndex - 1];
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      const newPrevious = taskList[event.currentIndex - 1];
+      const newNext = taskList[event.currentIndex + 1];
+      const current = taskList[event.currentIndex];
+      this.taskApi.moveTask(oldPrevious, newPrevious, newNext.id, current).subscribe(reps => {
+        if (!reps.data) {
+          moveItemInArray(this.taskStacks, event.currentIndex, event.previousIndex);
+        }
+      });
     } else {
-      transferArrayItem(event.previousContainer.data.tasks,
-        event.container.data.tasks,
+      const previousList = event.previousContainer.data;
+      taskList = event.container.data;
+      const oldPrevious = previousList[event.previousIndex - 1];
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
         event.previousIndex,
         event.currentIndex);
+      const newPrevious = taskList[event.currentIndex - 1];
+      const newNext = taskList[event.currentIndex + 1];
+      const current = taskList[event.currentIndex];
+      this.taskApi.moveTask(oldPrevious, newPrevious, newNext.id, current).subscribe(reps => {
+        if (!reps.data) {
+          moveItemInArray(this.taskStacks, event.currentIndex, event.previousIndex);
+          transferArrayItem(event.container.data.tasks, event.previousContainer.data.tasks,
+            event.currentIndex,
+            event.previousIndex);
+        }
+      });
     }
   }
 
@@ -80,7 +105,9 @@ export class ProjectTasksComponent implements OnInit {
   }
 
   createTask(task: { description: string }, stackId: string): void {
-    this.taskApi.createTask(task.description, stackId).subscribe(resp => {
+    const list = this.tasksMap.get(stackId) || [];
+    const previousId = list[list.length - 1]?.id;
+    this.taskApi.createTask(previousId, task.description, stackId).subscribe(resp => {
       const oldList = this.tasksMap.get(stackId);
       const newList = oldList ? [...oldList, resp.data] : [resp.data];
       this.tasksMap.set(stackId, newList);
@@ -100,7 +127,11 @@ export class ProjectTasksComponent implements OnInit {
 
   private getTasks(stackId: string): void {
     this.taskApi.getTasks(stackId).subscribe(resp => {
-      this.tasksMap.set(stackId, resp.data);
+      let temp: any[] = [];
+      if (resp.data.length) {
+        this.sortLinkedStacks(resp.data as LinkedListElement[], temp)
+      }
+      this.tasksMap.set(stackId, temp);
     });
   }
 
@@ -108,12 +139,14 @@ export class ProjectTasksComponent implements OnInit {
   private sortLinkedStacks(stacks: LinkedListElement[], target: LinkedListElement[], nextId?: string) {
     let index = -1;
     if (!nextId) {
-      index = stacks.findIndex((stack) => !stack.nextId);
+      index = stacks.findIndex((stack) => !stack || !stack.nextId);
     } else {
       index = stacks.findIndex((stack) => stack.nextId === nextId);
     }
 
-    if (index < 0) { throw new Error('任务列表数据出错'); }
+    if (index < 0) {
+      throw new Error('列表数据出错');
+    }
     const currentStack = stacks.splice(index, 1)[0];
     target.unshift(currentStack);
 

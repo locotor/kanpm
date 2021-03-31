@@ -7,7 +7,8 @@
     <ul class="task-stacks" cdkDropList cdkDropListGroup cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="moveTaskStack($event)">
       <li cdkDrag *ngFor="let stack of taskStacks" class="task-stack">
-        <kanpm-task-stack [stack]="stack" [tasks]="tasksMap.get(stack.id)" (newTask)="createTask($event,stack.id)">
+        <kanpm-task-stack [stack]="stack" [tasks]="tasksMap.get(stack.id)" (newTask)="createTask($event,stack.id)"
+          (moveTask)="moveTaskCard($event)">
         </kanpm-task-stack>
       </li>
       <li class="task-stack-creator p-3 mat-elevation-z2">

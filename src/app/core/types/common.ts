@@ -1,4 +1,4 @@
 export interface LinkedListElement {
-    nextId: string;
+    nextId?: string;
     id: string;
 }
