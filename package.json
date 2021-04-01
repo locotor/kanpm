@@ -1,6 +1,16 @@
 {
   "name": "kanpm",
-  "version": "0.1.0-Snapshot",
+  "version": "0.3.0-Snapshot",
+  "description": "kanpm 是一款看板式任务协做平台，致力于团队目标更加明确，工作组织更加简明，沟通更加顺畅，也让每个人的付出得以量化和分享。",
+  "author": "locotor",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/locotor/kanpm"
+  },
+  "bugs": {
+    "url": "https://github.com/locotor/kanpm/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
