@@ -18,8 +18,10 @@ export class TaskApi {
         return this.http.post<ServerResponse<Task>>('/api/tasks', { previousId, description, stackId });
     }
 
-    moveTask(oldPrevious: Task, newPrevious: Task, newNextId: string, movedTask: Task) {
-        return this.http.put<ServerResponse<boolean>>('/api/tasks/move-task', { oldPrevious, newPrevious, newNextId, movedTask });
+    moveTask(oldPrevious: Task, newPrevious: Task, newNextId: string, movedTask: Task, newStackId?: string) {
+        return this.http.put<ServerResponse<boolean>>('/api/tasks/move-task',
+            { oldPrevious, newPrevious, newNextId, movedTask, newStackId }
+        );
     }
 
 }

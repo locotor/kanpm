@@ -21,9 +21,10 @@ export interface TaskStack {
 
 export interface Task {
     id: string;
+    stackId: string;
     isComplete: boolean;
     description: string;
-    nextId?: number;
+    nextId?: string;
     priority?: number;
     principalUserId?: string;
     endTime?: number;

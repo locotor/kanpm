@@ -55,7 +55,9 @@ export class ProjectTasksComponent implements OnInit {
   }
 
   moveTaskCard(event: CdkDragDrop<any, any>) {
-    let taskList = [];
+    let taskList: Task[] = [];
+
+    // 同任务列表内移动
     if (event.previousContainer === event.container) {
       taskList = event.container.data;
       const oldPrevious = taskList[event.previousIndex - 1];
@@ -63,14 +65,21 @@ export class ProjectTasksComponent implements OnInit {
       const newPrevious = taskList[event.currentIndex - 1];
       const newNext = taskList[event.currentIndex + 1];
       const current = taskList[event.currentIndex];
-      this.taskApi.moveTask(oldPrevious, newPrevious, newNext.id, current).subscribe(reps => {
+      this.taskApi.moveTask(oldPrevious, newPrevious, newNext?.id, current).subscribe(reps => {
         if (!reps.data) {
           moveItemInArray(this.taskStacks, event.currentIndex, event.previousIndex);
-        }
+        } else { this.moveElement(oldPrevious, newPrevious, newNext?.id, current); }
       });
     } else {
+      // 不同任务列表内移动
       const previousList = event.previousContainer.data;
       taskList = event.container.data;
+      let newStackId = '';
+      this.tasksMap.forEach((tasks, key) => {
+        if (tasks === taskList) {
+          newStackId = key;
+        }
+      });
       const oldPrevious = previousList[event.previousIndex - 1];
       transferArrayItem(event.previousContainer.data,
         event.container.data,
@@ -79,12 +88,15 @@ export class ProjectTasksComponent implements OnInit {
       const newPrevious = taskList[event.currentIndex - 1];
       const newNext = taskList[event.currentIndex + 1];
       const current = taskList[event.currentIndex];
-      this.taskApi.moveTask(oldPrevious, newPrevious, newNext.id, current).subscribe(reps => {
+      this.taskApi.moveTask(oldPrevious, newPrevious, newNext.id, current, newStackId).subscribe(reps => {
         if (!reps.data) {
           moveItemInArray(this.taskStacks, event.currentIndex, event.previousIndex);
           transferArrayItem(event.container.data.tasks, event.previousContainer.data.tasks,
             event.currentIndex,
             event.previousIndex);
+        } else {
+          this.moveElement(oldPrevious, newPrevious, newNext?.id, current);
+          current.stackId = newStackId;
         }
       });
     }
@@ -118,7 +130,7 @@ export class ProjectTasksComponent implements OnInit {
     if (!this.currentProjectId) { return; }
     this.taskStackApi.getStackListByProjectId(this.currentProjectId).subscribe(resp => {
       this.taskStacks = [];
-      this.sortLinkedStacks(resp.data as LinkedListElement[], this.taskStacks as LinkedListElement[]);
+      this.createArrayByLinkedList(resp.data as LinkedListElement[], this.taskStacks as LinkedListElement[]);
       this.taskStacks.forEach(stack => {
         this.getTasks(stack.id);
       });
@@ -127,32 +139,39 @@ export class ProjectTasksComponent implements OnInit {
 
   private getTasks(stackId: string): void {
     this.taskApi.getTasks(stackId).subscribe(resp => {
-      let temp: any[] = [];
+      const temp: any[] = [];
       if (resp.data.length) {
-        this.sortLinkedStacks(resp.data as LinkedListElement[], temp)
+        this.createArrayByLinkedList(resp.data as LinkedListElement[], temp);
       }
       this.tasksMap.set(stackId, temp);
     });
   }
 
-  // TODO 改为通用
-  private sortLinkedStacks(stacks: LinkedListElement[], target: LinkedListElement[], nextId?: string) {
+  // 按链表顺序创建数组
+  private createArrayByLinkedList(linkedList: LinkedListElement[], target: any[], nextId?: string) {
     let index = -1;
     if (!nextId) {
-      index = stacks.findIndex((stack) => !stack || !stack.nextId);
+      index = linkedList.findIndex((element) => !element || !element.nextId);
     } else {
-      index = stacks.findIndex((stack) => stack.nextId === nextId);
+      index = linkedList.findIndex((element) => element.nextId === nextId);
     }
 
     if (index < 0) {
       throw new Error('列表数据出错');
     }
-    const currentStack = stacks.splice(index, 1)[0];
-    target.unshift(currentStack);
+    const currentElement = linkedList.splice(index, 1)[0];
+    target.unshift(currentElement);
 
-    if (stacks.length) {
-      this.sortLinkedStacks(stacks, target, currentStack.id);
+    if (linkedList.length) {
+      this.createArrayByLinkedList(linkedList, target, currentElement.id);
     }
+  }
+
+  // 和后端同步修改链表nextId，避免每次移动后刷新列表
+  private moveElement(oldPrevious: LinkedListElement, newPrevious: LinkedListElement, newNextId: string, moveElement: LinkedListElement) {
+    if (oldPrevious != null) { oldPrevious.nextId = moveElement.nextId; }
+    if (newPrevious != null) { newPrevious.nextId = moveElement.id; }
+    moveElement.nextId = newNextId;
   }
 
 }
