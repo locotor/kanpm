@@ -37,8 +37,7 @@
               "src/styles.scss",
               {
                 "inject": false,
-                "input": "src/themes/light-green-orange.scss",
-                "bundleName": "themes/light-green-orange"
+                "input": "src/themes/light-green-orange.scss"
               }
             ],
             "scripts": []
