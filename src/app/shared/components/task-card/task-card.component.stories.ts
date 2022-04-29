@@ -39,19 +39,19 @@ const Template = (args: TaskCardComponent) => ({
     props: args,
 });
 
-export const basicInfo = Template.bind({});
+export const basicInfo: any = Template.bind({});
 basicInfo.args = {
     task: { ...defaultTasksData }
 };
 basicInfo.storyName = '基本信息';
 
-export const completeTask = Template.bind({});
+export const completeTask: any = Template.bind({});
 completeTask.args = {
     task: { ...defaultTasksData, isComplete: true }
 };
 completeTask.storyName = '已完成状态';
 
-export const fullInfo = Template.bind({});
+export const fullInfo: any = Template.bind({});
 fullInfo.args = {
     task: {
         ...defaultTasksData,

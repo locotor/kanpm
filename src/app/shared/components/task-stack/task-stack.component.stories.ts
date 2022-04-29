@@ -31,14 +31,14 @@ const Template = (args: TaskStackComponent) => ({
     props: args
 });
 
-export const defaultStatus = Template.bind({});
+export const defaultStatus: any = Template.bind({});
 defaultStatus.storyName = '默认状态';
 defaultStatus.args = {
     stack: { name: 'Todo' },
     tasks: defaultTasksListData
 };
 
-export const overflowStatus = Template.bind({});
+export const overflowStatus: any = Template.bind({});
 overflowStatus.storyName = '滚动条';
 overflowStatus.args = {
     stack: { name: 'Many Task' },
@@ -65,14 +65,14 @@ overflowStatus.args = {
     ]
 };
 
-export const empty = Template.bind({});
+export const empty: any = Template.bind({});
 empty.storyName = '空列表';
 empty.args = {
     stack: { name: 'Empty' },
     tasks: []
 };
 
-export const isLoading = Template.bind({});
+export const isLoading: any = Template.bind({});
 isLoading.storyName = '加载中';
 isLoading.args = {
     stack: { name: 'Empty' },
