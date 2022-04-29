@@ -121,12 +121,22 @@
               "devServerTarget": "kanpm:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "defaultProject": "kanpm",
   "cli": {
-    "analytics": "c73e4f02-e52d-47aa-a46d-e839ef14bd8f"
+    "analytics": "c73e4f02-e52d-47aa-a46d-e839ef14bd8f",
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }
